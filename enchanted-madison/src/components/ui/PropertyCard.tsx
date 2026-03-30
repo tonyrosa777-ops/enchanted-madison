@@ -3,9 +3,12 @@ import type { Stay } from "../../content/stays";
 
 type PropertyCardProps = {
   stay: Stay;
+  /** Destination for the primary CTA. Defaults to /stays/[slug]. */
+  href?: string;
 };
 
-export function PropertyCard({ stay }: PropertyCardProps) {
+export function PropertyCard({ stay, href }: PropertyCardProps) {
+  const destination = href ?? `/stays/${stay.slug}`;
   return (
     <article className="rounded-[1.75rem] border border-forest/10 bg-ivory p-6 shadow-warm">
       <p className="text-sm font-semibold uppercase tracking-[0.2em] text-stone">
@@ -27,7 +30,7 @@ export function PropertyCard({ stay }: PropertyCardProps) {
         ))}
       </ul>
       <div className="mt-6">
-        <Button href="/stays">Book This Escape</Button>
+        <Button href={destination}>Book This Escape</Button>
       </div>
     </article>
   );

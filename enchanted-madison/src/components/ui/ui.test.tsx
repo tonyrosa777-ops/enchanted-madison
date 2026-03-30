@@ -46,7 +46,7 @@ describe("ui primitives", () => {
     const markup = renderToStaticMarkup(<PropertyCard stay={stays[1]} />);
 
     expect(markup).toContain("The Velvet Buck");
-    expect(markup).toContain("$195/night");
+    expect(markup).toContain("$175/night");
     expect(markup).toContain("Private hot tub");
   });
 
@@ -70,7 +70,7 @@ describe("ui primitives", () => {
 
     expect(markup).toContain("I want to escape to");
     expect(markup).toContain("The Enchanted Cottage");
-    expect(markup).toContain("2-Hour Hot Tub Escape");
+    expect(markup).toContain("Tranquility Escape");
     expect(markup).toContain("Check Availability");
   });
 });

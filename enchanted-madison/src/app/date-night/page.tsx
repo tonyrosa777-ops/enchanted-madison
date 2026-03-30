@@ -24,7 +24,7 @@ export default function DateNightPage() {
             className="rounded-[1.75rem] border border-forest/10 bg-ivory p-6 shadow-warm"
           >
             <h2 className="font-heading text-3xl font-semibold text-forest">{pkg.name}</h2>
-            <p className="mt-3 text-base font-semibold text-rose">{pkg.priceRange}</p>
+            <p className="mt-3 text-base font-semibold text-rose">{pkg.price}</p>
             <p className="mt-4 text-sm leading-7 text-charcoal/75">{pkg.summary}</p>
           </article>
         ))}

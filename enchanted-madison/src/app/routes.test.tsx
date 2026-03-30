@@ -50,8 +50,9 @@ describe("route skeletons", () => {
   it("replaces the starter homepage with a branded landing shell", () => {
     const markup = renderToStaticMarkup(<HomePage />);
 
-    expect(markup).toContain("Where Romance Meets the Wild");
-    expect(markup).toContain("Join 400+ couples on the VIP list");
+    expect(markup).toContain("Where Romance");
+    expect(markup).toContain("Meets the Wild");
+    expect(markup).toContain("Early Access");
     expect(markup).not.toContain("To get started, edit the page.tsx file.");
   });
 
@@ -72,26 +73,26 @@ describe("route skeletons", () => {
 
   it("defines the packages route", () => {
     expect(packagesMetadata.title).toBe("Packages");
-    expect(renderToStaticMarkup(<PackagesPage />)).toContain("Add to Your Escape");
+    expect(renderToStaticMarkup(<PackagesPage />)).toContain("Add to your escape");
   });
 
   it("defines the Madison guide route", () => {
     expect(guideMetadata.title).toBe("Madison Guide");
-    expect(renderToStaticMarkup(<MadisonGuidePage />)).toContain("Madison, Indiana Guide");
+    expect(renderToStaticMarkup(<MadisonGuidePage />)).toContain("There is more to explore");
   });
 
   it("defines the reviews route", () => {
     expect(reviewsMetadata.title).toBe("Reviews");
-    expect(renderToStaticMarkup(<ReviewsPage />)).toContain("Guest Reviews");
+    expect(renderToStaticMarkup(<ReviewsPage />)).toContain("Reviews from couples");
   });
 
   it("defines the FAQ route", () => {
     expect(faqMetadata.title).toBe("FAQ");
-    expect(renderToStaticMarkup(<FaqPage />)).toContain("Frequently Asked Questions");
+    expect(renderToStaticMarkup(<FaqPage />)).toContain("Everything you need to know");
   });
 
   it("defines the contact route", () => {
     expect(contactMetadata.title).toBe("Contact");
-    expect(renderToStaticMarkup(<ContactPage />)).toContain("Start Planning Your Escape");
+    expect(renderToStaticMarkup(<ContactPage />)).toContain("Tell us what you");
   });
 });
