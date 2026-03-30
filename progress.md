@@ -38,6 +38,7 @@
 - [x] Content layer established in app code
 - [x] Branded app shell established
 - [x] Core route skeletons established
+- [x] Reusable UI primitives established
 
 ### Decisions Log
 - 2026-03-30: The repo will use Next.js App Router + Tailwind + TypeScript per project rules and session brief.
@@ -48,6 +49,7 @@
 - 2026-03-30: Tailwind design tokens were encoded in the scaffold using `tailwind.config.ts`, `src/app/globals.css`, and `src/lib/design-tokens.ts`.
 - 2026-03-30: Phase 1 execution began with a typed content layer and lightweight Vitest coverage for site, navigation, stay, experience, and SEO defaults.
 - 2026-03-30: The app now has a persistent branded shell with header/footer and route skeletons for stays, proposals, date night, packages, Madison guide, reviews, FAQ, and contact.
+- 2026-03-30: Core UI primitives now exist for buttons, section headings, property cards, trust proof, and the on-domain booking entry pattern inspired by AutoCamp.
 
 ### Open Questions
 - Can we install and authenticate the Vercel CLI in this environment, or should Vercel connection happen manually by the project owner?
@@ -70,6 +72,7 @@
 - Converted the workspace into a single root git repo, created the initial commit, and pushed it to GitHub.
 - Started Phase 1 by adding the structured content layer and test coverage inside the Next.js app.
 - Built the branded app shell and core route skeletons, replacing the stock Next starter homepage.
+- Built and integrated the reusable UI primitive layer into the homepage shell.
 
 **Discovered:**
 - `CLAUDE.md`, `progress.md`, and `design-contract.md` did not exist before this session.
@@ -78,6 +81,7 @@
 - The audit confirms the three biggest UX failures today are the off-brand booking redirect, broken or missing conversion paths on homepage/contact, and the unusable packages page.
 - Calendly is not a viable primary booking engine for overnight inventory or rate management; it is only potentially useful for consult calls or manual proposal intake.
 - A route-first shell architecture gives us a safe place to iterate without hardcoding final design complexity too early, while still moving the site away from Canva/image-locked structure immediately.
+- The homepage now uses reusable primitives instead of one-off CTA and card markup, which will make the next page builds faster and more consistent.
 
 **Next:**
 - Establish the content layer, app shell, and base route architecture for homepage, stays, proposal, packages, Madison guide, reviews, FAQ, and contact.
@@ -85,6 +89,7 @@
 - Review and approve the Phase 1 implementation plan before moving into route and component work.
 - Build the branded app shell and reusable UI primitives on top of the new content layer.
 - Build reusable UI primitives next: buttons, section headings, property cards, trust bar, and booking entry module.
+- Start the first fully composed marketing page pass, beginning with the homepage hero and below-the-fold conversion sections.
 
 **Blockers:**
 - Vercel connection, booking engine confirmation, and DNS verification require external credentials or owner input.

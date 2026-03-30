@@ -1,6 +1,9 @@
-import Link from "next/link";
-
 import { PageShell } from "../components/layout/PageShell";
+import { BookingEntry } from "../components/ui/BookingEntry";
+import { Button } from "../components/ui/Button";
+import { PropertyCard } from "../components/ui/PropertyCard";
+import { SectionHeading } from "../components/ui/SectionHeading";
+import { TrustBar } from "../components/ui/TrustBar";
 import { experienceCollections } from "../content/experiences";
 import { siteContent } from "../content/site";
 import { stays } from "../content/stays";
@@ -23,55 +26,40 @@ export default function Home() {
             and the kind of stays people send to each other at midnight.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link
-              href="/stays"
-              className="rounded-full bg-rose px-5 py-3 font-semibold text-ivory transition hover:bg-gold hover:text-night"
-            >
+            <Button href="/stays">
               Check Availability
-            </Link>
-            <Link
-              href="/proposals"
-              className="rounded-full border border-gold px-5 py-3 font-semibold text-ivory transition hover:bg-gold hover:text-night"
-            >
+            </Button>
+            <Button href="/proposals" variant="secondary">
               Explore Proposals
-            </Link>
+            </Button>
           </div>
         </div>
 
-        <div className="rounded-[2rem] border border-forest/10 bg-ivory px-6 py-8 shadow-warm">
-          <p className="font-accent text-3xl text-gold">Book direct</p>
-          <h2 className="mt-3 font-heading text-3xl font-semibold text-forest">
-            Your stay should feel seamless before you even arrive.
-          </h2>
-          <p className="mt-4 text-base leading-7 text-charcoal/75">
-            The booking experience will stay on-brand and on-domain, with guided
-            entry points for overnight stays, proposal packages, and date-night
-            escapes.
-          </p>
-        </div>
+        <BookingEntry
+          stayOptions={stays}
+          experienceOptions={[
+            ...experienceCollections.proposals.packages,
+            ...experienceCollections.dayUse.packages,
+          ]}
+        />
       </section>
 
       <section className="mx-auto w-full max-w-content-xl px-5 pb-12 lg:px-8">
+        <SectionHeading
+          eyebrow="Stay the night"
+          title="Distinct stays with pricing you can actually see"
+          description="Transparent starting prices and high-value features are part of the trust strategy, not something we hide until checkout."
+        />
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {stays.map((stay) => (
-            <article
-              key={stay.slug}
-              className="rounded-[1.75rem] border border-forest/10 bg-ivory p-6 shadow-warm"
-            >
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-stone">
-                {stay.category}
-              </p>
-              <h2 className="mt-3 font-heading text-3xl font-semibold text-forest">
-                {stay.name}
-              </h2>
-              <p className="mt-2 text-base font-semibold text-rose">{stay.startingRate}</p>
-              <p className="mt-4 text-sm leading-7 text-charcoal/75">{stay.summary}</p>
-            </article>
+            <PropertyCard key={stay.slug} stay={stay} />
           ))}
         </div>
       </section>
 
-      <section className="border-y border-forest/10 bg-forest text-ivory">
+      <TrustBar />
+
+      <section className="bg-[linear-gradient(180deg,_rgba(26,42,30,1)_0%,_rgba(44,62,45,1)_100%)] text-ivory">
         <div className="mx-auto grid w-full max-w-content-xl gap-6 px-5 py-12 lg:grid-cols-3 lg:px-8">
           <article className="rounded-[1.75rem] border border-gold/30 bg-ivory/5 p-6">
             <h2 className="font-heading text-3xl font-semibold">
