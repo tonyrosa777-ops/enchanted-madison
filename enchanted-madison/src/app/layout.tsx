@@ -4,6 +4,9 @@ import {
   Cormorant_Garamond,
   Source_Sans_3,
 } from "next/font/google";
+import { SiteFooter } from "../components/layout/SiteFooter";
+import { SiteHeader } from "../components/layout/SiteHeader";
+import { seoDefaults } from "../content/seo";
 import "./globals.css";
 
 const headingFont = Cormorant_Garamond({
@@ -25,9 +28,11 @@ const accentFont = Allura({
 });
 
 export const metadata: Metadata = {
-  title: "Enchanted Madison",
-  description:
-    "Luxury glamping, private hot tubs, and curated romantic escapes near Clifty Falls and historic downtown Madison, Indiana.",
+  title: {
+    default: "Enchanted Madison",
+    template: seoDefaults.titleTemplate,
+  },
+  description: seoDefaults.defaultDescription,
 };
 
 export default function RootLayout({
@@ -40,7 +45,11 @@ export default function RootLayout({
       lang="en"
       className={`${headingFont.variable} ${bodyFont.variable} ${accentFont.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-cream text-charcoal">
+        <SiteHeader />
+        <div className="flex-1">{children}</div>
+        <SiteFooter />
+      </body>
     </html>
   );
 }
