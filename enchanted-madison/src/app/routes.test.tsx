@@ -63,12 +63,12 @@ describe("route skeletons", () => {
 
   it("defines the proposals route", () => {
     expect(proposalsMetadata.title).toBe("Proposals");
-    expect(renderToStaticMarkup(<ProposalsPage />)).toContain("Plan Your Proposal");
+    expect(renderToStaticMarkup(<ProposalsPage />)).toContain("She deserves a moment");
   });
 
   it("defines the date-night route", () => {
     expect(dateNightMetadata.title).toBe("Date Night");
-    expect(renderToStaticMarkup(<DateNightPage />)).toContain("Date Night Escapes");
+    expect(renderToStaticMarkup(<DateNightPage />)).toContain("Forget dinner and a movie");
   });
 
   it("defines the packages route", () => {
