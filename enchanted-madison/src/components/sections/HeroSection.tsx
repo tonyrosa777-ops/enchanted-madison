@@ -74,7 +74,7 @@ export function HeroSection() {
             href="/stays"
             className="inline-flex min-h-[3.25rem] items-center justify-center rounded-full bg-rose px-6 py-3 text-sm font-semibold text-ivory transition hover:bg-forest"
           >
-            Check Availability
+            Check Dates
           </Link>
           <Link
             href="/proposals"
@@ -105,12 +105,6 @@ export function HeroSection() {
         </div>
       </div>
 
-      <style>{`
-        @keyframes scrollPulse {
-          0%   { transform: translateY(-100%); opacity: 1; }
-          100% { transform: translateY(100%);  opacity: 0; }
-        }
-      `}</style>
     </section>
   );
 }

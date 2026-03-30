@@ -37,9 +37,9 @@ const experienceConfig = [
     key: "dayUse" as const,
     eyebrow: "By the hour",
     description:
-      "Two hours. A private hot tub. Robes, ambient lighting, and a sparkling beverage waiting. From $79/couple.",
-    href: "/stays",
-    ctaLabel: "Book a Hot Tub Escape",
+      "Two hours. A private hot tub. Robes, ambient lighting, and a sparkling beverage waiting. From $119/couple.",
+    href: "/date-night",
+    ctaLabel: "See Hot Tub Escapes",
     accentColor: "border-ivory/20",
   },
 ] as const;

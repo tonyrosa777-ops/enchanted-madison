@@ -20,12 +20,12 @@ export const metadata: Metadata = {
 };
 
 const sharedAmenities = [
-  { icon: "♨", label: "Hot tub access" },
-  { icon: "🔥", label: "Private fire pit" },
-  { icon: "🌲", label: "Wooded setting" },
-  { icon: "🍽", label: "Outdoor dining" },
-  { icon: "🚿", label: "Bathhouse on site" },
-  { icon: "📍", label: "5 min from downtown Madison" },
+  "Hot tub access",
+  "Private fire pit",
+  "Wooded setting",
+  "Outdoor dining",
+  "Bathhouse on site",
+  "5 min from downtown Madison",
 ] as const;
 
 export default function StaysPage() {
@@ -54,13 +54,13 @@ export default function StaysPage() {
             title="What you can count on at every accommodation"
           />
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {sharedAmenities.map((item) => (
+            {sharedAmenities.map((label) => (
               <div
-                key={item.label}
+                key={label}
                 className="flex items-center gap-3 rounded-2xl border border-forest/10 bg-cream px-5 py-4"
               >
-                <span className="text-xl" aria-hidden="true">{item.icon}</span>
-                <span className="text-sm font-medium text-charcoal">{item.label}</span>
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true" />
+                <span className="text-sm font-medium text-charcoal">{label}</span>
               </div>
             ))}
           </div>

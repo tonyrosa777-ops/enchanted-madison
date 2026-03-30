@@ -20,7 +20,7 @@ export function PageShell({
           {eyebrow ? (
             <p className="font-accent text-3xl text-gold">{eyebrow}</p>
           ) : null}
-          <h1 className="max-w-4xl font-heading text-5xl font-semibold leading-none text-forest lg:text-7xl">
+          <h1 className="max-w-4xl font-heading text-5xl font-semibold leading-[0.95] text-forest lg:text-7xl">
             {title}
           </h1>
           <p className="max-w-content-md text-lg leading-8 text-charcoal/80 lg:text-xl">

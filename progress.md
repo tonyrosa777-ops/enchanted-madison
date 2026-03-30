@@ -3,7 +3,7 @@
 **Project:** enchantedmadison.com redesign & rebuild
 **Client:** The Enchanted Collective | Madison, Indiana
 **Launch Target:** June 2026
-**Last Updated:** 2026-03-30 (Session 3)
+**Last Updated:** 2026-03-30 (Session 4)
 **Current Phase:** Phase 7 — Performance, QA & Launch Prep
 
 ---
@@ -114,7 +114,7 @@ CTAs or empty sections.
 **Pages:**
 - [x] `/stays` — Stays listing page: property cards with full copy, amenities chips, pricing, VIP CTA.
 - [x] `/stays/[slug]` — Dynamic detail pages: full description, amenities grid, package upsell, booking CTA.
-- [ ] `/about` — BLOCKED: host story (Angela & Marc) not yet provided — owner action required.
+- [x] `/about` — Built as placeholder page: property intro, proximity, amenities highlights, host story TBD section. Navigation updated.
 - [x] `/contact` — Contact page with real form (name, email, phone, celebration type, message). Fixes audit §5 CRITICAL.
 - [x] `/reviews` — Star ratings, 3 verified review cards, Google review placeholder. Fixes audit §12.
 - [x] `/madison-guide` — 6 attractions with emoji icons, proximity strip, needsDetail flagging. Fixes audit §11.
@@ -198,7 +198,7 @@ DNS cutover checklist is complete.
 - [ ] Cross-browser: Chrome, Safari, Firefox, Edge
 - [ ] Form testing: VIPCapture, contact form, consultation form — all submit paths
 - [ ] Booking flow E2E test: select stay → pick dates → complete booking on-domain
-- [ ] 404 page styled to match brand
+- [x] 404 page styled to match brand — dark night hero, gold script, dual CTAs
 - [ ] Deploy to Vercel production with custom domain enchantedmadison.com
 - [ ] DNS cutover: point enchantedmadison.com to Vercel
 - [ ] Redirect old Canva site to enchantedmadison.com
@@ -246,6 +246,67 @@ DNS cutover checklist is complete.
 ---
 
 ## Session Log
+
+### Session 4 — 2026-03-30
+**Completed (full design audit implementation — 19 tasks):**
+
+**Critical bugs fixed:**
+- C1: Created `/vip` route (`app/vip/page.tsx`) — fixes dead header link
+- C2: Fixed ExperiencesSection day-use card: `href` was `/stays`, changed to `/date-night`; price corrected from $79 to $119
+- C3: Fixed misleading "Book" CTA labels across proposals, date-night, and PropertyCard — changed to "Start Planning", "Plan This Escape", "Check Availability"
+- C4: Built `/about` placeholder page with property intro, proximity highlights, amenities, and host story TBD block. Added to navigation.
+
+**Responsive design fixes:**
+- R1: Date Night page now has its own dark cinematic hero (bg-night, gold radial, ivory text) matching proposals — removed PageShell wrapper
+- R2: SiteHeader transparent logic extended to `/proposals` and `/date-night` (was homepage only); scroll listener also runs on these pages
+- R3: PropertyCard now has a 4:3 aspect-ratio image slot at the top; warm gradient placeholder displayed when `Stay.image` is absent; `next/image` ready for photography
+- R4: HeroSection primary CTA changed from "Check Availability" to "Check Dates"
+- R5: PageShell H1 `leading-none` → `leading-[0.95]` per design-contract §3
+- R6: Stays page shared amenities: emoji icons (♨🔥🌲🍽🚿📍) replaced with on-brand gold dot bullets
+- R7: Circular @theme inline font variable self-references fixed in globals.css — now correctly point to `var(--font-cormorant-garamond)` etc.
+- R8: Proposals H1 `lg:text-6xl lg:leading-[1.05]` → `lg:text-[4.5rem] lg:leading-[0.95]`
+- R9: SiteFooter now includes a conversion strip above the nav: "Check Dates" (rose) + "Join VIP List" (gold border) CTAs
+
+**Polish / infrastructure:**
+- P1: Added `fadeUp` animation utility class `.animate-fade-up` to globals.css
+- P2: Moved `scrollPulse` @keyframes from HeroSection inline `<style>` to globals.css
+- P4: Created `app/not-found.tsx` — dark night hero, gold script "Lost in the woods?", "Get Back to the Woods" + "Browse Stays" CTAs
+- P5: Created `app/loading.tsx` — three pulsing gold dots centered on cream background
+
+**Build:** 20/20 pages generated clean, 0 TypeScript errors.
+
+**Discovered:**
+- Vercel "Redeploy" button reuses source snapshot rather than re-cloning GitHub — a fresh push is required to pick up any rootDirectory changes
+- `/vip` route was referenced in SiteHeader nav but never existed (404 on every page load)
+- `@theme inline` circular font variable self-references (`--font-heading: var(--font-heading)`) were a latent bug — fonts work because `:root` aliases bridge the gap, but removing the circular refs is correct hygiene
+
+**Owner actions still required:**
+- Photography: hero images for all 4 property cards (PropertyCard image slot is ready)
+- GA4 measurement ID (analytics blocked on this)
+- Email provider decision for VIPCapture (Mailchimp / ConvertKit / Klaviyo)
+- Lodgify/OwnerRez booking engine decision (Phase 4 blocked)
+- Angela & Marc host story for /about (placeholder section in place)
+
+**Next:**
+- Phase 7 QA: Lighthouse audit on all pages, mobile QA at 390px
+- Wire VIPCapture to real email provider once confirmed
+- Phase 4 (booking engine) once owner confirms Lodgify vs OwnerRez
+
+---
+
+### Session 3 — 2026-03-30
+**Completed:**
+- Fixed Vercel 404 deployment (3-layer root cause analysis): Framework Preset set to Next.js, rootDirectory set to "enchanted-madison", fresh git push forced Vercel to re-clone rather than reuse snapshot
+- Fixed Vercel 401 (Deployment Protection disabled)
+- Full site-wide design audit across all 8 pages: identified 3 critical bugs, 9 responsive design issues, 2 content completeness gaps, 2 polish tasks
+- Implemented critical fixes C1–C3 (see Session 4 for full list)
+- Pushed to GitHub
+
+**Discovered:**
+- Vercel dashboard "Redeploy" button reuses source snapshots — not a fresh clone
+- Hero gradient is intentional placeholder — no video was ever attached
+
+---
 
 ### Session 2 — 2026-03-30
 **Completed:**

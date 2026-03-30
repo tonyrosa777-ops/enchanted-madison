@@ -23,6 +23,8 @@ export type Stay = {
   size?: string;
   dogs?: boolean;
   openingNote?: string;
+  /** Hero image path — relative to /public. Placeholder gradient shown when absent. */
+  image?: string;
 };
 
 export const stays: Stay[] = [

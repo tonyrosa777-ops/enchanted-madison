@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { PageShell } from "../../components/layout/PageShell";
 import { experienceCollections, firesideLounge } from "../../content/experiences";
 
 export const metadata: Metadata = {
@@ -46,12 +45,44 @@ export default function DateNightPage() {
 
   return (
     <>
-      {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <PageShell
-        eyebrow={dateNight.eyebrow}
-        title="Forget dinner and a movie."
-        description="Choose restoration instead. Private hot tub, candlelit ambiance, spa robes — and a Fireside Lounge waiting inside when you're ready. No overnight stay required."
-      >
+      {/* ── Dark cinematic hero ───────────────────────────────────────────── */}
+      <section className="relative overflow-hidden bg-night">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-40"
+          style={{
+            background:
+              "radial-gradient(ellipse 70% 60% at 50% 80%, rgba(184,150,90,0.30) 0%, transparent 65%), radial-gradient(ellipse 50% 40% at 15% 30%, #1C3A2E 0%, transparent 60%)",
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative mx-auto w-full max-w-[80rem] px-5 py-20 lg:px-8 lg:py-28">
+          <p className="font-accent text-2xl text-gold lg:text-3xl">
+            {dateNight.eyebrow}
+          </p>
+          <h1 className="mt-4 font-heading text-4xl font-semibold text-ivory lg:text-[4.5rem] lg:leading-[0.95]">
+            Forget dinner<br className="hidden lg:block" /> and a movie.
+          </h1>
+          <p className="mt-5 max-w-xl text-base leading-7 text-ivory/70">
+            Choose restoration instead. Private hot tub, candlelit ambiance, spa robes — and a Fireside Lounge waiting inside when you&apos;re ready. No overnight stay required.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href="#packages"
+              className="inline-flex min-h-[3.25rem] items-center justify-center rounded-full bg-rose px-8 py-3 text-sm font-semibold text-ivory transition hover:bg-forest"
+            >
+              See Packages
+            </a>
+            <Link
+              href="/contact"
+              className="inline-flex min-h-[3.25rem] items-center justify-center rounded-full border border-gold/50 px-8 py-3 text-sm font-semibold text-ivory transition hover:border-gold hover:text-gold"
+            >
+              Ask a Question
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <main className="bg-cream">
         {/* ── Package cards ──────────────────────────────────────────────── */}
         <section id="packages" className="bg-cream">
           <div className="mx-auto w-full max-w-[80rem] px-5 py-16 lg:px-8 lg:py-20">
@@ -125,7 +156,7 @@ export default function DateNightPage() {
                         href="/contact"
                         className="inline-flex min-h-[3.25rem] w-full items-center justify-center rounded-full border border-gold px-5 py-3 text-sm font-semibold text-forest transition hover:bg-gold hover:text-night"
                       >
-                        Book This Escape
+                        Plan This Escape
                       </Link>
                     </div>
                   </article>
@@ -252,7 +283,7 @@ export default function DateNightPage() {
             </div>
           </div>
         </section>
-      </PageShell>
+      </main>
     </>
   );
 }

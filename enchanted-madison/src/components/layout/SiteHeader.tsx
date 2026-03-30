@@ -27,14 +27,15 @@ import { primaryNavigation } from "../../content/navigation";
  */
 export function SiteHeader() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
+  // Pages with dark top-of-page heroes that need transparent header treatment
+  const isDarkHeroPage = pathname === "/" || pathname === "/proposals" || pathname === "/date-night";
 
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Scroll listener — only meaningful on the homepage
+  // Scroll listener — active on all dark-hero pages
   useEffect(() => {
-    if (!isHome) return;
+    if (!isDarkHeroPage) return;
 
     function onScroll() {
       setScrolled(window.scrollY > 80);
@@ -44,7 +45,7 @@ export function SiteHeader() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [isHome]);
+  }, [isDarkHeroPage]);
 
   // Lock body scroll while mobile menu is open
   useEffect(() => {
@@ -58,7 +59,7 @@ export function SiteHeader() {
   }, [pathname]);
 
   // Compute the transparent state
-  const isTransparent = isHome && !scrolled;
+  const isTransparent = isDarkHeroPage && !scrolled;
 
   return (
     <>

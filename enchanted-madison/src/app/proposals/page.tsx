@@ -60,7 +60,7 @@ export default function ProposalsPage() {
           <p className="font-accent text-2xl text-gold lg:text-3xl">
             {proposals.eyebrow}
           </p>
-          <h1 className="mt-4 font-heading text-4xl font-semibold text-ivory lg:text-6xl lg:leading-[1.05]">
+          <h1 className="mt-4 font-heading text-4xl font-semibold text-ivory lg:text-[4.5rem] lg:leading-[0.95]">
             She deserves a moment<br className="hidden lg:block" /> she&apos;ll never forget.
           </h1>
           <p className="mt-5 max-w-xl text-base leading-7 text-ivory/70">
@@ -186,7 +186,7 @@ export default function ProposalsPage() {
                       href="/contact"
                       className="inline-flex min-h-[3.25rem] w-full items-center justify-center rounded-full bg-rose px-5 py-3 text-sm font-semibold text-ivory transition hover:bg-forest"
                     >
-                      Book This Package
+                      Start Planning
                     </Link>
                   </div>
                 </article>

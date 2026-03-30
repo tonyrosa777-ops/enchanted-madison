@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { Button } from "./Button";
 import type { Stay } from "../../content/stays";
 
@@ -10,7 +12,32 @@ type PropertyCardProps = {
 export function PropertyCard({ stay, href }: PropertyCardProps) {
   const destination = href ?? `/stays/${stay.slug}`;
   return (
-    <article className="rounded-[1.75rem] border border-forest/10 bg-ivory p-6 shadow-warm">
+    <article className="overflow-hidden rounded-[1.75rem] border border-forest/10 bg-ivory shadow-warm">
+      {/* Image / placeholder ─────────────────────────────────────────── */}
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-night">
+        {stay.image ? (
+          <Image
+            src={stay.image}
+            alt={stay.name}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
+          />
+        ) : (
+          /* Warm gradient placeholder — replace with real photography when available */
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse 80% 60% at 30% 100%, rgba(184,150,90,0.25) 0%, transparent 55%), linear-gradient(160deg, #1A2A1E 0%, #2C3E2D 50%, #1E3320 100%)",
+            }}
+            aria-hidden="true"
+          />
+        )}
+      </div>
+
+      {/* Card body */}
+      <div className="p-6">
       <p className="text-sm font-semibold uppercase tracking-[0.2em] text-stone">
         {stay.category}
       </p>
@@ -30,7 +57,8 @@ export function PropertyCard({ stay, href }: PropertyCardProps) {
         ))}
       </ul>
       <div className="mt-6">
-        <Button href={destination}>Book This Escape</Button>
+        <Button href={destination}>Check Availability</Button>
+      </div>
       </div>
     </article>
   );
