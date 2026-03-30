@@ -1,0 +1,18 @@
+# Root project ignores
+.DS_Store
+Thumbs.db
+*.log
+.env*
+
+# Local tooling
+.vercel
+.claude/
+.playwright-mcp/
+
+# Next.js app artifacts
+enchanted-madison/node_modules/
+enchanted-madison/.next/
+enchanted-madison/out/
+enchanted-madison/build/
+enchanted-madison/coverage/
+enchanted-madison/*.tsbuildinfo
