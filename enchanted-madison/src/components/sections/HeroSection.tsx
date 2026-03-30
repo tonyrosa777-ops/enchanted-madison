@@ -18,19 +18,21 @@ import Link from "next/link";
 export function HeroSection() {
   return (
     <section
-      className="relative flex min-h-[92vh] flex-col justify-end overflow-hidden"
+      className="relative flex min-h-screen flex-col justify-end overflow-hidden"
       aria-label="Welcome to Enchanted Madison"
     >
       {/* Background — placeholder gradient until hero photography is ready.
-          Three-layer composite: deep forest base + warm fire-glow from lower-left
-          + soft rose bloom from lower-right. Mimics golden-hour-into-dusk light. */}
+          Four-layer composite: deep forest base + warm gold fire-glow from lower-left
+          + soft rose bloom from right + subtle top darkening for header legibility.
+          Mimics golden-hour-into-dusk light filtering through woodland canopy. */}
       <div
         className="absolute inset-0 z-0"
         style={{
           background: [
-            "radial-gradient(ellipse 90% 55% at 15% 105%, rgba(184,150,90,0.28) 0%, transparent 55%)",
-            "radial-gradient(ellipse 70% 50% at 85% 95%, rgba(196,145,123,0.18) 0%, transparent 50%)",
-            "linear-gradient(175deg, #1A2A1E 0%, #2C3E2D 45%, #1E3320 75%, #1A2A1E 100%)",
+            "radial-gradient(ellipse 100% 55% at 10% 85%, rgba(184,150,90,0.38) 0%, transparent 60%)",
+            "radial-gradient(ellipse 60% 45% at 80% 70%, rgba(196,145,123,0.20) 0%, transparent 55%)",
+            "radial-gradient(ellipse 50% 30% at 50% 0%, rgba(15,25,18,0.70) 0%, transparent 50%)",
+            "linear-gradient(175deg, #111E14 0%, #1A2A1E 25%, #2C3E2D 60%, #1A2A1E 100%)",
           ].join(", "),
         }}
       />
@@ -46,10 +48,12 @@ export function HeroSection() {
       />
 
       {/* Bottom vignette — pulls eye toward the CTA area */}
-      <div className="absolute inset-x-0 bottom-0 z-0 h-1/3 bg-gradient-to-t from-night/60 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 z-0 h-2/5 bg-gradient-to-t from-night/80 to-transparent" />
 
-      {/* Content — positioned in the lower third for cinematic composition */}
-      <div className="relative z-10 mx-auto w-full max-w-[80rem] px-5 pb-16 pt-32 lg:px-8 lg:pb-24">
+      {/* Content — positioned in the lower third for cinematic composition.
+          pb pushes content away from the bottom edge; the fixed header sits above
+          the viewport top so no pt compensation is needed here. */}
+      <div className="relative z-10 mx-auto w-full max-w-[80rem] px-5 pb-20 lg:px-8 lg:pb-32">
         {/* Eyebrow / location accent */}
         <p className="mb-4 font-accent text-2xl text-gold lg:text-3xl">
           Madison, Indiana

@@ -19,7 +19,7 @@ export default function VIPPage() {
   return (
     <main>
       {/* Intro block above the capture form */}
-      <section className="border-b border-forest/10 bg-cream">
+      <section className="border-b border-forest/10 bg-cream pt-[5.5rem] lg:pt-[8.5rem]">
         <div className="mx-auto w-full max-w-[56rem] px-5 py-16 text-center lg:px-8 lg:py-20">
           <p className="font-accent text-3xl text-gold">Opening June 2026</p>
           <h1 className="mt-4 font-heading text-5xl font-semibold leading-[0.95] text-forest lg:text-[4.5rem]">

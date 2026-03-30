@@ -46,16 +46,19 @@ export default function DateNightPage() {
   return (
     <>
       {/* ── Dark cinematic hero ───────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-night">
+      {/* min-h-screen fills full viewport; justify-end pins content to lower third */}
+      <section className="relative flex min-h-screen flex-col justify-end overflow-hidden bg-night">
         <div
-          className="pointer-events-none absolute inset-0 opacity-40"
+          className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 70% 60% at 50% 80%, rgba(184,150,90,0.30) 0%, transparent 65%), radial-gradient(ellipse 50% 40% at 15% 30%, #1C3A2E 0%, transparent 60%)",
+              "radial-gradient(ellipse 90% 55% at 20% 85%, rgba(184,150,90,0.32) 0%, transparent 60%), radial-gradient(ellipse 55% 40% at 75% 65%, rgba(196,145,123,0.18) 0%, transparent 55%), radial-gradient(ellipse 50% 30% at 50% 0%, rgba(10,18,12,0.75) 0%, transparent 45%), linear-gradient(175deg, #0D1810 0%, #1A2A1E 30%, #2C3E2D 65%, #1A2A1E 100%)",
           }}
           aria-hidden="true"
         />
-        <div className="relative mx-auto w-full max-w-[80rem] px-5 py-20 lg:px-8 lg:py-28">
+        {/* Bottom vignette */}
+        <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-night/80 to-transparent" aria-hidden="true" />
+        <div className="relative mx-auto w-full max-w-[80rem] px-5 pb-20 lg:px-8 lg:pb-32">
           <p className="font-accent text-2xl text-gold lg:text-3xl">
             {dateNight.eyebrow}
           </p>

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { PageShell } from "../../components/layout/PageShell";
 import { experienceCollections } from "../../content/experiences";
 
 export const metadata: Metadata = {
@@ -47,16 +46,19 @@ export default function ProposalsPage() {
   return (
     <>
       {/* ── Dark cinematic hero ───────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-night">
+      {/* min-h-screen fills full viewport; pt clears the fixed header */}
+      <section className="relative flex min-h-screen flex-col justify-end overflow-hidden bg-night">
         <div
-          className="pointer-events-none absolute inset-0 opacity-40"
+          className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 70% 60% at 50% 80%, #8B1A2C 0%, transparent 70%), radial-gradient(ellipse 50% 40% at 20% 30%, #1C3A2E 0%, transparent 60%)",
+              "radial-gradient(ellipse 80% 55% at 30% 90%, rgba(184,150,90,0.30) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 80% 60%, rgba(139,26,44,0.22) 0%, transparent 55%), radial-gradient(ellipse 50% 30% at 50% 0%, rgba(10,18,12,0.75) 0%, transparent 45%), linear-gradient(175deg, #0D1810 0%, #1A2A1E 30%, #2C3E2D 65%, #1A2A1E 100%)",
           }}
           aria-hidden="true"
         />
-        <div className="relative mx-auto w-full max-w-[80rem] px-5 py-20 lg:px-8 lg:py-28">
+        {/* Bottom vignette */}
+        <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-night/80 to-transparent" aria-hidden="true" />
+        <div className="relative mx-auto w-full max-w-[80rem] px-5 pb-20 lg:px-8 lg:pb-32">
           <p className="font-accent text-2xl text-gold lg:text-3xl">
             {proposals.eyebrow}
           </p>

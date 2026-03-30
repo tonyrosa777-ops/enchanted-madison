@@ -65,7 +65,7 @@ export function SiteHeader() {
     <>
       <header
         className={[
-          "sticky top-0 z-50 transition-all duration-300",
+          "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300",
           isTransparent
             ? "border-b border-transparent bg-transparent"
             : "border-b border-forest/10 bg-cream/90 backdrop-blur",
