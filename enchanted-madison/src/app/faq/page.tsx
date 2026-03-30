@@ -8,6 +8,13 @@ export const metadata: Metadata = {
   title: "FAQ",
   description:
     "Answers to common questions about booking, check-in, hot tub policies, cancellations, and planning your stay at The Enchanted Collective in Madison, Indiana.",
+  openGraph: {
+    title: "FAQ | The Enchanted Collective",
+    description:
+      "Answers to common questions about booking, check-in, hot tub policies, cancellations, and planning your stay.",
+    url: "/faq",
+    type: "website",
+  },
 };
 
 const categoryLabels: Record<string, string> = {

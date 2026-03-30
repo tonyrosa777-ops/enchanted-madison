@@ -8,6 +8,13 @@ export const metadata: Metadata = {
   title: "Proposals",
   description:
     "Private proposal experiences in Madison, Indiana — from $249. We handle every detail so you can focus on the question. Three tiers, fully set up, completely unforgettable.",
+  openGraph: {
+    title: "Proposal Packages | The Enchanted Collective",
+    description:
+      "Private proposal experiences in Madison, Indiana — from $249. We handle every detail so you can focus on the question.",
+    url: "/proposals",
+    type: "website",
+  },
 };
 
 const tierStyles: Record<string, { badge: string; card: string; price: string }> = {

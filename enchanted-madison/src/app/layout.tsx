@@ -28,11 +28,24 @@ const accentFont = Allura({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://enchantedmadison.com"),
   title: {
-    default: "Enchanted Madison",
+    default: seoDefaults.defaultTitle,
     template: seoDefaults.titleTemplate,
   },
   description: seoDefaults.defaultDescription,
+  openGraph: {
+    siteName: "The Enchanted Collective",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

@@ -8,6 +8,13 @@ export const metadata: Metadata = {
   title: "Date Night",
   description:
     "Private hot tub escapes in Madison, Indiana — from $119/couple. No overnight stay required. Candlelight, spa robes, Fireside Lounge, and two hours that feel nothing like ordinary date night.",
+  openGraph: {
+    title: "Date Night Escapes | The Enchanted Collective",
+    description:
+      "Private hot tub escapes in Madison, Indiana — from $119/couple. No overnight stay required.",
+    url: "/date-night",
+    type: "website",
+  },
 };
 
 const tierStyles: Record<string, { badge: string; card: string; price: string }> = {

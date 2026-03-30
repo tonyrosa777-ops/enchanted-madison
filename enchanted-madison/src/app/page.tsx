@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { SectionHeading } from "../components/ui/SectionHeading";
 import { PropertyCard } from "../components/ui/PropertyCard";
 import { TrustBar } from "../components/ui/TrustBar";
@@ -6,6 +7,44 @@ import { DifferentiatorStrip } from "../components/sections/DifferentiatorStrip"
 import { ExperiencesSection } from "../components/sections/ExperiencesSection";
 import { VIPCapture } from "../components/sections/VIPCapture";
 import { stays } from "../content/stays";
+import { siteContent } from "../content/site";
+import { seoDefaults } from "../content/seo";
+
+export const metadata: Metadata = {
+  title: seoDefaults.defaultTitle,
+  description: seoDefaults.defaultDescription,
+  openGraph: {
+    title: seoDefaults.defaultTitle,
+    description: seoDefaults.defaultDescription,
+    url: "/",
+    type: "website",
+  },
+};
+
+const lodgingBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  name: siteContent.name,
+  description: seoDefaults.defaultDescription,
+  url: "https://enchantedmadison.com",
+  telephone: siteContent.phonePrimary,
+  email: siteContent.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "2175 North K Road",
+    addressLocality: "Madison",
+    addressRegion: "IN",
+    postalCode: "47250",
+    addressCountry: "US",
+  },
+  priceRange: "$$-$$$",
+  amenityFeature: [
+    { "@type": "LocationFeatureSpecification", name: "Private Hot Tub", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Fire Pit", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Free WiFi", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Pet Friendly (select stays)", value: true },
+  ],
+} as const;
 
 /**
  * Homepage — fully composed marketing page.
@@ -21,6 +60,10 @@ import { stays } from "../content/stays";
 export default function Home() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(lodgingBusinessSchema) }}
+      />
       {/* 1 — Cinematic full-viewport hero */}
       <HeroSection />
 

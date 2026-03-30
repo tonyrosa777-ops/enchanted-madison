@@ -8,6 +8,13 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Reach out to The Enchanted Collective to plan your stay, proposal, date night, or special experience in Madison, Indiana.",
+  openGraph: {
+    title: "Contact | The Enchanted Collective",
+    description:
+      "Ask about availability, proposal planning, date night packages, or anything else — we respond within 24 hours.",
+    url: "/contact",
+    type: "website",
+  },
 };
 
 export default function ContactPage() {

@@ -9,6 +9,13 @@ export const metadata: Metadata = {
   title: "Madison Guide",
   description:
     "Discover what's near The Enchanted Collective — Clifty Falls State Park, the Lanier Mansion, historic downtown Madison, and the Ohio River, all within minutes.",
+  openGraph: {
+    title: "Madison, Indiana Guide | The Enchanted Collective",
+    description:
+      "Clifty Falls State Park, the Lanier Mansion, historic downtown Madison, and the Ohio River — all within minutes of your stay.",
+    url: "/madison-guide",
+    type: "website",
+  },
 };
 
 const categoryIcons: Record<string, string> = {

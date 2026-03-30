@@ -8,6 +8,13 @@ export const metadata: Metadata = {
   title: "Packages",
   description:
     "Romance add-ons, outdoor movie nights, picnic rides, and s'mores skillets. Every package is priced on the page — add to your stay at The Enchanted Collective.",
+  openGraph: {
+    title: "Packages & Add-Ons | The Enchanted Collective",
+    description:
+      "Romance add-ons, outdoor movie nights, picnic rides, and s'mores skillets. Every package is priced on the page.",
+    url: "/packages",
+    type: "website",
+  },
 };
 
 export default function PackagesPage() {

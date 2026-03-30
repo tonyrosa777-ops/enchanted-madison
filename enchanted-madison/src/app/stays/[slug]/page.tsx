@@ -20,6 +20,12 @@ export async function generateMetadata(
   return {
     title: stay.name,
     description: stay.summary,
+    openGraph: {
+      title: `${stay.name} | The Enchanted Collective`,
+      description: stay.summary,
+      url: `/stays/${slug}`,
+      type: "website",
+    },
   };
 }
 
@@ -30,8 +36,30 @@ export default async function StayDetailPage(
   const stay = stays.find((s) => s.slug === slug);
   if (!stay) notFound();
 
+  const vacationRentalSchema = {
+    "@context": "https://schema.org",
+    "@type": "VacationRental",
+    name: stay.name,
+    description: stay.summary,
+    url: `https://enchantedmadison.com/stays/${stay.slug}`,
+    containedInPlace: {
+      "@type": "LodgingBusiness",
+      name: "The Enchanted Collective",
+      url: "https://enchantedmadison.com",
+    },
+    occupancy: {
+      "@type": "QuantitativeValue",
+      value: 2,
+    },
+    petsAllowed: stay.dogs ?? false,
+  };
+
   return (
     <main className="bg-cream">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(vacationRentalSchema) }}
+      />
       {/* ── Hero header ───────────────────────────────────────────────────── */}
       <section className="border-b border-forest/10 bg-[radial-gradient(circle_at_top,_rgba(184,150,90,0.15),_transparent_40%),linear-gradient(180deg,#F5F0EB_0%,#FEFCFA_100%)]">
         <div className="mx-auto w-full max-w-[80rem] px-5 py-16 lg:px-8 lg:py-24">

@@ -8,6 +8,13 @@ export const metadata: Metadata = {
   title: "Reviews",
   description:
     "Guest reviews for The Enchanted Collective in Madison, Indiana. See what couples, honeymooners, and anniversary guests say about their stays.",
+  openGraph: {
+    title: "Guest Reviews | The Enchanted Collective",
+    description:
+      "See what couples, honeymooners, and anniversary guests say about their stays at The Enchanted Collective.",
+    url: "/reviews",
+    type: "website",
+  },
 };
 
 function StarRating() {

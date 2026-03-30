@@ -10,6 +10,13 @@ export const metadata: Metadata = {
   title: "Stays",
   description:
     "Luxury glamping tents, a private cottage, and curated campsites in Madison, Indiana. Private hot tubs, fire pits, and transparent pricing from $35/night.",
+  openGraph: {
+    title: "Stays | The Enchanted Collective",
+    description:
+      "Luxury glamping tents, a private cottage, and curated campsites in Madison, Indiana. Private hot tubs, fire pits, and transparent pricing from $35/night.",
+    url: "/stays",
+    type: "website",
+  },
 };
 
 const sharedAmenities = [
