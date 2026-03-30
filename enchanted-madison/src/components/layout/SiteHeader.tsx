@@ -154,7 +154,7 @@ export function SiteHeader() {
                     className={[
                       "rounded-full border px-4 py-2 text-sm font-medium transition",
                       isTransparent
-                        ? "border-ivory/20 bg-ivory/10 text-ivory hover:border-gold hover:text-gold"
+                        ? "border-ivory/25 bg-night/30 text-ivory/90 backdrop-blur-sm hover:border-gold hover:text-gold"
                         : "border-forest/10 bg-ivory text-charcoal hover:border-gold hover:text-forest",
                       pathname === item.href
                         ? isTransparent
