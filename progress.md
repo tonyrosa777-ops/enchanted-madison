@@ -3,7 +3,7 @@
 **Project:** enchantedmadison.com redesign & rebuild
 **Client:** The Enchanted Collective | Madison, Indiana
 **Launch Target:** June 2026
-**Last Updated:** 2026-03-30 (Session 4)
+**Last Updated:** 2026-03-30 (Session 5)
 **Current Phase:** Phase 7 — Performance, QA & Launch Prep
 
 ---
@@ -246,6 +246,28 @@ DNS cutover checklist is complete.
 ---
 
 ## Session Log
+
+### Session 5 — 2026-03-30
+**Completed — Critical UI/UX regression: header overlay + hero composition**
+
+**Root cause identified:** `SiteHeader` was `sticky` (in document flow). Hero sections rendered *below* the header. With `isTransparent = true`, the header background was `bg-transparent` with `text-ivory` — but behind it was the `bg-cream` body, not the dark hero. Result: white logo text on white page background — completely invisible.
+
+**Fixes applied:**
+- `SiteHeader`: `sticky top-0` → `fixed top-0 left-0 right-0 w-full` — header is now out of document flow and truly overlays page content
+- `HeroSection`: `min-h-[92vh]` → `min-h-screen`; gradient enriched with 4-layer composite including gold fire-glow at `y: 85%` (was hidden at 105%), top-darkening layer for header contrast, stronger bottom vignette (`h-2/5`, `from-night/80`). Hero now fills full viewport behind fixed header; ivory logo legible on dark background
+- `/proposals` hero: converted to `min-h-screen flex justify-end`; same 4-layer gradient; removed unused `PageShell` import
+- `/date-night` hero: same treatment
+- `PageShell`: added `pt-[5.5rem] lg:pt-[8.5rem]` to outer section to clear fixed header on all inner pages (stays, packages, faq, reviews, madison-guide, contact, about)
+- `/vip`: added `pt-[5.5rem] lg:pt-[8.5rem]` to top section
+- `not-found.tsx`: added `pt-[5.5rem] lg:pt-[8.5rem]` to main
+
+**Build:** 20/20 pages clean, 0 TypeScript errors. Committed and pushed.
+
+**Discovered:**
+- The `sticky` vs `fixed` distinction is the single root cause of every visual issue reported (invisible logo, empty hero void, off-composition content placement). All symptoms were caused by one architectural decision.
+- Header height estimates used for pt offsets: ~88px mobile (`5.5rem`), ~134px desktop (`8.5rem`). If header height changes significantly, these values need updating.
+
+---
 
 ### Session 4 — 2026-03-30
 **Completed (full design audit implementation — 19 tasks):**
