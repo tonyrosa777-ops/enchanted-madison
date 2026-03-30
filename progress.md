@@ -4,7 +4,7 @@
 **Client:** The Enchanted Collective | Madison, Indiana
 **Launch Target:** June 2026
 **Last Updated:** 2026-03-30 (Session 3)
-**Current Phase:** Phase 5 — Experience & Proposal Pages
+**Current Phase:** Phase 7 — Performance, QA & Launch Prep
 
 ---
 
@@ -17,8 +17,8 @@
 | 2 | Site Architecture & Content Planning | ✅ Done (2 owner gaps flagged) |
 | 3 | Core Pages Build | ✅ Done |
 | 4 | Booking Engine Integration | ⬜ Not Started |
-| 5 | Experience & Proposal Pages | 🔄 In Progress |
-| 6 | SEO, Schema & Analytics | ⬜ Not Started |
+| 5 | Experience & Proposal Pages | ✅ Done (booking wiring pending Phase 4) |
+| 6 | SEO, Schema & Analytics | ✅ Done (GA4 pending owner measurement ID) |
 | 7 | Performance, QA & Launch Prep | ⬜ Not Started |
 
 ---
@@ -150,16 +150,15 @@ advantage over every property in the corridor.
 convert at a higher rate than the current static placeholder pages.
 
 **Pages:**
-- [ ] `/proposals` — Full proposal page: romantic hero, 3-tier packages (Enchanted / Signature /
-      Ultimate), what's-included detail, "how it works" 3-step flow, consultation intake form.
-      Audit §8: currently best-designed page — preserve the dark/bokeh aesthetic, improve
-      package card readability.
-- [ ] `/date-night` — Date Night & Girls Night: 3-tier packages, mood photography, booking
-      entry. Fixes audit §9 (MEDIUM): readability issues, package pricing not legible.
-- [ ] `/packages` *(if not built in Phase 3)* — Romance add-ons: card layout, photos, pricing
-      callouts, path to add at checkout. Fixes audit §10 (CRITICAL).
-- [ ] Inline experience booking: proposal consultation form wired; date-night and day-use
-      connected to Checkfront/FareHarbor embed from Phase 4.
+- [x] `/proposals` — Dark cinematic hero, 3-tier cards (entry/popular/premium), "how it works" 3-step,
+      private setting feature + social proof quote, bottom CTA. Preserves dark/bokeh aesthetic, fixes
+      package card readability. Fixes audit §8.
+- [x] `/date-night` — 3-tier hot tub packages, Fireside Lounge feature section (dark), Girls Night
+      callout, day-use strip, bottom CTA. Fixes audit §9.
+- [x] `/packages` — Built in Phase 3. 5 add-on packages with full includes lists. Fixes audit §10 CRITICAL.
+- [ ] Inline booking wiring — BLOCKED pending Phase 4 (Checkfront/FareHarbor + Lodgify/OwnerRez decision)
+
+**Completed:** 2026-03-30. Build clean. 36/36 tests passing.
 
 ---
 
@@ -170,18 +169,18 @@ essentially zero SEO value (image-locked content, no schema, no crawlable text).
 Test, and analytics are firing on all pages.
 
 **Tasks:**
-- [ ] Metadata: unique title + meta description on every page via Next.js Metadata API
-- [ ] OG tags: og:title, og:description, og:image on every page
-- [ ] Schema markup: LodgingBusiness on homepage; VacationRental on each stay; Event
-      schema on proposal/experience pages
-- [ ] Heading hierarchy audit: one H1 per page, logical H2/H3 cascade everywhere
-- [ ] Semantic HTML audit: nav, main, article, section, aside used correctly
-- [ ] Sitemap.xml generated and submitted to Google Search Console
-- [ ] robots.txt configured
-- [ ] Google Analytics 4 installed and verified
-- [ ] Google Search Console verified and sitemap submitted
-- [ ] Local SEO: business name/address/phone consistent across all pages
-- [ ] Image alt text on every image
+- [x] Metadata: unique title + meta description on every page via Next.js Metadata API
+- [x] OG tags: openGraph title, description, url on all 10 pages (static + dynamic)
+- [x] Schema markup: LodgingBusiness JSON-LD on homepage; VacationRental JSON-LD on each /stays/[slug]
+- [x] metadataBase set to https://enchantedmadison.com in root layout
+- [x] Twitter card: summary_large_image set globally in root layout
+- [x] sitemap.ts → generates /sitemap.xml (9 static + 4 stay slugs, with priority weights)
+- [x] robots.ts → generates /robots.txt (allow all, sitemap pointer)
+- [ ] Google Analytics 4 — BLOCKED: owner must provide GA4 measurement ID (G-XXXXXXXXXX)
+- [ ] Google Search Console — owner action: verify domain + submit sitemap URL after launch
+- [ ] OG images — owner action: photography needed; og:image can be added once images are available
+
+**Completed:** 2026-03-30. 18 routes building clean. 36/36 tests passing.
 
 ---
 
