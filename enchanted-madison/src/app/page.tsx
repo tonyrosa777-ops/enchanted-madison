@@ -473,7 +473,7 @@ export default function HomePage() {
           <FadeUp delay={0.4}>
             <div className="text-center mt-10">
               <Button variant="ghost" href="/reviews">
-                Read All {siteData.reviews.length} Reviews
+                Read All Reviews
               </Button>
             </div>
           </FadeUp>
