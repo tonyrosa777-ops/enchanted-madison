@@ -11,6 +11,7 @@ import { FadeUp } from "@/components/animations/FadeUp";
 import { StaggerContainer } from "@/components/animations/StaggerContainer";
 import { ScaleIn } from "@/components/animations/ScaleIn";
 import { siteData } from "@/data/site";
+import { HeroSection } from "./HeroSection";
 
 // LodgingBusiness + VacationRental schema
 // Source: market-intelligence.md §9 (LodgingBusiness primary + VacationRental secondary)
@@ -72,103 +73,11 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }}
       />
       {/* ================================================================
-          HERO — Full viewport. Placeholder bg until professional video/
-          photography arrives. Swap background-image here when ready.
+          HERO — Scroll-driven video. video.currentTime driven by scroll.
           Source: market-intelligence.md §8 recommended hero copy.
-          Anti-pattern: no orbs, no particles — they fight photography.
+          Desktop: 300vh sticky pin. Mobile: autoplay loop fallback.
           ================================================================ */}
-      <section
-        className="relative min-h-screen flex flex-col items-center justify-center px-4 text-center"
-        style={{ background: "var(--bg-dark)" }}
-        aria-label="Hero"
-      >
-        {/* Photography placeholder — remove once real images exist */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse at 60% 40%, rgba(44,62,45,0.6) 0%, rgba(26,42,30,0.9) 70%, rgba(26,42,30,1) 100%)",
-          }}
-          aria-hidden="true"
-        />
-
-        {/* Hero content */}
-        <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center gap-6">
-          {/* Eyebrow */}
-          <p
-            className="eyebrow text-[11px]"
-            style={{ color: "rgba(184,150,90,0.9)" }}
-          >
-            {siteData.hero.eyebrow}
-          </p>
-
-          {/* H1 — Cormorant Garamond 600, per design-system.md §3 Type Scale */}
-          <h1
-            className="leading-[1.05]"
-            style={{
-              fontFamily: "var(--font-display)",
-              fontWeight: 600,
-              fontSize: "clamp(44px, 8vw, 88px)",
-              color: "var(--text-on-dark)",
-            }}
-          >
-            {siteData.hero.headline}
-          </h1>
-
-          {/* Subheadline */}
-          <p
-            className="max-w-xl text-base sm:text-lg leading-relaxed"
-            style={{
-              fontFamily: "var(--font-body)",
-              fontWeight: 300,
-              color: "rgba(254,252,250,0.8)",
-            }}
-          >
-            {siteData.hero.subheadline}
-          </p>
-
-          {/* CTA pair */}
-          <div className="flex flex-wrap gap-4 justify-center mt-2">
-            <Button
-              variant="secondary"
-              size="lg"
-              href={siteData.hero.ctaPrimary.href}
-            >
-              {siteData.hero.ctaPrimary.label}
-            </Button>
-            <Button
-              variant="ghost-light"
-              size="lg"
-              href={siteData.hero.ctaSecondary.href}
-            >
-              {siteData.hero.ctaSecondary.label}
-            </Button>
-          </div>
-
-          {/* Trust copy */}
-          <p
-            className="text-xs mt-1"
-            style={{
-              fontFamily: "var(--font-mono)",
-              color: "rgba(254,252,250,0.45)",
-              letterSpacing: "0.06em",
-            }}
-          >
-            {siteData.hero.trustCopy}
-          </p>
-        </div>
-
-        {/* Scroll indicator */}
-        <div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-          aria-hidden="true"
-        >
-          <div
-            className="w-px h-10 animate-pulse"
-            style={{ background: "rgba(254,252,250,0.3)" }}
-          />
-        </div>
-      </section>
+      <HeroSection />
 
       {/* ================================================================
           TRUST STRIP — Social proof bar between hero and stays
