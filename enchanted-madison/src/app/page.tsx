@@ -10,6 +10,11 @@ import { StayCard } from "@/components/ui/StayCard";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { StaggerContainer } from "@/components/animations/StaggerContainer";
 import { ScaleIn } from "@/components/animations/ScaleIn";
+import { Fireflies } from "@/components/animations/Fireflies";
+import { GodRays } from "@/components/animations/GodRays";
+import { Embers } from "@/components/animations/Embers";
+import { ShimmerText } from "@/components/animations/ShimmerText";
+import { WaveDivider } from "@/components/animations/WaveDivider";
 import { siteData } from "@/data/site";
 import { HeroSection } from "./HeroSection";
 
@@ -78,6 +83,8 @@ export default function HomePage() {
           Desktop: 300vh sticky pin. Mobile: autoplay loop fallback.
           ================================================================ */}
       <HeroSection />
+
+      <WaveDivider fill="var(--bg-elevated)" background="var(--bg-dark)" />
 
       {/* ================================================================
           TRUST STRIP — Social proof bar between hero and stays
@@ -293,16 +300,21 @@ export default function HomePage() {
         </div>
       </section>
 
+      <WaveDivider fill="var(--bg-dark)" background="var(--bg-elevated)" flip={true} />
+
       {/* ================================================================
           WHY ENCHANTED MADISON — Differentiator section
           Source: market-intelligence.md §8 "Trust builder for pre-launch"
           Positioned before reviews to prime the reader before testimonials.
           ================================================================ */}
       <section
-        className="py-20 lg:py-28 px-4"
+        className="relative py-20 lg:py-28 px-4"
         style={{ background: "var(--bg-dark)" }}
         aria-label="Why Enchanted Madison"
       >
+        <Fireflies />
+        <GodRays />
+        <Embers count={18} />
         <div className="max-w-4xl mx-auto text-center">
           <FadeUp>
             <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>
@@ -317,7 +329,7 @@ export default function HomePage() {
                 color: "var(--text-on-dark)",
               }}
             >
-              {siteData.whyUs.headline}
+              <ShimmerText delay={0.5}>{siteData.whyUs.headline}</ShimmerText>
             </h2>
           </FadeUp>
 
@@ -350,6 +362,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <WaveDivider fill="var(--bg-base)" background="var(--bg-dark)" />
 
       {/* ================================================================
           REVIEWS — 3-col grid
@@ -417,16 +431,20 @@ export default function HomePage() {
         </div>
       </section>
 
+      <WaveDivider fill="var(--bg-dark)" background="var(--bg-base)" flip={true} />
+
       {/* ================================================================
           LOCATION / DRIVE TIMES
           Source: initial-business-data.md §2 (drive times).
           Market-intelligence.md §5 Gap 5 (Louisville-Cincinnati-Indy corridor).
           ================================================================ */}
       <section
-        className="py-20 lg:py-28 px-4"
+        className="relative py-20 lg:py-28 px-4"
         style={{ background: "var(--bg-dark)" }}
         aria-label="Location"
       >
+        <Fireflies />
+        <GodRays />
         <div className="max-w-4xl mx-auto text-center">
           <FadeUp>
             <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>
@@ -441,7 +459,7 @@ export default function HomePage() {
                 color: "var(--text-on-dark)",
               }}
             >
-              Closer Than You Think
+              <ShimmerText delay={0.5}>Closer Than You Think</ShimmerText>
             </h2>
             <p
               className="text-base leading-relaxed mb-12 max-w-xl mx-auto"
@@ -485,6 +503,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <WaveDivider fill="var(--bg-elevated)" background="var(--bg-dark)" />
 
       {/* ================================================================
           VIP SIGN-UP CTA — lead capture

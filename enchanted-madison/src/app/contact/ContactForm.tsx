@@ -7,6 +7,7 @@ import { useState } from "react";
 import { PageShell } from "@/components/layout/PageShell";
 import { Button } from "@/components/ui/Button";
 import { FadeUp } from "@/components/animations/FadeUp";
+import { ShimmerText } from "@/components/animations/ShimmerText";
 import { siteData } from "@/data/site";
 
 const schema = z.object({
@@ -95,7 +96,7 @@ export function ContactForm() {
               color: "var(--text-primary)",
             }}
           >
-            Get in Touch
+            <ShimmerText delay={1}>Get in Touch</ShimmerText>
           </h1>
           <p
             className="max-w-md mx-auto text-base leading-relaxed"

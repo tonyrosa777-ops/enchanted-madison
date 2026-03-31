@@ -6,6 +6,7 @@ import { PageShell } from "@/components/layout/PageShell";
 import { Button } from "@/components/ui/Button";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { ScaleIn } from "@/components/animations/ScaleIn";
+import { ShimmerText } from "@/components/animations/ShimmerText";
 import { siteData } from "@/data/site";
 import type { Metadata } from "next";
 
@@ -45,7 +46,7 @@ export default function PackagesPage() {
               color: "var(--text-primary)",
             }}
           >
-            Make It Unforgettable
+            <ShimmerText delay={1}>Make It Unforgettable</ShimmerText>
           </h1>
           <p
             className="max-w-xl mx-auto text-base leading-relaxed"

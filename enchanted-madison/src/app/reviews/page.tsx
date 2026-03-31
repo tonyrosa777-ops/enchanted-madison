@@ -7,6 +7,10 @@ import { PageShell } from "@/components/layout/PageShell";
 import { Button } from "@/components/ui/Button";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { ScaleIn } from "@/components/animations/ScaleIn";
+import { Fireflies } from "@/components/animations/Fireflies";
+import { GodRays } from "@/components/animations/GodRays";
+import { ShimmerText } from "@/components/animations/ShimmerText";
+import { WaveDivider } from "@/components/animations/WaveDivider";
 import { siteData } from "@/data/site";
 import type { Metadata } from "next";
 
@@ -85,7 +89,7 @@ export default function ReviewsPage() {
               color: "var(--text-primary)",
             }}
           >
-            Five Stars Isn&rsquo;t Enough
+            <ShimmerText delay={1}>Five Stars Isn&rsquo;t Enough</ShimmerText>
           </h1>
           <p
             className="max-w-xl mx-auto text-base leading-relaxed"
@@ -176,11 +180,15 @@ export default function ReviewsPage() {
         </div>
       </section>
 
+      <WaveDivider fill="var(--bg-dark)" background="var(--bg-base)" flip={true} />
+
       {/* Dark CTA — write your own story */}
       <section
-        className="py-20 lg:py-24 px-4"
+        className="relative py-20 lg:py-24 px-4"
         style={{ background: "var(--bg-dark)" }}
       >
+        <Fireflies />
+        <GodRays />
         <div className="max-w-2xl mx-auto text-center">
           <FadeUp>
             <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>
@@ -195,7 +203,7 @@ export default function ReviewsPage() {
                 color: "var(--text-on-dark)",
               }}
             >
-              Write Your Own Story
+              <ShimmerText delay={0.5}>Write Your Own Story</ShimmerText>
             </h2>
             <p
               className="text-base leading-relaxed mb-8"

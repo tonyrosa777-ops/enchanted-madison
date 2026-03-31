@@ -12,6 +12,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { siteData } from "@/data/site";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
+import { ShimmerText } from "@/components/animations/ShimmerText";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -76,7 +77,7 @@ export function SiteHeader() {
                 color: scrolled ? "var(--primary)" : "var(--text-on-dark)",
               }}
             >
-              The Enchanted Collective
+              <ShimmerText delay={4} interval={12}>The Enchanted Collective</ShimmerText>
             </span>
           </Link>
 

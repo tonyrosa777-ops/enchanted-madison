@@ -7,6 +7,10 @@ import { PageShell } from "@/components/layout/PageShell";
 import { Button } from "@/components/ui/Button";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { ScaleIn } from "@/components/animations/ScaleIn";
+import { Fireflies } from "@/components/animations/Fireflies";
+import { GodRays } from "@/components/animations/GodRays";
+import { ShimmerText } from "@/components/animations/ShimmerText";
+import { WaveDivider } from "@/components/animations/WaveDivider";
 import { siteData } from "@/data/site";
 import type { Metadata } from "next";
 
@@ -52,9 +56,11 @@ export default function MadisonGuidePage() {
 
       {/* Page hero */}
       <section
-        className="pt-32 pb-16 px-4"
+        className="relative pt-32 pb-16 px-4"
         style={{ background: "var(--bg-dark)" }}
       >
+        <Fireflies />
+        <GodRays />
         <div className="max-w-4xl mx-auto text-center">
           <FadeUp>
             <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>
@@ -69,7 +75,7 @@ export default function MadisonGuidePage() {
                 color: "var(--text-on-dark)",
               }}
             >
-              The Madison, Indiana Guide
+              <ShimmerText delay={1}>The Madison, Indiana Guide</ShimmerText>
             </h1>
             <p
               className="max-w-2xl mx-auto text-base leading-relaxed"
@@ -102,6 +108,8 @@ export default function MadisonGuidePage() {
           </FadeUp>
         </div>
       </section>
+
+      <WaveDivider fill="var(--bg-base)" background="var(--bg-dark)" />
 
       {/* Attractions */}
       <section
@@ -244,11 +252,15 @@ export default function MadisonGuidePage() {
         </div>
       </section>
 
+      <WaveDivider fill="var(--bg-dark)" background="var(--bg-elevated)" flip={true} />
+
       {/* Book your stay CTA */}
       <section
-        className="py-16 px-4"
+        className="relative py-16 px-4"
         style={{ background: "var(--bg-dark)" }}
       >
+        <Fireflies />
+        <GodRays />
         <div className="max-w-2xl mx-auto text-center">
           <FadeUp>
             <h2
@@ -260,7 +272,7 @@ export default function MadisonGuidePage() {
                 color: "var(--text-on-dark)",
               }}
             >
-              Stay in the Heart of It All
+              <ShimmerText delay={0.5}>Stay in the Heart of It All</ShimmerText>
             </h2>
             <p
               className="text-base leading-relaxed mb-8"

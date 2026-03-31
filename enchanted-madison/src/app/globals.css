@@ -89,6 +89,30 @@ body {
   animation-delay: -2s;
 }
 
+/* Shimmer sweep — golden light across text */
+@keyframes shimmerSweep {
+  0% { transform: translateX(-200%) skewX(-15deg); }
+  100% { transform: translateX(300%) skewX(-15deg); }
+}
+
+/* God ray gentle oscillation */
+@keyframes godRayPulse {
+  0%, 100% { opacity: 0.0; transform: scaleX(0.9); }
+  50% { opacity: 1; transform: scaleX(1.1); }
+}
+
+/* Wave divider breathing */
+@keyframes waveBreathe {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* Typewriter cursor blink */
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,

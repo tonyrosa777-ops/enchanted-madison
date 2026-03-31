@@ -6,6 +6,7 @@
 import { PageShell } from "@/components/layout/PageShell";
 import { Button } from "@/components/ui/Button";
 import { FadeUp } from "@/components/animations/FadeUp";
+import { ShimmerText } from "@/components/animations/ShimmerText";
 import { siteData } from "@/data/site";
 import type { Metadata } from "next";
 
@@ -57,7 +58,7 @@ export default function FAQPage() {
               color: "var(--text-primary)",
             }}
           >
-            We Have Answers
+            <ShimmerText delay={1}>We Have Answers</ShimmerText>
           </h1>
           <p
             className="max-w-md mx-auto text-base leading-relaxed"

@@ -7,6 +7,11 @@ import { PageShell } from "@/components/layout/PageShell";
 import { Button } from "@/components/ui/Button";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { ScaleIn } from "@/components/animations/ScaleIn";
+import { Fireflies } from "@/components/animations/Fireflies";
+import { GodRays } from "@/components/animations/GodRays";
+import { PetalRain } from "@/components/animations/PetalRain";
+import { ShimmerText } from "@/components/animations/ShimmerText";
+import { WaveDivider } from "@/components/animations/WaveDivider";
 import { siteData } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -45,9 +50,12 @@ export default function ProposalsPage() {
     <PageShell>
       {/* Hero */}
       <section
-        className="pt-32 pb-16 px-4 text-center"
+        className="relative pt-32 pb-16 px-4 text-center"
         style={{ background: "var(--bg-dark)" }}
       >
+        <Fireflies count={22} />
+        <GodRays />
+        <PetalRain count={12} />
         <FadeUp>
           <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>
             Proposal Packages · Madison, Indiana
@@ -61,7 +69,7 @@ export default function ProposalsPage() {
               color: "var(--text-on-dark)",
             }}
           >
-            {proposals.headline}
+            <ShimmerText delay={1.5}>{proposals.headline}</ShimmerText>
           </h1>
           <p
             className="max-w-2xl mx-auto text-base leading-relaxed mb-8"
@@ -74,6 +82,8 @@ export default function ProposalsPage() {
           </Button>
         </FadeUp>
       </section>
+
+      <WaveDivider fill="var(--bg-elevated)" background="var(--bg-dark)" />
 
       {/* Trust bar */}
       <div className="py-6 px-4" style={{ background: "var(--bg-elevated)" }}>

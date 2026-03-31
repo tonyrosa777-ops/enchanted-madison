@@ -7,6 +7,7 @@ import { useState } from "react";
 import { PageShell } from "@/components/layout/PageShell";
 import { Button } from "@/components/ui/Button";
 import { FadeUp } from "@/components/animations/FadeUp";
+import { ShimmerText } from "@/components/animations/ShimmerText";
 import { siteData } from "@/data/site";
 
 const schema = z.object({
@@ -64,7 +65,7 @@ export function VipForm() {
                   className="leading-tight mb-4"
                   style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "clamp(36px, 5vw, 56px)", color: "var(--text-primary)" }}
                 >
-                  {siteData.vip.headline}
+                  <ShimmerText delay={1}>{siteData.vip.headline}</ShimmerText>
                 </h1>
                 <p className="text-base leading-relaxed" style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}>
                   {siteData.vip.subheadline}

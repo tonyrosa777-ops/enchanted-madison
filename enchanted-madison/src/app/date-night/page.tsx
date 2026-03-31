@@ -7,6 +7,11 @@ import { PageShell } from "@/components/layout/PageShell";
 import { Button } from "@/components/ui/Button";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { ScaleIn } from "@/components/animations/ScaleIn";
+import { Fireflies } from "@/components/animations/Fireflies";
+import { GodRays } from "@/components/animations/GodRays";
+import { Embers } from "@/components/animations/Embers";
+import { ShimmerText } from "@/components/animations/ShimmerText";
+import { WaveDivider } from "@/components/animations/WaveDivider";
 import { siteData } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -36,7 +41,10 @@ export default function DateNightPage() {
   return (
     <PageShell>
       {/* Hero */}
-      <section className="pt-32 pb-16 px-4 text-center" style={{ background: "var(--bg-dark)" }}>
+      <section className="relative pt-32 pb-16 px-4 text-center" style={{ background: "var(--bg-dark)" }}>
+        <Fireflies />
+        <GodRays />
+        <Embers count={16} />
         <FadeUp>
           <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>
             Hot Tub Escapes · Date Night · Girls Night
@@ -45,7 +53,7 @@ export default function DateNightPage() {
             className="leading-tight mb-5"
             style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "clamp(40px, 6vw, 72px)", color: "var(--text-on-dark)" }}
           >
-            {dateNight.headline}
+            <ShimmerText delay={1}>{dateNight.headline}</ShimmerText>
           </h1>
           <p
             className="max-w-xl mx-auto text-base leading-relaxed mb-8"
@@ -59,6 +67,8 @@ export default function DateNightPage() {
           </div>
         </FadeUp>
       </section>
+
+      <WaveDivider fill="var(--bg-base)" background="var(--bg-dark)" />
 
       {/* Experience flow */}
       <section className="py-20 px-4" style={{ background: "var(--bg-base)" }}>

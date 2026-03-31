@@ -6,6 +6,10 @@ import { PageShell } from "@/components/layout/PageShell";
 import { StayCard } from "@/components/ui/StayCard";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { ScaleIn } from "@/components/animations/ScaleIn";
+import { Fireflies } from "@/components/animations/Fireflies";
+import { GodRays } from "@/components/animations/GodRays";
+import { ShimmerText } from "@/components/animations/ShimmerText";
+import { WaveDivider } from "@/components/animations/WaveDivider";
 import { siteData } from "@/data/site";
 import type { Metadata } from "next";
 
@@ -27,9 +31,11 @@ export default function StaysPage() {
     <PageShell>
       {/* Page hero */}
       <section
-        className="pt-32 pb-16 px-4 text-center"
+        className="relative pt-32 pb-16 px-4 text-center"
         style={{ background: "var(--bg-dark)" }}
       >
+        <Fireflies />
+        <GodRays />
         <FadeUp>
           <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>
             Madison, Indiana
@@ -43,7 +49,7 @@ export default function StaysPage() {
               color: "var(--text-on-dark)",
             }}
           >
-            Where You&rsquo;ll Stay
+            <ShimmerText delay={1}>Where You&rsquo;ll Stay</ShimmerText>
           </h1>
           <p
             className="max-w-xl mx-auto text-base leading-relaxed"
@@ -77,6 +83,8 @@ export default function StaysPage() {
           </div>
         </FadeUp>
       </section>
+
+      <WaveDivider fill="var(--bg-base)" background="var(--bg-dark)" />
 
       {/* Stays grid */}
       <section

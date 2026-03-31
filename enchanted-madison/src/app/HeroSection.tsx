@@ -8,6 +8,10 @@
 import { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/Button";
 import { siteData } from "@/data/site";
+import { Fireflies } from "@/components/animations/Fireflies";
+import { GodRays } from "@/components/animations/GodRays";
+import { ShimmerText } from "@/components/animations/ShimmerText";
+import { TypewriterText } from "@/components/animations/TypewriterText";
 
 export function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -29,6 +33,8 @@ export function HeroSection() {
         className="overflow-hidden"
         style={{ height: "100vh", background: "var(--bg-dark)" }}
       >
+        <Fireflies count={25} />
+        <GodRays />
         {/* Video — autoplay loop, no controls */}
         <video
           ref={videoRef}
@@ -90,12 +96,12 @@ export function HeroSection() {
                 color: "var(--text-on-dark)",
               }}
             >
-              {siteData.hero.headline}
+              <ShimmerText delay={2}>{siteData.hero.headline}</ShimmerText>
             </h1>
 
             {/* Subheadline */}
             <p
-              className="text-base sm:text-lg leading-relaxed mb-8"
+              className="text-base sm:text-lg leading-relaxed mb-4"
               style={{
                 fontFamily: "var(--font-body)",
                 fontWeight: 300,
@@ -104,6 +110,11 @@ export function HeroSection() {
               }}
             >
               {siteData.hero.subheadline}
+            </p>
+
+            {/* Typewriter tag line */}
+            <p style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.12em", color: "rgba(184,150,90,0.7)", textTransform: "uppercase", marginBottom: "32px" }}>
+              <TypewriterText phrases={["Romantic Stays", "Date Night Escapes", "Proposal Experiences", "Hot Tub Under the Stars"]} speed={55} deleteSpeed={28} />
             </p>
 
             {/* CTAs */}
