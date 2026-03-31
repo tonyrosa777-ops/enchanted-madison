@@ -5,7 +5,7 @@
 **Business Type:** Luxury glamping and romantic experience property
 **Launch Target:** June 2026
 **Last Updated:** 2026-03-31
-**Current Phase:** Phase 4 blocked (client embeds pending) · Phase 7 complete · Site launch-ready pending client assets
+**Current Phase:** Shop architecture complete (Session 5) → Phase 4 blocked (client embeds pending) → Phase 7 next
 
 ---
 
@@ -16,11 +16,11 @@
 | 0 | Environment Setup & Strategy | ✅ Complete (pending client: Vercel dashboard, DNS, embed codes) |
 | 1 | Design System & Brand Identity | ✅ Complete |
 | 2 | Site Architecture & Content Planning | ✅ Complete |
-| 3 | Core Pages Build | ✅ Complete |
+| 3 | Core Pages Build | ✅ Complete (pending /about — awaiting client copy) |
 | 4 | Conversion Flow Integration | ⬜ Not Started |
-| 5 | Secondary Pages & Content | ✅ Complete |
+| 5 | Secondary Pages & Content | ✅ Complete (blog added post-phase) |
 | 6 | SEO, Schema & Analytics | ✅ Complete |
-| 7 | Performance, QA & Launch Prep | ✅ Complete (pending client assets: photography, embed codes) |
+| 7 | Performance, QA & Launch Prep | ⬜ Not Started |
 
 ---
 
@@ -43,6 +43,9 @@
 | `/reviews` | Reviews | ⬜ |
 | `/contact` | Contact | ⬜ |
 | `/vip` | VIP Early Access Sign-Up | ✅ Built |
+| `/blog` | The Enchanted Journal — blog index | ✅ Built |
+| `/blog/[slug]` | Individual blog post pages (10 posts) | ✅ Built |
+| `/shop` | The Enchanted Collective Shop | ✅ Built |
 
 ---
 
@@ -78,7 +81,7 @@ These are required by this client but not in website-build-template.md. Each nee
 
 | Section | Decision | Rationale |
 |---------|----------|-----------|
-| Shop (Stripe + Printful) | **REMOVE** | No physical product sales. Source: initial-business-data.md |
+| Shop (Stripe + Printful) | **BUILT** (Session 5 — client request overrides prior decision) | Gift cards + POD merch + digital guide. Printful POD IDs are placeholder — client must replace with real IDs from their Printful store. |
 | Blog (Sanity CMS) | **DEFER to Phase 5+** | Madison Guide and content pillars needed for SEO, but not MVP. Build as static pages first. |
 | Quiz / Lead capture | **KEEP — repurpose** | Use for VIP sign-up flow. Replace quiz mechanics with email/SMS opt-in. |
 | Instagram feed | **REMOVE for launch** | Pre-launch — no feed to display. Add in Phase 7 if active by launch. |
@@ -178,69 +181,109 @@ Site map defined in Session 1 (15 routes). All routes listed in Site Architectur
 
 ---
 
+## Blog — Phase 5 Addition
+
+### Status: ✅ Complete
+
+### Task List
+1. ✅ `/src/data/blog.ts` — BlogPost interface, ContentBlock union type (paragraph/heading2/heading3/quote/list/image), blogCategories array, 10 full editorial posts with brand-authentic copy
+2. ✅ `/src/components/blog/PostCard.tsx` — server component; featured (dark horizontal card, 60/40 split) + standard (grid card, CSS hover lift) layouts
+3. ✅ `/src/components/blog/BlogContent.tsx` — client component; category filter pill buttons, featured post when "All", CSS opacity/translate animation on filter change
+4. ✅ `/src/app/blog/page.tsx` — dark hero (Fireflies + GodRays), WaveDivider, BlogContent, VIP CTA section; metadata set
+5. ✅ `/src/app/blog/[slug]/page.tsx` — awaits params Promise (Next.js 16 breaking change), ContentBlock renderer for all 6 block types, sticky sidebar (related articles + VIP box), related articles strip at bottom
+6. ✅ `site.ts` — Journal link added to nav.links and footer.links at position after Proposals
+7. ✅ Build verified: 33 pages (was 22), zero TypeScript errors
+8. ✅ Committed: feat(blog): build blog architecture with 10 editorial articles (18af818)
+
+**Custom additions (not in Phase 5 original scope):**
+- Full blog architecture with editorial CMS-quality content
+- BlogContent client component with category filtering
+- All 10 posts target SEO keyphrases from market-intelligence.md §8 content pillars (romantic getaway Indiana, Clifty Falls State Park, anniversary getaway Indianapolis, things to do Madison Indiana, southern Indiana travel)
+
+---
+
 ## Session Log
 
-### Session 4 (continued) — Phase 7 QA
+### Session 5 — 2026-03-31
 **Completed:**
-- Full metadata audit across all 22 pages
-- Fixed: /vip and /contact had no metadata (client components can't export metadata in App Router)
-  — split each into server wrapper (exports metadata) + client inner component (form logic)
-- Fixed: FAQ title was "FAQ" → "Frequently Asked Questions"
-- Fixed: /about excluded from sitemap.ts (was a stub; now a real page with content)
-- Internal link audit: all hrefs resolve to real routes — no broken links
-- Image alt text audit: StayCard and ExperienceCard use alt={name}; missing images handled with graceful placeholder (no broken image tags)
-- Build output: zero TS errors, only expected edge runtime warning (opengraph-image)
-- Mobile layout audit: all critical responsive patterns verified (hero clamp, trust strip flex-col, grids, mobile nav overlay)
-- Committed: fix(seo): add missing metadata to /vip and /contact, fix FAQ title (db6f68b)
+- Built complete shop architecture: 18 files, 1,937 insertions
+- `/src/data/shop.ts` — 10 products (4 gift cards, 1 digital guide, 3 drinkware/apparel Printful POD)
+- `/src/lib/cart.tsx` — CartContext with localStorage hydration, addItem/removeItem/updateQuantity
+- `/src/lib/printful.ts` — Printful API client with smart variant name parser (size/color detection)
+- `/src/lib/printful-seeded-products.json` — fallback data; no API key required for build
+- `/api/printful/products` — live API with seeded fallback
+- `/api/printful/variants/[id]` — mock variants when no API key; color hex map
+- `/api/stripe/checkout` — Stripe Checkout Session creation (Stripe 21 / 2026-03-25.dahlia API)
+- `/api/stripe/webhook` — checkout.session.completed handler → Printful order + Resend owner alert
+- `CartDrawer.tsx` — slide-in drawer, AnimatePresence, quantity controls, Stripe redirect
+- `ProductCard.tsx` — variant picker (color swatches + size chips), skeleton loading, add to cart
+- `ShopContent.tsx` — category filter pills, product grid, success banner (useSearchParams + Suspense)
+- `/shop/page.tsx` — dark hero (Fireflies + GodRays), WaveDivider, ShopContent, gift card CTA
+- `Providers.tsx` — CartProvider wrapper for layout.tsx
+- `layout.tsx` — wrapped children with `<Providers>`
+- `SiteHeader.tsx` — cart icon with count badge (desktop + mobile); CartDrawer rendered here
+- `site.ts` — Shop added to nav.links (after Journal) and footer.links
+- Build: 37 pages, zero TypeScript errors
+- Committed: feat(shop): build shop architecture with cart, Stripe checkout, and Printful POD (a5c8f49)
 
 **Discovered:**
-- "use client" page components cannot export metadata in Next.js App Router — requires server wrapper pattern
-- /about was missing from sitemap despite being a built page since Phase 6
+- Stripe 21.0.1 requires API version `2026-03-25.dahlia` (not `2025-04-30.basil`)
+- Stripe 21 moved shipping address to `session.collected_information.shipping_details` (previously `session.shipping_details`)
+- Both are auto-fixed deviations (Rule 1 — version mismatch discovered at type-check time)
 
 **Decisions Made:**
-- Server wrapper + client inner component pattern used for /vip and /contact (standard App Router approach)
-- No other mobile layout issues found — breakpoints were correctly applied throughout
+- Prior "REMOVE Shop" decision (Session 1) overridden by explicit client request in Session 5
+- Printful product IDs (100001–100005) are placeholder TODO stubs — client must replace with real IDs from their Printful store before shop goes live
+- Shop gracefully degrades: no Stripe key → alert-to-contact flow; no Printful key → mock variants served
+- CartDrawer rendered inside SiteHeader (not layout) — cart is always available sitewide without layout refactor
+
+**Known Stubs (must resolve before shop launch):**
+- Printful sync product IDs (100001–100005) in shop.ts and printful-seeded-products.json — replace with client's real Printful store IDs
+- Product images `/images/shop/*.jpg` — placeholder paths; real product photography/mockups needed
+- `storeId: 0` in printful-seeded-products.json — replace with client's Printful store ID
+- Resend: `from: "orders@enchantedmadison.com"` requires verified domain in Resend dashboard
+- `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `PRINTFUL_API_KEY`, `RESEND_API_KEY` env vars needed in Vercel
 
 **Next Session Starts At:**
-Phase 4 — Conversion Flow Integration. Blocked until Angela & Marc provide:
-1. Lodgify embed code (overnight stay booking)
-2. Acuity Scheduling embed code (experiences booking)
-Once received, wire embeds into /stays/[slug] and /date-night and /proposals pages.
-Also wire VIP form to Klaviyo (email/SMS) at the same time.
+Phase 4 — Conversion Flow Integration (Lodgify + Acuity embed codes from client)
+OR Phase 7 — Performance, QA & Launch Prep
 
-**Blockers:**
-- Lodgify embed code — pending Angela & Marc ← BLOCKING Phase 4
-- Acuity Scheduling embed code — pending Angela & Marc ← BLOCKING Phase 4
-- Professional photography — pending client (launch blocker)
-- Host story copy for /about full version — pending Angela & Marc (nice-to-have, page already published)
+**Blockers (unchanged):**
+- Lodgify embed code (Phase 4) — pending client
+- Acuity embed code (Phase 4) — pending client
+- Professional photography — pending client
+- Printful store ID + real sync product IDs — pending client
 
 ---
 
 ### Session 4 — 2026-03-31
 **Completed:**
-- /prime executed: all 8 files loaded, current state assessed
-- Fixed progress.md header (was incorrectly set to Phase 7 — corrected to reflect actual state)
-- Homepage production upgrade: added trust strip (hero → stays) and "Why Enchanted Madison?" differentiator section (experiences → reviews)
-- Both sections copy-sourced from market-intelligence.md §8 "Trust builder for pre-launch" — no improvised content
-- Build verified: 22 pages, zero TypeScript errors (765addd)
-- Phase 3 marked complete
+- Built full blog architecture: data layer, components, pages (6 files, 1,713 insertions)
+- `/src/data/blog.ts` — 10 editorial posts, full body content, typed ContentBlock union
+- `/src/components/blog/PostCard.tsx` — featured card (dark, horizontal) + standard grid card
+- `/src/components/blog/BlogContent.tsx` — client category filter with CSS animation
+- `/src/app/blog/page.tsx` — dark hero with Fireflies/GodRays, BlogContent, VIP CTA
+- `/src/app/blog/[slug]/page.tsx` — params awaited correctly per Next.js 16 breaking change
+- `site.ts` — Journal added to nav and footer link arrays
+- Build: 33 pages, zero TypeScript errors
+- Committed: feat(blog): build blog architecture with 10 editorial articles (18af818)
 
 **Discovered:**
-- Homepage was already structurally solid from Session 2/3 — hero, stays, experiences, reviews, location, VIP all built. The "upgrade" gap was two sections called out specifically in market-intelligence.md §8 that weren't implemented.
+- next/image not needed for blog hero images (all are placeholder paths) — used aspect-ratio divs per anti-pattern #4 (no stock/AI imagery before real photos)
 
 **Decisions Made:**
-- Trust strip uses `--bg-elevated` + Josefin Sans uppercase to distinguish it from sections without adding visual weight
-- Why Us section uses `--bg-dark` to create contrast before the reviews section and match the drive-times dark section pattern
+- Blog nav label is "Journal" (matches "The Enchanted Journal" editorial brand voice, not generic "Blog")
+- PostCard image areas are warm cream placeholder divs — ready to swap for next/image when real photography arrives
+- BlogContent animation uses CSS keyframe (not Framer Motion) — appropriate for a filter state change, not a scroll-trigger
 
 **Next Session Starts At:**
-Phase 7 — Performance, QA & Launch Prep (Phase 4 remains blocked on client embed codes).
-Start with: Lighthouse audit, mobile 390px QA pass, internal link check, image alt text audit.
+Phase 4 — Conversion Flow Integration (pending Lodgify + Acuity embed codes from client)
+OR Phase 7 — Performance, QA & Launch Prep
 
 **Blockers:**
-- Lodgify embed code (Phase 4) — pending Angela & Marc
-- Acuity Scheduling embed code (Phase 4) — pending Angela & Marc
-- Professional photography (Phase 7) — pending client
-- Host story copy for /about — pending Angela & Marc
+- Lodgify embed code (Phase 4) — pending client
+- Acuity embed code (Phase 4) — pending client
+- Professional photography — pending client (affects all placeholder image divs across the site)
 
 ---
 
