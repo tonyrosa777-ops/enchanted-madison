@@ -49,11 +49,14 @@ export const siteData = {
   // Navigation
   nav: {
     links: [
-      { label: "Stays", href: "/stays" },
-      { label: "Experiences", href: "/date-night" },
-      { label: "Proposals", href: "/proposals" },
-      { label: "Madison Guide", href: "/madison-guide" },
-      { label: "About", href: "/about" },
+      { label: "About Us", href: "/about" },
+      { label: "Accommodations", href: "/stays" },
+      { label: "Proposal Experiences", href: "/proposals" },
+      { label: "Date/Girls Night", href: "/date-night" },
+      { label: "Packages", href: "/packages" },
+      { label: "Madison, IN Info", href: "/madison-guide" },
+      { label: "Reviews", href: "/reviews" },
+      { label: "Contact", href: "/contact" },
     ],
     cta: { label: "Check Availability", href: "/stays" },
   },
