@@ -15,6 +15,7 @@ import { GodRays } from "@/components/animations/GodRays";
 import { Embers } from "@/components/animations/Embers";
 import { ShimmerText } from "@/components/animations/ShimmerText";
 import { WaveDivider } from "@/components/animations/WaveDivider";
+import { ExperienceFinderSection } from "@/components/sections/ExperienceFinderSection";
 import { siteData } from "@/data/site";
 import { HeroSection } from "./HeroSection";
 
@@ -300,7 +301,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <WaveDivider fill="var(--bg-dark)" background="var(--bg-elevated)" flip={true} />
+      <ExperienceFinderSection />
+
+      <WaveDivider fill="var(--bg-dark)" background="var(--bg-base)" flip={true} />
 
       {/* ================================================================
           WHY ENCHANTED MADISON — Differentiator section

@@ -12,6 +12,7 @@ import { GodRays } from "@/components/animations/GodRays";
 import { Embers } from "@/components/animations/Embers";
 import { ShimmerText } from "@/components/animations/ShimmerText";
 import { WaveDivider } from "@/components/animations/WaveDivider";
+import { ExperienceFinderTrigger } from "@/components/ui/ExperienceFinderTrigger";
 import { siteData } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -69,6 +70,8 @@ export default function DateNightPage() {
       </section>
 
       <WaveDivider fill="var(--bg-base)" background="var(--bg-dark)" />
+
+      <ExperienceFinderTrigger triggerText={siteData.experienceFinder.triggerCopy.dateNight} />
 
       {/* Experience flow */}
       <section className="py-20 px-4" style={{ background: "var(--bg-base)" }}>

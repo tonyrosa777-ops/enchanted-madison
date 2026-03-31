@@ -506,6 +506,156 @@ export const siteData = {
     ],
   },
 
+  proposalPlanner: {
+    stepLabels: ["Contact Info", "Proposal Details", "Package & Extras"] as const,
+    step1: {
+      eyebrow: "Step 1 of 3",
+      heading: "Tell Us About You",
+    },
+    step2: {
+      eyebrow: "Step 2 of 3",
+      heading: "The Details",
+    },
+    step3: {
+      eyebrow: "Step 3 of 3",
+      heading: "Your Package",
+    },
+    preferredTimeOptions: [
+      { value: "morning", label: "Morning", detail: "10am – 12pm" },
+      { value: "afternoon", label: "Afternoon", detail: "12pm – 4pm" },
+      { value: "evening", label: "Evening", detail: "4pm – close" },
+      { value: "flexible", label: "Flexible", detail: "Whatever works best" },
+    ],
+    venueLocationOptions: [
+      { value: "hot-tub-area", label: "Hot Tub Area", detail: "Warm water, candlelight, private" },
+      { value: "fire-pit", label: "Fire Pit Circle", detail: "Open air, amber glow, nature backdrop" },
+      { value: "woodland-path", label: "Woodland Path", detail: "Rose petals through the trees" },
+      { value: "open-to-suggestions", label: "Surprise Me", detail: "We will design the perfect setting" },
+    ],
+    whoPresentOptions: [
+      { value: "just-us", label: "Just the two of us", detail: "" },
+      { value: "small-group", label: "Close family or friends nearby", detail: "" },
+      { value: "photographer-too", label: "A photographer will be joining", detail: "" },
+    ],
+    packageOptions: [
+      { value: "enchanted", label: "The Enchanted Proposal", detail: "From $249" },
+      { value: "signature", label: "The Signature Experience", detail: "From $399 · Most Popular" },
+      { value: "ultimate", label: "The Ultimate Engagement", detail: "From $599 · Premium" },
+      { value: "not-sure", label: "Not Sure Yet", detail: "We will help you decide" },
+    ],
+    enhancementOptions: [
+      { value: "photography-coordination", label: "Photography Coordination" },
+      { value: "champagne-upgrade", label: "Champagne Upgrade" },
+      { value: "premium-florals", label: "Premium Floral Arrangements" },
+      { value: "chocolate-strawberries", label: "Chocolate-Covered Strawberries" },
+      { value: "custom-signage", label: "Custom Marry Me Signage" },
+    ],
+    bestTimeOptions: [
+      { value: "morning", label: "Morning (9am–12pm)" },
+      { value: "afternoon", label: "Afternoon (12pm–4pm)" },
+      { value: "evening", label: "Evening (4pm–7pm)" },
+    ],
+    submitLabel: "Send My Request",
+    backLabel: "Back",
+    success: {
+      eyebrow: "Request Received",
+      heading: "We\u2019re already planning something beautiful.",
+      body: "Angela and Marc will be in touch within 24 hours to confirm your date and walk through every detail. Check your inbox \u2014 and get ready.",
+      cta: { label: "Explore Our Packages", href: "/proposals" },
+    },
+  },
+
+  experienceFinder: {
+    section: {
+      eyebrow: "Find Your Escape",
+      heading: "Not Sure Where to Start?",
+      subheading: "Answer three quick questions and we\u2019ll point you to the perfect experience.",
+      startCta: "Find My Escape \u2192",
+    },
+    questions: [
+      {
+        id: "q1",
+        question: "What brings you here?",
+        options: [
+          { value: "romantic-evening", label: "A romantic evening", detail: "2\u20133 hours of candlelight and warm water" },
+          { value: "planning-to-propose", label: "Planning to propose", detail: "We handle every detail of the setup" },
+          { value: "need-a-getaway", label: "We need a getaway", detail: "An overnight escape in the woods" },
+          { value: "just-exploring", label: "Just exploring", detail: "Curious what this place is all about" },
+        ],
+      },
+      {
+        id: "q2",
+        question: "How long?",
+        options: [
+          { value: "few-hours-tonight", label: "A few hours tonight", detail: "Hot tub, fireside lounge, then home" },
+          { value: "one-perfect-night", label: "One perfect night", detail: "Check in, unplug, check out renewed" },
+          { value: "two-or-more-nights", label: "Two or more nights", detail: "Really slow down and settle in" },
+        ],
+      },
+      {
+        id: "q3",
+        question: "What matters most?",
+        options: [
+          { value: "total-privacy", label: "Total privacy", detail: "No neighbors, no schedules, no noise" },
+          { value: "every-detail-handled", label: "Every detail handled", detail: "Arrive and find it all set up" },
+          { value: "out-in-nature", label: "Out in nature", detail: "Trees, stars, and open air" },
+          { value: "maximum-luxury", label: "Maximum luxury", detail: "The finest version of everything" },
+        ],
+      },
+    ] as const,
+    results: {
+      "date-night": {
+        eyebrow: "Perfect for you",
+        headline: "A Private Date Night Escape",
+        description: "Two hours of warm water, candlelight, and the fireside lounge \u2014 just for you. No overnight commitment, all the magic.",
+        price: "From $119/couple",
+        cta: { label: "See Date Night Packages", href: "/date-night" },
+      },
+      "proposals": {
+        eyebrow: "Perfect for you",
+        headline: "A Proposal She Will Never Forget",
+        description: "We stage every detail \u2014 rose petals, champagne, the Marry Me sign. You focus on the moment. We handle everything else.",
+        price: "Packages from $249",
+        cta: { label: "Plan Your Proposal", href: "/proposals" },
+      },
+      "velvet-buck": {
+        eyebrow: "Perfect for you",
+        headline: "The Velvet Buck \u2014 Woodland Glamping",
+        description: "320 sq ft of luxury in the trees. Private hot tub, string lights, and countryside views. Nature without the roughing-it.",
+        price: "From $175/night",
+        cta: { label: "See The Velvet Buck", href: "/stays/velvet-buck" },
+      },
+      "enchanted-cottage": {
+        eyebrow: "Perfect for you",
+        headline: "The Enchanted Cottage",
+        description: "A private retreat with a hot tub on the covered deck, a king Sleep Number bed, and a fully stocked kitchen. Every detail, handled.",
+        price: "From $175/night",
+        cta: { label: "See The Enchanted Cottage", href: "/stays/enchanted-cottage" },
+      },
+      "cottage-extended": {
+        eyebrow: "Perfect for you",
+        headline: "The Enchanted Cottage + Romance Add-On",
+        description: "Two or more nights in the Cottage with the Ultimate Romance Experience \u2014 charcuterie, rose petals, floating candles, and a breakfast basket.",
+        price: "From $175/night + $129 add-on",
+        cta: { label: "See The Enchanted Cottage", href: "/stays/enchanted-cottage" },
+      },
+      "stays-overview": {
+        eyebrow: "Welcome",
+        headline: "Explore All Our Stays",
+        description: "Bell tent glamping, luxury woodland tents, a private cottage \u2014 there is something here for every kind of escape.",
+        price: "From $35/night",
+        cta: { label: "Browse All Stays", href: "/stays" },
+      },
+    } as const,
+    triggerCopy: {
+      default: "Not sure which experience is right for you?",
+      stays: "Not sure which stay fits your vision?",
+      dateNight: "Which package fits your evening?",
+      proposals: "Which proposal package is right for you?",
+    },
+    triggerCta: "Find Your Escape \u2192",
+  },
+
   // Footer
   footer: {
     tagline: "Where Romance Meets the Wild",

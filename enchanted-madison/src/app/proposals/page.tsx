@@ -12,6 +12,8 @@ import { GodRays } from "@/components/animations/GodRays";
 import { PetalRain } from "@/components/animations/PetalRain";
 import { ShimmerText } from "@/components/animations/ShimmerText";
 import { WaveDivider } from "@/components/animations/WaveDivider";
+import { ProposalPlannerForm } from "@/components/forms/ProposalPlannerForm";
+import { ExperienceFinderTrigger } from "@/components/ui/ExperienceFinderTrigger";
 import { siteData } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -106,6 +108,8 @@ export default function ProposalsPage() {
         </div>
       </div>
 
+      <ExperienceFinderTrigger triggerText={siteData.experienceFinder.triggerCopy.proposals} />
+
       {/* Package tiers */}
       <section id="packages" className="py-20 lg:py-28 px-4" style={{ background: "var(--bg-base)" }}>
         <div className="max-w-5xl mx-auto">
@@ -187,31 +191,31 @@ export default function ProposalsPage() {
         </div>
       </section>
 
-      {/* Booking / Acuity placeholder */}
-      <section id="book" className="py-16 px-4" style={{ background: "var(--bg-elevated)" }}>
-        <div className="max-w-2xl mx-auto text-center">
+      {/* Proposal Planner Form */}
+      <section
+        id="book"
+        className="py-16 lg:py-20 px-4"
+        style={{ background: "var(--bg-elevated)" }}
+      >
+        <div className="max-w-3xl mx-auto">
           <FadeUp>
-            <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>Ready to Plan?</p>
-            <h2 className="text-3xl mb-4" style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "var(--text-primary)" }}>
-              Book Your Proposal
-            </h2>
-            <p className="text-sm leading-relaxed mb-6" style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}>
-              Select your package and date. We will confirm within 24 hours and coordinate every detail.
+            <p className="eyebrow text-center mb-2" style={{ color: "var(--accent)" }}>
+              Plan Your Proposal
             </p>
-            {/* TODO Phase 4: replace with Acuity Scheduling embed */}
-            <div className="rounded-2xl p-8 mb-6" style={{ background: "var(--bg-card)", border: "1px solid var(--primary-muted)" }}>
-              <p className="eyebrow text-[11px] mb-2" style={{ color: "var(--text-secondary)" }}>Booking calendar</p>
-              <p className="text-sm mb-4" style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}>
-                Online booking coming soon. In the meantime, reach us directly:
-              </p>
-              <a href={`mailto:${siteData.email}`} className="block text-base font-medium" style={{ fontFamily: "var(--font-body)", color: "var(--primary)" }}>
-                {siteData.email}
-              </a>
-              <a href={`tel:${siteData.phone}`} className="block mt-1 text-base font-medium" style={{ fontFamily: "var(--font-body)", color: "var(--primary)" }}>
-                {siteData.phone}
-              </a>
-            </div>
+            <h2
+              className="text-2xl sm:text-3xl font-semibold text-center mb-2"
+              style={{ fontFamily: "var(--font-display)", color: "var(--text-primary)" }}
+            >
+              Let&rsquo;s Build Your Moment
+            </h2>
+            <p
+              className="text-center mb-10 max-w-lg mx-auto"
+              style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
+            >
+              Share a few details and we&rsquo;ll design a proposal experience around your vision. Angela &amp; Marc respond within 24 hours.
+            </p>
           </FadeUp>
+          <ProposalPlannerForm />
         </div>
       </section>
 

@@ -10,6 +10,7 @@ import { Fireflies } from "@/components/animations/Fireflies";
 import { GodRays } from "@/components/animations/GodRays";
 import { ShimmerText } from "@/components/animations/ShimmerText";
 import { WaveDivider } from "@/components/animations/WaveDivider";
+import { ExperienceFinderTrigger } from "@/components/ui/ExperienceFinderTrigger";
 import { siteData } from "@/data/site";
 import type { Metadata } from "next";
 
@@ -91,6 +92,7 @@ export default function StaysPage() {
         className="py-16 lg:py-20 px-4"
         style={{ background: "var(--bg-base)" }}
       >
+        <ExperienceFinderTrigger triggerText={siteData.experienceFinder.triggerCopy.stays} />
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {siteData.stays.map((stay, i) => (
             <ScaleIn key={stay.slug} delay={i * 0.08}>
