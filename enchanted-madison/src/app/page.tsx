@@ -171,6 +171,47 @@ export default function HomePage() {
       </section>
 
       {/* ================================================================
+          TRUST STRIP — Social proof bar between hero and stays
+          Source: market-intelligence.md §8 (below-hero trust signals)
+          ================================================================ */}
+      <div
+        className="py-4 px-4"
+        style={{
+          background: "var(--bg-elevated)",
+          borderBottom: "1px solid var(--primary-muted)",
+        }}
+        role="complementary"
+        aria-label="Trust signals"
+      >
+        <ul className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-y-2 gap-x-0 max-w-4xl mx-auto">
+          {siteData.trustItems.map((item, i) => (
+            <li key={i} className="flex items-center">
+              <span
+                className="text-xs"
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  color: "var(--text-secondary)",
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                }}
+              >
+                {item}
+              </span>
+              {i < siteData.trustItems.length - 1 && (
+                <span
+                  className="hidden sm:inline-block mx-4 text-xs"
+                  style={{ color: "var(--accent)" }}
+                  aria-hidden="true"
+                >
+                  ·
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* ================================================================
           STAYS GRID — 3-col desktop, 1-col mobile
           Source: design-system.md §4 (grid-cols-1 md:grid-cols-2 lg:grid-cols-3)
           Shows all 4 accommodations with prices (anti-pattern #6: never hide pricing)
@@ -339,6 +380,64 @@ export default function HomePage() {
                 </Button>
               </div>
             </ScaleIn>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================
+          WHY ENCHANTED MADISON — Differentiator section
+          Source: market-intelligence.md §8 "Trust builder for pre-launch"
+          Positioned before reviews to prime the reader before testimonials.
+          ================================================================ */}
+      <section
+        className="py-20 lg:py-28 px-4"
+        style={{ background: "var(--bg-dark)" }}
+        aria-label="Why Enchanted Madison"
+      >
+        <div className="max-w-4xl mx-auto text-center">
+          <FadeUp>
+            <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>
+              {siteData.whyUs.eyebrow}
+            </p>
+            <h2
+              className="leading-tight mb-12"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontWeight: 600,
+                fontSize: "clamp(32px, 5vw, 52px)",
+                color: "var(--text-on-dark)",
+              }}
+            >
+              {siteData.whyUs.headline}
+            </h2>
+          </FadeUp>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {siteData.whyUs.items.map((item, i) => (
+              <FadeUp key={i} delay={i * 0.1}>
+                <div
+                  className="rounded-2xl p-6 text-left flex gap-4 items-start"
+                  style={{ background: "rgba(254,252,250,0.06)" }}
+                >
+                  <span
+                    className="text-base mt-0.5 flex-shrink-0"
+                    style={{ color: "var(--accent)" }}
+                    aria-hidden="true"
+                  >
+                    {item.icon}
+                  </span>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      color: "rgba(254,252,250,0.85)",
+                    }}
+                  >
+                    {item.text}
+                  </p>
+                </div>
+              </FadeUp>
+            ))}
           </div>
         </div>
       </section>

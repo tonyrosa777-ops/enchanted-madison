@@ -69,6 +69,28 @@ export const siteData = {
     trustCopy: "The only private hot tub glamping retreat in southern Indiana",
   },
 
+  // Trust strip (below hero — social proof bar)
+  // Source: market-intelligence.md §8 (below-hero trust signals)
+  trustItems: [
+    "★★★★★  5-star rated by every guest",
+    "Only private hot tub glamping in southern Indiana",
+    "10 min from Clifty Falls State Park",
+    "Opening June 2026",
+  ],
+
+  // Why Enchanted Madison (differentiator section — positioned before reviews)
+  // Source: market-intelligence.md §8 "Trust builder for pre-launch (homepage)"
+  whyUs: {
+    eyebrow: "The Difference",
+    headline: "Why Enchanted Madison?",
+    items: [
+      { icon: "✦", text: "The only luxury glamping retreat in the Madison–Clifty Falls corridor" },
+      { icon: "✦", text: "Private hot tubs at every accommodation — a rarity in southern Indiana" },
+      { icon: "✦", text: "5 minutes from Clifty Falls State Park · 5 minutes from historic downtown" },
+      { icon: "✦", text: "Curated by a team obsessed with every detail of your escape" },
+    ],
+  },
+
   // Stays
   stays: [
     {
