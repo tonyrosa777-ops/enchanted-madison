@@ -4,6 +4,7 @@
 // Anti-pattern #13: no particle systems or orbs on hero — photo/video drives it.
 // SEO: LodgingBusiness schema per CLAUDE.md SEO Rule + market-intelligence.md §9 local SEO.
 
+import Image from "next/image";
 import { PageShell } from "@/components/layout/PageShell";
 import { Button } from "@/components/ui/Button";
 import { StayCard } from "@/components/ui/StayCard";
@@ -235,67 +236,89 @@ export default function HomePage() {
           </FadeUp>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-3xl mx-auto">
+            {/* Date Night card — full image with overlay */}
             <ScaleIn delay={0.1}>
-              <div
-                className="rounded-2xl p-8 flex flex-col gap-4"
-                style={{ background: "var(--bg-card)" }}
-              >
-                <p className="eyebrow text-[11px]" style={{ color: "var(--accent)" }}>
-                  Date Night · 2–4 Hours
-                </p>
-                <h3
-                  className="text-2xl leading-tight"
-                  style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "var(--text-primary)" }}
-                >
-                  {siteData.experiences.dateNight.headline}
-                </h3>
-                <p
-                  className="text-sm leading-relaxed"
-                  style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
-                >
-                  {siteData.experiences.dateNight.subheadline}
-                </p>
-                <p
-                  className="text-sm font-medium"
-                  style={{ fontFamily: "var(--font-mono)", color: "var(--accent)" }}
-                >
-                  From $119/couple
-                </p>
-                <Button variant="secondary" size="sm" href="/date-night" className="mt-auto">
-                  Book a Date Night
-                </Button>
+              <div className="rounded-2xl overflow-hidden relative flex flex-col justify-end" style={{ minHeight: "420px" }}>
+                <Image
+                  src="/images/experiences/date-night-card.webp"
+                  alt="Private hot tub date night experience"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{ background: "linear-gradient(to top, rgba(10,8,6,0.92) 0%, rgba(10,8,6,0.4) 55%, rgba(10,8,6,0.05) 100%)" }}
+                />
+                <div className="relative z-10 p-8 flex flex-col gap-3">
+                  <p className="eyebrow text-[11px]" style={{ color: "var(--accent)" }}>
+                    Date Night · 2–4 Hours
+                  </p>
+                  <h3
+                    className="text-2xl leading-tight"
+                    style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "var(--text-on-dark)" }}
+                  >
+                    {siteData.experiences.dateNight.headline}
+                  </h3>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ fontFamily: "var(--font-body)", color: "rgba(254,252,250,0.7)" }}
+                  >
+                    {siteData.experiences.dateNight.subheadline}
+                  </p>
+                  <p
+                    className="text-sm font-medium"
+                    style={{ fontFamily: "var(--font-mono)", color: "var(--accent)" }}
+                  >
+                    From $119/couple
+                  </p>
+                  <Button variant="secondary" size="sm" href="/date-night" className="mt-2 self-start">
+                    Book a Date Night
+                  </Button>
+                </div>
               </div>
             </ScaleIn>
 
+            {/* Proposals card — full image with overlay */}
             <ScaleIn delay={0.2}>
-              <div
-                className="rounded-2xl p-8 flex flex-col gap-4"
-                style={{ background: "var(--bg-card)" }}
-              >
-                <p className="eyebrow text-[11px]" style={{ color: "var(--accent)" }}>
-                  Proposals · Full Setup Included
-                </p>
-                <h3
-                  className="text-2xl leading-tight"
-                  style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "var(--text-primary)" }}
-                >
-                  {siteData.experiences.proposals.headline}
-                </h3>
-                <p
-                  className="text-sm leading-relaxed"
-                  style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
-                >
-                  {siteData.experiences.proposals.subheadline}
-                </p>
-                <p
-                  className="text-sm font-medium"
-                  style={{ fontFamily: "var(--font-mono)", color: "var(--accent)" }}
-                >
-                  Packages from $249
-                </p>
-                <Button variant="secondary" size="sm" href="/proposals" className="mt-auto">
-                  Plan Your Proposal
-                </Button>
+              <div className="rounded-2xl overflow-hidden relative flex flex-col justify-end" style={{ minHeight: "420px" }}>
+                <Image
+                  src="/images/experiences/proposals-card.webp"
+                  alt="Romantic outdoor proposal setup"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{ background: "linear-gradient(to top, rgba(10,8,6,0.92) 0%, rgba(10,8,6,0.4) 55%, rgba(10,8,6,0.05) 100%)" }}
+                />
+                <div className="relative z-10 p-8 flex flex-col gap-3">
+                  <p className="eyebrow text-[11px]" style={{ color: "var(--accent)" }}>
+                    Proposals · Full Setup Included
+                  </p>
+                  <h3
+                    className="text-2xl leading-tight"
+                    style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "var(--text-on-dark)" }}
+                  >
+                    {siteData.experiences.proposals.headline}
+                  </h3>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ fontFamily: "var(--font-body)", color: "rgba(254,252,250,0.7)" }}
+                  >
+                    {siteData.experiences.proposals.subheadline}
+                  </p>
+                  <p
+                    className="text-sm font-medium"
+                    style={{ fontFamily: "var(--font-mono)", color: "var(--accent)" }}
+                  >
+                    Packages from $249
+                  </p>
+                  <Button variant="secondary" size="sm" href="/proposals" className="mt-2 self-start">
+                    Plan Your Proposal
+                  </Button>
+                </div>
               </div>
             </ScaleIn>
           </div>
@@ -316,6 +339,14 @@ export default function HomePage() {
         style={{ background: "var(--bg-dark)" }}
         aria-label="Why Enchanted Madison"
       >
+        <Image
+          src="/images/experiences/why-enchanted.webp"
+          alt=""
+          fill
+          className="object-cover"
+          style={{ opacity: 0.14 }}
+          sizes="100vw"
+        />
         <Fireflies />
         <GodRays />
         <Embers count={18} />
@@ -401,18 +432,24 @@ export default function HomePage() {
           </FadeUp>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {siteData.reviews.map((review, i) => (
+            {siteData.reviews.slice(0, 3).map((review, i) => (
               <FadeUp key={review.name} delay={i * 0.12}>
                 <div
                   className="rounded-2xl p-6 flex flex-col gap-4 h-full"
                   style={{ background: "var(--bg-card)" }}
                 >
                   <StarRating rating={review.rating} />
+                  <p
+                    className="text-[11px] uppercase"
+                    style={{ fontFamily: "var(--font-mono)", color: "var(--accent)", letterSpacing: "0.1em" }}
+                  >
+                    {review.occasion}
+                  </p>
                   <blockquote
                     className="text-base leading-relaxed flex-1"
                     style={{ fontFamily: "var(--font-body)", color: "var(--text-primary)" }}
                   >
-                    "{review.quote}"
+                    &ldquo;{review.quote}&rdquo;
                   </blockquote>
                   <div>
                     <p
@@ -432,6 +469,14 @@ export default function HomePage() {
               </FadeUp>
             ))}
           </div>
+
+          <FadeUp delay={0.4}>
+            <div className="text-center mt-10">
+              <Button variant="ghost" href="/reviews">
+                Read All {siteData.reviews.length} Reviews
+              </Button>
+            </div>
+          </FadeUp>
         </div>
       </section>
 

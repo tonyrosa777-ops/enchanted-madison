@@ -1,16 +1,18 @@
 // /reviews — Guest Reviews
-// Source: initial-business-data.md §7 (3 genuine 5-star reviews)
-// Market intelligence: market-intelligence.md §7 (innovation: on-site review integration — +15% conversion lift)
+// Source: initial-business-data.md §7 (3 genuine 5-star reviews + 9 additional)
+// Quality standard: dark hero + Fireflies/GodRays + ShimmerText per CLAUDE.md Page Quality Standard
 // SEO: Review/AggregateRating schema per CLAUDE.md SEO Rule
 
+import Image from "next/image";
 import { PageShell } from "@/components/layout/PageShell";
 import { Button } from "@/components/ui/Button";
 import { FadeUp } from "@/components/animations/FadeUp";
-import { ScaleIn } from "@/components/animations/ScaleIn";
 import { Fireflies } from "@/components/animations/Fireflies";
 import { GodRays } from "@/components/animations/GodRays";
+import { Embers } from "@/components/animations/Embers";
 import { ShimmerText } from "@/components/animations/ShimmerText";
 import { WaveDivider } from "@/components/animations/WaveDivider";
+import { ReviewGrid } from "./ReviewGrid";
 import { siteData } from "@/data/site";
 import type { Metadata } from "next";
 
@@ -22,7 +24,7 @@ export const metadata: Metadata = {
 
 function Stars({ count }: { count: number }) {
   return (
-    <span aria-label={`${count} out of 5 stars`} style={{ color: "var(--accent)", letterSpacing: "0.05em", fontSize: "1.1rem" }}>
+    <span aria-label={`${count} out of 5 stars`} style={{ color: "var(--accent)", letterSpacing: "0.05em", fontSize: "1.25rem" }}>
       {"★".repeat(count)}
     </span>
   );
@@ -56,13 +58,6 @@ const reviewSchema = {
   })),
 };
 
-// Context about each reviewer's occasion — sourced from initial-business-data.md §7
-const reviewContext = [
-  "Couple's getaway",
-  "29th anniversary",
-  "Honeymoon",
-];
-
 export default function ReviewsPage() {
   return (
     <PageShell>
@@ -71,49 +66,63 @@ export default function ReviewsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
       />
 
-      {/* Page hero */}
+      {/* Dark hero — per CLAUDE.md Page Quality Standard */}
       <section
-        className="pt-32 pb-16 px-4 text-center"
-        style={{ background: "var(--bg-base)" }}
+        className="relative pt-32 pb-16 px-4 text-center overflow-hidden"
+        style={{ background: "var(--bg-dark)" }}
       >
+        <Image
+          src="/images/experiences/hot-tub-escape.webp"
+          alt=""
+          fill
+          priority
+          className="object-cover"
+          style={{ opacity: 0.2 }}
+          sizes="100vw"
+        />
+        <Fireflies />
+        <GodRays />
+        <Embers count={12} />
+
         <FadeUp>
-          <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>
+          <p
+            className="eyebrow mb-3"
+            style={{ color: "var(--accent)" }}
+          >
             Genuine Guest Reviews
           </p>
           <h1
-            className="leading-tight mb-4"
+            className="leading-tight mb-5"
             style={{
               fontFamily: "var(--font-display)",
               fontWeight: 600,
-              fontSize: "clamp(40px, 6vw, 64px)",
-              color: "var(--text-primary)",
+              fontSize: "clamp(40px, 6vw, 72px)",
+              color: "var(--text-on-dark)",
             }}
           >
             <ShimmerText delay={1}>Five Stars Isn&rsquo;t Enough</ShimmerText>
           </h1>
           <p
-            className="max-w-xl mx-auto text-base leading-relaxed"
-            style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
+            className="max-w-xl mx-auto text-base leading-relaxed mb-8"
+            style={{ fontFamily: "var(--font-body)", color: "rgba(254,252,250,0.7)" }}
           >
             Every review below is real — from couples who came looking for a
             getaway and left with a story worth telling.
           </p>
-        </FadeUp>
 
-        {/* Aggregate rating badge */}
-        <FadeUp delay={0.15}>
-          <div className="mt-8 inline-flex items-center gap-3 rounded-full px-6 py-3"
-            style={{ background: "var(--bg-card)", border: "1px solid var(--primary-muted)" }}>
+          {/* Aggregate rating badge */}
+          <div className="inline-flex items-center gap-3 rounded-full px-6 py-3"
+            style={{ background: "rgba(254,252,250,0.08)", border: "1px solid rgba(254,252,250,0.15)" }}>
             <Stars count={5} />
             <span
               className="text-sm font-bold"
-              style={{ fontFamily: "var(--font-display)", color: "var(--text-primary)", fontSize: "1.1rem" }}
+              style={{ fontFamily: "var(--font-display)", color: "var(--text-on-dark)", fontSize: "1.1rem" }}
             >
               5.0
             </span>
             <span
               className="text-xs"
-              style={{ fontFamily: "var(--font-mono)", color: "var(--text-secondary)", letterSpacing: "0.06em" }}
+              style={{ fontFamily: "var(--font-mono)", color: "rgba(254,252,250,0.5)", letterSpacing: "0.06em" }}
             >
               {siteData.reviews.length} VERIFIED REVIEWS
             </span>
@@ -121,62 +130,15 @@ export default function ReviewsPage() {
         </FadeUp>
       </section>
 
-      {/* Reviews grid */}
+      <WaveDivider fill="var(--bg-base)" background="var(--bg-dark)" />
+
+      {/* Paginated reviews grid */}
       <section
         className="py-16 lg:py-20 px-4"
         style={{ background: "var(--bg-base)" }}
       >
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {siteData.reviews.map((review, i) => (
-            <ScaleIn key={review.name} delay={i * 0.1}>
-              <article
-                className="rounded-2xl p-7 flex flex-col gap-5 h-full"
-                style={{
-                  background: "var(--bg-card)",
-                  border: "1px solid transparent",
-                  transition: "border-color 300ms ease, box-shadow 300ms ease",
-                }}
-              >
-                {/* Stars */}
-                <Stars count={review.rating} />
-
-                {/* Occasion label */}
-                <p
-                  className="text-[11px] uppercase"
-                  style={{ fontFamily: "var(--font-mono)", color: "var(--accent)", letterSpacing: "0.1em" }}
-                >
-                  {reviewContext[i]}
-                </p>
-
-                {/* Quote */}
-                <blockquote
-                  className="flex-1 text-base leading-relaxed"
-                  style={{ fontFamily: "var(--font-body)", color: "var(--text-primary)" }}
-                >
-                  &ldquo;{review.quote}&rdquo;
-                </blockquote>
-
-                {/* Attribution */}
-                <div
-                  className="pt-4"
-                  style={{ borderTop: "1px solid var(--primary-muted)" }}
-                >
-                  <p
-                    className="text-sm font-bold"
-                    style={{ fontFamily: "var(--font-body)", color: "var(--text-primary)" }}
-                  >
-                    {review.name}
-                  </p>
-                  <p
-                    className="text-xs mt-0.5"
-                    style={{ fontFamily: "var(--font-mono)", color: "var(--text-secondary)", letterSpacing: "0.05em" }}
-                  >
-                    {review.location}
-                  </p>
-                </div>
-              </article>
-            </ScaleIn>
-          ))}
+        <div className="max-w-6xl mx-auto">
+          <ReviewGrid />
         </div>
       </section>
 
@@ -189,7 +151,7 @@ export default function ReviewsPage() {
       >
         <Fireflies />
         <GodRays />
-        <div className="max-w-2xl mx-auto text-center">
+        <div className="relative z-10 max-w-2xl mx-auto text-center">
           <FadeUp>
             <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>
               Opening June 2026

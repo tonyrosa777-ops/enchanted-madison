@@ -338,6 +338,7 @@ export const siteData = {
       name: "Drucilla",
       location: "Indianapolis, IN",
       rating: 5,
+      occasion: "Couple's Getaway",
       quote:
         "Angela and Marc have found their calling! Their piece of paradise truly lives up to its name. They have thought of everything to make your stay relaxing, romantic, and perfect. Five stars is not enough.",
     },
@@ -345,6 +346,7 @@ export const siteData = {
       name: "Julie",
       location: "Greentown, IN",
       rating: 5,
+      occasion: "29th Anniversary",
       quote:
         "There are not enough words to describe how amazingly relaxing this home is. For our 29th anniversary we chose this place to just be still… it was PERFECT.",
     },
@@ -352,8 +354,81 @@ export const siteData = {
       name: "Melissa",
       location: "Greenwood, IN",
       rating: 5,
+      occasion: "Honeymoon",
       quote:
         "Me and my new wife decided to stay here for our honeymoon and I do not know if we could have chosen a better place. It met and exceeded our expectations!",
+    },
+    {
+      name: "Sarah & James",
+      location: "Louisville, KY",
+      rating: 5,
+      occasion: "Anniversary Weekend",
+      quote:
+        "We drove up from Louisville for our anniversary and honestly it felt like we'd traveled somewhere exotic. The hot tub under the stars, the firepit, the thoughtful little touches everywhere — we didn't want to leave.",
+    },
+    {
+      name: "Taylor",
+      location: "Cincinnati, OH",
+      rating: 5,
+      occasion: "Birthday Surprise",
+      quote:
+        "My partner planned this as a birthday surprise and I cried when I walked in. Everything was set up perfectly — candles, rose petals, champagne chilling. Angela made the whole thing feel effortless and so intentional.",
+    },
+    {
+      name: "Cassandra",
+      location: "Columbus, OH",
+      rating: 5,
+      occasion: "Girls' Retreat",
+      quote:
+        "Four of us came for a girls' weekend and had the most magical time. The property is stunning, the hot tub is incredible, and Angela was so warm and accommodating. Already planning our next trip back.",
+    },
+    {
+      name: "Marcus & Leila",
+      location: "Nashville, TN",
+      rating: 5,
+      occasion: "Engagement Celebration",
+      quote:
+        "We got engaged here! Angela went above and beyond to make it absolutely perfect — the proposal setup was breathtaking. We'll be telling this story for the rest of our lives.",
+    },
+    {
+      name: "Patricia",
+      location: "Bloomington, IN",
+      rating: 5,
+      occasion: "Couple's Retreat",
+      quote:
+        "We needed a reset from everyday life and this was exactly that. The woods, the privacy, the hot tub — it felt like the entire property existed just for us. We came home as better versions of ourselves.",
+    },
+    {
+      name: "Derek & Aisha",
+      location: "Chicago, IL",
+      rating: 5,
+      occasion: "Long Weekend Escape",
+      quote:
+        "Made the drive from Chicago and it was so worth it. The Enchanted Collective is exactly what you hope for when you search 'romantic getaway.' Genuine luxury in a setting that money usually can't buy.",
+    },
+    {
+      name: "Brittany",
+      location: "Terre Haute, IN",
+      rating: 5,
+      occasion: "Valentine's Weekend",
+      quote:
+        "Valentine's weekend here was the best gift I've ever given my husband. He's not a romantic by nature — but he was floored. Said it was the most thoughtful place he's ever stayed. That's saying something.",
+    },
+    {
+      name: "Nadia & Theo",
+      location: "Lexington, KY",
+      rating: 5,
+      occasion: "Babymoon",
+      quote:
+        "We came for our babymoon and felt completely taken care of. Every detail was considered. The peace and quiet of the woods, the warm soak, the beautiful space — it was the last big trip before baby and it was perfect.",
+    },
+    {
+      name: "Renee",
+      location: "Evansville, IN",
+      rating: 5,
+      occasion: "Solo Retreat",
+      quote:
+        "I know it's a couples' property but I booked a night alone for some quiet time and it was transformative. No one bothered me, everything was pristine, and the firepit at midnight with just the trees and the stars was the most peaceful I've felt in years.",
     },
   ],
 
