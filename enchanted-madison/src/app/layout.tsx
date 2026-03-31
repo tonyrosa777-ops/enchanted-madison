@@ -25,6 +25,7 @@ const josefin = Josefin_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://enchantedmadison.com"),
   title: {
     template: siteData.seo.titleTemplate,
     default: siteData.seo.defaultTitle,
