@@ -4,8 +4,8 @@
 **Client:** The Enchanted Collective | Madison, Indiana
 **Business Type:** Luxury glamping and romantic experience property
 **Launch Target:** June 2026
-**Last Updated:** 2026-03-31 (Session 8)
-**Current Phase:** Session 8 complete — nav redesign, interactive calendar, ROI calculator, packages rebuild with AI images
+**Last Updated:** 2026-03-31 (Session 9)
+**Current Phase:** Session 9 complete — /find-your-escape quiz page, lead capture API, nav + CTA links updated
 
 ---
 
@@ -42,6 +42,7 @@
 | `/faq` | FAQ | ⬜ |
 | `/reviews` | Reviews | ⬜ |
 | `/contact` | Contact | ⬜ |
+| `/find-your-escape` | Experience Finder Quiz — lead capture wizard | ✅ Built |
 | `/vip` | VIP Early Access Sign-Up | ✅ Built |
 | `/blog` | The Enchanted Journal — blog index | ✅ Built |
 | `/blog/[slug]` | Individual blog post pages (10 posts) | ✅ Built |
@@ -236,6 +237,27 @@ Site map defined in Session 1 (15 routes). All routes listed in Site Architectur
 Upgrade remaining pages to quality standard (reviews, faq, contact, madison-guide)
 OR Phase 4 — Conversion Flow Integration (pending Lodgify + Acuity embed codes from client)
 OR Phase 7 — Performance, QA & Launch Prep
+
+---
+
+### Session 9 — 2026-03-31
+**Completed:**
+- **`/find-your-escape` dedicated quiz page** — full dark page with hot-tub-escape.webp at 18% opacity, Fireflies + GodRays + Embers, minimal header (logo + Browse All Stays link), hero heading/subheading from site.ts
+- **`FindYourEscapeWizard.tsx`** — 4 quiz questions (occasion/experience/priority/timeline) + contact step (name/email/optional note) + success result card; directional AnimatePresence slide transitions; OptionCard with checkmark radio style; `getResult(answers)` maps answer combinations to 6 recommendation keys; progress bar animates 0→100%
+- **`POST /api/quiz`** — validates name + email, sends owner notification + personalized auto-reply via Resend, gracefully degrades if no RESEND_API_KEY
+- **ExperienceFinderSection rewrite** — converted from inline interactive quiz to atmospheric teaser section (hot-tub-escape.webp background, 3 decorative question pills, single CTA → /find-your-escape)
+- **ExperienceFinderTrigger href fix** — updated from `/#find-your-escape` to `/find-your-escape` (direct page link)
+- **Nav updated** — "Find My Escape" added as first item in More dropdown; homepage hero secondary CTA href fixed from `/#find-your-escape` to `/find-your-escape`
+- Build: 41 pages, zero TypeScript errors. Committed + pushed (296c08d).
+
+**Decisions Made:**
+- Quiz as dedicated page (not inline) creates better focus, enables full atmospheric treatment, and makes the URL shareable + linkable from nav
+- Contact capture (name + email + note) on quiz enables personalized lead nurturing via Resend auto-reply from angela@enchantedmadison.com
+- Result routes to one of 6 keys: date-night, proposals, velvet-buck, enchanted-cottage, cottage-extended, stays-overview
+
+**Next Session Starts At:**
+Upgrade remaining pages to quality standard (reviews, faq, contact, madison-guide)
+OR Phase 4 — Conversion Flow Integration (pending Lodgify + Acuity embed codes from client)
 
 **Blockers (unchanged):**
 - Lodgify embed code — pending client

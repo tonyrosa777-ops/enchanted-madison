@@ -58,6 +58,7 @@ export const siteData = {
     dropdown: {
       label: "More",
       items: [
+        { label: "Find My Escape", href: "/find-your-escape" },
         { label: "Journal", href: "/blog" },
         { label: "Shop", href: "/shop" },
         { label: "Madison Guide", href: "/madison-guide" },
@@ -75,7 +76,7 @@ export const siteData = {
     subheadline:
       "Luxury glamping, private hot tubs, and curated experiences in the woods — minutes from Clifty Falls and historic downtown Madison.",
     ctaPrimary: { label: "Make It Unforgettable", href: "/packages" },
-    ctaSecondary: { label: "Find My Escape \u2192", href: "/#find-your-escape" },
+    ctaSecondary: { label: "Find My Escape \u2192", href: "/find-your-escape" },
     trustCopy: "The only private hot tub glamping retreat in southern Indiana",
   },
 
