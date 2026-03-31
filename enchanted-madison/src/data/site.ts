@@ -62,6 +62,7 @@ export const siteData = {
         { label: "Shop", href: "/shop" },
         { label: "Madison Guide", href: "/madison-guide" },
         { label: "About", href: "/about" },
+        { label: "Pricing ⚑", href: "/optimus-pricing" },
       ],
     },
     cta: { label: "Check Availability", href: "/stays" },
@@ -121,7 +122,7 @@ export const siteData = {
       ],
       description:
         "Tucked within a peaceful natural setting in Southern Indiana, The Enchanted Cottage is a private one bedroom, one bath retreat designed for rest, reconnection, and elevated comfort.",
-      image: "/images/cottage-hero.jpg", // TODO: real photo
+      image: "/images/accommodations/enchanted-cottage.webp", // TODO: real photo
     },
     {
       slug: "velvet-buck",
@@ -142,7 +143,7 @@ export const siteData = {
       ],
       description:
         "Tucked within a secluded wooded setting, The Velvet Buck is an upcoming luxury glamping retreat designed to blend immersive nature with elevated comfort.",
-      image: "/images/velvet-buck-hero.jpg", // TODO: real photo
+      image: "/images/accommodations/velvet-buck.webp", // TODO: real photo
     },
     {
       slug: "bell-tent",
@@ -164,7 +165,7 @@ export const siteData = {
       ],
       description:
         "Enjoy a relaxed outdoor stay with a 16-foot bell tent already set up. Bring your own bedding and make it your own.",
-      image: "/images/bell-tent-hero.jpg", // TODO: real photo
+      image: "/images/accommodations/bell-tent.webp", // TODO: real photo
     },
     {
       slug: "campsite",
@@ -185,7 +186,7 @@ export const siteData = {
       ],
       description:
         "Private wooded campsites designed for guests who love a traditional outdoor experience with a thoughtfully prepared space.",
-      image: "/images/campsite-hero.jpg", // TODO: real photo
+      image: "/images/accommodations/campsite.webp", // TODO: real photo
     },
   ],
 
