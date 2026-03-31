@@ -4,7 +4,9 @@
       "Bash(npx create-next-app@latest enchanted-madison --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --yes)",
       "Bash(npm install:*)",
       "Bash(cd:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(vercel:*)",
+      "Bash(npm run:*)"
     ]
   }
 }
