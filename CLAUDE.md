@@ -71,12 +71,15 @@ Ask: "Does this serve the target audience? Is this validated by research?
 Does this close a gap competitors have left open?"
 
 ## Progress Tracking Rule
-After completing any subtask, immediately update progress.md with:
+After completing ANY subtask — not at the end of the session, AFTER EACH ONE —
+immediately update progress.md with:
 - What was completed
 - What was discovered or decided
 - What the next step is
 - Any blockers or open questions
-Never end a session without updating progress.md.
+Do not batch updates. Do not defer to end of session. Context can exhaust mid-build
+and a deferred update means that work is undocumented. Update after every subtask,
+every time, without exception.
 
 ## Build Knowledge Rule
 Before starting any phase, read the cross-project knowledge base:

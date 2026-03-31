@@ -333,7 +333,7 @@ These apply to every session, every task, every line of code, forever:
 4. **Mobile first, always.** Design at 390px. Then scale up. Never the reverse.
 5. **Research backs every choice.** If you cannot point to market-intelligence.md or design-system.md to justify a decision, flag it before implementing.
 6. **Commit atomically.** Every subtask = one commit. Never batch unrelated changes.
-7. **Update progress.md every session.** Last thing before closing. No exceptions.
+7. **Update progress.md after every subtask — not at session end.** Context can exhaust mid-build. If you defer, it's lost. Commit the progress.md update as part of each subtask commit. No exceptions.
 8. **The conversion flow is sacred.** Every extra click costs conversions. Every domain redirect costs trust.
 9. **All copy lives in /data/site.ts.** Zero hard-coded strings in components. Client handoff and future edits must be trivial.
 10. **If it isn't in progress.md, it didn't happen.** Document everything.
