@@ -1,50 +1,40 @@
 import type { Metadata } from "next";
-import {
-  Allura,
-  Cormorant_Garamond,
-  Source_Sans_3,
-} from "next/font/google";
-import { SiteFooter } from "../components/layout/SiteFooter";
-import { SiteHeader } from "../components/layout/SiteHeader";
-import { seoDefaults } from "../content/seo";
+import { Cormorant_Garamond, Lato, Josefin_Sans } from "next/font/google";
 import "./globals.css";
+import { siteData } from "@/data/site";
 
-const headingFont = Cormorant_Garamond({
-  variable: "--font-cormorant-garamond",
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  variable: "--font-display",
+  display: "swap",
 });
 
-const bodyFont = Source_Sans_3({
-  variable: "--font-source-sans-3",
+const lato = Lato({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "700"],
+  variable: "--font-body",
+  display: "swap",
 });
 
-const accentFont = Allura({
-  variable: "--font-allura",
+const josefin = Josefin_Sans({
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "500", "600"],
+  variable: "--font-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://enchantedmadison.com"),
   title: {
-    default: seoDefaults.defaultTitle,
-    template: seoDefaults.titleTemplate,
+    template: siteData.seo.titleTemplate,
+    default: siteData.seo.defaultTitle,
   },
-  description: seoDefaults.defaultDescription,
+  description: siteData.seo.defaultDescription,
   openGraph: {
-    siteName: "The Enchanted Collective",
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-  },
-  robots: {
-    index: true,
-    follow: true,
+    title: siteData.seo.defaultTitle,
+    description: siteData.seo.defaultDescription,
+    siteName: siteData.name,
+    images: [{ url: siteData.seo.ogImage }],
   },
 };
 
@@ -56,12 +46,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${headingFont.variable} ${bodyFont.variable} ${accentFont.variable} h-full`}
+      className={`${cormorant.variable} ${lato.variable} ${josefin.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-cream text-charcoal">
-        <SiteHeader />
-        <div className="flex-1">{children}</div>
-        <SiteFooter />
+      <body
+        className="min-h-full flex flex-col"
+        style={{ fontFamily: "var(--font-body)", background: "var(--bg-base)" }}
+      >
+        {children}
       </body>
     </html>
   );

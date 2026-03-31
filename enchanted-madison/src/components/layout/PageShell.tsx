@@ -1,35 +1,18 @@
-import type { ReactNode } from "react";
+// PageShell — wraps all pages with SiteHeader + SiteFooter
+// Phase 1 task: compose header and footer into shell
+import { SiteHeader } from "./SiteHeader";
+import { SiteFooter } from "./SiteFooter";
 
-type PageShellProps = {
-  eyebrow?: string;
-  title: string;
-  description: string;
-  children?: ReactNode;
-};
+interface PageShellProps {
+  children: React.ReactNode;
+}
 
-export function PageShell({
-  eyebrow,
-  title,
-  description,
-  children,
-}: PageShellProps) {
+export function PageShell({ children }: PageShellProps) {
   return (
-    <main className="bg-cream">
-      {/* pt offsets the fixed SiteHeader (~88px mobile / ~134px desktop) */}
-      <section className="relative overflow-hidden border-b border-forest/10 bg-[radial-gradient(circle_at_top,_rgba(184,150,90,0.18),_transparent_40%),linear-gradient(180deg,_rgba(245,240,235,1)_0%,_rgba(254,252,250,1)_100%)] pt-[5.5rem] lg:pt-[8.5rem]">
-        <div className="mx-auto flex w-full max-w-content-xl flex-col gap-6 px-5 py-16 lg:px-8 lg:py-24">
-          {eyebrow ? (
-            <p className="font-accent text-3xl text-gold">{eyebrow}</p>
-          ) : null}
-          <h1 className="max-w-4xl font-heading text-5xl font-semibold leading-[0.95] text-forest lg:text-7xl">
-            {title}
-          </h1>
-          <p className="max-w-content-md text-lg leading-8 text-charcoal/80 lg:text-xl">
-            {description}
-          </p>
-        </div>
-      </section>
-      {children}
-    </main>
+    <>
+      <SiteHeader />
+      <main>{children}</main>
+      <SiteFooter />
+    </>
   );
 }

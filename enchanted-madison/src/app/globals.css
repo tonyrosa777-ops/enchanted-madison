@@ -1,79 +1,101 @@
-@config "../../tailwind.config.ts";
 @import "tailwindcss";
 
+/* ============================================================
+   THE ENCHANTED COLLECTIVE — Design Tokens
+   Source of truth: design-system.md
+   DO NOT hardcode colors or fonts in components.
+   All values must reference these custom properties.
+   ============================================================ */
+
 :root {
-  --background: #F5F0EB;
-  --foreground: #2D2926;
-  --font-heading: var(--font-cormorant-garamond);
-  --font-body: var(--font-source-sans-3);
-  --font-accent: var(--font-allura);
+  /* Brand Colors */
+  --primary: #2C3E2D;
+  --primary-muted: rgba(44, 62, 45, 0.45);
+  --accent: #B8965A;
+  --accent-rose: #C4917B;
+
+  /* Background Scale */
+  --bg-base: #F5F0EB;
+  --bg-elevated: #EDE8E2;
+  --bg-card: #FEFCFA;
+  --bg-dark: #1A2A1E;
+
+  /* Text Scale */
+  --text-primary: #2D2926;
+  --text-secondary: #8B8178;
+  --text-muted: rgba(45, 41, 38, 0.45);
+  --text-on-dark: #FEFCFA;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Lato', -apple-system, system-ui, sans-serif;
+  --font-mono: 'Josefin Sans', 'DM Sans', sans-serif;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-forest: #2C3E2D;
-  --color-rose: #C4917B;
-  --color-gold: #B8965A;
-  --color-cream: #F5F0EB;
-  --color-charcoal: #2D2926;
-  --color-stone: #8B8178;
-  --color-ivory: #FEFCFA;
-  --color-night: #1A2A1E;
-  --font-heading: var(--font-cormorant-garamond);
-  --font-body: var(--font-source-sans-3);
-  --font-accent: var(--font-allura);
+  --color-background: var(--bg-base);
+  --color-foreground: var(--text-primary);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
 }
 
-* {
-  box-sizing: border-box;
-}
-
+/* Base styles */
 html {
-  background: var(--background);
-  color: var(--foreground);
   scroll-behavior: smooth;
 }
 
 body {
-  min-width: 390px;
-  margin: 0;
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-body), sans-serif;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Eyebrow label utility */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
 }
 
-h1,
-h2,
-h3,
-h4 {
-  margin: 0;
-  font-family: var(--font-heading), serif;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+/* Breathing orb animations (hero background) */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.12; }
+  50% { transform: scale(1.2); opacity: 0.22; }
 }
 
-p {
-  margin: 0;
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  animation: breathe 14s ease-in-out infinite;
 }
 
-/* ── Animations ──────────────────────────────────────────────────────── */
-
-@keyframes scrollPulse {
-  0%   { transform: translateY(-100%); opacity: 1; }
-  100% { transform: translateY(100%);  opacity: 0; }
+.orb-1 {
+  animation-delay: 0s;
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+.orb-2 {
+  animation-delay: -5s;
 }
 
-.animate-fade-up {
-  animation: fadeUp 0.6s ease-out both;
+.orb-3 {
+  animation: breathe 9s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
