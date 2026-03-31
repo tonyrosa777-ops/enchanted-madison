@@ -4,8 +4,8 @@
 **Client:** The Enchanted Collective | Madison, Indiana
 **Business Type:** Luxury glamping and romantic experience property
 **Launch Target:** June 2026
-**Last Updated:** 2026-03-31
-**Current Phase:** Shop architecture complete (Session 5) → Phase 4 blocked (client embeds pending) → Phase 7 next
+**Last Updated:** 2026-03-31 (Session 8)
+**Current Phase:** Session 8 complete — nav redesign, interactive calendar, ROI calculator, packages rebuild with AI images
 
 ---
 
@@ -204,6 +204,48 @@ Site map defined in Session 1 (15 routes). All routes listed in Site Architectur
 
 ## Session Log
 
+### Session 8 — 2026-03-31
+**Completed:**
+- **Nav redesign** — SiteHeader rebuilt with primary links (Stays/Experiences/Proposals) always visible + "More ▾" AnimatePresence dropdown (Journal/Shop/Madison Guide/About/Pricing); mobile overlay keeps full hierarchy with display-type primary links + smaller mono secondary links; site.ts nav split into `links[]` + `dropdown.{label, items[]}`
+- **Interactive booking calendar** — `BookingCalendar.tsx` replaces "coming soon" placeholder on `/date-night#book`; full month grid with seeded availability dots (available/limited/booked), step flow: date → time slots → package picker → success state; AnimatePresence directional slide between steps; split layout on desktop
+- **Optimus pricing page** (`/optimus-pricing`) — internal sales tool (robots noindex, delete before launch); 3-tier cards ($1,500/$3,000/$5,500), feature comparison table, interactive ROI calculator, "you're looking at the Pro package" proof section
+- **ROI calculator fully animated** — `useCountUp` hook (quartic ease-out rAF), `AnimatePresence popLayout` per-card, giant ROI % with scale-pop on change, animated progress bar, 12-dot payback timeline with staggered fill, revenue lift card
+- **Pricing added to More dropdown** — "Pricing ⚑" as last item in nav dropdown for easy demo access
+- **Packages page complete rebuild** — dark hero (Fireflies + GodRays + Embers + WaveDivider), 5 AI-generated images via fal.ai/flux/dev, featured horizontal card (Ultimate Romance), 4-card grid with 16:9 images/hover zoom/lift effect, How It Works step cards, dark CTA footer
+- **5 addon images generated** — `public/images/addons/`: classic-romance, ultimate-romance, outdoor-movie, smores-skillet, picnic-and-ride (all fal-ai/flux/dev, landscape_16_9)
+- `scripts/generate-addon-images.ts` — targeted image generation script for addons
+- `AddonCard.tsx` — thin client component wrapper to isolate hover state from server page component
+- Build: 39 pages, zero TypeScript errors throughout
+- All commits pushed to origin/main
+
+**Decisions Made:**
+- **Page quality standard established:** Every page must match the proposals/date-night level — dark hero with particle animations (Fireflies/GodRays/Embers), WaveDivider transitions, AI-generated images in cards, hover lift effects, dark CTA footer. See CLAUDE.md Page Quality Standard rule.
+- `/packages` page was identified as the worst page on the site; rebuilt as the reference implementation of the new standard
+- BookingCalendar uses seeded deterministic availability (no backend) — Phase 4 will swap success handler for Acuity embed
+- Optimus pricing page is a demo/sales tool only — must be deleted before client launch
+
+**Known Remaining Page Gaps (need quality upgrade):**
+- `/reviews` — no hero image, flat card layout; needs dark hero + animation treatment
+- `/faq` — light, bare; needs visual hierarchy upgrade
+- `/contact` — functional but plain; needs image + atmosphere
+- `/madison-guide` — good bones but attraction cards need images (generate via fal.ai)
+- `/about` — blocked on client copy, but layout needs full brand treatment when copy arrives
+- `/vip` — hero is plain; needs dark animated hero treatment
+
+**Next Session Starts At:**
+Upgrade remaining pages to quality standard (reviews, faq, contact, madison-guide)
+OR Phase 4 — Conversion Flow Integration (pending Lodgify + Acuity embed codes from client)
+OR Phase 7 — Performance, QA & Launch Prep
+
+**Blockers (unchanged):**
+- Lodgify embed code — pending client
+- Acuity embed code — pending client
+- Printful store ID + real sync product IDs — pending client
+- RESEND_API_KEY + verified Resend domain — pending setup
+- Professional photography (replace AI placeholders before launch)
+
+---
+
 ### Session 5 — 2026-03-31
 **Completed:**
 - Built complete shop architecture: 18 files, 1,937 insertions
@@ -253,6 +295,82 @@ OR Phase 7 — Performance, QA & Launch Prep
 - Acuity embed code (Phase 4) — pending client
 - Professional photography — pending client
 - Printful store ID + real sync product IDs — pending client
+
+---
+
+### Session 7 — 2026-03-31
+**Completed:**
+- Generated 12 AI images via fal.ai Flux (4 accommodations, 3 experiences, 5 blog thumbnails) — scripts/generate-images.ts
+- Wired images sitewide: StayCard (homepage + /stays), stays/[slug] hero (next/image, priority), date-night hero (background at 0.28 opacity), proposals hero (same), PostCard (both featured + standard variants)
+- blog.ts: 5 featuredImage paths updated to generated .webp files
+- next.config.ts: AVIF/WebP formats, deviceSizes aligned to design system, 7-day TTL, compress: true
+- Discovered: BookingCalendar component existed from prior session (not documented in Session 6 progress)
+- Build: 39 pages, zero TypeScript errors
+- Committed: feat(images): wire AI-generated images across all pages + Phase 7 prep (afdfb9a)
+
+**Discovered:**
+- BookingCalendar exists at src/components/ui/BookingCalendar.tsx — interactive date/time/package picker with seeded availability; already wired into date-night page at #book anchor. Not documented in Session 6 log.
+
+**Next Session Starts At:**
+Phase 7 — Performance, QA & Launch Prep (remaining tasks):
+- Lighthouse audit + Core Web Vitals optimization
+- Mobile viewport QA across all pages
+- Push to Vercel + verify deploy
+- SEO audit: verify sitemap.xml, robots.txt, schema markup in prod
+- Remaining client blockers: Lodgify embed, Acuity embed, Printful store IDs, RESEND_API_KEY
+
+**Blockers (unchanged):**
+- Lodgify embed code — pending client
+- Acuity embed code — pending client
+- Printful store ID + real sync product IDs — pending client
+- RESEND_API_KEY + verified Resend domain — pending setup
+- Professional photography (replace AI placeholders before launch)
+
+---
+
+### Session 6 — 2026-03-31
+**Completed:**
+- Built 3-step Proposal Planner form + Experience Finder quiz/funnel: 8 new files, 5 modified
+- `/src/components/forms/ProposalPlannerForm.tsx` — 3-step wizard, AnimatePresence directional slide transitions, per-step validation via RHF `trigger()`, success celebration state
+- `/src/components/forms/FormStepIndicator.tsx` — numbered circles (01/02/03) + Framer Motion animated connector lines, labels collapse on mobile
+- `/src/components/forms/FormField.tsx` — label + input/textarea + error wrapper
+- `/src/components/forms/BrandRadioGroup.tsx` — card-style radio options, checked state via `watch()`, brand-colored selection
+- `/src/components/forms/BrandCheckboxGroup.tsx` — card-style checkboxes, checked state via array includes check
+- `/src/components/sections/ExperienceFinderSection.tsx` — 3-question funnel, auto-advance 180ms delay, 6 routing outcomes, skip logic for Q1 terminal answers and Q2 few-hours-tonight
+- `/src/components/ui/ExperienceFinderTrigger.tsx` — lightweight server component strip linking to `/#find-your-escape`
+- `/src/app/api/proposals/route.ts` — Zod validation → 422; Resend owner notification + auto-reply; graceful degradation if no API key
+- `site.ts` — added `proposalPlanner` key (3 steps, all option arrays, success copy) and `experienceFinder` key (3 questions, 6 result objects, trigger copy per page)
+- `proposals/page.tsx` — replaced #book placeholder + Google Form with `<ProposalPlannerForm />`, added ExperienceFinderTrigger after trust bar
+- `page.tsx` (homepage) — ExperienceFinderSection inserted after Experiences Teaser, before Why WaveDivider; section `id="find-your-escape"`
+- `stays/page.tsx` — ExperienceFinderTrigger added before stays grid
+- `date-night/page.tsx` — ExperienceFinderTrigger added after hero WaveDivider
+- Build: 38 pages, zero TypeScript errors
+- Committed: feat(interactive): add 3-step proposal planner form and experience finder quiz (12656dd)
+- Pushed to origin/main
+
+**Discovered:**
+- Zod v4 + @hookform/resolvers v5.2.2: `z.array(z.string()).default([])` creates input/output type split; fix is `z.input<typeof schema>` for the form type + `zodResolver(schema) as Resolver<FormData>` cast
+- Logged to build-log.md error #3
+
+**Decisions Made:**
+- Experience Finder result routing: romantic-evening/planning-to-propose/just-exploring skip to result immediately (no Q2/Q3); few-hours-tonight skips Q3 → routes to date-night
+- ExperienceFinderTrigger links to `/#find-your-escape` (homepage anchor) — acceptable UX since experience finder lives on homepage; no inter-page duplication
+- Proposal API email: graceful degradation if `RESEND_API_KEY` not set (console log, return 200) — form still submits cleanly in dev without env var
+
+**Known Stubs (must resolve before proposals go live):**
+- `RESEND_API_KEY` env var needed in Vercel for proposal emails to actually send
+- `proposals@enchantedmadison.com` — requires verified domain in Resend dashboard; fallback `onboarding@resend.dev` used for dev
+
+**Next Session Starts At:**
+Phase 7 — Performance, QA & Launch Prep
+OR Phase 4 — Conversion Flow Integration (Lodgify + Acuity embed codes from client)
+
+**Blockers (unchanged):**
+- Lodgify embed code (Phase 4) — pending client
+- Acuity embed code (Phase 4) — pending client
+- Professional photography — pending client
+- Printful store ID + real sync product IDs — pending client
+- `RESEND_API_KEY` + verified Resend domain — pending setup
 
 ---
 

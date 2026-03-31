@@ -122,6 +122,36 @@ description, Open Graph tags, LodgingBusiness schema markup, crawlable text
 (zero content locked in images or iframes), and proper heading hierarchy
 (one H1 per page).
 
+## Page Quality Standard — Non-Negotiable
+Every page on this site must match the visual quality of `/proposals`, `/date-night`,
+and `/packages` (rebuilt Session 8). These are the reference implementations.
+
+**Every page must have ALL of the following:**
+1. **Dark hero** — `var(--bg-dark)` background, `pt-32` top padding, `Fireflies` + `GodRays`
+   particle animations, `ShimmerText` on the H1, eyebrow label in `var(--accent)`
+2. **WaveDivider** — at the bottom of the dark hero transitioning into the content bg color
+3. **AI-generated images** — every card, section, or feature that benefits from photography
+   must have a real generated image via `fal-ai/flux/dev`. No placeholder divs at launch.
+   Add jobs to `scripts/generate-addon-images.ts` (or create a new targeted script) and run it.
+4. **Scroll-triggered animations** — `FadeUp`, `ScaleIn`, or `StaggerContainer` on every
+   content section. Nothing appears without an entrance animation.
+5. **Card hover effects** — lift (`translateY(-4px)`) + shadow deepening on hover.
+   Use `AddonCard` pattern (client wrapper) if the page is a server component.
+6. **Dark CTA footer section** — close every page with `var(--bg-dark)` + `Fireflies` +
+   a clear CTA heading + `Button variant="secondary"`.
+
+**Pages still needing this upgrade (as of Session 8):**
+- `/reviews` — needs dark hero + atmospheric images
+- `/faq` — needs visual hierarchy, possibly a dark intro section
+- `/contact` — needs image + atmospheric hero
+- `/madison-guide` — attraction cards need AI images (generate via fal.ai)
+- `/about` — blocked on client copy; layout must be built to this standard when copy arrives
+- `/vip` — hero is plain; needs dark animated treatment
+
+Do not consider any page "done" until it passes this standard.
+If a page is built quickly as a placeholder (functional but plain), log it in progress.md
+under "Known Remaining Page Gaps" and flag it for a quality pass before launch.
+
 ## Communication Rule
 Be opinionated. Flag tradeoffs. Cite research. When there is a clearly better
 architectural choice, recommend it with justification. When something will break
