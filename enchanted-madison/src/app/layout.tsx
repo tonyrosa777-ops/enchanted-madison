@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Lato, Josefin_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { siteData } from "@/data/site";
+import { Providers } from "@/components/layout/Providers";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -80,7 +81,7 @@ export default function RootLayout({
         className="min-h-full flex flex-col"
         style={{ fontFamily: "var(--font-body)", background: "var(--bg-base)" }}
       >
-        {children}
+        <Providers>{children}</Providers>
         <Analytics />
       </body>
     </html>

@@ -1,0 +1,50 @@
+{
+  "storeId": 0,
+  "products": [
+    {
+      "printful_id": 100001,
+      "slug": "tumbler-under-the-stars",
+      "name": "\"Under the Stars\" Insulated Tumbler",
+      "description": "20oz double-wall insulated tumbler. Keeps drinks hot for 12 hours, cold for 24.",
+      "price": 32.00,
+      "category": "Drinkware",
+      "images": ["/images/shop/tumbler.jpg"]
+    },
+    {
+      "printful_id": 100002,
+      "slug": "camp-mug-enchanted-collective",
+      "name": "The Enchanted Collective Camp Mug",
+      "description": "15oz ceramic mug. Microwave and dishwasher safe.",
+      "price": 18.00,
+      "category": "Drinkware",
+      "images": ["/images/shop/mug.jpg"]
+    },
+    {
+      "printful_id": 100003,
+      "slug": "wild-romantic-tote",
+      "name": "\"Wild & Romantic\" Canvas Tote Bag",
+      "description": "Heavy-duty canvas tote. 15\" x 16\".",
+      "price": 22.00,
+      "category": "Apparel",
+      "images": ["/images/shop/tote.jpg"]
+    },
+    {
+      "printful_id": 100004,
+      "slug": "enchanted-madison-tee",
+      "name": "Enchanted Madison Unisex Tee",
+      "description": "100% cotton unisex t-shirt. Sizes S–2XL.",
+      "price": 28.00,
+      "category": "Apparel",
+      "images": ["/images/shop/tee.jpg"]
+    },
+    {
+      "printful_id": 100005,
+      "slug": "enchanted-collective-hoodie",
+      "name": "The Enchanted Collective Premium Hoodie",
+      "description": "Midweight fleece hoodie. Unisex sizing.",
+      "price": 48.00,
+      "category": "Apparel",
+      "images": ["/images/shop/hoodie.jpg"]
+    }
+  ]
+}
