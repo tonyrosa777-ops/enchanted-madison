@@ -1,6 +1,5 @@
 // sitemap.ts — XML sitemap for enchantedmadison.com
 // Source: progress.md (Site Architecture table — all 15 routes)
-// Excludes /about until host story copy is added (stub page only)
 // Per CLAUDE.md SEO Rule: crawlable structure required on every page
 
 import type { MetadataRoute } from "next";
@@ -69,6 +68,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${base}/contact`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.5,
+    },
+    {
+      url: `${base}/about`,
       lastModified: now,
       changeFrequency: "yearly",
       priority: 0.5,

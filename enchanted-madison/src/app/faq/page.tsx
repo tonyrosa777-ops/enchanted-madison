@@ -10,7 +10,7 @@ import { siteData } from "@/data/site";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "FAQ",
+  title: "Frequently Asked Questions",
   description:
     "Answers to common questions about staying at The Enchanted Collective — hot tubs, bathrooms, pet policy, cancellations, check-in, and more.",
 };
