@@ -5,7 +5,7 @@
 **Business Type:** Luxury glamping and romantic experience property
 **Launch Target:** June 2026
 **Last Updated:** 2026-03-30
-**Current Phase:** Phase 0 — Environment Setup
+**Current Phase:** Phase 1 — Design System & Brand Identity
 
 ---
 
@@ -13,8 +13,8 @@
 
 | Phase | Name | Status |
 |-------|------|--------|
-| 0 | Environment Setup & Strategy | 🔄 In Progress |
-| 1 | Design System & Brand Identity | ⬜ Not Started |
+| 0 | Environment Setup & Strategy | ✅ Complete (pending client: Vercel dashboard, DNS, embed codes) |
+| 1 | Design System & Brand Identity | ✅ Complete |
 | 2 | Site Architecture & Content Planning | ⬜ Not Started |
 | 3 | Core Pages Build | ⬜ Not Started |
 | 4 | Conversion Flow Integration | ⬜ Not Started |
@@ -102,17 +102,18 @@ These are required by this client but not in website-build-template.md. Each nee
 
 ## Phase 1 — Design System & Brand Identity
 
-### Proposed Task List
-1. Install and configure Google Fonts in layout.tsx (Cormorant Garamond + Lato + Josefin Sans)
-2. Build globals.css with all CSS custom properties from design-system.md
-3. Configure Tailwind CSS 4 to reference CSS custom properties (no hardcoded values)
-4. Build Button component (primary, secondary, ghost variants)
-5. Build Card component (stay card, experience card variants)
-6. Build SiteHeader with transparent → solid scroll behavior
-7. Build SiteFooter with links, contact info, social icons
-8. Build PageShell (layout wrapper with header/footer)
-9. Verify fonts render correctly at all breakpoints
-10. Commit: `feat(design-system): implement brand tokens, typography, and core components`
+### Task List
+1. ✅ Install and configure Google Fonts in layout.tsx (Cormorant Garamond + Lato + Josefin Sans)
+2. ✅ Build globals.css with all CSS custom properties from design-system.md
+3. ✅ Configure Tailwind CSS 4 to reference CSS custom properties (no hardcoded values)
+4. ✅ Build Button component (primary, secondary, ghost, ghost-light variants) — `/components/ui/Button.tsx`
+5. ✅ Build Card components (StayCard + ExperienceCard) — `/components/ui/StayCard.tsx`, `/components/ui/ExperienceCard.tsx`
+6. ✅ Build SiteHeader with transparent → solid scroll behavior + mobile slide-out menu — `/components/layout/SiteHeader.tsx`
+7. ✅ Build SiteFooter with 4-col layout, links, contact, dark bg — `/components/layout/SiteFooter.tsx`
+8. ✅ PageShell integration verified (SiteHeader + SiteFooter compose correctly)
+9. ✅ Homepage replaced: hero placeholder, stays grid, experiences teaser, reviews, drive times, VIP CTA
+10. ✅ Build passes: zero TypeScript errors. metadataBase added to layout.tsx.
+11. ✅ Committed: `feat(design-system): implement brand tokens, typography, and core components` (f5a2ac5)
 
 ---
 
@@ -151,3 +152,32 @@ Phase 1 — Design System Implementation. Run /prime to reload context, then exe
 - Acuity Scheduling embed code needed from client (Phase 4)
 - Professional photography needed before launch (Phase 7)
 - Host story copy needed from Angela & Marc (Phase 3 — About page)
+
+### Session 2 — 2026-03-30
+**Completed:**
+- /prime executed: all 8 files loaded, full session debrief delivered
+- Phase 1 fully implemented: Button, StayCard, ExperienceCard, SiteHeader, SiteFooter, homepage
+- Build passes: zero TypeScript errors, 16 static pages generated
+- Committed: feat(design-system): implement brand tokens, typography, and core components (f5a2ac5)
+
+**Discovered:**
+- ui/ components directory was empty — Button and Card components were Phase 1 stubs
+- SiteHeader and SiteFooter were TODO stubs — implemented with full design-system.md spec
+- Homepage was still the default Next.js scaffold — replaced with full branded homepage
+- metadataBase warning from layout.tsx — fixed with enchantedmadison.com base URL
+- ScaleIn, FadeUp, StaggerContainer animations are fully implemented from Session 1
+
+**Decisions Made:**
+- Homepage hero uses bg-dark as placeholder (no orbs/particles per anti-pattern #13) until real photography arrives
+- ExperienceCard uses secondary (rose) CTA per design-system.md §5 to distinguish from stay CTAs
+- SiteFooter uses hardcoded link groups (not from site.ts footer.links) for better structural control — flagged for refactor if needed
+
+**Next Session Starts At:**
+Phase 2 — Site Architecture & Content Planning. Run /prime to reload context.
+Task: Build individual /stays/[slug] property pages with full copy from initial-business-data.md §4.
+
+**Blockers:**
+- Lodgify embed code (Phase 4) — pending client
+- Acuity Scheduling embed code (Phase 4) — pending client
+- Professional photography (Phase 7) — pending client
+- Host story copy for /about (Phase 3) — pending Angela & Marc
