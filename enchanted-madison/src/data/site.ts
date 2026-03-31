@@ -74,8 +74,8 @@ export const siteData = {
     headline: "Where Romance Meets the Wild",
     subheadline:
       "Luxury glamping, private hot tubs, and curated experiences in the woods — minutes from Clifty Falls and historic downtown Madison.",
-    ctaPrimary: { label: "Explore Our Stays", href: "/stays" },
-    ctaSecondary: { label: "Plan Your Escape", href: "/date-night" },
+    ctaPrimary: { label: "Make It Unforgettable", href: "/packages" },
+    ctaSecondary: { label: "Find My Escape \u2192", href: "/#find-your-escape" },
     trustCopy: "The only private hot tub glamping retreat in southern Indiana",
   },
 
@@ -576,38 +576,38 @@ export const siteData = {
   experienceFinder: {
     section: {
       eyebrow: "Find Your Escape",
-      heading: "Not Sure Where to Start?",
-      subheading: "Answer three quick questions and we\u2019ll point you to the perfect experience.",
-      startCta: "Find My Escape \u2192",
+      heading: "What Kind of Night Are You Imagining?",
+      subheading: "Three questions. We\u2019ll match you to exactly the right experience \u2014 no browsing, no guesswork.",
+      startCta: "Yes \u2014 Show Me Mine \u2192",
     },
     questions: [
       {
         id: "q1",
-        question: "What brings you here?",
+        question: "What are you dreaming of?",
         options: [
-          { value: "romantic-evening", label: "A romantic evening", detail: "2\u20133 hours of candlelight and warm water" },
-          { value: "planning-to-propose", label: "Planning to propose", detail: "We handle every detail of the setup" },
-          { value: "need-a-getaway", label: "We need a getaway", detail: "An overnight escape in the woods" },
-          { value: "just-exploring", label: "Just exploring", detail: "Curious what this place is all about" },
+          { value: "romantic-evening", label: "A romantic evening for two", detail: "Candlelight, warm water, and a few hours just for you" },
+          { value: "planning-to-propose", label: "I\u2019m going to propose", detail: "We build the moment \u2014 you just say the words" },
+          { value: "need-a-getaway", label: "We need to escape", detail: "An overnight in the woods, disconnected from everything" },
+          { value: "just-exploring", label: "I\u2019m still deciding", detail: "No pressure \u2014 let us show you what we\u2019ve got" },
         ],
       },
       {
         id: "q2",
-        question: "How long?",
+        question: "How much time are you giving yourselves?",
         options: [
-          { value: "few-hours-tonight", label: "A few hours tonight", detail: "Hot tub, fireside lounge, then home" },
+          { value: "few-hours-tonight", label: "A few stolen hours tonight", detail: "Hot tub, fireside lounge, and home before midnight" },
           { value: "one-perfect-night", label: "One perfect night", detail: "Check in, unplug, check out renewed" },
-          { value: "two-or-more-nights", label: "Two or more nights", detail: "Really slow down and settle in" },
+          { value: "two-or-more-nights", label: "Two nights or more", detail: "Long enough to actually unwind" },
         ],
       },
       {
         id: "q3",
-        question: "What matters most?",
+        question: "When you picture it, what feels right?",
         options: [
-          { value: "total-privacy", label: "Total privacy", detail: "No neighbors, no schedules, no noise" },
-          { value: "every-detail-handled", label: "Every detail handled", detail: "Arrive and find it all set up" },
-          { value: "out-in-nature", label: "Out in nature", detail: "Trees, stars, and open air" },
-          { value: "maximum-luxury", label: "Maximum luxury", detail: "The finest version of everything" },
+          { value: "total-privacy", label: "Just the two of us", detail: "No neighbors, no schedules \u2014 completely ours" },
+          { value: "every-detail-handled", label: "Everything handled for us", detail: "Arrive and find it already perfect" },
+          { value: "out-in-nature", label: "Out in the woods, under the stars", detail: "Trees, firelight, and open air" },
+          { value: "maximum-luxury", label: "Pull out all the stops", detail: "The most luxurious version of this night" },
         ],
       },
     ] as const,
