@@ -1,4 +1,4 @@
-// ExperienceFinderTrigger — lightweight strip linking to the homepage Experience Finder section
+// ExperienceFinderTrigger — lightweight strip linking to /find-your-escape quiz page
 // Server component — no interactivity needed
 
 import Link from "next/link";
@@ -26,7 +26,7 @@ export function ExperienceFinderTrigger({ triggerText, className = "" }: Experie
           {text}
         </p>
         <Link
-          href="/#find-your-escape"
+          href="/find-your-escape"
           className="text-sm font-bold transition-opacity hover:opacity-70 flex-shrink-0"
           style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.06em", color: "var(--primary)" }}
         >

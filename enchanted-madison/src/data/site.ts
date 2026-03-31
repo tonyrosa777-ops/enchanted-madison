@@ -573,6 +573,73 @@ export const siteData = {
     },
   },
 
+  // Dedicated /find-your-escape page — full quiz with lead capture
+  findYourEscape: {
+    hero: {
+      eyebrow: "Your Personalized Experience",
+      heading: "What Kind of Night Are You Imagining?",
+      subheading: "Answer a few questions and we'll match you to the perfect experience — then send a personalized recommendation straight to your inbox.",
+    },
+    steps: [
+      {
+        id: "occasion",
+        question: "What's the occasion?",
+        options: [
+          { value: "anniversary", label: "Anniversary", detail: "Celebrating time together" },
+          { value: "birthday", label: "Birthday", detail: "Make their day unforgettable" },
+          { value: "proposal", label: "I'm going to propose", detail: "We handle every detail" },
+          { value: "girls-night", label: "Girls night out", detail: "Just the crew, no agenda" },
+          { value: "first-date", label: "First date", detail: "Start with something extraordinary" },
+          { value: "just-us", label: "No reason needed", detail: "We believe in that" },
+        ],
+      },
+      {
+        id: "experience",
+        question: "What kind of experience?",
+        options: [
+          { value: "evening", label: "An evening escape", detail: "2–4 hours, home before midnight" },
+          { value: "one-night", label: "One perfect night", detail: "Check in, unplug, check out renewed" },
+          { value: "few-nights", label: "A few nights away", detail: "Long enough to actually unwind" },
+          { value: "undecided", label: "Not sure yet", detail: "Show us both options" },
+        ],
+      },
+      {
+        id: "priority",
+        question: "What matters most?",
+        options: [
+          { value: "privacy", label: "Total privacy", detail: "Just us — no neighbors, no schedules" },
+          { value: "luxury", label: "Luxury & pampering", detail: "Every detail handled before we arrive" },
+          { value: "nature", label: "Out in the woods", detail: "Stars, fire, and fresh air" },
+          { value: "romance", label: "Pure romance", detail: "Petals, candles, the whole thing" },
+        ],
+      },
+      {
+        id: "timeline",
+        question: "When are you thinking?",
+        options: [
+          { value: "this-weekend", label: "This weekend", detail: "Let's make it happen fast" },
+          { value: "this-month", label: "Within a month", detail: "Some planning runway" },
+          { value: "few-months", label: "1–3 months out", detail: "Plenty of time to perfect it" },
+          { value: "just-looking", label: "Just exploring", detail: "No timeline, no pressure" },
+        ],
+      },
+    ] as const,
+    contactStep: {
+      question: "Almost there — where should we send your recommendation?",
+      namePlaceholder: "Your first name",
+      emailPlaceholder: "Email address",
+      notePlaceholder: "Anything else you'd like us to know? (optional)",
+      submitLabel: "Send My Recommendation →",
+    },
+    success: {
+      eyebrow: "On its way to your inbox",
+      heading: "Here's Your Perfect Match",
+      body: "We've sent a personalized note to your email. Ready to lock in the date? Book a quick discovery call and we'll walk you through every detail.",
+      callLabel: "Book a Discovery Call",
+      callHref: "/contact",
+    },
+  },
+
   experienceFinder: {
     section: {
       eyebrow: "Find Your Escape",
