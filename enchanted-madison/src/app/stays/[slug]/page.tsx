@@ -24,9 +24,16 @@ export async function generateMetadata({
   const { slug } = await params;
   const stay = siteData.stays.find((s) => s.slug === slug);
   if (!stay) return {};
+  const title = stay.name;
+  const description = `${stay.tagline} From $${stay.priceFrom}/night near Madison, Indiana. Private hot tub, fire pit, string lights.`;
   return {
-    title: stay.name,
-    description: stay.description,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: `https://enchantedmadison.com/stays/${stay.slug}`,
+    },
   };
 }
 

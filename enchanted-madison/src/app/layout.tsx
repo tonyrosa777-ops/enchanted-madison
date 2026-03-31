@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Lato, Josefin_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { siteData } from "@/data/site";
 
@@ -32,10 +33,36 @@ export const metadata: Metadata = {
   },
   description: siteData.seo.defaultDescription,
   openGraph: {
-    title: siteData.seo.defaultTitle,
+    title: {
+      template: siteData.seo.titleTemplate,
+      default: siteData.seo.defaultTitle,
+    },
     description: siteData.seo.defaultDescription,
     siteName: siteData.name,
-    images: [{ url: siteData.seo.ogImage }],
+    type: "website",
+    locale: "en_US",
+    url: "https://enchantedmadison.com",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: `${siteData.name} — Luxury Glamping near Madison, Indiana`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: {
+      template: siteData.seo.titleTemplate,
+      default: siteData.seo.defaultTitle,
+    },
+    description: siteData.seo.defaultDescription,
+    images: ["/opengraph-image"],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -54,6 +81,7 @@ export default function RootLayout({
         style={{ fontFamily: "var(--font-body)", background: "var(--bg-base)" }}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );

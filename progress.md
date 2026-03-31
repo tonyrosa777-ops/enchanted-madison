@@ -5,7 +5,7 @@
 **Business Type:** Luxury glamping and romantic experience property
 **Launch Target:** June 2026
 **Last Updated:** 2026-03-30
-**Current Phase:** Phase 4 — Conversion Flow Integration (blocked on client embed codes)
+**Current Phase:** Phase 7 — Performance, QA & Launch Prep
 
 ---
 
@@ -19,7 +19,7 @@
 | 3 | Core Pages Build | ✅ Complete (pending /about — awaiting client copy) |
 | 4 | Conversion Flow Integration | ⬜ Not Started |
 | 5 | Secondary Pages & Content | ✅ Complete |
-| 6 | SEO, Schema & Analytics | ⬜ Not Started |
+| 6 | SEO, Schema & Analytics | ✅ Complete |
 | 7 | Performance, QA & Launch Prep | ⬜ Not Started |
 
 ---
@@ -114,6 +114,24 @@ These are required by this client but not in website-build-template.md. Each nee
 9. ✅ Homepage replaced: hero placeholder, stays grid, experiences teaser, reviews, drive times, VIP CTA
 10. ✅ Build passes: zero TypeScript errors. metadataBase added to layout.tsx.
 11. ✅ Committed: `feat(design-system): implement brand tokens, typography, and core components` (f5a2ac5)
+
+---
+
+## Phase 6 — SEO, Schema & Analytics
+
+### Status: ✅ Complete
+
+### Task List
+1. ✅ Installed `@vercel/analytics` — `<Analytics />` added to layout.tsx
+2. ✅ Layout OG template fixed — `openGraph.title` now uses template so all pages inherit their page title in OG
+3. ✅ Twitter card metadata added to layout
+4. ✅ `sitemap.ts` — 14 routes with priority/changeFrequency, auto-generates from siteData.stays
+5. ✅ `robots.ts` — allows all, disallows /api/, points to sitemap.xml
+6. ✅ `opengraph-image.tsx` — branded dynamic OG image (deep green bg, gold accent, serif type)
+7. ✅ Homepage — LodgingBusiness + VacationRental JSON-LD schema with address, geo, amenities, aggregateRating
+8. ✅ `/stays/[slug]` — generateMetadata now includes `openGraph` with stay-specific title/description/url
+9. ✅ `/about` — built with available copy (brand intro §1, values, review quote); host story pending client
+10. ✅ Build verified: 22 pages, zero TS errors. `/sitemap.xml` and `/robots.txt` in build output.
 
 ---
 

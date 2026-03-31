@@ -2,6 +2,7 @@
 // Server Component. All copy from /data/site.ts (zero hard-coded strings).
 // Design: design-system.md. Layout: website-build-template.md §1 (Hero).
 // Anti-pattern #13: no particle systems or orbs on hero — photo/video drives it.
+// SEO: LodgingBusiness schema per CLAUDE.md SEO Rule + market-intelligence.md §9 local SEO.
 
 import { PageShell } from "@/components/layout/PageShell";
 import { Button } from "@/components/ui/Button";
@@ -10,6 +11,49 @@ import { FadeUp } from "@/components/animations/FadeUp";
 import { StaggerContainer } from "@/components/animations/StaggerContainer";
 import { ScaleIn } from "@/components/animations/ScaleIn";
 import { siteData } from "@/data/site";
+
+// LodgingBusiness + VacationRental schema
+// Source: market-intelligence.md §9 (LodgingBusiness primary + VacationRental secondary)
+const businessSchema = {
+  "@context": "https://schema.org",
+  "@type": ["LodgingBusiness", "VacationRental"],
+  name: siteData.name,
+  url: `https://${siteData.domain}`,
+  telephone: siteData.phone,
+  email: siteData.email,
+  description: siteData.description,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "2175 North K Road",
+    addressLocality: "Madison",
+    addressRegion: "IN",
+    postalCode: "47250",
+    addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 38.7309,
+    longitude: -85.3830,
+  },
+  amenityFeature: [
+    { "@type": "LocationFeatureSpecification", name: "Private hot tub", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Fire pit", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Free parking", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Air conditioning", value: true },
+    { "@type": "LocationFeatureSpecification", name: "BBQ grills", value: true },
+  ],
+  priceRange: "$$",
+  currenciesAccepted: "USD",
+  openingHours: "Mo-Su 00:00-23:59",
+  checkinTime: "16:00",
+  checkoutTime: "10:00",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5",
+    reviewCount: String(siteData.reviews.length),
+    bestRating: "5",
+  },
+};
 
 // Star rating display
 function StarRating({ rating }: { rating: number }) {
@@ -23,6 +67,10 @@ function StarRating({ rating }: { rating: number }) {
 export default function HomePage() {
   return (
     <PageShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }}
+      />
       {/* ================================================================
           HERO — Full viewport. Placeholder bg until professional video/
           photography arrives. Swap background-image here when ready.
