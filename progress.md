@@ -4,8 +4,8 @@
 **Client:** The Enchanted Collective | Madison, Indiana
 **Business Type:** Luxury glamping and romantic experience property
 **Launch Target:** June 2026
-**Last Updated:** 2026-03-30
-**Current Phase:** Phase 7 — Performance, QA & Launch Prep
+**Last Updated:** 2026-03-31
+**Current Phase:** Phase 4 blocked (client embeds pending) → Phase 7 next
 
 ---
 
@@ -16,7 +16,7 @@
 | 0 | Environment Setup & Strategy | ✅ Complete (pending client: Vercel dashboard, DNS, embed codes) |
 | 1 | Design System & Brand Identity | ✅ Complete |
 | 2 | Site Architecture & Content Planning | ✅ Complete |
-| 3 | Core Pages Build | ✅ Complete (pending /about — awaiting client copy) |
+| 3 | Core Pages Build | ✅ Complete |
 | 4 | Conversion Flow Integration | ⬜ Not Started |
 | 5 | Secondary Pages & Content | ✅ Complete |
 | 6 | SEO, Schema & Analytics | ✅ Complete |
@@ -179,6 +179,34 @@ Site map defined in Session 1 (15 routes). All routes listed in Site Architectur
 ---
 
 ## Session Log
+
+### Session 4 — 2026-03-31
+**Completed:**
+- /prime executed: all 8 files loaded, current state assessed
+- Fixed progress.md header (was incorrectly set to Phase 7 — corrected to reflect actual state)
+- Homepage production upgrade: added trust strip (hero → stays) and "Why Enchanted Madison?" differentiator section (experiences → reviews)
+- Both sections copy-sourced from market-intelligence.md §8 "Trust builder for pre-launch" — no improvised content
+- Build verified: 22 pages, zero TypeScript errors (765addd)
+- Phase 3 marked complete
+
+**Discovered:**
+- Homepage was already structurally solid from Session 2/3 — hero, stays, experiences, reviews, location, VIP all built. The "upgrade" gap was two sections called out specifically in market-intelligence.md §8 that weren't implemented.
+
+**Decisions Made:**
+- Trust strip uses `--bg-elevated` + Josefin Sans uppercase to distinguish it from sections without adding visual weight
+- Why Us section uses `--bg-dark` to create contrast before the reviews section and match the drive-times dark section pattern
+
+**Next Session Starts At:**
+Phase 7 — Performance, QA & Launch Prep (Phase 4 remains blocked on client embed codes).
+Start with: Lighthouse audit, mobile 390px QA pass, internal link check, image alt text audit.
+
+**Blockers:**
+- Lodgify embed code (Phase 4) — pending Angela & Marc
+- Acuity Scheduling embed code (Phase 4) — pending Angela & Marc
+- Professional photography (Phase 7) — pending client
+- Host story copy for /about — pending Angela & Marc
+
+---
 
 ### Session 1 — 2026-03-30
 **Completed:**
