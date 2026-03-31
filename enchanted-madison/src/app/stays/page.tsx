@@ -28,7 +28,7 @@ export default function StaysPage() {
       {/* Page hero */}
       <section
         className="pt-32 pb-16 px-4 text-center"
-        style={{ background: "var(--bg-base)" }}
+        style={{ background: "var(--bg-dark)" }}
       >
         <FadeUp>
           <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>
@@ -40,14 +40,14 @@ export default function StaysPage() {
               fontFamily: "var(--font-display)",
               fontWeight: 600,
               fontSize: "clamp(40px, 6vw, 64px)",
-              color: "var(--text-primary)",
+              color: "var(--text-on-dark)",
             }}
           >
             Where You&rsquo;ll Stay
           </h1>
           <p
             className="max-w-xl mx-auto text-base leading-relaxed"
-            style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
+            style={{ fontFamily: "var(--font-body)", color: "rgba(254,252,250,0.72)" }}
           >
             Four distinct accommodations, each thoughtfully curated for couples.
             Every overnight stay includes a private hot tub, fire pit, and
@@ -68,7 +68,7 @@ export default function StaysPage() {
                 </p>
                 <p
                   className="text-xs mt-0.5"
-                  style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
+                  style={{ fontFamily: "var(--font-body)", color: "rgba(254,252,250,0.55)" }}
                 >
                   {h.detail}
                 </p>
