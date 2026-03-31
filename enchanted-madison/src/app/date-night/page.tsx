@@ -29,13 +29,21 @@ const experienceFlow = [
     title: "Private Hot Tub Soak",
     duration: "1 hour",
     detail: "Candlelit hot tub, soft music, gas fire table, warm water under an open sky. Your space, no one else.",
+    image: "/images/date-night/hot-tub-soak.webp",
   },
   {
     step: "02",
     title: "Fireside Lounge",
     duration: "1 hour",
     detail: "Plush leather seating, electric fireplace, luxury massage chair, spa water station, and a coffee bar with flavored syrups.",
+    image: "/images/date-night/fireside-lounge.webp",
   },
+];
+
+const pkgImages = [
+  "/images/date-night/pkg-tranquility.webp",
+  "/images/date-night/pkg-luxury.webp",
+  "/images/date-night/pkg-ultimate.webp",
 ];
 
 export default function DateNightPage() {
@@ -98,19 +106,37 @@ export default function DateNightPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {experienceFlow.map((step, i) => (
               <ScaleIn key={step.step} delay={i * 0.1}>
-                <div className="rounded-2xl p-7 flex flex-col gap-3" style={{ background: "var(--bg-card)" }}>
-                  <span className="text-4xl font-light" style={{ fontFamily: "var(--font-display)", color: "var(--accent)" }}>
-                    {step.step}
-                  </span>
-                  <div>
-                    <p className="eyebrow text-[11px] mb-1" style={{ color: "var(--text-secondary)" }}>{step.duration}</p>
+                <div className="rounded-2xl overflow-hidden flex flex-col" style={{ background: "var(--bg-card)" }}>
+                  {/* Image */}
+                  <div className="relative h-52 flex-shrink-0">
+                    <Image
+                      src={step.image}
+                      alt={step.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div
+                      className="absolute inset-0"
+                      style={{ background: "linear-gradient(to bottom, transparent 40%, rgba(10,8,6,0.55) 100%)" }}
+                    />
+                    <span
+                      className="absolute bottom-4 left-5 text-5xl font-light"
+                      style={{ fontFamily: "var(--font-display)", color: "var(--accent)", lineHeight: 1 }}
+                    >
+                      {step.step}
+                    </span>
+                  </div>
+                  {/* Text */}
+                  <div className="p-7 flex flex-col gap-2">
+                    <p className="eyebrow text-[11px]" style={{ color: "var(--text-secondary)" }}>{step.duration}</p>
                     <h3 className="text-xl" style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "var(--text-primary)" }}>
                       {step.title}
                     </h3>
+                    <p className="text-sm leading-relaxed" style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}>
+                      {step.detail}
+                    </p>
                   </div>
-                  <p className="text-sm leading-relaxed" style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}>
-                    {step.detail}
-                  </p>
                 </div>
               </ScaleIn>
             ))}
@@ -135,40 +161,61 @@ export default function DateNightPage() {
               return (
                 <ScaleIn key={pkg.name} delay={i * 0.1}>
                   <div
-                    className="rounded-2xl p-6 flex flex-col gap-4 h-full transition-shadow duration-300 hover:shadow-lg"
-                    style={{ background: isFeatured ? "var(--primary)" : "var(--bg-card)", border: isFeatured ? "none" : "1px solid var(--primary-muted)" }}
+                    className="rounded-2xl overflow-hidden flex flex-col h-full transition-shadow duration-300 hover:shadow-xl"
+                    style={{ border: isFeatured ? "2px solid var(--accent)" : "1px solid var(--primary-muted)" }}
                   >
-                    {pkg.badge && (
-                      <span
-                        className="eyebrow text-[10px] px-3 py-1 rounded-full self-start"
-                        style={{ background: isFeatured ? "rgba(254,252,250,0.15)" : "var(--accent)", color: "var(--text-on-dark)" }}
-                      >
-                        {pkg.badge}
-                      </span>
-                    )}
-                    <div>
-                      <p className="eyebrow text-[11px] mb-1" style={{ color: isFeatured ? "rgba(184,150,90,0.9)" : "var(--text-secondary)" }}>
-                        {pkg.tier} · {pkg.duration}
-                      </p>
-                      <h3 className="text-xl leading-tight" style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: isFeatured ? "var(--text-on-dark)" : "var(--text-primary)" }}>
-                        {pkg.name}
-                      </h3>
+                    {/* Image header */}
+                    <div className="relative h-44 flex-shrink-0">
+                      <Image
+                        src={pkgImages[i]}
+                        alt={pkg.name}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                      <div
+                        className="absolute inset-0"
+                        style={{ background: "linear-gradient(to bottom, rgba(10,8,6,0.2) 0%, rgba(10,8,6,0.6) 100%)" }}
+                      />
+                      {pkg.badge && (
+                        <span
+                          className="absolute top-4 left-4 eyebrow text-[10px] px-3 py-1 rounded-full"
+                          style={{ background: isFeatured ? "var(--accent)" : "rgba(10,8,6,0.7)", color: isFeatured ? "var(--bg-dark)" : "var(--text-on-dark)", border: isFeatured ? "none" : "1px solid rgba(254,252,250,0.3)" }}
+                        >
+                          {pkg.badge}
+                        </span>
+                      )}
+                      <div className="absolute bottom-4 left-5 right-5">
+                        <p className="eyebrow text-[10px] mb-0.5" style={{ color: "rgba(254,252,250,0.6)" }}>
+                          {pkg.tier} · {pkg.duration}
+                        </p>
+                        <h3 className="text-xl leading-tight" style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "var(--text-on-dark)" }}>
+                          {pkg.name}
+                        </h3>
+                      </div>
                     </div>
-                    <p className="text-2xl font-semibold" style={{ fontFamily: "var(--font-display)", color: "var(--accent)" }}>
-                      From ${pkg.price}
-                      <span className="text-sm font-normal ml-1" style={{ color: isFeatured ? "rgba(254,252,250,0.6)" : "var(--text-secondary)" }}>/couple</span>
-                    </p>
-                    <ul className="flex flex-col gap-2 flex-1">
-                      {pkg.includes.map((item) => (
-                        <li key={item} className="flex items-start gap-2 text-sm" style={{ fontFamily: "var(--font-body)", color: isFeatured ? "rgba(254,252,250,0.85)" : "var(--text-secondary)" }}>
-                          <span style={{ color: "var(--accent)", flexShrink: 0 }}>✦</span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                    <Button variant={isFeatured ? "ghost-light" : "primary"} size="sm" href="#book" className="w-full mt-2">
-                      Book This Escape
-                    </Button>
+
+                    {/* Content */}
+                    <div
+                      className="p-6 flex flex-col gap-4 flex-1"
+                      style={{ background: isFeatured ? "var(--primary)" : "var(--bg-card)" }}
+                    >
+                      <p className="text-2xl font-semibold" style={{ fontFamily: "var(--font-display)", color: "var(--accent)" }}>
+                        From ${pkg.price}
+                        <span className="text-sm font-normal ml-1" style={{ color: isFeatured ? "rgba(254,252,250,0.55)" : "var(--text-secondary)" }}>/couple</span>
+                      </p>
+                      <ul className="flex flex-col gap-2 flex-1">
+                        {pkg.includes.map((item) => (
+                          <li key={item} className="flex items-start gap-2 text-sm" style={{ fontFamily: "var(--font-body)", color: isFeatured ? "rgba(254,252,250,0.85)" : "var(--text-secondary)" }}>
+                            <span style={{ color: "var(--accent)", flexShrink: 0 }}>✦</span>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                      <Button variant={isFeatured ? "ghost-light" : "primary"} size="sm" href="#book" className="w-full mt-2">
+                        Book This Escape
+                      </Button>
+                    </div>
                   </div>
                 </ScaleIn>
               );
