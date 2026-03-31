@@ -5,7 +5,7 @@
 **Business Type:** Luxury glamping and romantic experience property
 **Launch Target:** June 2026
 **Last Updated:** 2026-03-30
-**Current Phase:** Phase 3 — Core Pages Build (In Progress)
+**Current Phase:** Phase 4 — Conversion Flow Integration (blocked on client embed codes)
 
 ---
 
@@ -18,7 +18,7 @@
 | 2 | Site Architecture & Content Planning | ✅ Complete |
 | 3 | Core Pages Build | ✅ Complete (pending /about — awaiting client copy) |
 | 4 | Conversion Flow Integration | ⬜ Not Started |
-| 5 | Secondary Pages & Content | ⬜ Not Started |
+| 5 | Secondary Pages & Content | ✅ Complete |
 | 6 | SEO, Schema & Analytics | ⬜ Not Started |
 | 7 | Performance, QA & Launch Prep | ⬜ Not Started |
 
@@ -114,6 +114,19 @@ These are required by this client but not in website-build-template.md. Each nee
 9. ✅ Homepage replaced: hero placeholder, stays grid, experiences teaser, reviews, drive times, VIP CTA
 10. ✅ Build passes: zero TypeScript errors. metadataBase added to layout.tsx.
 11. ✅ Committed: `feat(design-system): implement brand tokens, typography, and core components` (f5a2ac5)
+
+---
+
+## Phase 5 — Secondary Pages & Content
+
+### Status: ✅ Complete
+
+### Task List
+1. ✅ `site.ts` — added `faq` array (4 categories, 14 Q&A) and `madisonGuide` object (5 attractions with tips)
+2. ✅ `/packages` page — 5 add-on cards (icon, tag, description, price), 3-step checkout explainer, CTA
+3. ✅ `/faq` page — native `<details>`/`<summary>` accordion, 4 grouped sections, FAQPage JSON-LD schema
+4. ✅ `/madison-guide` page — dark hero with drive times, 5 attraction cards with tips, "more coming" section, TouristAttraction JSON-LD schema
+5. ✅ Build verified: 20 pages, zero TypeScript errors
 
 ---
 

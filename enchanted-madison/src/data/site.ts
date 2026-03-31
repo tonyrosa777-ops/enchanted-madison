@@ -333,6 +333,155 @@ export const siteData = {
     { from: "Downtown Madison", minutes: 5 },
   ],
 
+  // FAQ
+  // Source: initial-business-data.md §3 (amenities), §4 (accommodations), §8 (policies)
+  // Steal: Firelight Camps FAQ model (market-intelligence.md §7) — address first-timer anxiety
+  faq: [
+    {
+      category: "The Hot Tubs",
+      questions: [
+        {
+          q: "Is the hot tub actually private?",
+          a: "Yes. Every overnight accommodation (The Enchanted Cottage and The Velvet Buck) has its own dedicated private hot tub — no sharing, no scheduling, no other guests nearby. Hot tub experiences booked as standalone packages also have exclusive reserved access for your time slot.",
+        },
+        {
+          q: "Can we use the hot tub in winter?",
+          a: "Yes. The hot tubs are heated and available year-round. Soaking in warm water while snow dusts the trees is one of the most popular winter experiences we offer.",
+        },
+        {
+          q: "Are there any hot tub rules we should know?",
+          a: "Guests under 18 are not permitted in the hot tubs. Shower before entering. No oils, soaps, bath bombs, or additives in the water. No glass in or around the hot tub. Please secure the cover after each use and reset the temperature to 99°F at checkout. Misuse requiring a service call is subject to a $250 flat fee.",
+        },
+      ],
+    },
+    {
+      category: "The Accommodations",
+      questions: [
+        {
+          q: "Is there a private bathroom?",
+          a: "The Enchanted Cottage has a private, spa-inspired bathroom inside the unit. The Velvet Buck tent has access to a nearby bathhouse with restrooms and showers. Both Curated Campsite options also have access to shower and bathroom facilities on the property.",
+        },
+        {
+          q: "Do I need to bring anything for my stay?",
+          a: "The Enchanted Cottage is fully stocked — linens, towels, kitchen supplies, coffee, and a cocktail bar are all ready for your arrival. The Velvet Buck will be similarly curated when it opens. The Bell Tent campsite requires guests to bring their own bedding and sleeping gear. The BYOT campsite requires your own tent, bedding, and all camping gear.",
+        },
+        {
+          q: "Is the glamping tent weatherproof?",
+          a: "Yes. Canvas glamping tents are designed to handle rain, wind, and temperature shifts. The Velvet Buck includes a private deck and is positioned on an elevated platform. We recommend checking your reservation confirmation for any weather-specific notes from Angela & Marc.",
+        },
+        {
+          q: "Is there electricity in the tents?",
+          a: "The Enchanted Cottage is fully powered with standard electrical outlets. The Velvet Buck glamping tent and campsite areas are designed to preserve the nature-immersive experience — details on power access will be confirmed in your arrival instructions.",
+        },
+        {
+          q: "Can I bring my dog?",
+          a: "Dogs are welcome at the Curated Campsite — Bell Tent option. Pets are not permitted at The Enchanted Cottage, The Velvet Buck, or any hot tub experience booking. Maximum 1 dog per site; quiet hours apply to pets as well.",
+        },
+      ],
+    },
+    {
+      category: "Booking & Policies",
+      questions: [
+        {
+          q: "What is the minimum age to book?",
+          a: "The primary booking guest must be 25 years of age or older and must remain on property for the full duration of the stay. Valid government-issued ID may be required at check-in.",
+        },
+        {
+          q: "What are check-in and check-out times?",
+          a: "Check-in is at 4:00 PM. Check-out is at 10:00 AM. Early check-in and late check-out may be available on request depending on availability — please ask when booking. Unauthorized late check-out is subject to a $75 flat fee.",
+        },
+        {
+          q: "How does check-in work?",
+          a: "All check-ins are contactless self check-in. Access codes and detailed arrival instructions are sent to you 48 hours before your stay. There is no staffed front desk — Angela & Marc are available by phone or message throughout your stay.",
+        },
+        {
+          q: "What is the cancellation policy?",
+          a: "For cottages, glamping tents, and hot tub experiences: 100% refund if cancelled 30+ days before arrival; 50% refund if cancelled 14–29 days before arrival; non-refundable within 14 days. For tent campsites: 100% refund if cancelled 14+ days before arrival; 50% refund 7–13 days before; non-refundable within 7 days. No refunds for early departures or unused nights.",
+        },
+        {
+          q: "Is there a security deposit?",
+          a: "For direct bookings, a $300 refundable hold is placed on your card 48 hours before arrival and released within 3 days after checkout, pending a standard inspection. Airbnb and OTA reservations follow the respective platform's damage protection process.",
+        },
+        {
+          q: "Are there quiet hours?",
+          a: "Quiet hours are 10:00 PM to 8:00 AM and are strictly enforced. This applies to music, outdoor areas, hot tubs, decks, and elevated conversation. Guests are here for peace — we take this seriously.",
+        },
+      ],
+    },
+    {
+      category: "Location & Getting Here",
+      questions: [
+        {
+          q: "How far is it from Louisville, Cincinnati, and Indianapolis?",
+          a: "The Enchanted Collective is approximately 60 minutes from Louisville, KY; 75 minutes from Cincinnati, OH; and 90 minutes from Indianapolis, IN. We sit at the geographic center of the Louisville–Cincinnati–Indianapolis triangle — close enough for a spontaneous getaway, far enough to feel completely away.",
+        },
+        {
+          q: "Is there parking on site?",
+          a: "Yes. Free outdoor parking is available for all guests. Each campsite has space for one vehicle. The Enchanted Cottage and The Velvet Buck have dedicated parking near their accommodations.",
+        },
+        {
+          q: "How do I get there?",
+          a: "We're located at 2175 North K Road, Madison, Indiana 47250. From 421, take old SR 62, then turn right on K Road. Watch for The Enchanted Collective sign near the driveway. We're 5 minutes from downtown Madison and 10 minutes from Clifty Falls State Park.",
+        },
+      ],
+    },
+  ],
+
+  // Madison, Indiana Guide
+  // Source: initial-business-data.md §10; market-intelligence.md §8 (SEO Pillar 2)
+  // SEO targets: "things to do Madison Indiana," "Clifty Falls State Park," "Madison Indiana travel guide"
+  madisonGuide: {
+    intro:
+      "Madison, Indiana is one of the Midwest's best-kept secrets — a 130-block National Historic Landmark District sitting right on the banks of the Ohio River, drawing 600,000+ visitors a year. Whether you're arriving from Louisville, Cincinnati, or Indianapolis, you're within 90 minutes of a destination worth the drive.",
+    attractions: [
+      {
+        name: "Clifty Falls State Park",
+        distance: "10 min",
+        category: "Nature",
+        highlight: "Must-see in every season",
+        description:
+          "Indiana's most dramatic waterfall park. Seven miles of trails wind through a deep canyon carved by Clifty Creek, leading to four waterfalls including the 70-foot Clifty Falls. The Clifty Inn on the park grounds offers a popular Sunday buffet. Summer brings a waterslide; fall turns the canyon walls gold.",
+        tip: "The Inner Loop Trail to Clifty Falls is the most scenic — allow 2 hours. Wear sturdy shoes; the canyon is steep.",
+      },
+      {
+        name: "Lanier Mansion",
+        distance: "5 min",
+        category: "History",
+        highlight: "Built 1840–44",
+        description:
+          "One of Indiana's finest examples of Greek Revival architecture, built by financier J.F.D. Lanier whose Civil War-era loans to Indiana arguably saved the Union. The restored mansion and formal gardens overlook the Ohio River and are open for tours. A genuinely beautiful piece of American history five minutes from our property.",
+        tip: "Check the Indiana State Museum website for seasonal tour hours before visiting.",
+      },
+      {
+        name: "Downtown Madison & the Ohio River",
+        distance: "5 min",
+        category: "Town",
+        highlight: "130-block historic district",
+        description:
+          "One of the largest intact 19th-century streetscapes in the United States. Walk Main Street for independent shops, galleries, and restaurants. The riverfront park is a perfect evening stop — the Ohio is wide and slow here, with views across to Kentucky. Madison hosts festivals nearly every weekend from May through October.",
+        tip: "Parking is easy and free. The Chandler Hotel's rooftop terrace has the best view of the historic district.",
+      },
+      {
+        name: "Ohio River Scenic Byway — Wineries",
+        distance: "15–30 min",
+        category: "Wine & Food",
+        highlight: "Vineyard country",
+        description:
+          "The stretch of Indiana Highway 56 along the Ohio River passes through some of Indiana's oldest wine country. Thomas Family Winery and Lanthier Winery are both within 20 minutes of the property — both offer tastings with river views. Pair a winery afternoon with dinner in downtown Madison.",
+        tip: "Thomas Family Winery is in a converted carriage house and has live music on select weekends.",
+      },
+      {
+        name: "Hanover College",
+        distance: "15 min",
+        category: "Scenic Drive",
+        highlight: "Hilltop campus above the river",
+        description:
+          "Indiana's oldest private college sits on a bluff 200 feet above the Ohio River. The campus grounds are open to visitors and the views are some of the best in southern Indiana — particularly in fall foliage season (late October). A short drive from Madison worth adding to any weekend itinerary.",
+        tip: "Best visited late October for fall color. Free to walk the grounds.",
+      },
+    ],
+  },
+
   // Footer
   footer: {
     tagline: "Where Romance Meets the Wild",
