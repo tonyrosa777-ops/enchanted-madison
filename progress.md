@@ -5,7 +5,7 @@
 **Business Type:** Luxury glamping and romantic experience property
 **Launch Target:** June 2026
 **Last Updated:** 2026-03-31
-**Current Phase:** Phase 4 blocked (client embeds pending) → Phase 7 next
+**Current Phase:** Phase 4 blocked (client embeds pending) · Phase 7 complete · Site launch-ready pending client assets
 
 ---
 
@@ -20,7 +20,7 @@
 | 4 | Conversion Flow Integration | ⬜ Not Started |
 | 5 | Secondary Pages & Content | ✅ Complete |
 | 6 | SEO, Schema & Analytics | ✅ Complete |
-| 7 | Performance, QA & Launch Prep | ⬜ Not Started |
+| 7 | Performance, QA & Launch Prep | ✅ Complete (pending client assets: photography, embed codes) |
 
 ---
 
@@ -179,6 +179,42 @@ Site map defined in Session 1 (15 routes). All routes listed in Site Architectur
 ---
 
 ## Session Log
+
+### Session 4 (continued) — Phase 7 QA
+**Completed:**
+- Full metadata audit across all 22 pages
+- Fixed: /vip and /contact had no metadata (client components can't export metadata in App Router)
+  — split each into server wrapper (exports metadata) + client inner component (form logic)
+- Fixed: FAQ title was "FAQ" → "Frequently Asked Questions"
+- Fixed: /about excluded from sitemap.ts (was a stub; now a real page with content)
+- Internal link audit: all hrefs resolve to real routes — no broken links
+- Image alt text audit: StayCard and ExperienceCard use alt={name}; missing images handled with graceful placeholder (no broken image tags)
+- Build output: zero TS errors, only expected edge runtime warning (opengraph-image)
+- Mobile layout audit: all critical responsive patterns verified (hero clamp, trust strip flex-col, grids, mobile nav overlay)
+- Committed: fix(seo): add missing metadata to /vip and /contact, fix FAQ title (db6f68b)
+
+**Discovered:**
+- "use client" page components cannot export metadata in Next.js App Router — requires server wrapper pattern
+- /about was missing from sitemap despite being a built page since Phase 6
+
+**Decisions Made:**
+- Server wrapper + client inner component pattern used for /vip and /contact (standard App Router approach)
+- No other mobile layout issues found — breakpoints were correctly applied throughout
+
+**Next Session Starts At:**
+Phase 4 — Conversion Flow Integration. Blocked until Angela & Marc provide:
+1. Lodgify embed code (overnight stay booking)
+2. Acuity Scheduling embed code (experiences booking)
+Once received, wire embeds into /stays/[slug] and /date-night and /proposals pages.
+Also wire VIP form to Klaviyo (email/SMS) at the same time.
+
+**Blockers:**
+- Lodgify embed code — pending Angela & Marc ← BLOCKING Phase 4
+- Acuity Scheduling embed code — pending Angela & Marc ← BLOCKING Phase 4
+- Professional photography — pending client (launch blocker)
+- Host story copy for /about full version — pending Angela & Marc (nice-to-have, page already published)
+
+---
 
 ### Session 4 — 2026-03-31
 **Completed:**
