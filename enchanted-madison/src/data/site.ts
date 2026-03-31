@@ -47,16 +47,23 @@ export const siteData = {
   },
 
   // Navigation
+  // links: primary — always visible in desktop nav (conversion-critical)
+  // dropdown: secondary — "More" dropdown in desktop; merged into mobile overlay
   nav: {
     links: [
       { label: "Stays", href: "/stays" },
       { label: "Experiences", href: "/date-night" },
       { label: "Proposals", href: "/proposals" },
-      { label: "Journal", href: "/blog" },
-      { label: "Shop", href: "/shop" },
-      { label: "Madison Guide", href: "/madison-guide" },
-      { label: "About", href: "/about" },
     ],
+    dropdown: {
+      label: "More",
+      items: [
+        { label: "Journal", href: "/blog" },
+        { label: "Shop", href: "/shop" },
+        { label: "Madison Guide", href: "/madison-guide" },
+        { label: "About", href: "/about" },
+      ],
+    },
     cta: { label: "Check Availability", href: "/stays" },
   },
 
