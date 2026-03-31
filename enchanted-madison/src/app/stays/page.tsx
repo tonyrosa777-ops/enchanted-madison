@@ -105,6 +105,7 @@ export default function StaysPage() {
                 capacity={stay.capacity}
                 badge={stay.badge ?? undefined}
                 highlight={stay.features.slice(0, 3).join(" · ")}
+                image={stay.image}
               />
             </ScaleIn>
           ))}

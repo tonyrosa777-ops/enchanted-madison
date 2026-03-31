@@ -4,6 +4,7 @@
 // generateStaticParams: pre-renders all 4 slugs at build time.
 
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/PageShell";
 import { Button } from "@/components/ui/Button";
@@ -102,22 +103,27 @@ export default async function StayPage({
         </div>
       </section>
 
-      {/* Image placeholder */}
-      <div
-        className="w-full"
-        style={{ aspectRatio: "16/7", background: "var(--bg-elevated)", position: "relative" }}
-      >
-        <div
-          className="absolute inset-0 flex items-center justify-center"
-          style={{ color: "var(--text-secondary)" }}
-        >
-          <p
-            className="eyebrow"
-            style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.12em" }}
+      {/* Hero image */}
+      <div className="w-full relative" style={{ aspectRatio: "16/7" }}>
+        {stay.image ? (
+          <Image
+            src={stay.image}
+            alt={stay.name}
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+        ) : (
+          <div
+            className="absolute inset-0 flex items-center justify-center"
+            style={{ background: "var(--bg-elevated)", color: "var(--text-secondary)" }}
           >
-            Professional photography coming soon
-          </p>
-        </div>
+            <p className="eyebrow" style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.12em" }}>
+              Professional photography coming soon
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Main content */}

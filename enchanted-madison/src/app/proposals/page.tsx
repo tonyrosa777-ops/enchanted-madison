@@ -2,6 +2,7 @@
 // Source: initial-business-data.md §5a; market-intelligence.md §5 Gap 3, §7 (first-to-market Midwest)
 // Anti-pattern #6: all pricing visible. Anti-pattern #7: Acuity embed inline placeholder.
 
+import Image from "next/image";
 import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/PageShell";
 import { Button } from "@/components/ui/Button";
@@ -52,9 +53,18 @@ export default function ProposalsPage() {
     <PageShell>
       {/* Hero */}
       <section
-        className="relative pt-32 pb-16 px-4 text-center"
+        className="relative pt-32 pb-16 px-4 text-center overflow-hidden"
         style={{ background: "var(--bg-dark)" }}
       >
+        <Image
+          src="/images/experiences/proposal.webp"
+          alt="Enchanted proposal setup with rose petals, champagne, and string lights"
+          fill
+          priority
+          className="object-cover"
+          style={{ opacity: 0.28 }}
+          sizes="100vw"
+        />
         <Fireflies count={22} />
         <GodRays />
         <PetalRain count={12} />

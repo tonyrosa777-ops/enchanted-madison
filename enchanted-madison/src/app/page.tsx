@@ -179,6 +179,7 @@ export default function HomePage() {
                   priceFrom={stay.priceFrom}
                   capacity={stay.capacity}
                   badge={stay.badge ?? undefined}
+                  image={stay.image}
                 />
               </ScaleIn>
             ))}

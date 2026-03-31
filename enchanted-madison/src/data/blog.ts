@@ -40,7 +40,7 @@ export const blogPosts: BlogPost[] = [
       "Why the most romantic weekend in Indiana isn't in Gatlinburg or Brown County — and how to build the perfect two-day escape in Madison.",
     publishedAt: "2026-03-01",
     readTime: 7,
-    featuredImage: "/images/blog/romantic-getaway-madison-indiana.jpg",
+    featuredImage: "/images/blog/best-romantic-getaways-indiana.webp",
     author: { name: "Angela & Marc", role: "Hosts at The Enchanted Collective" },
     metaTitle: "The Ultimate Romantic Getaway in Madison, Indiana | The Enchanted Collective",
     metaDescription:
@@ -122,7 +122,7 @@ export const blogPosts: BlogPost[] = [
       "The predictable hotel stay has a well-documented problem: couples leave without a single memory they couldn't have made at home. Here's why glamping changes that equation.",
     publishedAt: "2026-03-05",
     readTime: 6,
-    featuredImage: "/images/blog/glamping-vs-hotels-couples.jpg",
+    featuredImage: "/images/blog/glamping-vs-camping.webp",
     author: { name: "Angela & Marc", role: "Hosts at The Enchanted Collective" },
     metaTitle: "Glamping vs. Hotels for Couples | The Enchanted Collective",
     metaDescription:
@@ -202,7 +202,7 @@ export const blogPosts: BlogPost[] = [
       "The setting matters less than the feeling. A checklist for proposing well — from location logic to the overlooked details that will make the difference.",
     publishedAt: "2026-03-10",
     readTime: 8,
-    featuredImage: "/images/blog/how-to-plan-proposal-indiana.jpg",
+    featuredImage: "/images/blog/how-to-plan-the-perfect-proposal.webp",
     author: { name: "Angela & Marc", role: "Hosts at The Enchanted Collective" },
     metaTitle: "How to Plan a Proposal in Indiana | The Enchanted Collective",
     metaDescription:
@@ -301,7 +301,7 @@ export const blogPosts: BlogPost[] = [
       "Not a listicle. Ten actual recommendations — the kind you'd give a close friend who asked what to do with two days in one of Indiana's most underestimated towns.",
     publishedAt: "2026-03-15",
     readTime: 8,
-    featuredImage: "/images/blog/things-to-do-madison-indiana.jpg",
+    featuredImage: "/images/blog/things-to-do-madison-indiana.webp",
     author: { name: "Angela & Marc", role: "Hosts at The Enchanted Collective" },
     metaTitle: "10 Things to Do in Madison, Indiana | The Enchanted Collective",
     metaDescription:
@@ -699,7 +699,7 @@ export const blogPosts: BlogPost[] = [
       "A practical comparison of the best anniversary destinations within a 90-minute drive of Indianapolis — including which one is most likely to actually work.",
     publishedAt: "2026-03-26",
     readTime: 7,
-    featuredImage: "/images/blog/anniversary-getaway-near-indianapolis.jpg",
+    featuredImage: "/images/blog/date-night-ideas-near-louisville.webp",
     author: { name: "Angela & Marc", role: "Hosts at The Enchanted Collective" },
     metaTitle: "Anniversary Getaway Near Indianapolis | The Enchanted Collective",
     metaDescription:

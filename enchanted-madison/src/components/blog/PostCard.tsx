@@ -2,6 +2,7 @@
 // Server component — no client state, no Framer Motion (CSS hover only)
 // Authorized by: design-system.md §5 (card styles), §3 (typography), §2 (color tokens)
 
+import Image from "next/image";
 import Link from "next/link";
 import type { BlogPost } from "@/data/blog";
 
@@ -24,10 +25,19 @@ export function PostCard({ post, featured = false }: PostCardProps) {
       >
         {/* Image — left 60% on desktop, top on mobile */}
         <div
-          className="w-full lg:w-[60%] flex-shrink-0"
-          style={{ aspectRatio: "16/9", background: "var(--bg-elevated)", position: "relative" }}
+          className="w-full lg:w-[60%] flex-shrink-0 relative overflow-hidden"
+          style={{ aspectRatio: "16/9", background: "var(--bg-elevated)" }}
           aria-label={`Featured image for ${post.title}`}
         >
+          {post.featuredImage && (
+            <Image
+              src={post.featuredImage}
+              alt={post.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 60vw"
+            />
+          )}
           <div
             className="absolute inset-0 flex items-end p-4"
             style={{
@@ -116,15 +126,22 @@ export function PostCard({ post, featured = false }: PostCardProps) {
         transition: "all 300ms ease",
       }}
     >
-      {/* Image placeholder */}
+      {/* Image */}
       <div
-        className="w-full flex-shrink-0"
-        style={{ aspectRatio: "16/9", background: "var(--bg-elevated)", position: "relative" }}
+        className="w-full flex-shrink-0 relative overflow-hidden"
+        style={{ aspectRatio: "16/9", background: "var(--bg-elevated)" }}
         aria-label={`Image for ${post.title}`}
       >
-        <div
-          className="absolute top-3 left-3"
-        >
+        {post.featuredImage && (
+          <Image
+            src={post.featuredImage}
+            alt={post.title}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        )}
+        <div className="absolute top-3 left-3 z-10">
           <span
             className="inline-block px-3 py-1 rounded-full text-[10px] uppercase tracking-widest"
             style={{
