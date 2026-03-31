@@ -2,6 +2,7 @@
 // Source: initial-business-data.md §5b; market-intelligence.md §5 Gap 4 (day-use validated by ONSEN/Swimply)
 // Anti-pattern #6: all pricing visible. Anti-pattern #7: Acuity embed inline placeholder.
 
+import Image from "next/image";
 import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/PageShell";
 import { Button } from "@/components/ui/Button";
@@ -13,6 +14,7 @@ import { Embers } from "@/components/animations/Embers";
 import { ShimmerText } from "@/components/animations/ShimmerText";
 import { WaveDivider } from "@/components/animations/WaveDivider";
 import { ExperienceFinderTrigger } from "@/components/ui/ExperienceFinderTrigger";
+import { BookingCalendar } from "@/components/ui/BookingCalendar";
 import { siteData } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -42,7 +44,16 @@ export default function DateNightPage() {
   return (
     <PageShell>
       {/* Hero */}
-      <section className="relative pt-32 pb-16 px-4 text-center" style={{ background: "var(--bg-dark)" }}>
+      <section className="relative pt-32 pb-16 px-4 text-center overflow-hidden" style={{ background: "var(--bg-dark)" }}>
+        <Image
+          src="/images/experiences/date-night.webp"
+          alt="Private date night escape at The Enchanted Collective"
+          fill
+          priority
+          className="object-cover"
+          style={{ opacity: 0.28 }}
+          sizes="100vw"
+        />
         <Fireflies />
         <GodRays />
         <Embers count={16} />
@@ -166,30 +177,20 @@ export default function DateNightPage() {
         </div>
       </section>
 
-      {/* Booking / Acuity placeholder */}
+      {/* Booking calendar */}
       <section id="book" className="py-16 px-4" style={{ background: "var(--bg-base)" }}>
-        <div className="max-w-2xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto">
           <FadeUp>
-            <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>Book Your Escape</p>
-            <h2 className="text-3xl mb-4" style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "var(--text-primary)" }}>
-              Pick Your Date and Package
-            </h2>
-            <p className="text-sm leading-relaxed mb-6" style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}>
-              Weekend evenings book up fast. We recommend reserving at least 2 weeks out.
-            </p>
-            {/* TODO Phase 4: replace with Acuity Scheduling inline embed */}
-            <div className="rounded-2xl p-8 mb-6" style={{ background: "var(--bg-card)", border: "1px solid var(--primary-muted)" }}>
-              <p className="eyebrow text-[11px] mb-2" style={{ color: "var(--text-secondary)" }}>Booking calendar</p>
-              <p className="text-sm mb-4" style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}>
-                Online booking coming soon. Book directly:
+            <div className="text-center mb-8">
+              <p className="eyebrow mb-2" style={{ color: "var(--accent)" }}>Book Your Escape</p>
+              <h2 className="text-3xl mb-3" style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "var(--text-primary)" }}>
+                Pick Your Date and Package
+              </h2>
+              <p className="text-sm" style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}>
+                Weekend evenings book up fast. We recommend reserving at least 2 weeks out.
               </p>
-              <a href={`mailto:${siteData.email}`} className="block text-base font-medium" style={{ fontFamily: "var(--font-body)", color: "var(--primary)" }}>
-                {siteData.email}
-              </a>
-              <a href={`tel:${siteData.phone}`} className="block mt-1 text-base font-medium" style={{ fontFamily: "var(--font-body)", color: "var(--primary)" }}>
-                {siteData.phone}
-              </a>
             </div>
+            <BookingCalendar />
           </FadeUp>
         </div>
       </section>
