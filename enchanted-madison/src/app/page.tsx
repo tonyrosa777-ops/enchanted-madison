@@ -167,7 +167,7 @@ export default function HomePage() {
             </div>
           </FadeUp>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {siteData.stays.map((stay, i) => (
               <ScaleIn key={stay.slug} delay={i * 0.1}>
                 <StayCard

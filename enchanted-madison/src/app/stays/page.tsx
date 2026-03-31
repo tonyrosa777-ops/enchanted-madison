@@ -91,7 +91,7 @@ export default function StaysPage() {
         className="py-16 lg:py-20 px-4"
         style={{ background: "var(--bg-base)" }}
       >
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {siteData.stays.map((stay, i) => (
             <ScaleIn key={stay.slug} delay={i * 0.08}>
               <StayCard
