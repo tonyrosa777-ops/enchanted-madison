@@ -6,6 +6,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteData } from "@/data/site";
@@ -13,14 +14,23 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
-  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHomepage = pathname === "/";
+
+  // Non-homepage pages have light backgrounds — nav must always show dark state.
+  const [scrolled, setScrolled] = useState(!isHomepage);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
+    // On homepage: transparent until scrolled. On all other pages: always solid.
+    if (!isHomepage) {
+      setScrolled(true);
+      return;
+    }
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isHomepage]);
 
   // Lock body scroll when menu is open
   useEffect(() => {
