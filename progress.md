@@ -5,7 +5,7 @@
 **Business Type:** Luxury glamping and romantic experience property
 **Launch Target:** June 2026
 **Last Updated:** 2026-03-30
-**Current Phase:** Phase 1 — Design System & Brand Identity
+**Current Phase:** Phase 3 — Core Pages Build (In Progress)
 
 ---
 
@@ -15,8 +15,8 @@
 |-------|------|--------|
 | 0 | Environment Setup & Strategy | ✅ Complete (pending client: Vercel dashboard, DNS, embed codes) |
 | 1 | Design System & Brand Identity | ✅ Complete |
-| 2 | Site Architecture & Content Planning | ⬜ Not Started |
-| 3 | Core Pages Build | ⬜ Not Started |
+| 2 | Site Architecture & Content Planning | ✅ Complete |
+| 3 | Core Pages Build | ✅ Complete (pending /about — awaiting client copy) |
 | 4 | Conversion Flow Integration | ⬜ Not Started |
 | 5 | Secondary Pages & Content | ⬜ Not Started |
 | 6 | SEO, Schema & Analytics | ⬜ Not Started |
@@ -29,20 +29,20 @@
 | Route | Page | Status |
 |-------|------|--------|
 | `/` | Homepage | ⬜ |
-| `/stays` | Stays Overview | ⬜ |
-| `/stays/enchanted-cottage` | The Enchanted Cottage | ⬜ |
-| `/stays/velvet-buck` | The Velvet Buck | ⬜ |
-| `/stays/bell-tent` | Curated Campsite — Bell Tent | ⬜ |
-| `/stays/campsite` | Curated Campsite — BYOT | ⬜ |
-| `/date-night` | Date Night & Hot Tub Escapes | ⬜ |
-| `/proposals` | Proposal Packages | ⬜ |
+| `/stays` | Stays Overview | ✅ Built |
+| `/stays/enchanted-cottage` | The Enchanted Cottage | ✅ Built |
+| `/stays/velvet-buck` | The Velvet Buck | ✅ Built |
+| `/stays/bell-tent` | Curated Campsite — Bell Tent | ✅ Built |
+| `/stays/campsite` | Curated Campsite — BYOT | ✅ Built |
+| `/date-night` | Date Night & Hot Tub Escapes | ✅ Built |
+| `/proposals` | Proposal Packages | ✅ Built |
 | `/packages` | Add-Ons & Enhancement Packages | ⬜ |
 | `/madison-guide` | Madison, Indiana Local Guide | ⬜ |
 | `/about` | About The Enchanted Collective | ⬜ |
 | `/faq` | FAQ | ⬜ |
 | `/reviews` | Reviews | ⬜ |
 | `/contact` | Contact | ⬜ |
-| `/vip` | VIP Early Access Sign-Up | ⬜ |
+| `/vip` | VIP Early Access Sign-Up | ✅ Built |
 
 ---
 
@@ -119,8 +119,31 @@ These are required by this client but not in website-build-template.md. Each nee
 
 ## Phase 2 — Site Architecture & Content Planning
 
-### Proposed Task List
-_(To be detailed after Phase 1 complete)_
+### Status: ✅ Complete
+Site map defined in Session 1 (15 routes). All routes listed in Site Architecture table above. No additional tasks — this phase was folded into Phase 0 planning work.
+
+---
+
+## Phase 3 — Core Pages Build
+
+### Task List
+1. ✅ `/stays` overview page — property grid, quick-stat bar, policies strip
+2. ✅ `/stays/[slug]` dynamic stay pages (4 slugs pre-rendered via generateStaticParams)
+   - enchanted-cottage, velvet-buck, bell-tent, campsite
+   - All copy from initial-business-data.md §4
+   - Lodgify embed placeholder (awaiting client embed code)
+3. ✅ `/proposals` page — hero (dark), 3 packages with pricing, FAQ, Acuity embed placeholder
+4. ✅ `/date-night` page — experience flow, 3 packages with pricing, Acuity embed placeholder
+5. ✅ `/vip` page — react-hook-form + zod, $25 off incentive, 4 benefits, success state
+   - Form submit currently mocked (800ms delay) — wire to email/SMS provider Phase 4
+6. ⬜ Homepage — review current placeholder hero; upgrade to full production homepage
+7. ✅ `/reviews` page — hero, 3 review cards (occasion labels, full quotes), aggregate rating badge, dark CTA, JSON-LD LodgingBusiness + Review schema
+8. ✅ `/contact` page — two-column layout (contact info + form), react-hook-form + zod, success state, API route validates + logs (email via Resend deferred to Phase 5)
+9. ⬜ `/about` page — waiting on host story copy from Angela & Marc (known blocker)
+10. ✅ Build verified: 20 static/SSG/dynamic pages, zero TypeScript errors
+
+**Discovered this phase:**
+- Zod v4 renamed `errorMap` to `error` in schema params. Logged: build-log.md error #2, errors/zod-v4-errormap-rename.md
 
 ---
 
@@ -152,6 +175,36 @@ Phase 1 — Design System Implementation. Run /prime to reload context, then exe
 - Acuity Scheduling embed code needed from client (Phase 4)
 - Professional photography needed before launch (Phase 7)
 - Host story copy needed from Angela & Marc (Phase 3 — About page)
+
+### Session 3 — 2026-03-30
+**Completed:**
+- Built `/stays` overview page (full content from initial-business-data.md §4)
+- Built `/stays/[slug]` dynamic pages — all 4 slugs pre-rendered (enchanted-cottage, velvet-buck, bell-tent, campsite)
+- Built `/proposals` page — 3 tiered packages ($249/$399/$599), FAQ, Acuity embed placeholder
+- Built `/date-night` page — 3 tiered packages ($119/$149/$199), experience flow, Acuity embed placeholder
+- Built `/vip` page — react-hook-form + zod form, $25 incentive, 4 benefits, success state
+- Committed: feat(pages): build stays, proposals, date-night, and vip pages (21de6c9)
+
+**Discovered:**
+- Next.js version is 16.2.1 / React 19.2.4 — AGENTS.md warns of breaking changes from prior versions
+  - `params` in generateMetadata and page components is now `Promise<{ slug: string }>` — must `await params` before accessing
+  - Already implemented correctly in stays/[slug]/page.tsx
+- About, FAQ, Reviews, Contact, Packages, Madison Guide are scaffolded as TODO stubs (Phase 5)
+
+**Decisions Made:**
+- VIP form submit uses mock delay (no real API). Wire to Klaviyo in Phase 4.
+- Lodgify and Acuity embeds are comment-placeholder only. Embed codes pending client.
+
+**Next Session Starts At:**
+Phase 3 completion: homepage production upgrade + reviews + contact pages.
+Then Phase 4 — Conversion Flow Integration (Lodgify embed, Acuity embed, VIP form wire-up).
+
+**Blockers:**
+- Lodgify embed code (Phase 4) — pending client
+- Acuity embed code (Phase 4) — pending client
+- Host story copy for /about — pending Angela & Marc
+
+---
 
 ### Session 2 — 2026-03-30
 **Completed:**
