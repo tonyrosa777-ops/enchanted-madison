@@ -1,114 +1,41 @@
 "use client";
 
-// HeroSection — scroll-driven video hero
-// Approach: video.currentTime driven by scroll position (no frame extraction, no canvas)
-// Desktop: sticky 100vh frame inside 300vh container. Scroll = video progress.
-// Mobile / prefers-reduced-motion: autoplay loop fallback, 100vh height.
-// Text: left-aligned, gradient dark-left → transparent-right preserves video on right.
+// HeroSection — autoplay loop video hero
+// Video: muted, autoplay, loop. prefers-reduced-motion: paused.
+// Text: left-aligned, gradient dark-left → transparent-right.
 // All copy from siteData — zero hard-coded strings.
 
-import { useRef, useEffect, useLayoutEffect } from "react";
+import { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/Button";
 import { siteData } from "@/data/site";
 
-// How many viewport heights of scroll space the video gets.
-// 300vh = user scrolls ~2700px (at 900px viewport) to play full video.
-const SCROLL_MULTIPLIER = 3;
-
 export function HeroSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  // Set container height synchronously before first paint to avoid layout shift.
-  // Server renders 100vh (safe default). Client corrects to 300vh on desktop.
-  useLayoutEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const isMobile = window.matchMedia("(max-width: 767px)").matches;
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (!isMobile && !reducedMotion) {
-      container.style.height = `${SCROLL_MULTIPLIER * 100}vh`;
-    }
-  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
-    const container = containerRef.current;
-    if (!video || !container) return;
-
-    const isMobile = window.matchMedia("(max-width: 767px)").matches;
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (isMobile || reducedMotion) {
-      // Fallback: standard autoplay loop
-      video.loop = true;
-      video.play().catch(() => {});
-      return;
+    if (!video) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      video.pause();
     }
-
-    // Desktop scroll-driven: pause video, drive currentTime from scroll.
-    video.pause();
-    video.loop = false;
-
-    let rafId = 0;
-    let pending = false;
-
-    function update() {
-      const rect = container!.getBoundingClientRect();
-      // scrolled = how far we've scrolled past the top of the container
-      const scrolled = -rect.top;
-      // total = total scrollable distance within the pinned section
-      const total = rect.height - window.innerHeight;
-      const progress = Math.max(0, Math.min(1, scrolled / total));
-
-      if (video!.readyState >= 2 && video!.duration) {
-        video!.currentTime = progress * video!.duration;
-      }
-      pending = false;
-    }
-
-    function onScroll() {
-      if (!pending) {
-        pending = true;
-        rafId = requestAnimationFrame(update);
-      }
-    }
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-
-    // Run once on mount to sync if page loaded mid-scroll (e.g. back navigation)
-    update();
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      cancelAnimationFrame(rafId);
-    };
   }, []);
 
   return (
-    // Outer container: tall on desktop to give scroll room; 100vh on mobile.
-    // Height is patched synchronously by useLayoutEffect on client.
     <div
-      ref={containerRef}
       className="relative"
       style={{ height: "100vh" }}
     >
-      {/* ── Sticky viewport frame ─────────────────────────────────────── */}
       <div
-        className="sticky top-0 overflow-hidden"
+        className="overflow-hidden"
         style={{ height: "100vh", background: "var(--bg-dark)" }}
       >
-        {/* Video — fills frame, no controls */}
+        {/* Video — autoplay loop, no controls */}
         <video
           ref={videoRef}
           src="/hero-forest.mp4"
+          autoPlay
           muted
+          loop
           playsInline
           preload="auto"
           className="absolute inset-0 w-full h-full object-cover"
@@ -211,28 +138,14 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Scroll hint — desktop only, bottom-right so it doesn't obscure text */}
+        {/* Scroll indicator */}
         <div
-          className="absolute bottom-10 right-8 hidden md:flex flex-col items-center gap-2"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
           aria-hidden="true"
         >
-          <span
-            className="text-[9px] uppercase tracking-[0.2em]"
-            style={{
-              fontFamily: "var(--font-mono)",
-              color: "rgba(254,252,250,0.30)",
-              writingMode: "vertical-rl",
-            }}
-          >
-            Scroll
-          </span>
           <div
-            className="w-px"
-            style={{
-              height: "40px",
-              background:
-                "linear-gradient(to bottom, rgba(254,252,250,0.30), transparent)",
-            }}
+            className="w-px h-10 animate-pulse"
+            style={{ background: "rgba(254,252,250,0.3)" }}
           />
         </div>
       </div>
