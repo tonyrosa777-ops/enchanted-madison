@@ -4,8 +4,8 @@
 **Client:** The Enchanted Collective | Madison, Indiana
 **Business Type:** Luxury glamping and romantic experience property
 **Launch Target:** June 2026
-**Last Updated:** 2026-03-31 (Session 9)
-**Current Phase:** Session 9 complete — /find-your-escape quiz page, lead capture API, nav + CTA links updated
+**Last Updated:** 2026-04-01 (Session 10)
+**Current Phase:** Session 10 complete — Phase 4 integration architecture wired (Lodgify + Acuity), contract drafted
 
 ---
 
@@ -237,6 +237,42 @@ Site map defined in Session 1 (15 routes). All routes listed in Site Architectur
 Upgrade remaining pages to quality standard (reviews, faq, contact, madison-guide)
 OR Phase 4 — Conversion Flow Integration (pending Lodgify + Acuity embed codes from client)
 OR Phase 7 — Performance, QA & Launch Prep
+
+---
+
+### Session 10 — 2026-04-01
+**Completed:**
+- **Phase 4 integration architecture** — full wiring for Lodgify + Acuity, gracefully degrades when embed codes not yet provided
+- **`LodgifyWidget.tsx`** — "use client" iframe wrapper for stays pages. When `lodgifyWidgets[slug]` is empty: shows placeholder + "Check current availability →" link. When populated: renders Lodgify iframe inline (no off-domain redirect).
+- **`AcuityModal.tsx`** — "use client" Framer Motion slide-up modal. When `acuityUrl` is empty: shows confirmation summary + contact info (preserves demo experience). When `acuityUrl` set: loads Acuity iframe pre-filled with selected date via `?date=YYYY-MM-DD` URL param.
+- **`BookingCalendar.tsx` updated** — "Request This Escape" now opens `AcuityModal` instead of inline success step. `success` step removed; modal handles both demo and production mode.
+- **`stays/[slug]/page.tsx` updated** — placeholder div replaced with `<LodgifyWidget>`. Fallback CTA button hidden once widget is active.
+- **`site.ts` updated** — `booking` object expanded: `lodgifyWidgets` map (per-slug keys, empty until client provides), `acuityUrl` comment updated with exact format + where Angela finds it.
+- **`CLIENT-CONTRACT.md` created** — full Pro Package web design agreement saved to project root. Includes: scope of work (pages, conversion features, tech build, integrations, exclusions), payment terms, revisions, timeline, client content responsibilities, ownership, hosting, data/privacy, cancellation, liability, signature blocks.
+- Build: 41 pages, zero TypeScript errors. Committed + pushed.
+
+**Phase 4 Integration Instructions (for when Angela provides embed codes):**
+
+*Lodgify (stays):*
+1. Angela goes to Lodgify dashboard → each property → Widget/Embed → copy the URL
+2. In `src/data/site.ts`, fill in `booking.lodgifyWidgets` — one URL per slug
+3. Push. LodgifyWidget auto-activates; fallback CTA hides.
+
+*Acuity (experiences):*
+1. Angela goes to Acuity dashboard → Scheduling Page → Share → copy the scheduler URL
+2. In `src/data/site.ts`, set `booking.acuityUrl` to that URL (format: `https://app.acuityscheduling.com/schedule.php?owner=XXXX&appointmentType=XXXX`)
+3. Push. AcuityModal auto-activates; Acuity iframe opens pre-filled with user's selected date.
+
+**Decisions Made:**
+- Lodgify = overnight stays. Acuity = hourly experiences. Two separate systems, Angela already uses both.
+- "Embed codes" (not "API keys") is the correct terminology — just URLs from each dashboard, no dev credentials needed
+- Demo calendar UX preserved: the branded step-flow remains intact; only the final confirmation step changes to open the real Acuity scheduler in a modal
+- Per-stay widget URLs (not a single Lodgify URL) because each property has its own widget config in Lodgify
+
+**Contract notes:**
+- `CLIENT-CONTRACT.md` saved at project root (`c:/Projects/Enchanted Madison/CLIENT-CONTRACT.md`)
+- Scope accurately reflects what's built: liability waivers ✓, all-inclusive bundles listed as out-of-scope addition ✓, Lodgify/Acuity correctly described ✓
+- "Embed codes" language used throughout (clearer than "API codes" for a non-technical client)
 
 ---
 

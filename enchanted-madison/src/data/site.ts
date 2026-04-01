@@ -24,8 +24,18 @@ export const siteData = {
 
   // Booking
   booking: {
-    lodgifyUrl: "https://direct-book.com/properties/enchantedcollectivemadison", // REPLACE with Lodgify embed code
-    acuityUrl: "", // TODO: obtain Acuity Scheduling embed code from client
+    // External fallback URL (used as CTA until Lodgify widget is configured)
+    lodgifyUrl: "https://direct-book.com/properties/enchantedcollectivemadison",
+    // Phase 4: Acuity scheduler URL — from Acuity dashboard → Scheduling Page → Share
+    // Format: https://app.acuityscheduling.com/schedule.php?owner=XXXX&appointmentType=XXXX
+    acuityUrl: "",
+    // Phase 4: Per-stay Lodgify widget embed URLs — from Lodgify dashboard → each property → Widget
+    lodgifyWidgets: {
+      "enchanted-cottage": "",
+      "velvet-buck": "",
+      "bell-tent": "",
+      "campsite": "",
+    },
   },
 
   // VIP / Lead Capture

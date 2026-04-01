@@ -7,10 +7,11 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteData } from "@/data/site";
+import { AcuityModal } from "@/components/ui/AcuityModal";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 type Avail = "available" | "limited" | "booked" | "past";
-type Step = "calendar" | "time" | "package" | "success";
+type Step = "calendar" | "time" | "package";
 
 interface TimeSlot {
   label: string;
@@ -90,6 +91,7 @@ export function BookingCalendar() {
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [selectedPkg, setSelectedPkg] = useState<string | null>(null);
   const [step, setStep] = useState<Step>("calendar");
+  const [acuityOpen, setAcuityOpen] = useState(false);
 
   // Build calendar grid
   const { grid, availCount } = useMemo(() => {
@@ -142,62 +144,7 @@ export function BookingCalendar() {
     setStep("calendar");
   }
 
-  // ─── STEP: success ──────────────────────────────────────────────────────────
-  if (step === "success") {
-    const pkg = packages.find(p => p.name === selectedPkg);
-    return (
-      <motion.div
-        key="success"
-        initial={{ scale: 0.94, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.35, ease: "easeOut" }}
-        className="rounded-2xl p-8 text-center"
-        style={{ background: "var(--bg-card)", border: "1px solid var(--primary-muted)" }}
-      >
-        <div
-          className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5"
-          style={{ background: "var(--primary)", color: "var(--text-on-dark)", fontSize: "1.75rem" }}
-        >
-          ✦
-        </div>
-        <p className="eyebrow mb-2" style={{ color: "var(--accent)", fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.12em", textTransform: "uppercase" }}>
-          Request Received
-        </p>
-        <h3 className="mb-3" style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "1.6rem", color: "var(--text-primary)" }}>
-          We&rsquo;re Holding Your Spot
-        </h3>
-        <p className="text-sm mb-6 leading-relaxed max-w-sm mx-auto" style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}>
-          Angela will confirm your reservation within a few hours. You selected:
-        </p>
-        <div
-          className="rounded-xl p-4 mb-6 text-left space-y-2"
-          style={{ background: "var(--bg-elevated)" }}
-        >
-          {[
-            { label: "Date", value: selected ? fmtDate(selected) : "" },
-            { label: "Time", value: selectedTime ?? "" },
-            { label: "Package", value: `${selectedPkg} · From $${pkg?.price}` },
-          ].map(row => (
-            <div key={row.label} className="flex justify-between text-sm">
-              <span style={{ fontFamily: "var(--font-mono)", color: "var(--text-muted)", letterSpacing: "0.06em", textTransform: "uppercase", fontSize: "11px" }}>{row.label}</span>
-              <span style={{ fontFamily: "var(--font-body)", color: "var(--text-primary)", fontWeight: 500 }}>{row.value}</span>
-            </div>
-          ))}
-        </div>
-        <div className="flex flex-col gap-2 text-sm" style={{ color: "var(--text-secondary)" }}>
-          <a href={`mailto:${siteData.email}`} style={{ fontFamily: "var(--font-body)", color: "var(--primary)" }}>{siteData.email}</a>
-          <a href={`tel:${siteData.phone}`} style={{ fontFamily: "var(--font-body)", color: "var(--primary)" }}>{siteData.phone}</a>
-        </div>
-        <button
-          onClick={reset}
-          className="mt-6 text-xs underline"
-          style={{ fontFamily: "var(--font-mono)", color: "var(--text-muted)", letterSpacing: "0.06em" }}
-        >
-          Start over
-        </button>
-      </motion.div>
-    );
-  }
+  const selectedPkgData = packages.find(p => p.name === selectedPkg);
 
   // ─── Layout: calendar left + detail right on md+ ────────────────────────────
   return (
@@ -439,7 +386,7 @@ export function BookingCalendar() {
 
                 <button
                   disabled={!selectedPkg}
-                  onClick={() => setStep("success")}
+                  onClick={() => { if (selectedPkg) setAcuityOpen(true); }}
                   className="w-full rounded-xl py-3.5 text-sm font-semibold transition-all duration-200"
                   style={{
                     fontFamily: "var(--font-mono)",
@@ -458,6 +405,16 @@ export function BookingCalendar() {
           </AnimatePresence>
         </div>
       </div>
+
+      {/* Phase 4: AcuityModal — demo shows confirmation screen, real build opens Acuity iframe */}
+      <AcuityModal
+        isOpen={acuityOpen}
+        onClose={() => { setAcuityOpen(false); reset(); }}
+        selectedDate={selected}
+        selectedTime={selectedTime}
+        selectedPkg={selectedPkg}
+        pkgPrice={selectedPkgData?.price}
+      />
     </div>
   );
 }

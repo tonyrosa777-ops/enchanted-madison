@@ -9,6 +9,7 @@ import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/PageShell";
 import { Button } from "@/components/ui/Button";
 import { StayCard } from "@/components/ui/StayCard";
+import { LodgifyWidget } from "@/components/ui/LodgifyWidget";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { ScaleIn } from "@/components/animations/ScaleIn";
 import { siteData } from "@/data/site";
@@ -231,24 +232,18 @@ export default async function StayPage({
                 )}
               </div>
 
-              {/* Lodgify booking embed placeholder */}
-              {/* TODO Phase 4: replace with Lodgify inline widget embed code from client */}
-              <div
-                className="rounded-xl p-4 text-center text-sm"
-                style={{ background: "var(--bg-elevated)", color: "var(--text-secondary)", fontFamily: "var(--font-body)" }}
-              >
-                <p className="eyebrow text-[10px] mb-2" style={{ color: "var(--text-secondary)" }}>
-                  Booking calendar
-                </p>
-                <p className="text-xs leading-relaxed">
-                  Real-time availability and booking coming soon.
-                  Lodgify embed will appear here in Phase 4.
-                </p>
-              </div>
+              {/* Phase 4: Lodgify booking widget */}
+              {/* When lodgifyWidgets[slug] is set, renders the iframe. Until then shows placeholder + CTA. */}
+              <LodgifyWidget
+                src={siteData.booking.lodgifyWidgets[stay.slug as keyof typeof siteData.booking.lodgifyWidgets] ?? ""}
+                fallbackHref={siteData.booking.lodgifyUrl}
+              />
 
-              <Button variant="primary" size="lg" href={siteData.booking.lodgifyUrl} external className="w-full">
-                Check Availability
-              </Button>
+              {!siteData.booking.lodgifyWidgets[stay.slug as keyof typeof siteData.booking.lodgifyWidgets] && (
+                <Button variant="primary" size="lg" href={siteData.booking.lodgifyUrl} external className="w-full">
+                  Check Availability
+                </Button>
+              )}
 
               <p
                 className="text-center text-xs"
