@@ -1,2 +1,10 @@
 # Private business documents — never commit
 CLIENT-CONTRACT.md
+
+# Claude internal agent worktrees
+.claude/worktrees/
+
+# Media files
+*.mp4
+*.mov
+*.avi
