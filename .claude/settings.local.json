@@ -6,7 +6,12 @@
       "Bash(cd:*)",
       "Bash(npx tsc:*)",
       "Bash(vercel:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(ffmpeg:*)",
+      "Bash(winget install:*)",
+      "Bash(find 'C:/Projects/Enchanted Madison/enchanted-madison/node_modules/@fal-ai/client' -name *.d.ts)",
+      "Bash(npx tsx:*)",
+      "Bash(npx next:*)"
     ]
   }
 }

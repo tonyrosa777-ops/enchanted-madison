@@ -1,6 +1,6 @@
 // /stays/[slug] — Individual Stay Page
 // Source: initial-business-data.md §4 (accommodation details), §8 (policies), §9 (booking)
-// Anti-pattern #6: show pricing. Anti-pattern #7: Lodgify embedded inline (placeholder until embed code arrives).
+// Anti-pattern #6: show pricing. Anti-pattern #7: Little Hotelier embedded inline (placeholder until embed code arrives).
 // generateStaticParams: pre-renders all 4 slugs at build time.
 
 import { notFound } from "next/navigation";
@@ -9,7 +9,7 @@ import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/PageShell";
 import { Button } from "@/components/ui/Button";
 import { StayCard } from "@/components/ui/StayCard";
-import { LodgifyWidget } from "@/components/ui/LodgifyWidget";
+import { LittleHotelierWidget } from "@/components/ui/LittleHotelierWidget";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { ScaleIn } from "@/components/animations/ScaleIn";
 import { siteData } from "@/data/site";
@@ -232,15 +232,15 @@ export default async function StayPage({
                 )}
               </div>
 
-              {/* Phase 4: Lodgify booking widget */}
-              {/* When lodgifyWidgets[slug] is set, renders the iframe. Until then shows placeholder + CTA. */}
-              <LodgifyWidget
-                src={siteData.booking.lodgifyWidgets[stay.slug as keyof typeof siteData.booking.lodgifyWidgets] ?? ""}
-                fallbackHref={siteData.booking.lodgifyUrl}
+              {/* Phase 4: Little Hotelier booking widget */}
+              {/* When littleHotelierWidgets[slug] is set, renders the iframe. Until then shows placeholder + CTA. */}
+              <LittleHotelierWidget
+                src={siteData.booking.littleHotelierWidgets[stay.slug as keyof typeof siteData.booking.littleHotelierWidgets] ?? ""}
+                fallbackHref={siteData.booking.littleHotelierUrl}
               />
 
-              {!siteData.booking.lodgifyWidgets[stay.slug as keyof typeof siteData.booking.lodgifyWidgets] && (
-                <Button variant="primary" size="lg" href={siteData.booking.lodgifyUrl} external className="w-full">
+              {!siteData.booking.littleHotelierWidgets[stay.slug as keyof typeof siteData.booking.littleHotelierWidgets] && (
+                <Button variant="primary" size="lg" href={siteData.booking.littleHotelierUrl} external className="w-full">
                   Check Availability
                 </Button>
               )}

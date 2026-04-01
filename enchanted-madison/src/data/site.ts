@@ -24,13 +24,13 @@ export const siteData = {
 
   // Booking
   booking: {
-    // External fallback URL (used as CTA until Lodgify widget is configured)
-    lodgifyUrl: "https://direct-book.com/properties/enchantedcollectivemadison",
+    // External fallback URL (used as CTA until Little Hotelier widget is configured)
+    littleHotelierUrl: "https://direct-book.com/properties/enchantedcollectivemadison",
     // Phase 4: Acuity scheduler URL — from Acuity dashboard → Scheduling Page → Share
     // Format: https://app.acuityscheduling.com/schedule.php?owner=XXXX&appointmentType=XXXX
     acuityUrl: "",
-    // Phase 4: Per-stay Lodgify widget embed URLs — from Lodgify dashboard → each property → Widget
-    lodgifyWidgets: {
+    // Phase 4: Per-stay Little Hotelier widget embed URLs — from Little Hotelier dashboard → Direct Booking → Widget/Embed
+    littleHotelierWidgets: {
       "enchanted-cottage": "",
       "velvet-buck": "",
       "bell-tent": "",
