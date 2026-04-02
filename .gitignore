@@ -4,7 +4,10 @@ CLIENT-CONTRACT.md
 # Claude internal agent worktrees
 .claude/worktrees/
 
-# Media files
+# Media files (large raw assets — exceptions below for committed web assets)
 *.mp4
 *.mov
 *.avi
+
+# Allow the compressed hero video in public/
+!enchanted-madison/public/hero-forest.mp4
