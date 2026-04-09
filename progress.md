@@ -43,6 +43,45 @@ Angela (owner) selected the **Pro** package. Everything listed below is what we 
 
 ---
 
+## Client Onboarding — Access & Accounts Needed from Angela
+
+Everything below is required before we can launch. Nothing on this list is optional.
+
+### 1. Domain Host Account — Remote Access
+- [ ] **What:** Login credentials or shared access to wherever enchantedmadison.com is registered (GoDaddy, Namecheap, Cloudflare, etc.)
+- [ ] **Why:** We need to point DNS to Vercel for deployment. Requires adding A/CNAME records.
+- [ ] **Action for Angela:** Either share login or add us as an authorized user on the account.
+
+### 2. Resend — Email Delivery Service
+- [ ] **What:** We create a Resend account (resend.com) to power all transactional emails — proposal inquiry notifications, quiz auto-replies, contact form submissions
+- [ ] **Why:** Every form on the site needs to send emails. Resend is the service that delivers them.
+- [ ] **Action for Angela:** We'll set this up. She needs to verify the domain (enchantedmadison.com) by adding DNS records — which is why we need domain access first.
+- [ ] **Deliverable:** `RESEND_API_KEY` env var set in Vercel, domain verified, sending from `angela@enchantedmadison.com`
+
+### 3. Little Hotelier — Overnight Stay Booking Widget
+- [ ] **What:** Embed URL for each property's booking widget from Angela's Little Hotelier dashboard
+- [ ] **Why:** The stay pages (`/stays/enchanted-cottage`, `/stays/velvet-buck`, etc.) have a `LodgifyWidget` component ready to render the booking calendar inline. Currently showing a placeholder until we get the real URLs.
+- [ ] **Action for Angela:** Go to Little Hotelier dashboard → each property → Widget/Embed → copy the URL. One URL per accommodation.
+- [ ] **We need URLs for:** Enchanted Cottage, Velvet Buck, Bell Tent, Curated Campsite (BYOT)
+
+### 4. Acuity Scheduling — Experience Booking
+- [ ] **What:** Scheduler embed URL from Angela's Acuity account (yes, it's like Calendly — she already uses it)
+- [ ] **Why:** The Date Night, Proposals, and Hot Tub Escape booking flows all end with an `AcuityModal` that loads Acuity's scheduler in a branded modal. Currently in demo mode until we get the real URL.
+- [ ] **Action for Angela:** Go to Acuity dashboard → Scheduling Page → Share → copy the scheduler URL
+- [ ] **Format:** `https://app.acuityscheduling.com/schedule.php?owner=XXXX&appointmentType=XXXX`
+
+### 5. Professional Photography (Before Launch)
+- [ ] **What:** Real photos of the property, accommodations, hot tubs, grounds, experiences
+- [ ] **Why:** All current images are AI-generated placeholders. They look good for now but real photography is non-negotiable before launch for trust and conversion.
+- [ ] **Action for Angela:** Schedule a professional shoot or provide existing high-quality photos
+
+### 6. About Page — Host Story Copy
+- [ ] **What:** Angela & Marc's personal story — why they built The Enchanted Collective
+- [ ] **Why:** The `/about` page layout is built and ready but has placeholder content. The host story is a key trust-builder for boutique hospitality.
+- [ ] **Action for Angela:** Write or voice-record their story. We'll polish it.
+
+---
+
 ## Phase Overview
 
 | Phase | Name | Status |
