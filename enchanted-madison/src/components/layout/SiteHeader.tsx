@@ -14,13 +14,10 @@ import { siteData } from "@/data/site";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { ShimmerText } from "@/components/animations/ShimmerText";
-import { useCart } from "@/lib/cart";
-import { CartDrawer } from "@/components/shop/CartDrawer";
 
 export function SiteHeader() {
   const pathname = usePathname();
   const isHomepage = pathname === "/";
-  const { count, openCart } = useCart();
 
   const [scrolled, setScrolled] = useState(!isHomepage);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -189,7 +186,7 @@ export function SiteHeader() {
             </div>
           </nav>
 
-          {/* Desktop CTA + cart */}
+          {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
             <Button
               variant={scrolled ? "primary" : "ghost-light"}
@@ -198,48 +195,10 @@ export function SiteHeader() {
             >
               {siteData.nav.cta.label}
             </Button>
-
-            <button
-              onClick={openCart}
-              aria-label={`Open cart${count > 0 ? `, ${count} item${count === 1 ? "" : "s"}` : ""}`}
-              className="relative p-2 transition-opacity hover:opacity-70"
-              style={{ color: scrolled ? "var(--text-primary)" : "var(--text-on-dark)" }}
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
-                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0" />
-              </svg>
-              {count > 0 && (
-                <span
-                  className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold"
-                  style={{ background: "var(--accent-rose)", color: "var(--text-on-dark)" }}
-                >
-                  {count}
-                </span>
-              )}
-            </button>
           </div>
 
-          {/* Mobile: cart + hamburger */}
+          {/* Mobile hamburger */}
           <div className="lg:hidden flex items-center gap-1">
-            <button
-              onClick={openCart}
-              aria-label={`Open cart${count > 0 ? `, ${count} item${count === 1 ? "" : "s"}` : ""}`}
-              className="relative p-2 transition-opacity hover:opacity-70"
-              style={{ color: scrolled ? "var(--text-primary)" : "var(--text-on-dark)" }}
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
-                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0" />
-              </svg>
-              {count > 0 && (
-                <span
-                  className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold"
-                  style={{ background: "var(--accent-rose)", color: "var(--text-on-dark)" }}
-                >
-                  {count}
-                </span>
-              )}
-            </button>
-
             <button
               className="flex flex-col gap-1.5 p-2 -mr-2"
               onClick={() => setMenuOpen((v) => !v)}
@@ -355,8 +314,6 @@ export function SiteHeader() {
         )}
       </AnimatePresence>
 
-      {/* Cart Drawer */}
-      <CartDrawer />
     </>
   );
 }

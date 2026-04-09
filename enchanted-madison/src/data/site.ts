@@ -70,10 +70,8 @@ export const siteData = {
       items: [
         { label: "Find My Escape", href: "/find-your-escape" },
         { label: "Journal", href: "/blog" },
-        { label: "Shop", href: "/shop" },
         { label: "Madison Guide", href: "/madison-guide" },
         { label: "About", href: "/about" },
-        { label: "Pricing ⚑", href: "/optimus-pricing" },
       ],
     },
     cta: { label: "Check Availability", href: "/stays" },
@@ -825,7 +823,6 @@ export const siteData = {
       { label: "Date Night", href: "/date-night" },
       { label: "Proposals", href: "/proposals" },
       { label: "Journal", href: "/blog" },
-      { label: "Shop", href: "/shop" },
       { label: "Add-Ons", href: "/packages" },
       { label: "Madison Guide", href: "/madison-guide" },
       { label: "About", href: "/about" },

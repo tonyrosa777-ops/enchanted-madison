@@ -4,8 +4,42 @@
 **Client:** The Enchanted Collective | Madison, Indiana
 **Business Type:** Luxury glamping and romantic experience property
 **Launch Target:** June 2026
-**Last Updated:** 2026-04-01 (Session 10)
-**Current Phase:** Session 10 complete — Phase 4 integration architecture wired (Lodgify + Acuity), contract drafted
+**Last Updated:** 2026-04-09 (Session 11)
+**Current Phase:** Session 11 — Pro package confirmed, pricing page removed, Premium features stripped
+**Package Selected:** Pro ($3,000)
+
+---
+
+## Client Package — Pro ($3,000) — CONTRACTED DELIVERABLES
+
+Angela (owner) selected the **Pro** package. Everything listed below is what we are contractually required to deliver. This is the single source of truth for scope.
+
+### Inherited from Starter
+- [ ] Full brand identity & design system
+- [ ] Up to 6 core pages (Home, Stays, About, FAQ, Contact, Reviews)
+- [ ] Mobile-first responsive design
+- [ ] SEO foundations — title tags, meta, OG, schema markup
+- [ ] VIP email capture form with $25 off incentive
+- [ ] Vercel deployment + domain connection
+
+### Pro-Specific Deliverables
+- [ ] Experience Finder — 3-question funnel routes visitors to the right booking path
+- [ ] Journal / Blog — 10 editorial SEO articles written and published
+- [ ] Proposals page — 3-tier packages + branded 3-step inquiry form with email notifications
+- [ ] Date Night / Experiences pages with Acuity Scheduling embedded on-domain
+- [ ] Stay pages with Little Hotelier booking widget embedded (no redirect)
+- [ ] Madison Guide local content hub
+- [ ] Add-Ons & Packages upsell page
+- [ ] 60-day post-launch support
+
+### NOT Included (Premium-Only — Removed from Build)
+- ~~Shop / e-commerce (gift cards, merch, digital downloads)~~
+- ~~Persistent cart with localStorage~~
+- ~~Stripe Checkout integration~~
+- ~~Printful print-on-demand fulfillment~~
+- ~~Automated order alerts + confirmation emails~~
+- ~~Manual fulfillment path for digital products~~
+- ~~90-day post-launch support~~
 
 ---
 
@@ -46,7 +80,7 @@
 | `/vip` | VIP Early Access Sign-Up | ✅ Built |
 | `/blog` | The Enchanted Journal — blog index | ✅ Built |
 | `/blog/[slug]` | Individual blog post pages (10 posts) | ✅ Built |
-| `/shop` | The Enchanted Collective Shop | ✅ Built |
+| `/shop` | ~~The Enchanted Collective Shop~~ | ❌ Removed (Premium-only, not in Pro package) |
 
 ---
 
@@ -82,7 +116,7 @@ These are required by this client but not in website-build-template.md. Each nee
 
 | Section | Decision | Rationale |
 |---------|----------|-----------|
-| Shop (Stripe + Printful) | **BUILT** (Session 5 — client request overrides prior decision) | Gift cards + POD merch + digital guide. Printful POD IDs are placeholder — client must replace with real IDs from their Printful store. |
+| Shop (Stripe + Printful) | **REMOVED** (Session 11 — client chose Pro package, shop is Premium-only) | Was built in Session 5, removed in Session 11. Gift cards, merch, Stripe Checkout, Printful POD all deleted. |
 | Blog (Sanity CMS) | **DEFER to Phase 5+** | Madison Guide and content pillars needed for SEO, but not MVP. Build as static pages first. |
 | Quiz / Lead capture | **KEEP — repurpose** | Use for VIP sign-up flow. Replace quiz mechanics with email/SMS opt-in. |
 | Instagram feed | **REMOVE for launch** | Pre-launch — no feed to display. Add in Phase 7 if active by launch. |
@@ -205,6 +239,43 @@ Site map defined in Session 1 (15 routes). All routes listed in Site Architectur
 
 ## Session Log
 
+### Session 11 — 2026-04-09
+**Completed:**
+- **Pro package confirmed** — Angela chose the Pro tier ($3,000). Full deliverables checklist documented at top of this file under "Client Package — Pro ($3,000) — CONTRACTED DELIVERABLES"
+- **Pricing page deleted** — `/optimus-pricing` (page.tsx + RoiCalculator.tsx) removed. Was an internal sales tool, no longer needed.
+- **Premium features stripped** — All e-commerce/shop infrastructure removed since it's Premium-only:
+  - `/shop` page deleted
+  - `/src/components/shop/` (CartDrawer, ProductCard, ShopContent) deleted
+  - `/src/lib/cart.tsx` (CartContext + CartProvider) deleted
+  - `/src/lib/printful.ts` + `printful-seeded-products.json` deleted
+  - `/src/data/shop.ts` (product catalog) deleted
+  - `/api/stripe/checkout` + `/api/stripe/webhook` routes deleted
+  - `/api/printful/products` + `/api/printful/variants/[id]` routes deleted
+  - Cart icon removed from SiteHeader (desktop + mobile)
+  - CartProvider removed from Providers.tsx
+  - "Shop" removed from nav dropdown + footer links
+  - "Pricing ⚑" removed from nav dropdown
+- Nav dropdown now: Find My Escape, Journal, Madison Guide, About
+
+**Decisions Made:**
+- Pro package scope is the contractual ceiling. No shop, no Stripe, no Printful, no cart.
+- 60-day post-launch support (not 90 — that's Premium)
+- Pricing page was marked "DELETE BEFORE LAUNCH" — deleted now since it served its purpose
+
+**Next Session Starts At:**
+- Upgrade remaining pages to quality standard (reviews, faq, contact, madison-guide, vip)
+- OR Phase 4 completion — wire Lodgify + Acuity when Angela provides embed codes
+- OR Phase 7 — Performance, QA & Launch Prep
+
+**Blockers (unchanged):**
+- Lodgify embed code — pending client
+- Acuity embed code — pending client
+- RESEND_API_KEY + verified Resend domain — pending setup
+- Professional photography (replace AI placeholders before launch)
+- Host story copy for /about — pending Angela & Marc
+
+---
+
 ### Session 8 — 2026-03-31
 **Completed:**
 - **Nav redesign** — SiteHeader rebuilt with primary links (Stays/Experiences/Proposals) always visible + "More ▾" AnimatePresence dropdown (Journal/Shop/Madison Guide/About/Pricing); mobile overlay keeps full hierarchy with display-type primary links + smaller mono secondary links; site.ts nav split into `links[]` + `dropdown.{label, items[]}`
@@ -298,7 +369,6 @@ OR Phase 4 — Conversion Flow Integration (pending Lodgify + Acuity embed codes
 **Blockers (unchanged):**
 - Lodgify embed code — pending client
 - Acuity embed code — pending client
-- Printful store ID + real sync product IDs — pending client
 - RESEND_API_KEY + verified Resend domain — pending setup
 - Professional photography (replace AI placeholders before launch)
 
