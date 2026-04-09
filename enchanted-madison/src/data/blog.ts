@@ -405,7 +405,7 @@ export const blogPosts: BlogPost[] = [
       "Four waterfalls, seven miles of trails, and a canyon that changes completely with the seasons. Everything you need to know before you hike Clifty Falls.",
     publishedAt: "2026-03-18",
     readTime: 7,
-    featuredImage: "/images/blog/clifty-falls-hiking-guide.jpg",
+    featuredImage: "/images/blog/clifty-falls-hiking-guide.webp",
     author: { name: "Angela & Marc", role: "Hosts at The Enchanted Collective" },
     metaTitle: "Clifty Falls State Park Hiking Guide | The Enchanted Collective",
     metaDescription:
@@ -520,7 +520,7 @@ export const blogPosts: BlogPost[] = [
       "The most common over-packing mistake couples make — and the surprisingly short list of what you actually need for a perfect glamping weekend.",
     publishedAt: "2026-03-20",
     readTime: 5,
-    featuredImage: "/images/blog/glamping-packing-list.jpg",
+    featuredImage: "/images/blog/glamping-packing-list.webp",
     author: { name: "Angela & Marc", role: "Hosts at The Enchanted Collective" },
     metaTitle: "Luxury Glamping Packing List | The Enchanted Collective",
     metaDescription:
@@ -607,7 +607,7 @@ export const blogPosts: BlogPost[] = [
       "The stretch of Indiana Highway 56 along the Ohio River passes through some of the state's oldest wine country. A guide to making an afternoon of it.",
     publishedAt: "2026-03-23",
     readTime: 6,
-    featuredImage: "/images/blog/ohio-river-wine-country-madison.jpg",
+    featuredImage: "/images/blog/ohio-river-wine-country-madison.webp",
     author: { name: "Angela & Marc", role: "Hosts at The Enchanted Collective" },
     metaTitle: "Ohio River Wine Country Day Trip from Madison | The Enchanted Collective",
     metaDescription:
@@ -778,7 +778,7 @@ export const blogPosts: BlogPost[] = [
       "Why private hot tubs have become the most requested feature in romantic travel — and what to expect when you book one here.",
     publishedAt: "2026-03-28",
     readTime: 5,
-    featuredImage: "/images/blog/private-hot-tub-experience-guide.jpg",
+    featuredImage: "/images/blog/private-hot-tub-experience-guide.webp",
     author: { name: "Angela & Marc", role: "Hosts at The Enchanted Collective" },
     metaTitle: "Private Hot Tub Experience Guide | The Enchanted Collective",
     metaDescription:
@@ -855,7 +855,7 @@ export const blogPosts: BlogPost[] = [
       "Most people think of Marengo and Wyandotte when they think of southern Indiana. They're missing the Ohio River corridor entirely.",
     publishedAt: "2026-03-30",
     readTime: 7,
-    featuredImage: "/images/blog/southern-indiana-travel-guide.jpg",
+    featuredImage: "/images/blog/southern-indiana-travel-guide.webp",
     author: { name: "Angela & Marc", role: "Hosts at The Enchanted Collective" },
     metaTitle: "Southern Indiana Travel Guide | The Enchanted Collective",
     metaDescription:
