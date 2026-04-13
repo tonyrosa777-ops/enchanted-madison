@@ -19,10 +19,10 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const benefits = [
-  { icon: "🌿", label: "$25 off your first stay", detail: "Applied at checkout" },
-  { icon: "📅", label: "First access to new dates", detail: "Before they go public" },
-  { icon: "📖", label: "Free Perfect Madison Weekend guide", detail: "Dining, trails, wineries, hidden gems" },
-  { icon: "✉️", label: "Exclusive pre-launch news", detail: "Opening updates and behind-the-scenes" },
+  { icon: "✨", label: "An exclusive discount on your first booking", detail: "Applied automatically at checkout" },
+  { icon: "✨", label: "A complimentary luxury sugar scrub", detail: "To elevate your soak" },
+  { icon: "✨", label: "A curated snack & drink pairing", detail: "Waiting just for you on arrival" },
+  { icon: "📅", label: "First access to new dates", detail: "VIPs always get first access" },
 ];
 
 export function VipForm() {
@@ -71,7 +71,7 @@ export function VipForm() {
                   {siteData.vip.subheadline}
                 </p>
                 <p className="mt-3 text-xs" style={{ fontFamily: "var(--font-mono)", color: "var(--accent)", letterSpacing: "0.08em" }}>
-                  ✦ {siteData.vip.counter}
+                  {siteData.vip.ctaSubtext}
                 </p>
               </div>
 

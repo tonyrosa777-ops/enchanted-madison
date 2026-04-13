@@ -581,6 +581,24 @@ export default function HomePage() {
               {siteData.vip.headline}
             </h2>
             <p
+              className="text-base leading-relaxed mb-2"
+              style={{ fontFamily: "var(--font-body)", color: "var(--text-primary)" }}
+            >
+              As a VIP, you&rsquo;ll unlock:
+            </p>
+            <ul className="flex flex-col gap-2 mb-4 max-w-md mx-auto text-left">
+              {siteData.vip.perks.map((perk) => (
+                <li
+                  key={perk}
+                  className="flex items-start gap-2 text-base"
+                  style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
+                >
+                  <span style={{ color: "var(--accent)", flexShrink: 0 }}>&#10024;</span>
+                  {perk}
+                </li>
+              ))}
+            </ul>
+            <p
               className="text-base leading-relaxed mb-8"
               style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
             >
@@ -590,10 +608,10 @@ export default function HomePage() {
               {siteData.vip.cta}
             </Button>
             <p
-              className="mt-4 text-xs"
-              style={{ fontFamily: "var(--font-mono)", color: "var(--text-secondary)", letterSpacing: "0.06em" }}
+              className="mt-3 text-xs"
+              style={{ fontFamily: "var(--font-mono)", color: "var(--accent)", letterSpacing: "0.06em" }}
             >
-              {siteData.vip.counter}
+              {siteData.vip.ctaSubtext}
             </p>
           </FadeUp>
         </div>

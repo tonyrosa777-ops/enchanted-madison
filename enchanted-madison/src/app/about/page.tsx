@@ -36,11 +36,28 @@ const orgSchema = {
   ],
 };
 
-// Brand intro — initial-business-data.md §1
-const brandIntro = [
-  "Welcome to The Enchanted Collective — a one-of-a-kind destination for glamping in Indiana, romantic cabin getaways, and luxury camping experiences designed to help you unwind, reconnect, and escape the everyday.",
-  "Nestled in a peaceful natural setting in Southern Indiana, our curated collection of stays blends the beauty of the outdoors with the comfort of thoughtfully designed accommodations.",
-  "Whether you're planning a couples getaway, anniversary trip, weekend retreat, or simply searching for unique places to stay in Indiana, The Enchanted Collective offers immersive accommodations that combine rustic tranquility with elevated comfort — creating stays that feel both relaxing and unforgettable.",
+// About copy — provided by Angela (2026-04-13)
+// Voice: personal, vulnerable, emotionally direct. Speaks to the feeling, not the feature.
+const aboutIntro = [
+  "We believe the best moments in life aren\u2019t planned months in advance.",
+  "They\u2019re the ones you finally decide not to put off anymore.",
+  "Because somewhere between busy schedules, responsibilities, and everything pulling at your attention\u2026 it\u2019s easy to lose connection.",
+  "With your partner.\nWith your friends.\nEven with yourself.",
+];
+
+const aboutMiddle = [
+  "The Enchanted Collective was created as a place to pause that.",
+  "A place where a simple night out can turn into something deeper \u2014 where you can actually be present, breathe, and feel like yourself again.",
+  "There\u2019s something powerful about stepping away from the noise.",
+  "A date night where you\u2019re not distracted\u2026 just together.\nA girls\u2019 night where the conversation flows and time slows down.\nA quiet moment under the stars where your mind finally settles.",
+  "That kind of reset doesn\u2019t just feel good in the moment \u2014 it stays with you.",
+];
+
+const aboutClosing = [
+  "Located in Madison, Indiana, we\u2019ve created a collection of curated stays and private experiences designed to help you relax, reconnect, and recharge \u2014 without needing a full vacation to do it.",
+  "Every detail is intentional.\nEvery space is designed to feel effortless.",
+  "So all you have to do is show up and enjoy it.",
+  "Because you don\u2019t need more time.\nYou just need the space to use it differently.",
 ];
 
 const values = [
@@ -101,22 +118,62 @@ export default function AboutPage() {
 
       <WaveDivider fill="var(--bg-base)" background="var(--bg-dark)" />
 
-      {/* Brand story */}
+      {/* About — Angela's copy */}
       <section
         className="py-16 lg:py-20 px-4"
         style={{ background: "var(--bg-base)" }}
       >
-        <div className="max-w-2xl mx-auto flex flex-col gap-6">
+        <div className="max-w-2xl mx-auto flex flex-col gap-5">
           <FadeUp>
-            <p className="eyebrow mb-6" style={{ color: "var(--accent)" }}>
+            <p className="eyebrow mb-4" style={{ color: "var(--accent)" }}>
               Our Story
             </p>
           </FadeUp>
-          {brandIntro.map((para, i) => (
-            <FadeUp key={i} delay={i * 0.08}>
+          {aboutIntro.map((para, i) => (
+            <FadeUp key={`intro-${i}`} delay={i * 0.06}>
               <p
-                className="text-base leading-relaxed"
+                className="text-base leading-relaxed whitespace-pre-line"
                 style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
+              >
+                {para}
+              </p>
+            </FadeUp>
+          ))}
+        </div>
+      </section>
+
+      <section
+        className="py-16 lg:py-20 px-4"
+        style={{ background: "var(--bg-elevated)" }}
+      >
+        <div className="max-w-2xl mx-auto flex flex-col gap-5">
+          {aboutMiddle.map((para, i) => (
+            <FadeUp key={`mid-${i}`} delay={i * 0.06}>
+              <p
+                className="text-base leading-relaxed whitespace-pre-line"
+                style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
+              >
+                {para}
+              </p>
+            </FadeUp>
+          ))}
+        </div>
+      </section>
+
+      <section
+        className="py-16 lg:py-20 px-4"
+        style={{ background: "var(--bg-base)" }}
+      >
+        <div className="max-w-2xl mx-auto flex flex-col gap-5">
+          {aboutClosing.map((para, i) => (
+            <FadeUp key={`close-${i}`} delay={i * 0.06}>
+              <p
+                className={`leading-relaxed whitespace-pre-line ${i >= 2 ? "text-lg" : "text-base"}`}
+                style={{
+                  fontFamily: i >= 2 ? "var(--font-display)" : "var(--font-body)",
+                  fontWeight: i >= 2 ? 500 : 400,
+                  color: i >= 2 ? "var(--text-primary)" : "var(--text-secondary)",
+                }}
               >
                 {para}
               </p>

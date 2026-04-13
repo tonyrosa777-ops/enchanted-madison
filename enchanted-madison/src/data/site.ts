@@ -39,11 +39,18 @@ export const siteData = {
   },
 
   // VIP / Lead Capture
+  // Source: Angela's feedback (2026-04-13)
   vip: {
     headline: "Join the VIP List",
     subheadline:
-      "Get first access to new dates, $25 off your first stay, and a free Perfect Madison Weekend digital guide.",
-    cta: "Unlock VIP Access",
+      "This isn't just a reservation — it's a fully designed escape. Spots fill quickly… and VIPs always get first access.",
+    perks: [
+      "An exclusive discount on your first booking",
+      "A complimentary luxury sugar scrub to elevate your soak",
+      "A curated snack & drink pairing waiting just for you",
+    ],
+    cta: "Join the VIP List",
+    ctaSubtext: "Claim your perks before they disappear",
     counter: "Join 400+ couples on the list",
   },
 
@@ -62,14 +69,14 @@ export const siteData = {
   nav: {
     links: [
       { label: "Stays", href: "/stays" },
-      { label: "Experiences", href: "/date-night" },
+      { label: "Hot Tub Escapes", href: "/date-night" },
       { label: "Proposals", href: "/proposals" },
     ],
     dropdown: {
       label: "More",
       items: [
         { label: "Find My Escape", href: "/find-your-escape" },
-        { label: "Journal", href: "/blog" },
+        { label: "The Enchanted Guide", href: "/blog" },
         { label: "Madison Guide", href: "/madison-guide" },
         { label: "About", href: "/about" },
       ],
@@ -820,10 +827,10 @@ export const siteData = {
     tagline: "Where Romance Meets the Wild",
     links: [
       { label: "Stays", href: "/stays" },
-      { label: "Date Night", href: "/date-night" },
+      { label: "Hot Tub Escapes", href: "/date-night" },
       { label: "Proposals", href: "/proposals" },
-      { label: "Journal", href: "/blog" },
-      { label: "Add-Ons", href: "/packages" },
+      { label: "The Enchanted Guide", href: "/blog" },
+      { label: "Enhancements", href: "/packages" },
       { label: "Madison Guide", href: "/madison-guide" },
       { label: "About", href: "/about" },
       { label: "FAQ", href: "/faq" },

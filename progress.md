@@ -4,8 +4,8 @@
 **Client:** The Enchanted Collective | Madison, Indiana
 **Business Type:** Luxury glamping and romantic experience property
 **Launch Target:** June 2026
-**Last Updated:** 2026-04-09 (Session 11)
-**Current Phase:** Session 11 — Pro package confirmed, pricing page removed, Premium features stripped
+**Last Updated:** 2026-04-13 (Session 12)
+**Current Phase:** Session 12 — Client feedback round 1 (Angela's change list)
 **Package Selected:** Pro ($3,000)
 
 ---
@@ -277,6 +277,37 @@ Site map defined in Session 1 (15 routes). All routes listed in Site Architectur
 ---
 
 ## Session Log
+
+### Session 12 — 2026-04-13
+**Context:** Angela (owner) reviewed the live site and sent a numbered change list. This session implements all actionable items and documents what's blocked.
+
+**Completed:**
+- **VIP perks copy updated** — Homepage VIP section + /vip standalone page now use Angela's exact perks language: exclusive discount on first booking, complimentary luxury sugar scrub, curated snack & drink pairing. CTA changed to "Join the VIP List" with "Claim your perks before they disappear" subtext.
+- **Nav: "Experiences" renamed to "Hot Tub Escapes"** — Primary nav, footer, and date-night page title all updated. Angela wants the experience page framed as "Hot Tub Escapes" specifically.
+- **Nav: "Journal" renamed to "The Enchanted Guide"** — Dropdown nav, footer, and blog page eyebrow/metadata all updated.
+- **About Us copy replaced** — Removed generic brand intro placeholder. Replaced with Angela's full copy (personal, emotionally direct, speaks to disconnection and reconnection). Copy split across three alternating sections with closing lines elevated to display font for emphasis.
+- **Packages page renamed** — "Stay Enhancements & Add-Ons" → "Enhancements for Your Stay" (title, eyebrow, footer label). Angela's item #9 confirmed: /packages already has all add-ons on one page.
+
+**Angela's Voice & Tone (noted for future copywriting):**
+- More personal and vulnerable than our initial marketing copy
+- Speaks directly to the feeling of disconnection ("busy schedules, responsibilities, everything pulling at your attention")
+- Uses second person directly ("you don't need more time, you just need the space to use it differently")
+- Comfortable with ellipses and em dashes for pacing
+- Includes friends/girls' night — not exclusively couples-only in tone (though couples remain primary audience)
+- Aspirational but grounded — no superlatives, no hype
+
+**Blocked — Waiting on Angela:**
+1. **Logo** — Angela wants her actual logo on the site. We need the logo file (SVG preferred, PNG acceptable) before we can replace the text-based logo in SiteHeader.
+2. **Property map page** — Angela wants a page showing campsites, glamping sites, bathroom, and hot tub escape locations. Needs: a property layout/map asset or enough info to build one (site dimensions, relative positions of structures).
+3. **Liability waiver for bike packages** — Angela mentioned this for the Picnic and Ride add-on. We need the waiver text/policy from her or her attorney.
+4. **"Hot Tub Escapes" page restructuring** — Angela wants a menu for picking specific hot tub escape packages with descriptions of the evening + bullet points of what's included + individual "Book Now" buttons. The current /date-night page partially covers this but may need restructuring to match her vision more closely. Need to confirm with Angela if current layout satisfies this or if she wants a different format.
+
+**Decisions:**
+- Angela's About Us copy is now the canonical voice for the brand. Future copy should match this tone — personal, vulnerable, grounded.
+- "Hot Tub Escapes" is the client-preferred name for the experience category (not "Date Night," not "Experiences").
+- "The Enchanted Guide" is the client-preferred name for the blog/journal section.
+
+---
 
 ### Session 11 — 2026-04-09
 **Completed:**

@@ -17,7 +17,7 @@ import { AddonCard } from "@/components/ui/AddonCard";
 import { siteData } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Stay Enhancements & Add-Ons",
+  title: "Enhancements for Your Stay",
   description:
     "Upgrade your stay at The Enchanted Collective. Romance packages, outdoor movie nights, s'mores skillets, picnic rides, and more — bookable at checkout.",
 };
@@ -80,7 +80,7 @@ export default function PackagesPage() {
 
         <FadeUp>
           <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>
-            Stay Enhancements
+            Enhancements for Your Stay
           </p>
           <h1
             className="leading-tight mb-5"

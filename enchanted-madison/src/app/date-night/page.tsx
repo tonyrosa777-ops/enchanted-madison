@@ -18,9 +18,9 @@ import { BookingCalendar } from "@/components/ui/BookingCalendar";
 import { siteData } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Date Night Escapes",
+  title: "Hot Tub Escapes",
   description:
-    "Private hot tub date nights and fireside escapes near Madison, Indiana. No overnight stay required. From $119/couple. Book a 2-4 hour private escape.",
+    "Private hot tub escapes, date nights, and fireside experiences near Madison, Indiana. No overnight stay required. From $119/couple. Book a 2-4 hour private escape.",
 };
 
 const experienceFlow = [
