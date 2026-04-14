@@ -9,11 +9,11 @@
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteData } from "@/data/site";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
-import { ShimmerText } from "@/components/animations/ShimmerText";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -92,19 +92,20 @@ export function SiteHeader() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex-shrink-0 transition-opacity duration-200 hover:opacity-80"
+            className="flex-shrink-0 transition-all duration-400 hover:opacity-80"
             onClick={closeMenu}
           >
-            <span
-              className="text-2xl tracking-wide"
+            <Image
+              src="/images/logo-final.png"
+              alt="The Enchanted Collective"
+              width={160}
+              height={160}
+              className="h-14 w-auto transition-all duration-400"
               style={{
-                fontFamily: "var(--font-display)",
-                fontWeight: 600,
-                color: scrolled ? "var(--primary)" : "var(--text-on-dark)",
+                filter: scrolled ? "brightness(0.55) saturate(1.1)" : "none",
               }}
-            >
-              <ShimmerText delay={4} interval={12}>The Enchanted Collective</ShimmerText>
-            </span>
+              priority
+            />
           </Link>
 
           {/* Desktop nav */}
