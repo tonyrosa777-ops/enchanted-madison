@@ -63,7 +63,7 @@ export function SiteHeader() {
   const linkStyle = {
     fontFamily: "var(--font-mono)",
     fontWeight: 500,
-    fontSize: "14px",
+    fontSize: "15px",
     letterSpacing: "0.08em",
     textTransform: "uppercase" as const,
     color: scrolled ? "var(--text-primary)" : "var(--text-on-dark)",
@@ -191,7 +191,6 @@ export function SiteHeader() {
           <div className="hidden lg:flex items-center gap-3">
             <Button
               variant={scrolled ? "primary" : "ghost-light"}
-              size="sm"
               href={siteData.nav.cta.href}
             >
               {siteData.nav.cta.label}
