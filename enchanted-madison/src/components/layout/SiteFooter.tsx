@@ -3,6 +3,7 @@
 // Three-column layout: brand | navigation | contact
 
 import Link from "next/link";
+import Image from "next/image";
 import { siteData } from "@/data/site";
 
 const footerLinks = {
@@ -38,17 +39,14 @@ export function SiteFooter() {
 
           {/* Brand column */}
           <div className="lg:col-span-1">
-            <Link href="/">
-              <span
-                className="text-xl tracking-wide hover:opacity-80 transition-opacity"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontWeight: 600,
-                  color: "var(--text-on-dark)",
-                }}
-              >
-                The Enchanted<br />Collective
-              </span>
+            <Link href="/" className="inline-block hover:opacity-80 transition-opacity">
+              <Image
+                src="/images/logo-final.png"
+                alt="The Enchanted Collective"
+                width={160}
+                height={160}
+                className="h-16 w-auto"
+              />
             </Link>
 
             <p
