@@ -135,7 +135,15 @@ export function SiteFooter() {
           }}
         >
           <p>© {new Date().getFullYear()} The Enchanted Collective. All rights reserved.</p>
-          <p>Madison, Indiana · enchantedmadison.com</p>
+          <div className="flex items-center gap-4">
+            <Link href="/privacy" className="hover:opacity-80 transition-opacity">
+              Privacy Policy
+            </Link>
+            <span aria-hidden="true">·</span>
+            <Link href="/terms" className="hover:opacity-80 transition-opacity">
+              Terms & Conditions
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,7 +1,6 @@
 // POST /api/contact — Contact form handler
-// Source: initial-business-data.md §2 (contact info)
-// Phase 5: wire email delivery via Resend (API key needed from client)
-// For now: validates payload, logs server-side, returns 200 so the UI confirms receipt.
+// Sends owner notification + warm auto-reply via Resend
+// Gracefully degrades if RESEND_API_KEY not set
 
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
@@ -12,7 +11,17 @@ const schema = z.object({
   phone: z.string().optional(),
   subject: z.enum(["general", "booking", "proposal", "date-night", "press", "other"]),
   message: z.string().min(10),
+  smsConsent: z.boolean().optional(),
 });
+
+const subjectLabels: Record<string, string> = {
+  general: "General Inquiry",
+  booking: "Booking Question",
+  proposal: "Proposal Inquiry",
+  "date-night": "Hot Tub Escape Inquiry",
+  press: "Press / Media",
+  other: "Other",
+};
 
 export async function POST(req: NextRequest) {
   let body: unknown;
@@ -30,20 +39,42 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const { name, email, phone, subject, message } = parsed.data;
+  const { name, email, phone, subject, message, smsConsent } = parsed.data;
+  const subjectLabel = subjectLabels[subject] ?? subject;
 
-  // TODO Phase 5: replace with Resend email delivery
-  // import { Resend } from 'resend';
-  // const resend = new Resend(process.env.RESEND_API_KEY);
-  // await resend.emails.send({
-  //   from: 'contact@enchantedmadison.com',
-  //   to: 'enchantedcollective47250@gmail.com',
-  //   subject: `New contact: ${subject} from ${name}`,
-  //   text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone ?? 'not provided'}\n\n${message}`,
-  // });
+  const resendKey = process.env.RESEND_API_KEY;
 
-  // Development: log to console until email is wired
-  console.log("[contact form submission]", { name, email, phone, subject, message });
+  if (!resendKey) {
+    console.log("[contact] No RESEND_API_KEY — logging submission:");
+    console.log({ name, email, phone, subject, message });
+    return NextResponse.json({ success: true });
+  }
+
+  try {
+    const { Resend } = await import("resend");
+    const resend = new Resend(resendKey);
+
+    // 1. Owner notification — Angela gets all the details
+    await resend.emails.send({
+      from: "contact@enchantedmadison.com",
+      to: "enchantedcollective47250@gmail.com",
+      replyTo: email,
+      subject: `New Contact Form: ${subjectLabel} — ${name}`,
+      text: `New contact form submission\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone || "Not provided"}\nSMS Consent: ${smsConsent ? "Yes" : "No"}\nSubject: ${subjectLabel}\n\nMessage:\n${message}\n\n—\nReply directly to this email to respond to ${name}.`,
+    });
+
+    // 2. Auto-reply to the inquirer — warm, on-brand
+    await resend.emails.send({
+      from: "angela@enchantedmadison.com",
+      to: email,
+      replyTo: "enchantedcollective47250@gmail.com",
+      subject: `We got your message, ${name} — The Enchanted Collective`,
+      text: `Hi ${name},\n\nThank you so much for reaching out. We received your message and I'll personally get back to you within 24 hours.\n\nIf you need anything sooner, don't hesitate to call or text us at 812-329-2477 — we're always happy to chat.\n\nWe look forward to connecting with you.\n\nWarmly,\nAngela & Marc\nThe Enchanted Collective\nMadison, Indiana\n812-329-2477`,
+    });
+  } catch (err) {
+    console.error("[contact] Resend error:", err);
+    // Non-fatal — still return success so the guest sees confirmation
+  }
 
   return NextResponse.json({ success: true });
 }

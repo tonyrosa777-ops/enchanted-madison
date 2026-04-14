@@ -16,6 +16,7 @@ const schema = z.object({
   phone: z.string().optional(),
   subject: z.string().min(1, "Please select a subject"),
   message: z.string().min(10, "Message must be at least 10 characters"),
+  smsConsent: z.boolean().optional(),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -381,6 +382,35 @@ export function ContactForm() {
                       {errors.message.message}
                     </p>
                   )}
+                </div>
+
+                {/* SMS consent — optional, 10DLC compliance */}
+                <div className="flex items-start gap-3">
+                  <input
+                    id="smsConsent"
+                    type="checkbox"
+                    className="mt-1 h-4 w-4 rounded accent-[var(--primary)]"
+                    style={{ accentColor: "var(--primary)" }}
+                    {...register("smsConsent")}
+                  />
+                  <label
+                    htmlFor="smsConsent"
+                    className="text-xs leading-relaxed"
+                    style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
+                  >
+                    By providing your phone number, you consent to receive text messages from
+                    The Enchanted Collective for purposes related to our services. Message
+                    frequency may vary. Message and data rates may apply. Reply HELP for help
+                    or STOP to unsubscribe. See our{" "}
+                    <a href="/privacy" className="underline hover:opacity-70" style={{ color: "var(--accent)" }}>
+                      privacy policy
+                    </a>{" "}
+                    and{" "}
+                    <a href="/terms" className="underline hover:opacity-70" style={{ color: "var(--accent)" }}>
+                      terms and conditions
+                    </a>
+                    .
+                  </label>
                 </div>
 
                 {serverError && (
