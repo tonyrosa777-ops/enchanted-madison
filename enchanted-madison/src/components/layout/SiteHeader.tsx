@@ -268,7 +268,7 @@ export function SiteHeader() {
               />
 
               {/* Secondary links (dropdown items) — smaller type */}
-              {[...siteData.nav.dropdown.items, { label: "Contact", href: "/contact" }].map((link, i) => (
+              {siteData.nav.dropdown.items.map((link, i) => (
                 <motion.div
                   key={link.href}
                   initial={{ opacity: 0, x: 20 }}

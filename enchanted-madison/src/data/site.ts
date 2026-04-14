@@ -79,6 +79,7 @@ export const siteData = {
         { label: "The Enchanted Guide", href: "/blog" },
         { label: "Madison Guide", href: "/madison-guide" },
         { label: "About", href: "/about" },
+        { label: "Contact", href: "/contact" },
       ],
     },
     cta: { label: "Check Availability", href: "/stays" },
