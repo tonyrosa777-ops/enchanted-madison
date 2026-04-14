@@ -58,7 +58,7 @@ ${d.additionalNotes || "None"}`;
 
       // Owner notification
       await resend.emails.send({
-        from: "proposals@enchantedmadison.com",
+        from: "proposals@enchantedcollectivemadison.com",
         to: "enchantedcollective47250@gmail.com",
         subject: `New Proposal Inquiry — ${d.yourName} & ${d.partnerName} · ${d.preferredDate}`,
         text: emailBody,
@@ -66,7 +66,7 @@ ${d.additionalNotes || "None"}`;
 
       // Auto-reply to submitter
       await resend.emails.send({
-        from: "proposals@enchantedmadison.com",
+        from: "proposals@enchantedcollectivemadison.com",
         to: d.email,
         subject: "We received your proposal request — The Enchanted Collective",
         text: `Hi ${d.yourName},\n\nThank you for reaching out about your proposal! Angela and Marc will be in touch within 24 hours to confirm your date and walk through every detail.\n\nWe can't wait to help make this moment unforgettable.\n\nWarm regards,\nAngela & Marc\nThe Enchanted Collective\n812-329-2477`,

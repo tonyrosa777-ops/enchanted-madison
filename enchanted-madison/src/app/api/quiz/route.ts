@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
 
     // Owner notification
     await resend.emails.send({
-      from: "quiz@enchantedmadison.com",
+      from: "quiz@enchantedcollectivemadison.com",
       to: "enchantedcollective47250@gmail.com",
       subject: `New Lead: ${name} — matched to ${recommendation}`,
       text: `New Experience Finder submission\n\nName: ${name}\nEmail: ${email}\nRecommendation: ${recommendation}\n\nAnswers:\n${answerSummary}${note ? `\n\nNote from ${name}:\n${note}` : ""}\n\nReply to this person within 24 hours.`,
@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
     };
 
     await resend.emails.send({
-      from: "angela@enchantedmadison.com",
+      from: "angela@enchantedcollectivemadison.com",
       to: email,
       replyTo: "enchantedcollective47250@gmail.com",
       subject: `Your Enchanted Collective recommendation, ${name}`,

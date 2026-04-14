@@ -56,7 +56,7 @@ export async function POST(req: NextRequest) {
 
     // 1. Owner notification — Angela gets all the details
     await resend.emails.send({
-      from: "contact@enchantedmadison.com",
+      from: "contact@enchantedcollectivemadison.com",
       to: "enchantedcollective47250@gmail.com",
       replyTo: email,
       subject: `New Contact Form: ${subjectLabel} — ${name}`,
@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
 
     // 2. Auto-reply to the inquirer — warm, on-brand
     await resend.emails.send({
-      from: "angela@enchantedmadison.com",
+      from: "angela@enchantedcollectivemadison.com",
       to: email,
       replyTo: "enchantedcollective47250@gmail.com",
       subject: `We got your message, ${name} — The Enchanted Collective`,
