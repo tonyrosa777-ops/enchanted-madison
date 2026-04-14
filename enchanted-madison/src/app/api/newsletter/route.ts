@@ -8,7 +8,7 @@ import { z } from "zod";
 const schema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
-  phone: z.string().optional(),
+  phone: z.string().min(7, "Phone number is required"),
 });
 
 export async function POST(req: NextRequest) {

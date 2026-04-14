@@ -13,7 +13,7 @@ import { siteData } from "@/data/site";
 const schema = z.object({
   name: z.string().min(2, "Name is required"),
   email: z.string().email("A valid email is required"),
-  phone: z.string().optional(),
+  phone: z.string().min(7, "Phone number is required"),
   subject: z.string().min(1, "Please select a subject"),
   message: z.string().min(10, "Message must be at least 10 characters"),
   smsConsent: z.boolean().optional(),
@@ -303,7 +303,7 @@ export function ContactForm() {
                       className="text-[11px] uppercase"
                       style={{ fontFamily: "var(--font-mono)", color: "var(--text-secondary)", letterSpacing: "0.1em" }}
                     >
-                      Phone <span style={{ color: "var(--text-muted)" }}>(optional)</span>
+                      Phone
                     </label>
                     <input
                       id="phone"
@@ -313,12 +313,17 @@ export function ContactForm() {
                       className="w-full rounded-xl px-4 py-3 text-sm outline-none"
                       style={{
                         background: "var(--bg-card)",
-                        border: "1px solid var(--primary-muted)",
+                        border: errors.phone ? "1px solid #c0392b" : "1px solid var(--primary-muted)",
                         fontFamily: "var(--font-body)",
                         color: "var(--text-primary)",
                       }}
                       {...register("phone")}
                     />
+                    {errors.phone && (
+                      <p className="text-xs" style={{ color: "#c0392b", fontFamily: "var(--font-mono)" }}>
+                        {errors.phone.message}
+                      </p>
+                    )}
                   </div>
                 </div>
 

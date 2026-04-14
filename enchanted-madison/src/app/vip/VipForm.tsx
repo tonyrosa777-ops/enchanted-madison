@@ -13,7 +13,7 @@ import { siteData } from "@/data/site";
 const schema = z.object({
   name: z.string().min(2, "Name required"),
   email: z.string().email("Valid email required"),
-  phone: z.string().optional(),
+  phone: z.string().min(7, "Phone number is required"),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -121,15 +121,14 @@ export function VipForm() {
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-xs mb-1.5" style={labelStyle}>
-                    Phone <span style={{ color: "var(--text-muted)", textTransform: "none" }}>(optional — SMS updates)</span>
-                  </label>
+                  <label htmlFor="phone" className="block text-xs mb-1.5" style={labelStyle}>Phone</label>
                   <input
                     id="phone" type="tel" placeholder="(502) 555-0100"
                     {...register("phone")}
                     className="w-full rounded-xl px-4 py-3 text-sm outline-none transition-all duration-200"
-                    style={inputStyle(false)}
+                    style={inputStyle(!!errors.phone)}
                   />
+                  {errors.phone && <p className="text-xs mt-1" style={{ color: "var(--accent-rose)", fontFamily: "var(--font-body)" }}>{errors.phone.message}</p>}
                 </div>
 
                 <Button type="submit" variant="primary" size="lg" disabled={isSubmitting} className="w-full mt-2">

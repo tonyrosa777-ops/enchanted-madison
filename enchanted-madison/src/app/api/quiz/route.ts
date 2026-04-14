@@ -6,15 +6,16 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  const { name, email, note, answers, recommendation } = body as {
+  const { name, email, phone, note, answers, recommendation } = body as {
     name: string;
     email: string;
+    phone: string;
     note?: string;
     answers: Record<string, string>;
     recommendation: string;
   };
 
-  if (!name || !email || !email.includes("@")) {
+  if (!name || !email || !email.includes("@") || !phone) {
     return NextResponse.json({ error: "Invalid request" }, { status: 422 });
   }
 
@@ -39,7 +40,7 @@ export async function POST(req: NextRequest) {
       from: "quiz@enchantedcollectivemadison.com",
       to: "enchantedcollective47250@gmail.com",
       subject: `New Lead: ${name} — matched to ${recommendation}`,
-      text: `New Experience Finder submission\n\nName: ${name}\nEmail: ${email}\nRecommendation: ${recommendation}\n\nAnswers:\n${answerSummary}${note ? `\n\nNote from ${name}:\n${note}` : ""}\n\nReply to this person within 24 hours.`,
+      text: `New Experience Finder submission\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nRecommendation: ${recommendation}\n\nAnswers:\n${answerSummary}${note ? `\n\nNote from ${name}:\n${note}` : ""}\n\nReply to this person within 24 hours.`,
     });
 
     // Auto-reply to guest

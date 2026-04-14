@@ -88,6 +88,7 @@ export function FindYourEscapeWizard() {
   const [answers, setAnswers] = useState<Answers>({});
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [note, setNote] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [emailError, setEmailError] = useState("");
@@ -119,7 +120,7 @@ export function FindYourEscapeWizard() {
       await fetch("/api/quiz", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, note, answers, recommendation: resultKey }),
+        body: JSON.stringify({ name, email, phone, note, answers, recommendation: resultKey }),
       });
     } catch {
       // Graceful degradation — show result regardless
@@ -263,6 +264,24 @@ export function FindYourEscapeWizard() {
                 </div>
               </div>
 
+              {/* Phone */}
+              <input
+                type="tel"
+                placeholder="Phone number"
+                value={phone}
+                onChange={e => setPhone(e.target.value)}
+                required
+                className="w-full px-4 py-3.5 rounded-xl text-sm outline-none transition-all"
+                style={{
+                  background: "rgba(254,252,250,0.06)",
+                  border: "1.5px solid rgba(254,252,250,0.15)",
+                  color: "var(--text-on-dark)",
+                  fontFamily: "var(--font-body)",
+                }}
+                onFocus={e => (e.target.style.borderColor = "var(--accent)")}
+                onBlur={e => (e.target.style.borderColor = "rgba(254,252,250,0.15)")}
+              />
+
               {/* Note */}
               <textarea
                 placeholder={fye.contactStep.notePlaceholder}
@@ -282,7 +301,7 @@ export function FindYourEscapeWizard() {
 
               <motion.button
                 type="submit"
-                disabled={submitting || !name || !email}
+                disabled={submitting || !name || !email || !phone}
                 whileTap={{ scale: 0.97 }}
                 className="w-full py-4 rounded-full text-sm font-bold transition-all"
                 style={{
@@ -364,7 +383,7 @@ export function FindYourEscapeWizard() {
             </div>
 
             <button
-              onClick={() => { setStep("q0"); setAnswers({}); setName(""); setEmail(""); setNote(""); }}
+              onClick={() => { setStep("q0"); setAnswers({}); setName(""); setEmail(""); setPhone(""); setNote(""); }}
               className="mt-6 text-xs transition-opacity hover:opacity-60"
               style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.06em", color: "rgba(254,252,250,0.35)" }}
             >
