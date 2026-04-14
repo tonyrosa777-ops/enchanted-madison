@@ -102,17 +102,17 @@ export function AcuityModal({
             </div>
 
             {/* Body */}
-            <div className="overflow-y-auto" style={{ maxHeight: "calc(90vh - 72px)" }}>
+            <div className={hasRealBooking ? "" : "overflow-y-auto"} style={{ maxHeight: "calc(90vh - 72px)" }}>
               {hasRealBooking ? (
-                /* Phase 4 active — show Acuity iframe */
+                /* Acuity iframe — no outer scroll, iframe handles its own */
                 <iframe
                   src={acuitySrc}
                   width="100%"
-                  height="800"
+                  height="calc(90vh - 72px)"
                   frameBorder="0"
                   title="Book your escape"
                   allow="payment"
-                  style={{ display: "block", minHeight: 600 }}
+                  style={{ display: "block", height: "calc(90vh - 72px)", border: "none" }}
                 />
               ) : (
                 /* Demo / pre-launch mode — show confirmation summary */
