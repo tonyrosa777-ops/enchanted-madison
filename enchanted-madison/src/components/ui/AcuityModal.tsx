@@ -41,35 +41,32 @@ export function AcuityModal({
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
+          {/* Backdrop + centering container */}
           <motion.div
             key="backdrop"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50"
+            className="fixed inset-0 z-50 flex items-end md:items-center md:justify-center"
             style={{ background: "rgba(10,8,6,0.75)" }}
             onClick={onClose}
-          />
-
+          >
           {/* Modal panel */}
           <motion.div
             key="modal"
-            initial={{ y: "100%", opacity: 0 }}
+            initial={{ y: 60, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: "100%", opacity: 0 }}
-            transition={{ duration: 0.35, ease: "easeOut" as const }}
-            className="fixed bottom-0 left-0 right-0 z-50 rounded-t-3xl overflow-hidden md:bottom-auto md:top-1/2 md:left-1/2 md:right-auto md:rounded-2xl"
+            exit={{ y: 60, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeOut" as const }}
+            className="w-full md:w-auto rounded-t-3xl md:rounded-2xl overflow-hidden"
             style={{
               background: "var(--bg-card)",
               border: "1px solid var(--primary-muted)",
               width: "min(100vw, 680px)",
               maxHeight: "90vh",
-              transform: "translateX(-50%) translateY(-50%)",
-              /* On mobile the translateX/Y won't apply due to fixed bottom-0,
-                 on md+ use the centered transform via inline style below */
             }}
+            onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
             <div
@@ -197,6 +194,7 @@ export function AcuityModal({
                 </div>
               )}
             </div>
+          </motion.div>
           </motion.div>
         </>
       )}
