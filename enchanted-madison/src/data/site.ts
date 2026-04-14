@@ -6,7 +6,7 @@
 
 export const siteData = {
   name: "The Enchanted Collective",
-  domain: "enchantedmadison.com",
+  domain: "enchantedcollectivemadison.com",
   tagline: "Luxury Glamping & Private Escapes",
   description:
     "Private wooded glamping tents, a cozy cottage, 2-hour hot tub escapes, and romantic proposal packages — just minutes from downtown Madison, Indiana.",

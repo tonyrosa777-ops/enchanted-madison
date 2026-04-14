@@ -1,4 +1,4 @@
-// opengraph-image.tsx — Default OG image for enchantedmadison.com
+// opengraph-image.tsx — Default OG image for enchantedcollectivemadison.com
 // Rendered at /opengraph-image via Next.js ImageResponse
 // Used by all pages that don't override their OG image
 // 1200x630 — standard OG/Twitter card dimensions
@@ -136,7 +136,7 @@ export default function OGImage() {
             textTransform: "uppercase",
           }}
         >
-          enchantedmadison.com
+          enchantedcollectivemadison.com
         </div>
       </div>
     ),

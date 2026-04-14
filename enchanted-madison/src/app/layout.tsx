@@ -27,7 +27,7 @@ const josefin = Josefin_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://enchantedmadison.com"),
+  metadataBase: new URL("https://enchantedcollectivemadison.com"),
   title: {
     template: siteData.seo.titleTemplate,
     default: siteData.seo.defaultTitle,
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     siteName: siteData.name,
     type: "website",
     locale: "en_US",
-    url: "https://enchantedmadison.com",
+    url: "https://enchantedcollectivemadison.com",
     images: [
       {
         url: "/opengraph-image",

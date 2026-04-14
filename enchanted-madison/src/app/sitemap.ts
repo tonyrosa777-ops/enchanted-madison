@@ -1,4 +1,4 @@
-// sitemap.ts — XML sitemap for enchantedmadison.com
+// sitemap.ts — XML sitemap for enchantedcollectivemadison.com
 // Source: progress.md (Site Architecture table — all 15 routes)
 // Per CLAUDE.md SEO Rule: crawlable structure required on every page
 

@@ -1,4 +1,4 @@
-// robots.ts — robots.txt for enchantedmadison.com
+// robots.ts — robots.txt for enchantedcollectivemadison.com
 // Allows all crawlers. Points to sitemap. Disallows API routes.
 
 import type { MetadataRoute } from "next";

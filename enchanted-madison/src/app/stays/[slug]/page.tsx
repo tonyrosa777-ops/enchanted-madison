@@ -34,7 +34,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      url: `https://enchantedmadison.com/stays/${stay.slug}`,
+      url: `https://enchantedcollectivemadison.com/stays/${stay.slug}`,
     },
   };
 }
