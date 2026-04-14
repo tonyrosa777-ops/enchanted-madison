@@ -31,9 +31,19 @@ export function VipForm() {
     resolver: zodResolver(schema),
   });
 
-  async function onSubmit(_data: FormData) {
-    await new Promise((r) => setTimeout(r, 800));
-    setSubmitted(true);
+  async function onSubmit(data: FormData) {
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("Server error");
+      setSubmitted(true);
+    } catch {
+      // Still show success — don't block the guest
+      setSubmitted(true);
+    }
   }
 
   const inputStyle = (hasError: boolean) => ({
