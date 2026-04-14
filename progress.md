@@ -296,11 +296,21 @@ Site map defined in Session 1 (15 routes). All routes listed in Site Architectur
 - Includes friends/girls' night — not exclusively couples-only in tone (though couples remain primary audience)
 - Aspirational but grounded — no superlatives, no hype
 
+- **Nav bar enlarged** — Header height h-16 → h-20, logo text-xl → text-2xl, nav links 13px → 15px, CTA button sm → default size. Per client feedback that nav felt too small on desktop.
+- **Logo integrated (logo-final.png)** — Angela provided her official logo (gold crescent moon EC monogram). Replaced text-based logo in SiteHeader with Image component. Uses `brightness(0.55) saturate(1.1)` filter on scrolled state and when mobile menu is open for contrast against light backgrounds.
+- **Logo added to footer** — Gold EC monogram replaces text logo in SiteFooter brand column. Looks great on dark bg.
+- **Favicon generated from logo** — 32x32 icon.png + 180x180 apple-icon.png generated via sharp from logo-final.png. Old default favicon.ico removed.
+- **Mobile menu logo fix** — Logo filter, header bg, and hamburger color now trigger on `menuOpen` in addition to `scrolled`, preventing gold-on-cream invisibility when menu opens on homepage.
+- **Acuity Scheduling integrated** — `booking.acuityUrl` set to `https://app.acuityscheduling.com/schedule.php?owner=38559471`. AcuityModal iframe now loads Angela's real scheduler with "Hot Tub Retreats" appointment types. iframe height increased to fill modal, `allow="payment"` added.
+- **Little Hotelier URL confirmed** — `booking.littleHotelierUrl` already correct (`direct-book.com/properties/enchantedcollectivemadison`). Stay page CTAs link there. Per-property widget iframes still in placeholder mode — Angela needs to provide individual embed URLs from Little Hotelier dashboard.
+- **Acuity modal centered** — Fixed positioning so modal opens center-screen on desktop instead of half off-screen. Uses flex centering on backdrop container.
+- **Acuity modal double scrollbar fixed** — Removed outer `overflow-y-auto` when iframe is active; iframe handles its own scrolling.
+
 **Blocked — Waiting on Angela:**
-1. **Logo** — Angela wants her actual logo on the site. We need the logo file (SVG preferred, PNG acceptable) before we can replace the text-based logo in SiteHeader.
-2. **Property map page** — Angela wants a page showing campsites, glamping sites, bathroom, and hot tub escape locations. Needs: a property layout/map asset or enough info to build one (site dimensions, relative positions of structures).
-3. **Liability waiver for bike packages** — Angela mentioned this for the Picnic and Ride add-on. We need the waiver text/policy from her or her attorney.
-4. **"Hot Tub Escapes" page restructuring** — Angela wants a menu for picking specific hot tub escape packages with descriptions of the evening + bullet points of what's included + individual "Book Now" buttons. The current /date-night page partially covers this but may need restructuring to match her vision more closely. Need to confirm with Angela if current layout satisfies this or if she wants a different format.
+1. **Property map page** — Angela wants a page showing campsites, glamping sites, bathroom, and hot tub escape locations. Needs: a property layout/map asset or enough info to build one (site dimensions, relative positions of structures).
+2. **Liability waiver for bike packages** — Angela mentioned this for the Picnic and Ride add-on. We need the waiver text/policy from her or her attorney.
+3. **"Hot Tub Escapes" page restructuring** — Angela wants a menu for picking specific hot tub escape packages with descriptions of the evening + bullet points of what's included + individual "Book Now" buttons. The current /date-night page partially covers this but may need restructuring to match her vision more closely. Need to confirm with Angela if current layout satisfies this or if she wants a different format.
+4. **Per-property Little Hotelier widget URLs** — Need individual embed URLs from Angela's Little Hotelier dashboard for each accommodation (Enchanted Cottage, Velvet Buck, Bell Tent, Campsite) to enable inline booking calendars on stay pages.
 
 **Decisions:**
 - Angela's About Us copy is now the canonical voice for the brand. Future copy should match this tone — personal, vulnerable, grounded.
