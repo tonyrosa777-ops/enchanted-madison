@@ -74,10 +74,10 @@ export function SiteHeader() {
       <header
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-400",
-          scrolled ? "border-b shadow-sm" : "border-b border-transparent"
+          (scrolled || menuOpen) ? "border-b shadow-sm" : "border-b border-transparent"
         )}
         style={
-          scrolled
+          (scrolled || menuOpen)
             ? {
                 background: "color-mix(in srgb, var(--bg-card) 95%, transparent)",
                 backdropFilter: "blur(8px)",
@@ -102,7 +102,7 @@ export function SiteHeader() {
               height={160}
               className="h-14 w-auto transition-all duration-400"
               style={{
-                filter: scrolled ? "brightness(0.55) saturate(1.1)" : "none",
+                filter: (scrolled || menuOpen) ? "brightness(0.55) saturate(1.1)" : "none",
               }}
               priority
             />
@@ -206,15 +206,15 @@ export function SiteHeader() {
             >
               <span
                 className={cn("block w-6 h-0.5 transition-all duration-300 origin-center", menuOpen ? "rotate-45 translate-y-2" : "")}
-                style={{ background: scrolled ? "var(--text-primary)" : "var(--text-on-dark)" }}
+                style={{ background: (scrolled || menuOpen) ? "var(--text-primary)" : "var(--text-on-dark)" }}
               />
               <span
                 className={cn("block w-6 h-0.5 transition-all duration-300", menuOpen ? "opacity-0" : "")}
-                style={{ background: scrolled ? "var(--text-primary)" : "var(--text-on-dark)" }}
+                style={{ background: (scrolled || menuOpen) ? "var(--text-primary)" : "var(--text-on-dark)" }}
               />
               <span
                 className={cn("block w-6 h-0.5 transition-all duration-300 origin-center", menuOpen ? "-rotate-45 -translate-y-2" : "")}
-                style={{ background: scrolled ? "var(--text-primary)" : "var(--text-on-dark)" }}
+                style={{ background: (scrolled || menuOpen) ? "var(--text-primary)" : "var(--text-on-dark)" }}
               />
             </button>
           </div>
