@@ -63,7 +63,7 @@ export function SiteHeader() {
   const linkStyle = {
     fontFamily: "var(--font-mono)",
     fontWeight: 500,
-    fontSize: "13px",
+    fontSize: "14px",
     letterSpacing: "0.08em",
     textTransform: "uppercase" as const,
     color: scrolled ? "var(--text-primary)" : "var(--text-on-dark)",
@@ -87,7 +87,7 @@ export function SiteHeader() {
             : { background: "transparent" }
         }
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
 
           {/* Logo */}
           <Link
@@ -96,7 +96,7 @@ export function SiteHeader() {
             onClick={closeMenu}
           >
             <span
-              className="text-xl tracking-wide"
+              className="text-2xl tracking-wide"
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 600,
@@ -108,7 +108,7 @@ export function SiteHeader() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-8">
             {/* Primary links — always visible */}
             {siteData.nav.links.map((link) => (
               <Link
@@ -230,7 +230,7 @@ export function SiteHeader() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 z-40 flex flex-col pt-20 pb-10 px-8 lg:hidden"
+            className="fixed inset-0 z-40 flex flex-col pt-24 pb-10 px-8 lg:hidden"
             style={{ background: "var(--bg-base)" }}
           >
             <nav className="flex flex-col gap-5 mt-4">
