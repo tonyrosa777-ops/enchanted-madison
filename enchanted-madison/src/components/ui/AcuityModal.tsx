@@ -111,10 +111,11 @@ export function AcuityModal({
                 <iframe
                   src={acuitySrc}
                   width="100%"
-                  height="600"
+                  height="800"
                   frameBorder="0"
                   title="Book your escape"
-                  style={{ display: "block", minHeight: 500 }}
+                  allow="payment"
+                  style={{ display: "block", minHeight: 600 }}
                 />
               ) : (
                 /* Demo / pre-launch mode — show confirmation summary */

@@ -26,9 +26,9 @@ export const siteData = {
   booking: {
     // External fallback URL (used as CTA until Little Hotelier widget is configured)
     littleHotelierUrl: "https://direct-book.com/properties/enchantedcollectivemadison",
-    // Phase 4: Acuity scheduler URL — from Acuity dashboard → Scheduling Page → Share
-    // Format: https://app.acuityscheduling.com/schedule.php?owner=XXXX&appointmentType=XXXX
-    acuityUrl: "",
+    // Acuity scheduler — owner ID 38559471
+    // Direct link: https://enchantedcollectivehottubescapes.as.me/
+    acuityUrl: "https://app.acuityscheduling.com/schedule.php?owner=38559471",
     // Phase 4: Per-stay Little Hotelier widget embed URLs — from Little Hotelier dashboard → Direct Booking → Widget/Embed
     littleHotelierWidgets: {
       "enchanted-cottage": "",
