@@ -149,7 +149,7 @@ export const siteData = {
       priceFrom: 175,
       capacity: 2,
       sqft: 320,
-      badge: "Opens This May",
+      badge: "Opens This June",
       features: [
         "Private hot tub",
         "Private deck",
@@ -170,7 +170,7 @@ export const siteData = {
       priceFrom: 35,
       capacity: 2,
       sqft: 201,
-      badge: null,
+      badge: "Opens This June",
       features: [
         "16-ft bell tent pre-set on arrival",
         "Fire pit with cooking grate",
@@ -192,7 +192,7 @@ export const siteData = {
       priceFrom: 35,
       capacity: 2,
       sqft: null,
-      badge: null,
+      badge: "Opens This June",
       features: [
         "Fire pit with cooking grate",
         "Adirondack chairs",
