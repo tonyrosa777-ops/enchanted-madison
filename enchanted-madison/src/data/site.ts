@@ -128,7 +128,7 @@ export const siteData = {
       priceFrom: 175,
       capacity: 2,
       sqft: null,
-      badge: "Opening April 2026",
+      badge: "Now Open",
       features: [
         "Private hot tub on covered deck",
         "King Sleep Number bed with silky linens",

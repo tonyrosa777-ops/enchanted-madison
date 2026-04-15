@@ -209,7 +209,7 @@ export default function HomePage() {
           <FadeUp>
             <div className="text-center mb-12">
               <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>
-                Escapes for the Day
+                A Few Hours in the Woods
               </p>
               <h2
                 className="leading-tight"
@@ -220,7 +220,7 @@ export default function HomePage() {
                   color: "var(--text-primary)",
                 }}
               >
-                A Few Hours in the Woods
+                Escapes for the Day
               </h2>
               <p
                 className="mt-4 max-w-xl mx-auto text-base leading-relaxed"
