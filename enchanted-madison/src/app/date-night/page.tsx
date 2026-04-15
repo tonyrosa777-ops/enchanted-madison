@@ -58,14 +58,14 @@ export default function DateNightPage() {
           alt="Private date night escape at The Enchanted Collective"
           fill
           priority
-          className="object-cover"
+          className="object-cover pointer-events-none"
           style={{ opacity: 0.28 }}
           sizes="100vw"
         />
         <Fireflies />
         <GodRays />
         <Embers count={16} />
-        <FadeUp>
+        <FadeUp className="relative z-10">
           <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>
             Hot Tub Escapes · Date Night · Girls Night
           </p>

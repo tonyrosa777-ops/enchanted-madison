@@ -61,14 +61,14 @@ export default function ProposalsPage() {
           alt="Enchanted proposal setup with rose petals, champagne, and string lights"
           fill
           priority
-          className="object-cover"
+          className="object-cover pointer-events-none"
           style={{ opacity: 0.28 }}
           sizes="100vw"
         />
         <Fireflies count={22} />
         <GodRays />
         <PetalRain count={12} />
-        <FadeUp>
+        <FadeUp className="relative z-10">
           <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>
             Proposal Packages · Madison, Indiana
           </p>

@@ -42,6 +42,16 @@
 /* Base styles */
 html {
   scroll-behavior: smooth;
+  /* Reserve header-safe zone so #anchor links (e.g. "See Packages")
+     don't scroll the target section behind the fixed SiteHeader.
+     Matches SiteHeader: h-20 mobile / h-24 sm / h-28 lg, plus ~16px breathing room. */
+  scroll-padding-top: 96px;
+}
+@media (min-width: 640px) {
+  html { scroll-padding-top: 112px; }
+}
+@media (min-width: 1024px) {
+  html { scroll-padding-top: 128px; }
 }
 
 body {
