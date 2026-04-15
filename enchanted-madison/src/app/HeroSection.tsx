@@ -70,12 +70,15 @@ export function HeroSection() {
           aria-hidden="true"
         />
 
-        {/* ── Text overlay — left-center ───────────────────────────────── */}
-        <div className="absolute inset-0 flex items-center">
+        {/* ── Text overlay — left-aligned, top-anchored below the nav ───────
+            Uses items-start + explicit top padding (header-safe zone) so the
+            content block can never overlap the fixed header, even when the
+            H1 wraps to 3–4 lines on short laptop viewports. */}
+        <div className="absolute inset-0 flex flex-col justify-start pt-32 sm:pt-36 lg:pt-40 pb-12">
           <div
             style={{
               paddingLeft: "clamp(24px, 7vw, 96px)",
-              maxWidth: "min(860px, 94vw)",
+              maxWidth: "min(1080px, 94vw)",
             }}
           >
             {/* Eyebrow */}
@@ -92,7 +95,7 @@ export function HeroSection() {
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 600,
-                fontSize: "clamp(64px, 8.5vw, 140px)",
+                fontSize: "clamp(56px, min(8.5vw, 13vh), 140px)",
                 color: "var(--text-on-dark)",
               }}
             >
