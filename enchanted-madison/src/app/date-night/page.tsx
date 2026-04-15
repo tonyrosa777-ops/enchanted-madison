@@ -149,7 +149,7 @@ export default function DateNightPage() {
         <div className="max-w-5xl mx-auto">
           <FadeUp>
             <div className="text-center mb-14">
-              <p className="eyebrow mb-2" style={{ color: "var(--accent)" }}>Choose Your Escape</p>
+              <p className="eyebrow mb-2" style={{ color: "var(--accent)" }}>Escapes for the Day</p>
               <h2 className="text-4xl" style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "var(--text-primary)" }}>
                 Three Ways to Unwind
               </h2>

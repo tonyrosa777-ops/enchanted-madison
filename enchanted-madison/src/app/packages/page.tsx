@@ -109,7 +109,7 @@ export default function PackagesPage() {
             {[
               "Added at checkout — no extra coordination",
               "Everything set up before you arrive",
-              "5 curated experiences from $24",
+              "5 thoughtful enhancements from $24",
             ].map((item) => (
               <span
                 key={item}
