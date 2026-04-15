@@ -139,23 +139,25 @@ export default function MadisonGuidePage() {
             {siteData.madisonGuide.attractions.map((place, i) => (
               <ScaleIn key={place.name} delay={i * 0.07}>
                 <article
-                  className="rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-0 transition-shadow duration-300 hover:shadow-xl"
+                  className="rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-[minmax(280px,2fr)_3fr] gap-0 transition-shadow duration-300 hover:shadow-xl"
                   style={{ background: "var(--bg-card)", border: "1px solid var(--primary-muted)" }}
                 >
-                  {/* Left: image + meta */}
-                  <div className="flex flex-col">
-                    <div className="relative w-full" style={{ aspectRatio: "16/10" }}>
-                      <Image
-                        src={place.image}
-                        alt={place.name}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 40vw"
-                      />
-                    </div>
-                    <div className="flex flex-col gap-3 p-6">
+                  {/* Left: full-height image */}
+                  <div className="relative w-full min-h-[240px] md:min-h-[320px]">
+                    <Image
+                      src={place.image}
+                      alt={place.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 40vw"
+                    />
+                  </div>
+
+                  {/* Right: all copy, centered vertically to fill space */}
+                  <div className="flex flex-col justify-center gap-5 p-8 md:p-10">
+                    <div className="flex flex-wrap items-center gap-3">
                       <span
-                        className="text-[10px] uppercase px-2.5 py-1 rounded-full self-start"
+                        className="text-[11px] uppercase px-3 py-1 rounded-full"
                         style={{
                           fontFamily: "var(--font-mono)",
                           letterSpacing: "0.08em",
@@ -165,49 +167,43 @@ export default function MadisonGuidePage() {
                       >
                         {place.category}
                       </span>
-                      <h3
-                        className="text-xl leading-snug"
-                        style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "var(--text-primary)" }}
+                      <span
+                        className="text-sm font-bold"
+                        style={{ fontFamily: "var(--font-mono)", color: "var(--accent)" }}
                       >
-                        {place.name}
-                      </h3>
-                      <div className="flex items-center gap-2">
-                        <span
-                          className="text-sm font-bold"
-                          style={{ fontFamily: "var(--font-mono)", color: "var(--accent)" }}
-                        >
-                          {place.distance}
-                        </span>
-                        <span style={{ color: "var(--primary-muted)" }}>·</span>
-                        <span
-                          className="text-xs"
-                          style={{ fontFamily: "var(--font-mono)", color: "var(--text-secondary)", letterSpacing: "0.04em" }}
-                        >
-                          {place.highlight}
-                        </span>
-                      </div>
+                        {place.distance}
+                      </span>
+                      <span style={{ color: "var(--primary-muted)" }}>·</span>
+                      <span
+                        className="text-xs"
+                        style={{ fontFamily: "var(--font-mono)", color: "var(--text-secondary)", letterSpacing: "0.04em" }}
+                      >
+                        {place.highlight}
+                      </span>
                     </div>
-                  </div>
-
-                  {/* Right: description + tip */}
-                  <div className="flex flex-col gap-3 p-6 md:pl-0">
+                    <h3
+                      className="text-2xl md:text-3xl leading-tight"
+                      style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "var(--text-primary)" }}
+                    >
+                      {place.name}
+                    </h3>
                     <p
-                      className="text-sm leading-relaxed"
+                      className="text-base md:text-lg leading-relaxed"
                       style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
                     >
                       {place.description}
                     </p>
                     <div
-                      className="rounded-lg px-4 py-3"
-                      style={{ background: "rgba(184,150,90,0.08)", borderLeft: "2px solid var(--accent)" }}
+                      className="rounded-lg px-5 py-4"
+                      style={{ background: "rgba(184,150,90,0.08)", borderLeft: "3px solid var(--accent)" }}
                     >
                       <p
-                        className="text-xs leading-relaxed"
+                        className="text-sm leading-relaxed"
                         style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
                       >
                         <span
-                          className="font-bold mr-1"
-                          style={{ fontFamily: "var(--font-mono)", color: "var(--accent)" }}
+                          className="font-bold mr-2"
+                          style={{ fontFamily: "var(--font-mono)", color: "var(--accent)", letterSpacing: "0.06em" }}
                         >
                           TIP:
                         </span>
