@@ -4,8 +4,8 @@
 **Client:** The Enchanted Collective | Madison, Indiana
 **Business Type:** Luxury glamping and romantic experience property
 **Launch Target:** June 2026
-**Last Updated:** 2026-04-13 (Session 12)
-**Current Phase:** Session 12 — Client feedback round 1 (Angela's change list)
+**Last Updated:** 2026-04-15 (Session 13)
+**Current Phase:** Session 13 — Real property photos integrated + hero copy refresh
 **Package Selected:** Pro ($3,000)
 
 ---
@@ -277,6 +277,39 @@ Site map defined in Session 1 (15 routes). All routes listed in Site Architectur
 ---
 
 ## Session Log
+
+### Session 13 — 2026-04-15
+**Context:** Angela delivered a batch of real property photos (dropped into project root) and two copy corrections after seeing the live site. Goal: replace AI-generated placeholder imagery across the site with authentic property shots before paid promotion begins.
+
+**Completed:**
+- **Hero subheadline rewritten** — `src/data/site.ts:93`. Old copy ("Luxury glamping, private hot tubs, and curated experiences…") replaced with Angela's new copy that leads with overnight stays and introduces the hot-tub-escape day option. Removes "curated experiences" per her note.
+- **Photo integration script added** — `scripts/integrate-angela-photos.mjs`. Uses the existing `sharp` dep to convert `.jpg`/`.png` source photos to `.webp` at max 1600px width, quality 80. Keeps original filenames in `/public/images/` so no component changes were needed. Repeatable for future photo drops.
+- **Accommodation card images replaced with real photos:**
+  - Enchanted Cottage → `EC Hot Tub.jpg` (per Angela — cottage opens mid-April, needed real image)
+  - Bell Tent → `Tent Site with tent.png` (matches "tent provided" caption)
+  - Campsite → `Tent Site Roasting Marshmallows.png`
+  - Velvet Buck → `Glamping hot tub close up.png`
+- **Experience images replaced:**
+  - `hot-tub-escape.webp` ← `Sunrise Hot Tub Escape.png`
+  - `date-night.webp` + `date-night-card.webp` ← `Brighter Hot Tub Pic.png`
+  - `proposal.webp` + `proposals-card.webp` ← `Christmas Proposal.png`
+  - `why-enchanted.webp` ← `Swing at EC.png`
+- **Add-on images replaced:**
+  - `outdoor-movie.webp` ← `Outdoor Movie Bed with real bed.png`
+  - `classic-romance.webp` ← `EC Romance Package.jpg`
+  - `ultimate-romance.webp` ← `EC Cocktail Bar.jpg`
+- **Cottage gallery assets staged** — 9 real cottage photos (bathroom, bedroom, family room aerial, front deck, kitchen, cocktail bar, romance package, hot tub, entrance) converted and placed in new `public/images/accommodations/cottage/` folder. Ready for a future detail-page gallery component.
+
+**Blocked — Waiting on Angela:**
+- `smores-skillet.webp` and `picnic-and-ride.webp` — no matching source photos in the drop. Still AI-generated. Request real photos.
+- Logo refresh — both `Given-Logo.png` and `Logo-Final.png` arrived in project root. Need to confirm which (if either) supersedes the currently deployed `public/images/logo-final.png` before swapping.
+- Cottage detail-page gallery UI — photos are staged, but the gallery component itself requires Angela's sign-off on layout before building.
+
+**Decisions:**
+- Image filenames preserved across swaps → zero component churn, single commit for asset-only changes possible.
+- Script-based conversion committed to `scripts/` so future photo drops are one-command.
+
+---
 
 ### Session 12 — 2026-04-13
 **Context:** Angela (owner) reviewed the live site and sent a numbered change list. This session implements all actionable items and documents what's blocked.

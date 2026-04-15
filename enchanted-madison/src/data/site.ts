@@ -90,7 +90,7 @@ export const siteData = {
     eyebrow: "Madison, Indiana · Opening June 2026",
     headline: "Where Romance Meets the Wild",
     subheadline:
-      "Luxury glamping, private hot tubs, and curated experiences in the woods — minutes from Clifty Falls and historic downtown Madison.",
+      "Romantic overnight stays with glamping, camping, or a private cottage — or escape for a few hours with one of our private hot tub experiences. Just minutes from Clifty Falls and historic downtown Madison.",
     ctaPrimary: { label: "Make It Unforgettable", href: "/packages" },
     ctaSecondary: { label: "Find My Escape \u2192", href: "/find-your-escape" },
     trustCopy: "The only private hot tub glamping retreat in southern Indiana",

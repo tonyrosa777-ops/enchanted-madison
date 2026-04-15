@@ -4,7 +4,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "./Button";
 
 interface StayCardProps {
   slug: string;
@@ -129,9 +128,16 @@ export function StayCard({
           </p>
         </div>
 
-        <Button variant="primary" size="sm" href={href} className="w-full mt-1">
+        <span
+          className="inline-flex items-center justify-center rounded-full w-full mt-1 px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-200 group-hover:brightness-110"
+          style={{
+            background: "var(--accent)",
+            color: "var(--text-on-dark)",
+            fontFamily: "var(--font-body)",
+          }}
+        >
           View This Stay
-        </Button>
+        </span>
       </div>
     </Link>
   );

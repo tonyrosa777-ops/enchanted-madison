@@ -11,3 +11,9 @@ CLIENT-CONTRACT.md
 
 # Allow the compressed hero video in public/
 !enchanted-madison/public/hero-forest.mp4
+
+# Raw source photos from client (keep local; web-optimized versions live in /public)
+source-photos/
+
+# Playwright MCP audit output
+.playwright-mcp/
