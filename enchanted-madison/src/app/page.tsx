@@ -150,7 +150,7 @@ export default function HomePage() {
                 style={{
                   fontFamily: "var(--font-display)",
                   fontWeight: 600,
-                  fontSize: "clamp(32px, 5vw, 52px)",
+                  fontSize: "clamp(36px, 5.5vw, 64px)",
                   color: "var(--text-primary)",
                 }}
               >
@@ -216,7 +216,7 @@ export default function HomePage() {
                 style={{
                   fontFamily: "var(--font-display)",
                   fontWeight: 600,
-                  fontSize: "clamp(32px, 5vw, 52px)",
+                  fontSize: "clamp(36px, 5.5vw, 64px)",
                   color: "var(--text-primary)",
                 }}
               >
@@ -360,7 +360,7 @@ export default function HomePage() {
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 600,
-                fontSize: "clamp(32px, 5vw, 52px)",
+                fontSize: "clamp(36px, 5.5vw, 64px)",
                 color: "var(--text-on-dark)",
               }}
             >
@@ -422,7 +422,7 @@ export default function HomePage() {
                 style={{
                   fontFamily: "var(--font-display)",
                   fontWeight: 600,
-                  fontSize: "clamp(32px, 5vw, 52px)",
+                  fontSize: "clamp(36px, 5.5vw, 64px)",
                   color: "var(--text-primary)",
                 }}
               >
@@ -504,7 +504,7 @@ export default function HomePage() {
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 600,
-                fontSize: "clamp(32px, 5vw, 52px)",
+                fontSize: "clamp(36px, 5.5vw, 64px)",
                 color: "var(--text-on-dark)",
               }}
             >

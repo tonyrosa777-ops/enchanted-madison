@@ -75,12 +75,12 @@ export function HeroSection() {
           <div
             style={{
               paddingLeft: "clamp(24px, 7vw, 96px)",
-              maxWidth: "min(580px, 90vw)",
+              maxWidth: "min(720px, 92vw)",
             }}
           >
             {/* Eyebrow */}
             <p
-              className="eyebrow text-[11px] mb-5"
+              className="eyebrow text-[13px] mb-6"
               style={{ color: "rgba(184,150,90,0.9)" }}
             >
               {siteData.hero.eyebrow}
@@ -92,7 +92,7 @@ export function HeroSection() {
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 600,
-                fontSize: "clamp(40px, 5.5vw, 76px)",
+                fontSize: "clamp(52px, 7vw, 104px)",
                 color: "var(--text-on-dark)",
               }}
             >
@@ -101,19 +101,19 @@ export function HeroSection() {
 
             {/* Subheadline */}
             <p
-              className="text-base sm:text-lg leading-relaxed mb-4"
+              className="text-lg sm:text-xl leading-relaxed mb-5"
               style={{
                 fontFamily: "var(--font-body)",
                 fontWeight: 300,
                 color: "rgba(254,252,250,0.82)",
-                maxWidth: "400px",
+                maxWidth: "520px",
               }}
             >
               {siteData.hero.subheadline}
             </p>
 
             {/* Typewriter tag line */}
-            <p style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.12em", color: "rgba(184,150,90,0.7)", textTransform: "uppercase", marginBottom: "32px" }}>
+            <p style={{ fontFamily: "var(--font-mono)", fontSize: "13px", letterSpacing: "0.12em", color: "rgba(184,150,90,0.7)", textTransform: "uppercase", marginBottom: "36px" }}>
               <TypewriterText phrases={["Romantic Stays", "Date Night Escapes", "Proposal Experiences", "Hot Tub Under the Stars"]} speed={55} deleteSpeed={28} />
             </p>
 
@@ -137,7 +137,7 @@ export function HeroSection() {
 
             {/* Trust micro-copy */}
             <p
-              className="text-xs"
+              className="text-sm"
               style={{
                 fontFamily: "var(--font-mono)",
                 color: "rgba(254,252,250,0.40)",

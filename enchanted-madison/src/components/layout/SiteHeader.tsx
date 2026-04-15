@@ -63,7 +63,7 @@ export function SiteHeader() {
   const linkStyle = {
     fontFamily: "var(--font-mono)",
     fontWeight: 500,
-    fontSize: "15px",
+    fontSize: "17px",
     letterSpacing: "0.08em",
     textTransform: "uppercase" as const,
     color: scrolled ? "var(--text-primary)" : "var(--text-on-dark)",
@@ -87,7 +87,7 @@ export function SiteHeader() {
             : { background: "transparent" }
         }
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-24 flex items-center justify-between">
 
           {/* Logo */}
           <Link
@@ -100,7 +100,7 @@ export function SiteHeader() {
               alt="The Enchanted Collective"
               width={160}
               height={160}
-              className="h-14 w-auto transition-all duration-400"
+              className="h-16 w-auto transition-all duration-400"
               style={{
                 filter: (scrolled || menuOpen) ? "brightness(0.55) saturate(1.1)" : "none",
               }}
