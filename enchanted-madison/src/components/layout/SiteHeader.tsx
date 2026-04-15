@@ -63,7 +63,7 @@ export function SiteHeader() {
   const linkStyle = {
     fontFamily: "var(--font-mono)",
     fontWeight: 500,
-    fontSize: "19px",
+    fontSize: "clamp(15px, 1.15vw, 19px)",
     letterSpacing: "0.08em",
     textTransform: "uppercase" as const,
     color: scrolled ? "var(--text-primary)" : "var(--text-on-dark)",
@@ -87,7 +87,7 @@ export function SiteHeader() {
             : { background: "transparent" }
         }
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-28 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 sm:h-24 lg:h-28 flex items-center justify-between">
 
           {/* Logo */}
           <Link
@@ -100,7 +100,7 @@ export function SiteHeader() {
               alt="The Enchanted Collective"
               width={160}
               height={160}
-              className="h-20 w-auto transition-all duration-400"
+              className="h-14 sm:h-16 lg:h-20 w-auto transition-all duration-400"
               style={{
                 filter: (scrolled || menuOpen) ? "brightness(0.55) saturate(1.1)" : "none",
               }}
@@ -109,7 +109,7 @@ export function SiteHeader() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-8">
             {/* Primary links — always visible */}
             {siteData.nav.links.map((link) => (
               <Link
@@ -230,7 +230,7 @@ export function SiteHeader() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 z-40 flex flex-col pt-24 pb-10 px-8 lg:hidden"
+            className="fixed inset-0 z-40 flex flex-col pt-28 pb-10 px-8 lg:hidden"
             style={{ background: "var(--bg-base)" }}
           >
             <nav className="flex flex-col gap-5 mt-4">
