@@ -136,7 +136,7 @@ export function StayCard({
             fontFamily: "var(--font-body)",
           }}
         >
-          View This Stay
+          Check Availability
         </span>
       </div>
     </Link>

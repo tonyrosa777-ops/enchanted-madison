@@ -3,10 +3,15 @@
 // Design: native <details>/<summary> — no client state needed, accessible by default
 // SEO: FAQPage schema markup per CLAUDE.md SEO Rule
 
+import Image from "next/image";
 import { PageShell } from "@/components/layout/PageShell";
 import { Button } from "@/components/ui/Button";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { ShimmerText } from "@/components/animations/ShimmerText";
+import { Fireflies } from "@/components/animations/Fireflies";
+import { GodRays } from "@/components/animations/GodRays";
+import { Embers } from "@/components/animations/Embers";
+import { WaveDivider } from "@/components/animations/WaveDivider";
 import { siteData } from "@/data/site";
 import type { Metadata } from "next";
 
@@ -40,11 +45,24 @@ export default function FAQPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      {/* Page hero */}
+      {/* Dark hero — per CLAUDE.md Page Quality Standard */}
       <section
-        className="pt-32 pb-16 px-4 text-center"
-        style={{ background: "var(--bg-base)" }}
+        className="relative pt-32 pb-16 px-4 text-center overflow-hidden"
+        style={{ background: "var(--bg-dark)" }}
       >
+        <Image
+          src="/images/experiences/hot-tub-escape.webp"
+          alt=""
+          fill
+          priority
+          className="object-cover"
+          style={{ opacity: 0.15 }}
+          sizes="100vw"
+        />
+        <Fireflies count={22} />
+        <GodRays />
+        <Embers count={10} />
+
         <FadeUp>
           <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>
             Got Questions?
@@ -55,19 +73,21 @@ export default function FAQPage() {
               fontFamily: "var(--font-display)",
               fontWeight: 600,
               fontSize: "clamp(40px, 6vw, 64px)",
-              color: "var(--text-primary)",
+              color: "var(--text-on-dark)",
             }}
           >
             <ShimmerText delay={1}>We Have Answers</ShimmerText>
           </h1>
           <p
             className="max-w-md mx-auto text-base leading-relaxed"
-            style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
+            style={{ fontFamily: "var(--font-body)", color: "rgba(254,252,250,0.7)" }}
           >
             First time glamping? Planning a proposal? Bringing your dog? Start here.
           </p>
         </FadeUp>
       </section>
+
+      <WaveDivider fill="var(--bg-base)" background="var(--bg-dark)" />
 
       {/* FAQ sections */}
       <section
@@ -134,37 +154,44 @@ export default function FAQPage() {
         </div>
       </section>
 
-      {/* Still have questions CTA */}
+      {/* Still have questions CTA — dark footer per Page Quality Standard */}
       <section
-        className="py-16 lg:py-20 px-4"
-        style={{ background: "var(--bg-elevated)" }}
+        className="relative py-20 lg:py-24 px-4 overflow-hidden"
+        style={{ background: "var(--bg-dark)" }}
       >
-        <div className="max-w-2xl mx-auto text-center">
+        <Fireflies count={18} />
+        <div className="max-w-2xl mx-auto text-center relative">
           <FadeUp>
+            <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>
+              Ready When You Are
+            </p>
             <h2
               className="leading-tight mb-4"
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 600,
                 fontSize: "clamp(28px, 4vw, 40px)",
-                color: "var(--text-primary)",
+                color: "var(--text-on-dark)",
               }}
             >
               Still Have Questions?
             </h2>
             <p
               className="text-base leading-relaxed mb-8"
-              style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
+              style={{ fontFamily: "var(--font-body)", color: "rgba(254,252,250,0.7)" }}
             >
-              Angela & Marc personally respond to every message. Reach out and
-              they&rsquo;ll get back to you quickly.
+              Angela & Marc personally respond to every message. Or skip ahead and
+              pick your escape — availability updates in real time.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Button variant="primary" href="/contact">
-                Send a Message
+              <Button variant="secondary" href="/stays">
+                Check Availability
               </Button>
-              <Button variant="ghost" href="/stays">
-                Explore Stays
+              <Button variant="ghost-light" href="/date-night">
+                Hot Tub Escapes
+              </Button>
+              <Button variant="ghost-light" href="/contact">
+                Send a Message
               </Button>
             </div>
           </FadeUp>

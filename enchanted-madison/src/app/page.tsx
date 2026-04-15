@@ -316,7 +316,7 @@ export default function HomePage() {
                     Packages from $249
                   </p>
                   <Button variant="secondary" size="sm" href="/proposals" className="mt-2 self-start">
-                    Plan Your Proposal
+                    Start Your Proposal
                   </Button>
                 </div>
               </div>

@@ -87,7 +87,7 @@ export const siteData = {
 
   // Hero (homepage)
   hero: {
-    eyebrow: "Madison, Indiana · Opening June 2026",
+    eyebrow: "Madison, Indiana · Now Taking Bookings",
     headline: "Where Romance Meets the Wild",
     subheadline:
       "Romantic overnight stays with glamping, camping, or a private cottage — or escape for a few hours with one of our private hot tub experiences. Just minutes from Clifty Falls and historic downtown Madison.",
@@ -102,7 +102,7 @@ export const siteData = {
     "★★★★★  5-star rated by every guest",
     "Only private hot tub glamping in southern Indiana",
     "10 min from Clifty Falls State Park",
-    "Opening June 2026",
+    "The Enchanted Cottage — Now Open",
   ],
 
   // Why Enchanted Madison (differentiator section — positioned before reviews)
@@ -149,7 +149,7 @@ export const siteData = {
       priceFrom: 175,
       capacity: 2,
       sqft: 320,
-      badge: "Opening May 2026",
+      badge: "Opens This May",
       features: [
         "Private hot tub",
         "Private deck",
@@ -560,6 +560,7 @@ export const siteData = {
     attractions: [
       {
         name: "Clifty Falls State Park",
+        image: "/images/madison-guide/clifty-falls.webp",
         distance: "10 min",
         category: "Nature",
         highlight: "Must-see in every season",
@@ -569,6 +570,7 @@ export const siteData = {
       },
       {
         name: "Lanier Mansion",
+        image: "/images/madison-guide/lanier-mansion.webp",
         distance: "5 min",
         category: "History",
         highlight: "Built 1840–44",
@@ -578,6 +580,7 @@ export const siteData = {
       },
       {
         name: "Downtown Madison & the Ohio River",
+        image: "/images/madison-guide/downtown-madison.webp",
         distance: "5 min",
         category: "Town",
         highlight: "130-block historic district",
@@ -587,6 +590,7 @@ export const siteData = {
       },
       {
         name: "Ohio River Scenic Byway — Wineries",
+        image: "/images/madison-guide/ohio-river-wineries.webp",
         distance: "15–30 min",
         category: "Wine & Food",
         highlight: "Vineyard country",
@@ -596,6 +600,7 @@ export const siteData = {
       },
       {
         name: "Hanover College",
+        image: "/images/madison-guide/hanover-college.webp",
         distance: "15 min",
         category: "Scenic Drive",
         highlight: "Hilltop campus above the river",
@@ -783,7 +788,7 @@ export const siteData = {
         headline: "A Proposal She Will Never Forget",
         description: "We stage every detail \u2014 rose petals, champagne, the Marry Me sign. You focus on the moment. We handle everything else.",
         price: "Packages from $249",
-        cta: { label: "Plan Your Proposal", href: "/proposals" },
+        cta: { label: "Start Your Proposal", href: "/proposals" },
       },
       "velvet-buck": {
         eyebrow: "Perfect for you",

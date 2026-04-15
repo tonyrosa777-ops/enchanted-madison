@@ -4,6 +4,7 @@
 
 import type { MetadataRoute } from "next";
 import { siteData } from "@/data/site";
+import { blogPosts } from "@/data/blog";
 
 const base = `https://${siteData.domain}`;
 
@@ -88,5 +89,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...stayRoutes];
+  // Blog index + individual posts
+  const blogIndexRoute: MetadataRoute.Sitemap = [
+    {
+      url: `${base}/blog`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    },
+  ];
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${base}/blog/${post.slug}`,
+    lastModified: new Date(post.publishedAt),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...stayRoutes, ...blogIndexRoute, ...blogRoutes];
 }

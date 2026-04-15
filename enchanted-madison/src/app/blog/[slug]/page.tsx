@@ -335,6 +335,39 @@ export default async function BlogPostPage({
         </div>
       </section>
 
+      {/* ── Booking CTA Strip ──────────────────────────────────── */}
+      <section className="py-16 px-4" style={{ background: "var(--bg-dark)" }}>
+        <div className="max-w-5xl mx-auto text-center">
+          <FadeUp>
+            <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>
+              Ready to Escape?
+            </p>
+            <h2
+              className="mb-8 leading-tight"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontWeight: 600,
+                fontSize: "clamp(26px, 3.6vw, 40px)",
+                color: "var(--text-on-dark)",
+              }}
+            >
+              Turn this story into your next weekend.
+            </h2>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Button variant="secondary" size="lg" href="/stays">
+                Overnight Stays
+              </Button>
+              <Button variant="ghost-light" size="lg" href="/date-night">
+                Hot Tub Escapes
+              </Button>
+              <Button variant="ghost-light" size="lg" href="/proposals">
+                Proposals
+              </Button>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
       {/* ── Related Articles Strip ─────────────────────────────── */}
       {relatedPosts.length > 0 && (
         <section className="py-12 px-4" style={{ background: "var(--bg-elevated)" }}>

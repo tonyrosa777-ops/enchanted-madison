@@ -3,6 +3,7 @@
 // SEO targets: "things to do Madison Indiana," "Clifty Falls State Park guide," "Madison Indiana travel guide"
 // Schema: TouristDestination + ItemList for individual attractions
 
+import Image from "next/image";
 import { PageShell } from "@/components/layout/PageShell";
 import { Button } from "@/components/ui/Button";
 import { FadeUp } from "@/components/animations/FadeUp";
@@ -138,47 +139,58 @@ export default function MadisonGuidePage() {
             {siteData.madisonGuide.attractions.map((place, i) => (
               <ScaleIn key={place.name} delay={i * 0.07}>
                 <article
-                  className="rounded-2xl p-7 grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6"
+                  className="rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-0 transition-shadow duration-300 hover:shadow-xl"
                   style={{ background: "var(--bg-card)", border: "1px solid var(--primary-muted)" }}
                 >
-                  {/* Left: meta */}
-                  <div className="flex flex-col gap-3">
-                    <span
-                      className="text-[10px] uppercase px-2.5 py-1 rounded-full self-start"
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        letterSpacing: "0.08em",
-                        color: categoryStyle[place.category] ?? "var(--accent)",
-                        background: "rgba(184,150,90,0.1)",
-                      }}
-                    >
-                      {place.category}
-                    </span>
-                    <h3
-                      className="text-xl leading-snug"
-                      style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "var(--text-primary)" }}
-                    >
-                      {place.name}
-                    </h3>
-                    <div className="flex items-center gap-2">
+                  {/* Left: image + meta */}
+                  <div className="flex flex-col">
+                    <div className="relative w-full" style={{ aspectRatio: "16/10" }}>
+                      <Image
+                        src={place.image}
+                        alt={place.name}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 40vw"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-3 p-6">
                       <span
-                        className="text-sm font-bold"
-                        style={{ fontFamily: "var(--font-mono)", color: "var(--accent)" }}
+                        className="text-[10px] uppercase px-2.5 py-1 rounded-full self-start"
+                        style={{
+                          fontFamily: "var(--font-mono)",
+                          letterSpacing: "0.08em",
+                          color: categoryStyle[place.category] ?? "var(--accent)",
+                          background: "rgba(184,150,90,0.1)",
+                        }}
                       >
-                        {place.distance}
+                        {place.category}
                       </span>
-                      <span style={{ color: "var(--primary-muted)" }}>·</span>
-                      <span
-                        className="text-xs"
-                        style={{ fontFamily: "var(--font-mono)", color: "var(--text-secondary)", letterSpacing: "0.04em" }}
+                      <h3
+                        className="text-xl leading-snug"
+                        style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "var(--text-primary)" }}
                       >
-                        {place.highlight}
-                      </span>
+                        {place.name}
+                      </h3>
+                      <div className="flex items-center gap-2">
+                        <span
+                          className="text-sm font-bold"
+                          style={{ fontFamily: "var(--font-mono)", color: "var(--accent)" }}
+                        >
+                          {place.distance}
+                        </span>
+                        <span style={{ color: "var(--primary-muted)" }}>·</span>
+                        <span
+                          className="text-xs"
+                          style={{ fontFamily: "var(--font-mono)", color: "var(--text-secondary)", letterSpacing: "0.04em" }}
+                        >
+                          {place.highlight}
+                        </span>
+                      </div>
                     </div>
                   </div>
 
                   {/* Right: description + tip */}
-                  <div className="flex flex-col gap-3">
+                  <div className="flex flex-col gap-3 p-6 md:pl-0">
                     <p
                       className="text-sm leading-relaxed"
                       style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}

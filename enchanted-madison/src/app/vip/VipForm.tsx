@@ -18,12 +18,9 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const benefits = [
-  { icon: "✨", label: "An exclusive discount on your first booking", detail: "Applied automatically at checkout" },
-  { icon: "✨", label: "A complimentary luxury sugar scrub", detail: "To elevate your soak" },
-  { icon: "✨", label: "A curated snack & drink pairing", detail: "Waiting just for you on arrival" },
-  { icon: "📅", label: "First access to new dates", detail: "VIPs always get first access" },
-];
+// Single source of truth lives in site.ts. First-access is an implicit 4th perk
+// already communicated in the subheadline ("VIPs always get first access").
+const benefits = siteData.vip.perks.map((label) => ({ icon: "✨", label }));
 
 export function VipForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -91,7 +88,6 @@ export function VipForm() {
                     <span className="text-xl">{b.icon}</span>
                     <div>
                       <p className="text-sm font-medium" style={{ fontFamily: "var(--font-body)", color: "var(--text-primary)" }}>{b.label}</p>
-                      <p className="text-xs mt-0.5" style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}>{b.detail}</p>
                     </div>
                   </div>
                 ))}
