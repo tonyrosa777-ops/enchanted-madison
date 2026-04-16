@@ -56,7 +56,7 @@ export async function POST(req: NextRequest) {
       to: email,
       replyTo: "enchantedcollective47250@gmail.com",
       subject: `Welcome to the VIP list, ${name} — The Enchanted Collective`,
-      text: `Hi ${name},\n\nYou're officially on the list.\n\nAs a VIP, here's what's coming your way before we open to the public:\n\n- An exclusive discount on your first booking\n- A complimentary luxury sugar scrub to elevate your soak\n- A curated snack & drink pairing waiting for you on arrival\n- First access to new dates before anyone else\n\nWe're opening June 2026 and you'll be the first to know when bookings go live.\n\nIf you have any questions in the meantime, just reply to this email or call us at 812-329-2477.\n\nWe can't wait to host you.\n\n— Angela & Marc\nThe Enchanted Collective\nMadison, Indiana`,
+      text: `Hi ${name},\n\nYou're officially on the list.\n\nAs a VIP, here's what's coming your way before we open to the public:\n\n- An exclusive discount on your first booking\n- A complimentary luxury sugar scrub to elevate your soak\n- A curated snack & drink pairing waiting for you on arrival\n- First access to new dates before anyone else\n\nWe're opening June 2026 and you'll be the first to know when bookings go live.\n\nIf you have any questions in the meantime, just reply to this email or call us at 812-329-2477.\n\nWe can't wait to host you.\n\n— Angela & Marc\nThe Enchanted Collective\n1928 Michigan Rd, Madison, IN 47250\n\n—\nDon't want to hear from us? Reply to this email with "UNSUBSCRIBE" and we'll remove you from the list.`,
     });
   } catch (err) {
     console.error("[vip] Resend error:", err);
