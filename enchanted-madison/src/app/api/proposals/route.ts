@@ -60,6 +60,7 @@ ${d.additionalNotes || "None"}`;
       await resend.emails.send({
         from: "proposals@enchantedcollectivemadison.com",
         to: "enchantedcollective47250@gmail.com",
+        replyTo: d.email,
         subject: `New Proposal Inquiry — ${d.yourName} & ${d.partnerName} · ${d.preferredDate}`,
         text: emailBody,
       });

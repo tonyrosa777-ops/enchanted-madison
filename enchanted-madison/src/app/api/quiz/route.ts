@@ -39,6 +39,7 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: "quiz@enchantedcollectivemadison.com",
       to: "enchantedcollective47250@gmail.com",
+      replyTo: email,
       subject: `New Lead: ${name} — matched to ${recommendation}`,
       text: `New Experience Finder submission\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nRecommendation: ${recommendation}\n\nAnswers:\n${answerSummary}${note ? `\n\nNote from ${name}:\n${note}` : ""}\n\nReply to this person within 24 hours.`,
     });
