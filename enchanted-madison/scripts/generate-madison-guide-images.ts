@@ -46,8 +46,8 @@ const JOBS = [
     prompt: `Rolling Indiana vineyard hills above the Ohio River at sunset, rows of mature grapevines, a rustic winery tasting room made from a converted historic carriage house, warm string lights on the outdoor patio, river valley in the background. ${STYLE}`,
   },
   {
-    slug: "hanover-college",
-    prompt: `Hanover College campus overlook — a dramatic bluff 200 feet above the Ohio River, panoramic view of the river valley with Kentucky hills in the distance, historic stone campus buildings among mature trees, peak fall foliage in red and orange. ${STYLE}`,
+    slug: "broadway-fountain",
+    prompt: `The Broadway Fountain in downtown Madison Indiana — an ornate Renaissance-style cast-iron fountain (1876 Philadelphia Centennial Exposition piece) with tiered basins, mythological statuary, water cascading from multiple jets, surrounded by mature trees and a small park, soft late-afternoon light. ${STYLE}`,
   },
 ];
 

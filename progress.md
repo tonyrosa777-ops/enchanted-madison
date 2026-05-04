@@ -4,8 +4,8 @@
 **Client:** The Enchanted Collective | Madison, Indiana
 **Business Type:** Luxury glamping and romantic experience property
 **Launch Target:** June 2026
-**Last Updated:** 2026-04-15 (Session 13)
-**Current Phase:** Session 13 — Real property photos integrated + hero copy refresh
+**Last Updated:** 2026-05-04 (Session 14)
+**Current Phase:** Session 14 — Madison Guide real photos + Hanover→Broadway Fountain swap
 **Package Selected:** Pro ($3,000)
 
 ---
@@ -277,6 +277,27 @@ Site map defined in Session 1 (15 routes). All routes listed in Site Architectur
 ---
 
 ## Session Log
+
+### Session 14 — 2026-05-04
+**Context:** Angela emailed three real Madison-area photos and asked us to (a) update the photos for accuracy on the Madison Guide page and (b) replace Hanover College with the Broadway Fountain. Source JPGs landed in the project root with photographer-credited filenames.
+
+**Completed:**
+- **Real photos integrated on `/madison-guide`** — replaced AI-generated `lanier-mansion.webp` (orange Greek Revival exterior, photo by Jay Westendorf) and `downtown-madison.webp` (golden-hour aerial of riverfront + bridge, photo by Brent Spry). Both retained their existing filenames so no component changes were needed.
+- **Broadway Fountain replaces Hanover College** — `src/data/site.ts:601-610`. New attraction entry uses the Broadway Fountain photo (Grunt Pics) and research-backed copy (1876 Philadelphia Centennial origin, brought to Madison 1886, 1980 bronze recasting, "downtown's most photographed landmark"). Category set to **History**, distance **5 min** (downtown). Old `hanover-college.webp` deleted from disk.
+- **Generator script kept consistent** — `scripts/generate-madison-guide-images.ts` Hanover College job replaced with a Broadway Fountain prompt so any future re-generation creates the right slot.
+- **Source photos archived** — three credited JPGs moved out of project root into gitignored `source-photos/madison-guide/` so the root stays clean.
+- **Verified live** — booted dev server, browsed `/madison-guide` at 1920×1080, confirmed all 5 cards render with correct images, hover lift intact, scroll animations firing. No console errors. Pre-existing LCP hint (Clifty Falls image) is unchanged and not in scope.
+
+**Image weights (final):** Lanier 219KB / Downtown 235KB / Broadway Fountain 421KB / Clifty 292KB / Wineries 196KB. Broadway is heavier than peers because the source has very high-frequency detail (foliage + fountain spray). Below the fold, lazy-loaded — Lighthouse impact negligible.
+
+**Decisions:**
+- Kept the Broadway Fountain entry under the **History** category rather than spinning up a new "Landmarks" category — fits the design system's existing 5 category colors and the fountain is genuinely a historical artifact (1876).
+- Did **not** remove Hanover College from the `things-to-do-madison-indiana` blog post — that's a 10-item editorial list where Hanover is item #8 alongside other places. Angela's edit was specifically about the Madison Guide cards, not pruning Hanover from the brand entirely.
+
+**Pre-launch follow-up:**
+- Photo credits not yet rendered on-page. Angela should confirm whether she wants visible "Photo by Jay Westendorf / Brent Spry / Grunt Pics" attribution. Filenames preserve credit in the source archive either way.
+
+---
 
 ### Session 13 — 2026-04-15
 **Context:** Angela delivered a batch of real property photos (dropped into project root) and two copy corrections after seeing the live site. Goal: replace AI-generated placeholder imagery across the site with authentic property shots before paid promotion begins.
