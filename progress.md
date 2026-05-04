@@ -297,6 +297,11 @@ Site map defined in Session 1 (15 routes). All routes listed in Site Architectur
 **Pre-launch follow-up:**
 - Photo credits not yet rendered on-page. Angela should confirm whether she wants visible "Photo by Jay Westendorf / Brent Spry / Grunt Pics" attribution. Filenames preserve credit in the source archive either way.
 
+**Blog renamed: "The Enchanted Guide" → "The Enchanted Journal"**
+- **Why:** With the Madison Guide page now properly photographed and surfaced, having the blog also called "Guide" created a taxonomy collision in nav ("The Enchanted Guide" vs "Madison Guide"). For a luxury romance brand, "Journal" is the boutique-hospitality genre convention (Auberge, Soho House, every high-end inn) — it converts because the audience recognizes the pattern. Also reuses the "Enchanted" brand word on every post page/email/URL — free brand reps a generic name doesn't give.
+- **Scope of change:** 4 strings — primary nav dropdown, footer link, blog page metadata title, blog page hero eyebrow. URL `/blog` and image directory `/images/blog/` unchanged (no SEO impact, no redirects needed).
+- **⚠️ Reverses Session 12 client preference:** Session 12 logged at line 372: *"'The Enchanted Guide' is the client-preferred name for the blog/journal section."* Anthony made the call to flip back, but Angela should sign off before launch — she explicitly preferred "Guide" once, and we don't have on-record confirmation of the new name.
+
 ---
 
 ### Session 13 — 2026-04-15

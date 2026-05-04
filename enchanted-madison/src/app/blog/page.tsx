@@ -14,7 +14,7 @@ import { blogPosts } from "@/data/blog";
 import { siteData } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "The Enchanted Guide",
+  title: "The Enchanted Journal",
   description:
     "Romantic travel guides, Madison Indiana local tips, and glamping inspiration from The Enchanted Collective.",
 };
@@ -40,7 +40,7 @@ export default function BlogPage() {
                 letterSpacing: "0.12em",
               }}
             >
-              The Enchanted Guide
+              The Enchanted Journal
             </p>
             <h1
               className="leading-tight mb-5"
