@@ -171,9 +171,9 @@ export const siteData = {
       description:
         "Tucked within a peaceful natural setting in Southern Indiana, The Enchanted Cottage is a private one bedroom, one bath retreat designed for rest, reconnection, and elevated comfort.",
       image: "/images/accommodations/enchanted-cottage.webp",
-      // Cottage gallery — every EC-labeled source photo Angela emailed + Entrance.
-      // 10 photos: hot tub / bedroom / family room / kitchen / cocktail bar /
-      // bathroom / front deck / romance package / swing / entrance.
+      // Cottage gallery — every EC-labeled source photo + Entrance + outdoor
+      // movie bed (the cottage's premier addon experience). 11 photos total.
+      // Final placement to be reviewed with Angela on our photo call.
       gallery: [
         "/images/accommodations/cottage/hot-tub.webp",
         "/images/accommodations/cottage/bedroom.webp",
@@ -183,6 +183,7 @@ export const siteData = {
         "/images/accommodations/cottage/bathroom.webp",
         "/images/accommodations/cottage/front-deck.webp",
         "/images/accommodations/cottage/romance-package.webp",
+        "/images/accommodations/cottage/outdoor-movie.webp",
         "/images/accommodations/cottage/swing.webp",
         "/images/accommodations/cottage/entrance.webp",
       ],

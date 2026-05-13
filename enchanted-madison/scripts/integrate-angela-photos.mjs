@@ -37,6 +37,7 @@ const JOBS = [
   ["EC Romance Package.jpg", "images/accommodations/cottage/romance-package.webp"],
   ["EC Swing.png", "images/accommodations/cottage/swing.webp"],
   ["Entrance.jpg", "images/accommodations/cottage/entrance.webp"],
+  ["Outdoor Movie Bed with real bed.png", "images/accommodations/cottage/outdoor-movie.webp"],
 
   // ──────────────────────────────────────────────────────────────
   // BELL TENT SITE — Tent Site + Glamping source photos (curated glamping)
