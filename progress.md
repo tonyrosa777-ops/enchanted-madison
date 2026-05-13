@@ -278,6 +278,109 @@ Site map defined in Session 1 (15 routes). All routes listed in Site Architectur
 
 ## Session Log
 
+### Session 15 — 2026-05-13 — Angela revisions pass (Phases A–K of 12)
+**Context:** Angela submitted a 6-page revision document (`angela-revisions-2026-05-13.md.docx`) with line-item changes covering homepage, About, Hot Tub Escapes, Stays, Proposals, Madison Guide, navigation, and SEO. This session shipped Phases A through K of the 12-phase execution plan in `C:\Users\Anthony\.claude\plans\alright-it-s-in-the-hazy-sloth.md`. Final remaining work: Phase H8 (per-property photo carousel) and Phase L (Lighthouse + Vercel deploy + changelog email).
+
+**Completed — Phase A (copy + data edits, 9 atomic commits):**
+- **A1** Homepage hero H1: `'Where Romance Meets the Wild'` → `'Private Hot Tub Escapes, Luxury Glamping and Bell Tent sites in Madison, Indiana'`. Subheadline replaced with Angela's verbatim long-tail copy including Louisville/Cincinnati/Indianapolis drive context.
+- **A2** New `siteData.homepageTagline` data field + rendered between trust strip and stays grid: SEO-rich paragraph covering luxury glamping, curated tent sites, private cottage, hot tub escapes.
+- **A3** New shared `siteData.staysIntro` (heading + intro + 4 bullets + footer). Renders on both homepage stays section and `/stays` page H1. Replaces 'Choose Your Escape' (homepage) and 'Where You'll Stay' (/stays) with `'Romantic Getaways & Date Night Experiences in Madison, Indiana'` + Angela's 4-bullet accommodation breakdown.
+- **A4** Fixed false 'every accommodation has a hot tub' claims in three places (Why Us bullet, /stays quick-stat detail, /stays meta description). Now reads 'select accommodations.'
+- **A5** VIP: perk 1 rewritten 'exclusive discount on first booking' → 'Exclusive private offers on bookings.' Subheadline drops the 'VIPs always get first access' clause.
+- **A6** Tent site pricing $35 → $45 across `bell-tent`, `campsite`, find-your-escape result card, and /stays meta description.
+- **A7** Removed 'The Chandler Hotel's rooftop terrace' from Madison Guide Downtown tip (competitor). Replaced with riverfront-park pointer at sunset.
+- **A8** Proposals photographer FAQ rewritten — narrows to 'one of our preferred photographers,' photo time is now flexible per guest preference.
+- **A9** Homepage SEO meta: `siteData.seo.defaultTitle` + `defaultDescription` set to Angela's verbatim title/description. Subpages keep their per-page titles.
+
+**Completed — Phase B (nav + structure, 2 atomic commits):**
+- **B1** Renamed 'The Enchanted Journal' → 'Our Enchanted Guides' in 4 places (header dropdown, footer, /blog metadata title, /blog hero eyebrow). Reverses Session 14's flip back to Angela's preferred name. `/blog` URL unchanged.
+- **B2** Added 'Gift Certificates' to header dropdown + footer 'Experiences' group. Links to `https://app.acuityscheduling.com/catalog.php?owner=38559471` (the general Acuity catalog page per owner-roleplay decision). External link handling added as first-class concept: nav items + footer links now accept optional `external?: boolean`; header (desktop + mobile) and footer render `<a target="_blank">` when set.
+
+**Completed — Phase C (sticky CTA, 1 commit):**
+- New `<FloatingCTA />` mobile-only component in `src/components/layout/FloatingCTA.tsx`. Mounted in `PageShell`. Appears bottom-right after the user scrolls 400px past the hero. Hidden on `/stays/[slug]`, `/proposals`, `/date-night` to avoid competing with the in-page booking widget. Desktop already has the always-visible sticky header CTA — no duplication. Styled to translate Angela's CSS intent (rgba dark backdrop, compact pill, 13px mono caps) into design-system tokens.
+
+**Completed — Phase D2 (1 commit):**
+- Cincinnati drive time corrected 75 → 60 min per Angela's brief (updated `siteData.driveTimes` + matching FAQ answer).
+- New metro distance pill strip below the homepage tagline: 60 min Louisville / 60 min Cincinnati / 90 min Indianapolis. Reuses `siteData.driveTimes`. Full Location section lower down kept intact.
+
+**Completed — Phase E1 (1 commit):**
+- About page 'What We Believe' restructured: H2 now reads 'What we believe' with subheading 'How we built this place' beneath it. Eyebrow swapped to 'Our Approach' to avoid duplicating H2.
+- Card 2 renamed 'Genuinely Private' → 'Thoughtful Layout, Real Setting.'
+- All three card bodies rewritten in Angela's voice (verbatim, with ellipses preserved per `user_angela_voice` memory).
+
+**Completed — Phase G (3 commits):**
+- **G1–G3** Replaced `hot-tub-soak.webp` demo image with the real `Sunrise Hot Tub Escape.png` (already in `source-photos/`). Updated `scripts/integrate-angela-photos.mjs`: `SOURCE_ROOT` now points to `source-photos/` (Session 14 reorg), added the `madison-guide/` subfolder jobs that were previously hand-integrated, added the new `hot-tub-soak` mapping. Re-ran the script — all 26 jobs OK. Fireside Lounge card kept AI placeholder (owner roleplay decision; flagged in `ANGELA-PHOTOS.md`).
+- **G4** Found the actual root cause of Angela's 'photo coming soon' report: `/stays/[slug]` 'You Might Also Like' StayCard render was dropping the `image` prop. Added it. Also made StayCard fallback graceful: instead of 'Photo coming soon' on a flat grey panel, the empty state now shows the property type label centered on a brand gradient — so any future fallback (e.g. a property whose image hasn't generated yet) never reads as broken. Removed stale `// TODO: real photo` comments. Added `siteData.stays` CONTRACT comment documenting the image-path dependency for related-stays.
+
+**Completed — Phase I (tent SEO, 1 commit):**
+- Bell Tent: name 'Curated Campsite — Bell Tent' → 'Curated Bell Tent Site'; type 'Glamping Campsite' → 'Glamping Tent Site.'
+- BYOT: name 'Curated Campsite — Bring Your Own Tent' → 'Curated Tent Site — Bring Your Own Tent'; type 'Traditional Campsite' → 'Wooded Tent Site.'
+- Both stay taglines now use 'tent site' explicitly.
+- New FAQ entry under Accommodations: 'Do you offer tent sites in Madison, Indiana?' — long-tail answer hitting tent site, Clifty Falls, fire pit, shower facilities, $45 entry price.
+- Footer labels updated to match.
+
+**Completed — Phase J (1 commit):**
+- Google Analytics 4 (`G-1VQ056C1GV`) wired into `app/layout.tsx` via `next/script` with `afterInteractive` strategy. Reads from `NEXT_PUBLIC_GA_ID` env var with fallback to Angela's literal ID. Coexists with existing Vercel Analytics.
+
+**Completed — Phase K (1 commit):**
+- New `ANGELA-PHOTOS.md` at project root: catalogs every emailed photo, its destination(s), credit, integration session, and which page renders it. Lists outstanding photo needs (fireside lounge, gallery fills for Velvet Buck / Bell Tent / Campsite, Starlit Buck hero + gallery, smores + picnic add-ons, photo-credit attribution decision). Documents the going-forward workflow: drop into `source-photos/<category>/`, add a row, register the script mapping, re-run.
+
+**Completed — Phase H1–H7 (Starlit Buck 5th property, 1 commit):**
+- Angela confirmed via text on 2026-05-13: **5th property in addition to Velvet Buck, not a rename.** Spec sourced from owner-roleplay pass on claude.ai.
+- Added Starlit Buck to `siteData.stays`: slug `starlit-buck`, type `Luxury Glamping Tent`, sleeps 2, 320 sq ft, From $175/night, badge `Opening This Summer`. 6 features per Angela's spec. Description and tagline verbatim. Positioned directly after Velvet Buck.
+- Added `'starlit-buck': ''` to `littleHotelierWidgets`.
+- Footer Stays group expanded from 4 → 5 (Starlit Buck between Velvet Buck and Bell Tent).
+- Homepage + `/stays` grid changed `lg:grid-cols-4` → `lg:grid-cols-3` to accommodate the 5th card cleanly (3+2 layout vs orphaned 4+1).
+- Starlit Buck ships with `image: ''` (no photo yet). Both `StayCard` and `/stays/[slug]` hero fallbacks render the property type label on a brand gradient — never reads as broken.
+- `staysIntro` 4-bullet block NOT expanded to 5 (bullet 2 'Luxury Glamping Tents' is plural and already covers both glamping tents).
+- Quiz routing kept Velvet Buck as the primary glamping recommendation; Starlit Buck discoverable via /stays.
+- Build verified: 40 pages, `/stays/starlit-buck` prerendered, zero TypeScript errors.
+
+**Not yet started — remaining work for next session:**
+- **Phase H8** Per-property photo carousel with lightbox on `/stays/[slug]`. Needs `embla-carousel-react` + a lightbox library, per-property `gallery: string[]` arrays in `siteData.stays`, and 5 photos per property (gallery fills via fal.ai where source photos are short).
+- **Phase L** Lighthouse audit, mobile + desktop smoke, Vercel deploy verification, changelog email to Angela.
+
+**Commits this session (14 total, all pushed):**
+1. `e7169bd` feat(homepage): rewrite hero H1 + subheadline
+2. `17a84da` feat(homepage): add tagline section
+3. `397b8ca` feat(stays): swap header to Romantic Getaways + bulleted description
+4. `f01ac7a` fix(stays): correct 'every accommodation' hot tub claims
+5. `98ff93b` fix(vip): rewrite perk 1 + remove 'first access' clause
+6. `706557c` fix(stays): raise tent site pricing $35 → $45
+7. `f71a078` fix(madison-guide): remove Chandler Hotel mention
+8. `41ee046` fix(proposals): rewrite photographer FAQ answer
+9. `aeea8e6` feat(seo): set homepage SEO title + description
+10. `5097cb3` feat(nav): rename Journal → Our Enchanted Guides
+11. `d59e2a0` feat(nav): add Gift Certificates link
+12. `e756ddd` feat(cta): add mobile floating Check Availability button
+13. `f93f84e` feat(homepage): add metro distance strip + fix Cincinnati
+14. `2976b95` feat(about): restructure 'What We Believe' section
+15. `5513849` feat(date-night): replace hot-tub-soak with real Sunrise photo
+16. `9bcb569` fix(stays): replace 'Photo coming soon' fallback + add image contract
+17. `9727fd3` feat(analytics): install Google Analytics 4
+18. `68115a9` feat(seo): surface 'tent site' terminology across stays + FAQ
+19. `a52f468` docs: add ANGELA-PHOTOS.md photo inventory
+20. `0d10d80` feat(stays): add The Starlit Buck as 5th property
+
+**Decisions:**
+- 'The Enchanted Journal' reverted to 'Our Enchanted Guides' per Angela's explicit revision doc — Session 14's flip is now reversed.
+- Cincinnati distance treated as 60 min (Angela's brief, not the prior 75 min in code).
+- Hot tub claims wherever they appeared as 'every accommodation' or 'every overnight stay' corrected to 'select accommodations' — Bell Tent + BYOT do not have private hot tubs.
+- Sticky CTA implemented as mobile-only floating pill (desktop header already always-visible) — clean conversion add without disrupting the existing transparent → solid scroll behavior.
+- Starlit Buck ships with empty image string. Both fallbacks (StayCard, /stays/[slug] hero) now render gracefully on missing photos, so the property is launchable without blocking on photography.
+- Tent site SEO sweep deliberately surfaces 'tent site' on H1/type/tagline/FAQ rather than rewriting Angela's verbatim homepage SEO copy (which she sourced herself).
+
+**Pre-launch follow-up items (for Phase L changelog email):**
+1. Confirm 'Opening This Summer' badge phrasing for Starlit Buck (vs 'Opens June 2026' or similar)
+2. Send screenshot if she still sees a 'duplicate availability checker' anywhere after the new deploy
+3. Send real fireside-lounge photo when available (AI placeholder live)
+4. Send 4 more photos each for Bell Tent + Campsite if she wants real galleries instead of fal.ai fills
+5. Send Starlit Buck hero + gallery photos when the property is photographed
+6. Confirm Lodgify widget URLs per property (still placeholder)
+7. Confirm whether Madison Guide cards should show visible photographer credit (Westendorf / Spry / Grunt Pics)
+
+---
+
 ### Session 14 — 2026-05-04
 **Context:** Angela emailed three real Madison-area photos and asked us to (a) update the photos for accuracy on the Madison Guide page and (b) replace Hanover College with the Broadway Fountain. Source JPGs landed in the project root with photographer-credited filenames.
 
