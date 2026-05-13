@@ -194,9 +194,9 @@ export const siteData = {
     },
     {
       slug: "bell-tent",
-      name: "Curated Campsite — Bell Tent",
-      type: "Glamping Campsite",
-      tagline: "A 16-foot bell tent, set up and ready for your arrival.",
+      name: "Curated Bell Tent Site",
+      type: "Glamping Tent Site",
+      tagline: "A 16-foot bell tent on a private wooded tent site, set up and ready for your arrival.",
       priceFrom: 45,
       capacity: 2,
       sqft: 201,
@@ -216,9 +216,9 @@ export const siteData = {
     },
     {
       slug: "campsite",
-      name: "Curated Campsite — Bring Your Own Tent",
-      type: "Traditional Campsite",
-      tagline: "A private wooded site with fire pit, chairs, and ambient lighting.",
+      name: "Curated Tent Site — Bring Your Own Tent",
+      type: "Wooded Tent Site",
+      tagline: "A private wooded tent site with fire pit, chairs, and ambient lighting.",
       priceFrom: 45,
       capacity: 2,
       sqft: null,
@@ -514,7 +514,7 @@ export const siteData = {
       questions: [
         {
           q: "Is there a private bathroom?",
-          a: "The Enchanted Cottage has a private, spa-inspired bathroom inside the unit. The Velvet Buck tent has access to a nearby bathhouse with restrooms and showers. Both Curated Campsite options also have access to shower and bathroom facilities on the property.",
+          a: "The Enchanted Cottage has a private, spa-inspired bathroom inside the unit. The Velvet Buck tent has access to a nearby bathhouse with restrooms and showers. Both tent site options also have access to shower and bathroom facilities on the property.",
         },
         {
           q: "Do I need to bring anything for my stay?",
@@ -530,7 +530,11 @@ export const siteData = {
         },
         {
           q: "Can I bring my dog?",
-          a: "Dogs are welcome at the Curated Campsite — Bell Tent option. Pets are not permitted at The Enchanted Cottage, The Velvet Buck, or any hot tub experience booking. Maximum 1 dog per site; quiet hours apply to pets as well.",
+          a: "Dogs are welcome at the Curated Bell Tent Site. Pets are not permitted at The Enchanted Cottage, The Velvet Buck, or any hot tub experience booking. Maximum 1 dog per site; quiet hours apply to pets as well.",
+        },
+        {
+          q: "Do you offer tent sites in Madison, Indiana?",
+          a: "Yes. We offer two private wooded tent sites just minutes from Clifty Falls State Park and historic downtown Madison: a Curated Bell Tent Site with a 16-foot bell tent already set up on arrival, and a Bring-Your-Own Tent Site for guests who prefer their own gear. Both tent sites include a fire pit with cooking grate, Adirondack chairs, outdoor dining, overhead string lights, and access to shower and bathroom facilities. Tent sites start at $45 per night.",
         },
       ],
     },

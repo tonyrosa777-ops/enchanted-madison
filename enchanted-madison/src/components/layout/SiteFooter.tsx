@@ -12,8 +12,8 @@ const footerLinks: Record<string, FooterLink[]> = {
   Stays: [
     { label: "The Enchanted Cottage", href: "/stays/enchanted-cottage" },
     { label: "The Velvet Buck", href: "/stays/velvet-buck" },
-    { label: "Bell Tent Campsite", href: "/stays/bell-tent" },
-    { label: "Bring Your Own Tent", href: "/stays/campsite" },
+    { label: "Bell Tent Site", href: "/stays/bell-tent" },
+    { label: "BYO Tent Site", href: "/stays/campsite" },
   ],
   Experiences: [
     { label: "Date Night Escapes", href: "/date-night" },
