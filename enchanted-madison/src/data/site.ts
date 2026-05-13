@@ -43,9 +43,9 @@ export const siteData = {
   vip: {
     headline: "Join the VIP List",
     subheadline:
-      "This isn't just a reservation — it's a fully designed escape. Spots fill quickly… and VIPs always get first access.",
+      "This isn't just a reservation — it's a fully designed escape. Spots fill quickly.",
     perks: [
-      "An exclusive discount on your first booking",
+      "Exclusive private offers on bookings",
       "A complimentary luxury sugar scrub to elevate your soak",
       "A curated snack & drink pairing waiting just for you",
     ],

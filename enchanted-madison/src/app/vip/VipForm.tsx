@@ -18,8 +18,6 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-// Single source of truth lives in site.ts. First-access is an implicit 4th perk
-// already communicated in the subheadline ("VIPs always get first access").
 const benefits = siteData.vip.perks.map((label) => ({ icon: "✨", label }));
 
 export function VipForm() {
