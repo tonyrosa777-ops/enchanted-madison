@@ -60,18 +60,21 @@ const aboutClosing = [
   "Because you don\u2019t need more time.\nYou just need the space to use it differently.",
 ];
 
+// Values — rewritten per Angela's revisions doc (2026-05-13)
+// "Genuinely Private" renamed → "Thoughtful Layout, Real Setting" because the
+// property is intentionally a shared natural setting, not isolated parcels.
 const values = [
   {
     label: "Thoughtfully Curated",
-    body: "Every detail — the linen weight, the fire pit placement, the cocktail bar supplies — was chosen intentionally. Nothing was left to chance.",
+    body: "Every detail was chosen intentionally…from the comfort of your space to the way your night unfolds. We wanted it to feel effortless, elevated, and memorable.",
   },
   {
-    label: "Genuinely Private",
-    body: "Your hot tub is yours. Your fire pit is yours. The sites are spaced so you hear the trees, not other guests.",
+    label: "Thoughtful Layout, Real Setting",
+    body: "We’ve designed each space to feel distinct and comfortable, while still embracing the shared, natural setting around you. It’s part of the charm…a balance of your own space and the energy of being somewhere a little different.",
   },
   {
     label: "Couples-First, Always",
-    body: "This is not a family resort or a group retreat. Everything here was designed for two people who want to be completely present with each other.",
+    body: "This place exists for connection. For slowing down. For stepping out of routine and into something that actually feels like time well spent together.",
   },
 ];
 
@@ -190,19 +193,28 @@ export default function AboutPage() {
         <div className="max-w-5xl mx-auto">
           <FadeUp>
             <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>
-              What We Believe
+              Our Approach
             </p>
             <h2
-              className="mb-10 leading-tight"
+              className="leading-tight"
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 600,
-                fontSize: "clamp(28px, 4vw, 44px)",
+                fontSize: "clamp(36px, 5vw, 56px)",
                 color: "var(--text-primary)",
               }}
             >
-              How We Built This Place
+              What we believe
             </h2>
+            <p
+              className="mt-3 mb-10 text-base leading-relaxed"
+              style={{
+                fontFamily: "var(--font-body)",
+                color: "var(--text-secondary)",
+              }}
+            >
+              How we built this place
+            </p>
           </FadeUp>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {values.map((v, i) => (
