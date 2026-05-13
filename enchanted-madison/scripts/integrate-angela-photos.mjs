@@ -43,12 +43,13 @@ const JOBS = [
   // ──────────────────────────────────────────────────────────────
   // Hero
   ["Tent Site with tent.png", "images/accommodations/bell-tent.webp"],
-  // Gallery (5 photos)
+  // Gallery (4 photos — "Enhanced bedroom for glamping" was moved to
+  // Velvet Buck per Angela 2026-05-13: the filename contains "glamping"
+  // and the photo fits VB's luxury-glamping identity better)
   ["Tent Site with tent.png", "images/accommodations/bell-tent/tent.webp"],
   ["Glamping hot tub close up.png", "images/accommodations/bell-tent/hot-tub.webp"],
   ["Glamping bathroom.png", "images/accommodations/bell-tent/bathroom.webp"],
   ["Glamping kitchen.png", "images/accommodations/bell-tent/kitchen.webp"],
-  ["Enhanced bedroom for glamping.png", "images/accommodations/bell-tent/bedroom.webp"],
 
   // ──────────────────────────────────────────────────────────────
   // BYO TENT SITE (campsite) — Tent Site Marshmallows source photo
@@ -85,11 +86,16 @@ const JOBS = [
   ["madison-guide/Broadway Fountain Grunt Pics.jpg", "images/madison-guide/broadway-fountain.webp"],
 
   // ──────────────────────────────────────────────────────────────
-  // VELVET BUCK + STARLIT BUCK
-  // No source photos yet — heroes + galleries generated via
+  // VELVET BUCK — fal.ai hero + 4 fal.ai gallery + 1 real bedroom photo
+  // Hero + exterior/hot-tub/lounge/firepit generated via
   // scripts/generate-velvet-starlit-images.ts (fal.ai flux/dev).
-  // Old Glamping ___ → velvet-buck mappings REMOVED 2026-05-13
-  // (Angela wanted those at Bell Tent / Campsite instead).
+  // bedroom.webp comes from Angela's real "Enhanced bedroom for glamping"
+  // photo per her 2026-05-13 reassignment (overrides the fal.ai version).
+  // ──────────────────────────────────────────────────────────────
+  ["Enhanced bedroom for glamping.png", "images/accommodations/velvet-buck/bedroom.webp"],
+
+  // ──────────────────────────────────────────────────────────────
+  // STARLIT BUCK — entirely fal.ai (no real source photos yet)
   // ──────────────────────────────────────────────────────────────
 ];
 

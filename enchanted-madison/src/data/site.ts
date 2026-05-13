@@ -207,8 +207,12 @@ export const siteData = {
       description:
         "Tucked within a secluded wooded setting, The Velvet Buck is an upcoming luxury glamping retreat designed to blend immersive nature with elevated comfort.",
       image: "/images/accommodations/velvet-buck.webp",
-      // Velvet Buck gallery — fal.ai flux/dev generated 2026-05-13.
-      // Warm-twilight forest glamping aesthetic, distinct from Starlit Buck.
+      // Velvet Buck gallery — 4 fal.ai shots + 1 real photo (bedroom).
+      // bedroom.webp = Angela's "Enhanced bedroom for glamping.png" source
+      // (moved here from Bell Tent 2026-05-13 because the filename
+      // explicitly says "glamping," fits VB's luxury-glamping identity).
+      // exterior / hot-tub / lounge / firepit are fal.ai flux/dev with
+      // warm-twilight forest aesthetic, distinct from Starlit Buck.
       gallery: [
         "/images/accommodations/velvet-buck/exterior.webp",
         "/images/accommodations/velvet-buck/bedroom.webp",
@@ -275,13 +279,11 @@ export const siteData = {
       description:
         "Enjoy a relaxed outdoor stay with a 16-foot bell tent already set up. Bring your own bedding and make it your own.",
       image: "/images/accommodations/bell-tent.webp",
-      // Bell Tent gallery — Tent Site + Glamping source photos (Angela's
-      // remap 2026-05-13). Bell Tent is the curated glamping experience,
-      // so the Glamping interior shots fit here.
+      // Bell Tent gallery — Tent Site + Glamping source photos.
+      // bedroom dropped 2026-05-13 (moved to Velvet Buck per Angela).
       gallery: [
         "/images/accommodations/bell-tent/tent.webp",
         "/images/accommodations/bell-tent/hot-tub.webp",
-        "/images/accommodations/bell-tent/bedroom.webp",
         "/images/accommodations/bell-tent/bathroom.webp",
         "/images/accommodations/bell-tent/kitchen.webp",
       ],
