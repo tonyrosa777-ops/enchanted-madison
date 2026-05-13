@@ -97,6 +97,11 @@ export const siteData = {
     trustCopy: "The only private hot tub glamping retreat in southern Indiana",
   },
 
+  // Homepage tagline \u2014 secondary intro paragraph between trust strip and stays grid
+  // Source: Angela's revisions doc (2026-05-13) "Tagline Section"
+  homepageTagline:
+    "Romantic overnight stays with luxury glamping, curated tent sites, a private cottage, and hot tub escape experiences \u2014 all designed for couples looking to connect. Just minutes from Clifty Falls and downtown Madison, and an easy drive from Louisville, Cincinnati, and Indianapolis.",
+
   // Trust strip (below hero — social proof bar)
   // Source: market-intelligence.md §8 (below-hero trust signals)
   trustItems: [

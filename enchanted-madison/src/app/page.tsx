@@ -130,6 +130,28 @@ export default function HomePage() {
       </div>
 
       {/* ================================================================
+          HOMEPAGE TAGLINE — secondary intro paragraph
+          Source: Angela's revisions doc (2026-05-13) "Tagline Section"
+          ================================================================ */}
+      <section
+        className="py-12 lg:py-16 px-4"
+        style={{ background: "var(--bg-elevated)" }}
+        aria-label="Property introduction"
+      >
+        <FadeUp>
+          <p
+            className="max-w-3xl mx-auto text-center text-base lg:text-lg leading-relaxed"
+            style={{
+              fontFamily: "var(--font-body)",
+              color: "var(--text-secondary)",
+            }}
+          >
+            {siteData.homepageTagline}
+          </p>
+        </FadeUp>
+      </section>
+
+      {/* ================================================================
           STAYS GRID — 3-col desktop, 1-col mobile
           Source: design-system.md §4 (grid-cols-1 md:grid-cols-2 lg:grid-cols-3)
           Shows all 4 accommodations with prices (anti-pattern #6: never hide pricing)
