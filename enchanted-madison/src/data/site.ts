@@ -54,12 +54,14 @@ export const siteData = {
     counter: "Join 400+ couples on the list",
   },
 
-  // SEO defaults
+  // SEO defaults — also serve as the homepage's title/description since the
+  // homepage does not override metadata. Source: Angela's revisions doc (2026-05-13).
   seo: {
     titleTemplate: "%s | The Enchanted Collective",
-    defaultTitle: "The Enchanted Collective | Luxury Glamping near Madison, Indiana",
+    defaultTitle:
+      "Private Hot Tub Escapes & Glamping in Madison, IN | Near Louisville & Cincinnati",
     defaultDescription:
-      "The only luxury glamping retreat near Madison, Indiana — private hot tubs, romantic escapes, and proposal packages just minutes from Clifty Falls State Park.",
+      "Escape to a private hot tub experience or luxury glamping stay in Madison, Indiana. Just 1 hour from Louisville and Cincinnati. 90 min from Indianapolis, IN. Perfect for romantic getaways, anniversaries, and proposals in southern Indiana.",
     ogImage: "/og-default.jpg", // TODO: create OG image
   },
 
