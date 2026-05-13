@@ -88,9 +88,10 @@ export const siteData = {
   // Hero (homepage)
   hero: {
     eyebrow: "Madison, Indiana · Now Taking Bookings",
-    headline: "Where Romance Meets the Wild",
+    headline:
+      "Private Hot Tub Escapes, Luxury Glamping and Bell Tent sites in Madison, Indiana",
     subheadline:
-      "Romantic overnight stays with glamping, camping, or a private cottage — or escape for a few hours with one of our private hot tub experiences. Just minutes from Clifty Falls and historic downtown Madison.",
+      "Book a private hot tub escape, stay overnight in a luxury glamping tent, or unwind in a romantic stay or a curated campsite. Located in Madison, Indiana—just 1 hour from Louisville, KY and Cincinnati, OH, and 90 minutes from Indianapolis. Let us help you make your next date night or getaway extra special!",
     ctaPrimary: { label: "Make It Unforgettable", href: "/packages" },
     ctaSecondary: { label: "Find My Escape \u2192", href: "/find-your-escape" },
     trustCopy: "The only private hot tub glamping retreat in southern Indiana",
