@@ -358,8 +358,65 @@ Once renamed, update the integrate-angela-photos.mjs JOBS table to match. Future
 - Error #60 — H1 clamp scale not retuned after headline content rewrite
 - Error #61 — Section alternation regression on revision-pass section insertion
 - Error #62 — Sharp webp conversion silently drops EXIF orientation
+- Error #63 — Orphan-cell grid layouts (n % cols ≠ 0)
 - Pattern #70 — Auto-applied Pattern #51 gradients via CSS attribute selectors
-- 4 detailed entry files in `C:\Projects\Optimus Assets\knowledge\errors/`
+- Pattern #71 — Never ship orphan-cell grids (with decision matrix per item count)
+- 5 detailed entry files in `C:\Projects\Optimus Assets\knowledge\errors/`
+
+---
+
+### Session 16 (continued) — same day, additional work after the entry above
+
+This appendix covers everything that shipped after the initial Session 16 log was written. Per the user's reinforced workflow (memory: `feedback_always_push`): every commit must be followed by both a push AND a progress.md update — never batch.
+
+**Photo gallery remap per Angela's filenames (2026-05-13 commit `9409169`):**
+- **EC / Entrance** photos → Enchanted Cottage gallery (now 10 photos, expanded from 5 to use every EC source). Cottage carousel showed missing Swing + Entrance earlier — both wired in via the integrate script.
+- **Glamping ___** photos moved OFF Velvet Buck → ONTO Bell Tent + BYO Campsite per Angela (her words: "The Velvet Buck — those photos are for glamping. The glamping photos should be under curated bell tent site and curated tent site.")
+- **Velvet Buck + Starlit Buck** got new fal.ai-generated photo sets (12 images via fal-ai/flux/dev, ~$0.30). Velvet Buck = warm-twilight forest glamping mood. Starlit Buck = deep-night Milky Way mood. Two distinct aesthetics so they don't read as reskins of each other.
+- **"Enhanced bedroom for glamping.png"** later moved from Bell Tent → Velvet Buck (Angela 2026-05-13: filename contains "glamping," better fit for VB's luxury-glamping identity).
+- **"Outdoor Movie Bed with real bed.png"** flagged as unplaced (was only on /packages addons, not in any carousel). Added to Cottage carousel as 11th photo. Final placement pass deferred to upcoming photo call.
+- **EXIF rotation fix** — sharp `.webp()` was silently dropping the EXIF Orientation tag; phone photos were rendering rotated 90° (caught on cottage bedroom). Added `.rotate()` before resize/encode in integrate-angela-photos.mjs. All 26 source photos regenerated.
+
+**Stay-page template (`/stays/[slug]`) restructure:**
+- Removed the giant 16:7 hero image above the carousel (commit `79aafa5`) — was redundant with the carousel directly below it.
+- Section alternation reworked to c-D-c-D-c rhythm: hero (cream) → carousel (DARK with Fireflies + GodRays) → main content (cream) → add-ons teaser (DARK with Fireflies) → related stays (cream). Was 5 cream-in-a-row before.
+- PropertyGallery thumbnail aspect: switched `object-cover` → `object-contain` (commit `9be784f`) so portrait phone photos aren't cropped top/bottom. Added subtle translucent backdrop for the letterbox bars.
+
+**Site-wide flat-cream-body monotony fix (commit `65a0b4c`):**
+- Audited every page; almost every content page had 3-6 cream sections back-to-back after the hero (worst: `/about` 6-in-a-row).
+- **Applied Optimus Pattern #51 (Luxury Gradient Backgrounds) systemically** via a single `globals.css` edit. Every `<section style={{ background: "var(--bg-*)" }}>` now auto-gets a brass-tinted breathing-orb gradient via `::before`, with 3 cream variants + 3 dark variants cycled through `:nth-of-type` modulo selectors. Adjacent same-bg sections now have distinct orb positions + drift directions + durations — no monotony.
+- **New Optimus Pattern #70** documents this implementation approach (CSS attribute selectors as the auto-applied mechanism — no per-section refactor needed).
+
+**`/date-night` double-pick friction removed (commit `88fc27d`):**
+- Angela's revisions doc flagged that users were picking date/time twice (once on a custom BookingCalendar pre-picker, then again on the Acuity scheduler).
+- Removed the entire `BookingCalendar` section. Hero "Book Now" CTA + each package card's "Book This Escape" button + a new dark final-CTA section all link directly to `siteData.booking.acuityUrl` (Acuity scheduler opens in new tab). Users pick once.
+- Same fix family as Optimus Pattern #53 (Collaborative Insights native-picker-plus-Calendly double-entry).
+
+**Orphan-cell grid bug class + Pattern #71 codified (commits `4d6c4d4` + Optimus `1614910`):**
+- User caught `/vip` rendering 3 perks in a 2-col grid = 2+1 orphan (third card alone next to an empty cell). Same pattern broke `/stays` (5 stays in 3-col = 3+2 orphan in row 2).
+- Fixes: VIP perks → vertical flex stack; /stays → featured (Enchanted Cottage in `max-w-3xl mx-auto` wrapper) + 2x2 grid of the remaining 4 stays.
+- **New Optimus Pattern #71 — Never ship orphan-cell grids** documents the decision matrix per item count (2 through 12+), the featured + grid canonical recipe, the vertical stack alternative for 3-item sets, and the dynamic-count handling pattern. **New Error #63** logs the discovery incident.
+
+**VIP page luxury rebuild (commit `2ed7eaf`):**
+- Old `/vip` was plain cream form on plain cream background — didn't communicate "VIP" at all.
+- Full rebuild with: dark forest-green section + hot tub escape photo at 22% opacity + Fireflies(28) + GodRays(50%) + Embers(18) particle systems + brass radial overlay + dark gradient layered for depth.
+- Hero: pill badge with glowing gold dot ("Opening June 2026 · VIP Access"), ShimmerText H1 at clamp(40, 72), gold ornament divider (line + ✦ + line), social-proof counter.
+- Perks: glass-blur cards with brass-outlined gold ✦ medallion icons (with brass glow shadow), horizontal hover lift.
+- Form: glass-blur container with brass-outlined edge + drop shadow, translucent white-on-dark inputs with brass focus state, secondary (rose) submit button.
+- Success state: glowing brass-bordered ✦ medallion, ShimmerText "You're on the list" headline.
+
+**Email draft to Angela (in chat, not code) summarizing all of the above** — itemized SHIPPED list, format reminder for future revisions (with quote-wrapped page name + change format), and a meeting request agenda covering photo naming + photo placement (Outdoor Movie example) + filling out the glamping carousels.
+
+**Operating principle reinforced (this entry):**
+After every commit: push AND update progress.md. Both. No batching. Saved as durable feedback memory `feedback_always_push.md`.
+
+**Open items to close before launch:**
+1. Lodgify per-property widget URLs (5 min per property once Angela sends them)
+2. Real fireside lounge photo (AI placeholder live)
+3. Madison Guide photo credit display preference
+4. Photo source filename rename pass (covered in upcoming photo call)
+5. More photos for Velvet Buck + Bell Tent + Campsite + Starlit Buck galleries (covered in photo call — fal.ai placeholders fill the gap currently)
+6. Outdoor Movie photo placement final decision (currently in Cottage carousel; could also fit elsewhere — covered in photo call)
 
 ---
 
