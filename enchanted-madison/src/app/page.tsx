@@ -303,16 +303,24 @@ export default function HomePage() {
         </div>
       </section>
 
+      <WaveDivider fill="var(--bg-dark)" background="var(--bg-base)" flip={true} />
+
       {/* ================================================================
           EXPERIENCES TEASER — 2-up grid: Date Night + Proposals
           Source: market-intelligence.md §5 Gap 3 (no one else does this)
+          Dark per Pattern #8 (Optimus build-log) — breaks the Stays(cream)
+          → Experiences(cream) → ExperienceFinder(visually-dark) run that
+          read as 3-cream-in-a-row to the eye. Now: Stays(cream) →
+          Experiences(dark) → ExperienceFinder(dark) flips cleanly.
           ================================================================ */}
       <section
-        className="py-20 lg:py-28 px-4"
-        style={{ background: "var(--bg-elevated)" }}
+        className="relative py-20 lg:py-28 px-4 overflow-hidden"
+        style={{ background: "var(--bg-dark)" }}
         aria-label="Experiences"
       >
-        <div className="max-w-6xl mx-auto">
+        <Fireflies count={16} />
+        <GodRays opacity={0.4} />
+        <div className="relative z-10 max-w-6xl mx-auto">
           <FadeUp>
             <div className="text-center mb-12">
               <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>
@@ -324,7 +332,7 @@ export default function HomePage() {
                   fontFamily: "var(--font-display)",
                   fontWeight: 600,
                   fontSize: "clamp(44px, 6.5vw, 84px)",
-                  color: "var(--text-primary)",
+                  color: "var(--text-on-dark)",
                 }}
               >
                 Escapes for the Day
@@ -333,7 +341,7 @@ export default function HomePage() {
                 className="mt-4 max-w-xl mx-auto text-base leading-relaxed"
                 style={{
                   fontFamily: "var(--font-body)",
-                  color: "var(--text-secondary)",
+                  color: "rgba(254,252,250,0.75)",
                 }}
               >
                 No overnight stay required. Private hot tub escapes, romantic date nights,
