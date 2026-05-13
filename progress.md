@@ -278,6 +278,91 @@ Site map defined in Session 1 (15 routes). All routes listed in Site Architectur
 
 ## Session Log
 
+### Session 16 — 2026-05-13 — Playwright verification pass + Pattern #51 systemic fix + stay-page polish
+**Context:** Live Playwright walkthrough of Session 15's revisions surfaced several bugs that the static typecheck didn't catch. This session addresses all of them, plus a wave of polish requests from Angela.
+
+**Bugs fixed (in order surfaced):**
+
+1. **Hero top padding insufficient for fixed nav on `lg`** — every page hero used static `pt-32` (128px) but the SiteHeader is `h-28` (112px) on `lg`, leaving only 16px of breathing room. Eyebrow text was rendering flush against the navbar. Bulk fix: `pt-32 pb-` → `pt-32 sm:pt-36 lg:pt-40 pb-` across 15 hero sections. Verified gap went 15px → 47px on `/about`. **Logged as Optimus Error #59.**
+
+2. **Homepage H1 oversized + CTAs below fold** — clamp was sized for the old 28-char "Where Romance Meets the Wild" headline. Angela's new 95-char SEO H1 was rendering at 117px and wrapping to 6+ lines, pushing CTAs off-screen. Retuned clamp to `clamp(30px, min(4.2vw, 6.5vh), 60px)`. Then bumped again on wide desktop (1920+) to `clamp(30px, min(5vw, 9vh), 100px)` so the H1 fills the viewport meaningfully. **Logged as Optimus Error #60.**
+
+3. **Homepage section alternation regression** — Session 15's inserted tagline section between the trust strip and the stays grid created 4 consecutive cream sections, breaking Pattern #8. Flipped the tagline section to `bg-dark` + Fireflies + GodRays. **Logged as Optimus Error #61.**
+
+4. **Homepage showing all 5 stays** — should be 3 + "View All Stays" CTA per Angela's revisions. Switched `siteData.stays.map` to `.slice(0, 3)` and updated the CTA label to "View All N Stays" (auto-syncs with future stays).
+
+5. **Site-wide flat-cream-body monotony** — audited every page; almost every content page had a dark hero followed by 3–6 cream body sections in a row (worst case: `/about` with 6 cream-in-a-row). Applied **Optimus Pattern #51 — Luxury Gradient Backgrounds systemically** via a single `globals.css` edit. Every `<section style={{ background: "var(--bg-*)" }}>` now auto-gets a brass-tinted breathing-orb gradient via `::before`, with three cream variants + three dark variants cycled through `:nth-of-type` modulo selectors so adjacent same-bg sections have distinct orb positions + drift directions + durations. **Added Optimus Pattern #70 for this implementation approach** (CSS attribute selectors as the auto-applied mechanism — no per-section refactor needed).
+
+6. **`/stays/[slug]` 5-cream-in-a-row** — same flat-body issue on the per-property template. Made the carousel section + add-ons teaser DARK so the rhythm is now `c-D-c-D-c` (hero → carousel → main → add-ons → related). Fixes all 5 stay slugs at once via the template.
+
+7. **Cottage hero photo redundant with carousel** — removed the giant 16:7 hero image above the carousel. Carousel is now the primary visual.
+
+8. **Cottage gallery missing 2 photos** — `Entrance.jpg` was integrated to disk but never wired into the gallery array; `EC Swing.png` was being silently SKIPped because the integrate script was looking for the old filename `Swing  at EC.png` (double space). Both added; cottage gallery now 10 photos (every EC-labeled source photo + Entrance).
+
+9. **Photo gallery sideways orientation (EXIF)** — phone photos render rotated 90° because sharp drops EXIF metadata on webp output without applying the Orientation tag first. Added `.rotate()` to the sharp pipeline (reads EXIF, applies rotation, strips tag). Bedroom photo went from sideways-landscape to correct portrait. **Logged as Optimus Error #62.**
+
+10. **Carousel cropping portrait photos** — slots were `16:10` with `object-cover`, cropping top/bottom of portrait shots. Switched to `object-contain` + subtle translucent backdrop so portrait photos show in full with letterbox bars that blend into the dark section.
+
+**Photo remap (per Angela's source-photo filenames):**
+- All `EC ___` + `Entrance.jpg` + `EC Swing.png` → Enchanted Cottage gallery (10 photos)
+- All `Glamping ___` + `Tent Site with tent` → Bell Tent Site gallery (4 photos after Enhanced bedroom moved)
+- `Tent Site Roasting Marshmallows` + `Tent Site with tent` → BYO Tent Site gallery (2 photos)
+- `Enhanced bedroom for glamping.png` → Velvet Buck gallery (per Angela 2026-05-13: filename contains "glamping," fits VB's luxury-glamping identity)
+- All previous `Glamping ___ → velvet-buck` mappings REMOVED (Angela wanted those on the tent stays instead)
+
+**New fal.ai-generated photos (12 images via fal-ai/flux/dev, ~$0.30):**
+- Velvet Buck: hero + 4 gallery photos (exterior / hot-tub / lounge / firepit) — warm-twilight forest glamping mood. Bedroom is now the real "Enhanced bedroom" photo, not fal.ai.
+- Starlit Buck: hero + 5 gallery photos (exterior / bedroom / hot-tub / firepit / path) — deep-night Milky Way mood, distinct from VB.
+- Script: `scripts/generate-velvet-starlit-images.ts` (non-interactive, can re-run anytime).
+
+**/date-night double-pick friction removed (this session):**
+Angela's revisions doc had a friction point about users picking date/time twice — once on a custom picker, then again on Acuity. Session 15 missed it. Removed:
+- `BookingCalendar` import + component usage (custom date picker)
+- The entire "Pick Your Date and Package" section
+Replaced with a dark final-CTA section + a single "Book Your Hot Tub Escape" button that links directly to `siteData.booking.acuityUrl` (opens Acuity scheduler in a new tab). Hero "Book Now" CTA + each package card's "Book This Escape" button also re-routed to Acuity directly. Users now pick once on Acuity instead of twice. Pattern reference: Optimus Pattern #53 (Collaborative Insights) — same friction class.
+
+**Operating principle: photo source filenames need rename pass**
+Angela's source-photo filenames mix "EC," "Glamping," "Tent Site," "Enhanced," and "Entrance" prefixes — the inconsistency made the per-stay assignment ambiguous (e.g., "Enhanced bedroom for glamping" fits VB better than Bell Tent despite "glamping" being in the name). Pre-launch we should rename every source-photo file to a stay-prefix convention:
+- `cottage-hot-tub.jpg`, `cottage-bedroom.jpg`, `cottage-swing.jpg`, etc.
+- `bell-tent-tent.png`, `bell-tent-bathroom.png`, etc.
+- `byo-tent-marshmallows.png`, `byo-tent-tent.png`
+- `velvet-buck-bedroom.png` (the Enhanced one)
+- `starlit-buck-*.jpg` (when real photos arrive)
+- `hot-tub-escape-sunrise.png`, `hot-tub-escape-brighter.png`
+- `proposal-christmas.png`
+- `addon-outdoor-movie.png`
+- `madison-guide-{lanier,downtown,broadway-fountain}.jpg` (these are already correct via subfolder)
+Once renamed, update the integrate-angela-photos.mjs JOBS table to match. Future photo drops follow the new convention. **Tracked here as a pre-launch TODO.**
+
+**Other items tracked here for completeness:**
+- `BookingCalendar.tsx` component file remains in the repo but is now unused. Kept because it's a working component that could be repurposed (e.g., a pre-launch demo on a marketing landing page) — flagged for deletion if still unused at launch.
+- `Entrance.png` (PNG duplicate of `Entrance.jpg`) — reference only, not in any mapping.
+- "Swing  at EC.png" (double-space filename) — was the legacy filename; user renamed to `EC Swing.png` and integrate script updated accordingly.
+- ANGELA-PHOTOS.md needs a refresh to reflect this session's remap.
+
+**Commits this session (highlights):**
+- `81159f2` fix(layout): pt-32 → responsive pt scale across 15 heroes
+- `bd7ee5f` fix(homepage): H1 size + section alternation + 3-card stays grid
+- `65a0b4c` feat(visual): Pattern #51 luxury-gradient backgrounds — site-wide via globals.css
+- `0a75110` fix(hero): scale H1 + subheadline + typewriter on wide desktops
+- `79aafa5` fix(stays): remove giant hero image, carousel is now the primary visual
+- `37a0bf5` fix(photos): honor EXIF orientation in sharp conversion script
+- `9409169` feat(stays): photo remap per Angela + new fal.ai Velvet/Starlit Buck galleries + c-D-c-D-c alternation
+- `3a9547d` fix(cottage): add 2 missing EC photos to gallery — Swing + Entrance
+- `9be784f` fix(gallery): object-contain so portrait photos aren't cropped
+- `3688c96` fix(stays): move 'Enhanced bedroom for glamping' from Bell Tent → Velvet Buck
+- (this commit) fix(date-night): remove BookingCalendar double-pick friction + progress.md log
+
+**Optimus knowledge contributions this session:**
+- Error #59 — Hero top padding insufficient for fixed header on lg
+- Error #60 — H1 clamp scale not retuned after headline content rewrite
+- Error #61 — Section alternation regression on revision-pass section insertion
+- Error #62 — Sharp webp conversion silently drops EXIF orientation
+- Pattern #70 — Auto-applied Pattern #51 gradients via CSS attribute selectors
+- 4 detailed entry files in `C:\Projects\Optimus Assets\knowledge\errors/`
+
+---
+
 ### Session 15 — 2026-05-13 — Angela revisions pass (Phases A–K of 12)
 **Context:** Angela submitted a 6-page revision document (`angela-revisions-2026-05-13.md.docx`) with line-item changes covering homepage, About, Hot Tub Escapes, Stays, Proposals, Madison Guide, navigation, and SEO. This session shipped Phases A through K of the 12-phase execution plan in `C:\Users\Anthony\.claude\plans\alright-it-s-in-the-hazy-sloth.md`. Final remaining work: Phase H8 (per-property photo carousel) and Phase L (Lighthouse + Vercel deploy + changelog email).
 

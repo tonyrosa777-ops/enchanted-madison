@@ -14,7 +14,6 @@ import { Embers } from "@/components/animations/Embers";
 import { ShimmerText } from "@/components/animations/ShimmerText";
 import { WaveDivider } from "@/components/animations/WaveDivider";
 import { ExperienceFinderTrigger } from "@/components/ui/ExperienceFinderTrigger";
-import { BookingCalendar } from "@/components/ui/BookingCalendar";
 import { siteData } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -83,7 +82,7 @@ export default function DateNightPage() {
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Button variant="secondary" size="lg" href="#packages">See Packages</Button>
-            <Button variant="ghost-light" size="lg" href="#book">Book Now</Button>
+            <Button variant="ghost-light" size="lg" href={siteData.booking.acuityUrl} external>Book Now</Button>
           </div>
         </FadeUp>
       </section>
@@ -212,7 +211,7 @@ export default function DateNightPage() {
                           </li>
                         ))}
                       </ul>
-                      <Button variant={isFeatured ? "ghost-light" : "primary"} size="sm" href="#book" className="w-full mt-2">
+                      <Button variant={isFeatured ? "ghost-light" : "primary"} size="sm" href={siteData.booking.acuityUrl} external className="w-full mt-2">
                         Book This Escape
                       </Button>
                     </div>
@@ -224,20 +223,25 @@ export default function DateNightPage() {
         </div>
       </section>
 
-      {/* Booking calendar */}
-      <section id="book" className="py-16 px-4" style={{ background: "var(--bg-base)" }}>
-        <div className="max-w-4xl mx-auto">
+      {/* Final CTA — direct to Acuity. Pre-picker section removed per
+          Angela's revisions doc (2026-05-13) to eliminate double-entry
+          friction (Optimus Pattern #53). Users now pick date + time once
+          on Acuity's own scheduler instead of twice. */}
+      <section className="relative py-16 lg:py-20 px-4 overflow-hidden" style={{ background: "var(--bg-dark)" }}>
+        <Fireflies count={12} />
+        <GodRays opacity={0.35} />
+        <div className="relative z-10 max-w-2xl mx-auto text-center">
           <FadeUp>
-            <div className="text-center mb-8">
-              <p className="eyebrow mb-2" style={{ color: "var(--accent)" }}>Book Your Escape</p>
-              <h2 className="text-3xl mb-3" style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "var(--text-primary)" }}>
-                Pick Your Date and Package
-              </h2>
-              <p className="text-sm" style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}>
-                Weekend evenings book up fast. We recommend reserving at least 2 weeks out.
-              </p>
-            </div>
-            <BookingCalendar />
+            <p className="eyebrow mb-2" style={{ color: "var(--accent)" }}>Book Your Escape</p>
+            <h2 className="text-3xl mb-3" style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "var(--text-on-dark)" }}>
+              Reserve Your Evening
+            </h2>
+            <p className="text-sm leading-relaxed mb-6" style={{ fontFamily: "var(--font-body)", color: "rgba(254,252,250,0.75)" }}>
+              Weekend evenings book up fast. We recommend reserving at least 2 weeks out. Booking takes 60 seconds on our secure scheduler.
+            </p>
+            <Button variant="secondary" size="lg" href={siteData.booking.acuityUrl} external>
+              Book Your Hot Tub Escape
+            </Button>
           </FadeUp>
         </div>
       </section>
