@@ -4,7 +4,6 @@
 // generateStaticParams: pre-renders all 4 slugs at build time.
 
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/PageShell";
 import { Button } from "@/components/ui/Button";
@@ -106,50 +105,42 @@ export default async function StayPage({
         </div>
       </section>
 
-      {/* Hero image */}
-      <div className="w-full relative" style={{ aspectRatio: "16/7" }}>
-        {stay.image ? (
-          <Image
-            src={stay.image}
-            alt={stay.name}
-            fill
-            priority
-            className="object-cover"
-            sizes="100vw"
-          />
-        ) : (
-          <div
-            className="absolute inset-0 flex items-center justify-center"
-            style={{
-              background:
-                "linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 100%)",
-              color: "var(--text-secondary)",
-            }}
-          >
-            <p
-              className="eyebrow"
-              style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.12em" }}
-            >
-              {stay.type}
-            </p>
-          </div>
-        )}
-      </div>
-
-      {/* Photo carousel — appears below hero, above description */}
-      {stay.gallery && stay.gallery.length > 0 && (
-        <section
-          className="py-12 lg:py-16 px-4"
-          style={{ background: "var(--bg-base)" }}
-          aria-label={`${stay.name} photo gallery`}
-        >
-          <div className="max-w-5xl mx-auto">
-            <FadeUp>
+      {/* Photo carousel — primary visual, replaces the old static hero image.
+          Falls back to a brand-gradient + property-type label if a property
+          has no gallery yet (e.g. Starlit Buck pre-shoot). */}
+      <section
+        className="py-12 lg:py-16 px-4"
+        style={{ background: "var(--bg-base)" }}
+        aria-label={`${stay.name} photo gallery`}
+      >
+        <div className="max-w-5xl mx-auto">
+          <FadeUp>
+            {stay.gallery && stay.gallery.length > 0 ? (
               <PropertyGallery images={stay.gallery} alt={stay.name} />
-            </FadeUp>
-          </div>
-        </section>
-      )}
+            ) : (
+              <div
+                className="relative w-full rounded-2xl flex items-center justify-center"
+                style={{
+                  aspectRatio: "16/9",
+                  background:
+                    "linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 100%)",
+                }}
+              >
+                <p
+                  className="eyebrow"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    letterSpacing: "0.12em",
+                    color: "var(--text-secondary)",
+                  }}
+                >
+                  {stay.type}
+                </p>
+              </div>
+            )}
+          </FadeUp>
+        </div>
+      </section>
 
       {/* Main content */}
       <section
