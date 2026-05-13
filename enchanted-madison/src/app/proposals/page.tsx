@@ -38,7 +38,7 @@ const proposalFaqs = [
   },
   {
     q: "What if I want to add a photographer?",
-    a: "We can coordinate with your preferred photographer or recommend local options. Time for photos after the proposal is built into every package.",
+    a: "We can coordinate with one of our preferred photographers. Time for photos after the proposal can be arranged according to your preference.",
   },
   {
     q: "When should I book?",
