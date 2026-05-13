@@ -78,7 +78,7 @@ export const siteData = {
       label: "More",
       items: [
         { label: "Find My Escape", href: "/find-your-escape" },
-        { label: "The Enchanted Journal", href: "/blog" },
+        { label: "Our Enchanted Guides", href: "/blog" },
         { label: "Madison Guide", href: "/madison-guide" },
         { label: "About", href: "/about" },
         { label: "Contact", href: "/contact" },
@@ -860,7 +860,7 @@ export const siteData = {
       { label: "Stays", href: "/stays" },
       { label: "Hot Tub Escapes", href: "/date-night" },
       { label: "Proposals", href: "/proposals" },
-      { label: "The Enchanted Journal", href: "/blog" },
+      { label: "Our Enchanted Guides", href: "/blog" },
       { label: "Enhancements", href: "/packages" },
       { label: "Madison Guide", href: "/madison-guide" },
       { label: "About", href: "/about" },
