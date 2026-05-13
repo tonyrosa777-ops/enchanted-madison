@@ -102,6 +102,23 @@ export const siteData = {
   homepageTagline:
     "Romantic overnight stays with luxury glamping, curated tent sites, a private cottage, and hot tub escape experiences \u2014 all designed for couples looking to connect. Just minutes from Clifty Falls and downtown Madison, and an easy drive from Louisville, Cincinnati, and Indianapolis.",
 
+  // Shared "Where You'll Stay" intro block \u2014 rendered on homepage stays section + /stays page hero
+  // Source: Angela's revisions doc (2026-05-13) "Where You'll Stay Section Header" + "Description"
+  // NOTE: bullets expand to 5 when Starlit Buck ships (Phase H)
+  staysIntro: {
+    heading: "Romantic Getaways & Date Night Experiences in Madison, Indiana",
+    intro:
+      "Choose from four distinct ways to experience The Enchanted Collective, each thoughtfully designed for couples:",
+    bullets: [
+      "Private Cottage Stay \u2014 a fully equipped home with elevated comforts and a private setting",
+      "Luxury Glamping Tents \u2014 a blend of nature and comfort with curated interiors",
+      "Bell Tent Sites \u2014 a simplified, ready-to-enjoy outdoor stay",
+      "Bring-Your-Own Tent Sites \u2014 a flexible, back-to-basics camping option",
+    ],
+    footer:
+      "Every stay includes a private fire pit and a softly lit outdoor space, with select accommodations featuring hot tubs and others offering the option to upgrade with a private Hot Tub Escape experience.",
+  },
+
   // Trust strip (below hero — social proof bar)
   // Source: market-intelligence.md §8 (below-hero trust signals)
   trustItems: [

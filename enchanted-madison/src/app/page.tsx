@@ -163,7 +163,7 @@ export default function HomePage() {
       >
         <div className="max-w-6xl mx-auto">
           <FadeUp>
-            <div className="text-center mb-12">
+            <div className="text-center mb-12 max-w-3xl mx-auto">
               <p className="eyebrow mb-3" style={{ color: "var(--accent)" }}>
                 Overnight Escapes
               </p>
@@ -172,21 +172,49 @@ export default function HomePage() {
                 style={{
                   fontFamily: "var(--font-display)",
                   fontWeight: 600,
-                  fontSize: "clamp(44px, 6.5vw, 84px)",
+                  fontSize: "clamp(36px, 5vw, 64px)",
                   color: "var(--text-primary)",
                 }}
               >
-                Choose Your Escape
+                {siteData.staysIntro.heading}
               </h2>
               <p
-                className="mt-4 max-w-xl mx-auto text-base leading-relaxed"
+                className="mt-6 text-base leading-relaxed"
                 style={{
                   fontFamily: "var(--font-body)",
                   color: "var(--text-secondary)",
                 }}
               >
-                From a private cottage with a hot tub to woodland glamping under string
-                lights — each accommodation is thoughtfully curated for couples.
+                {siteData.staysIntro.intro}
+              </p>
+              <ul
+                className="mt-4 flex flex-col gap-2 text-left max-w-2xl mx-auto"
+                style={{
+                  fontFamily: "var(--font-body)",
+                  color: "var(--text-secondary)",
+                }}
+              >
+                {siteData.staysIntro.bullets.map((b) => (
+                  <li key={b} className="flex items-start gap-3 leading-relaxed">
+                    <span
+                      className="flex-shrink-0 mt-2"
+                      style={{ color: "var(--accent)" }}
+                      aria-hidden="true"
+                    >
+                      ◆
+                    </span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+              <p
+                className="mt-6 text-base leading-relaxed"
+                style={{
+                  fontFamily: "var(--font-body)",
+                  color: "var(--text-secondary)",
+                }}
+              >
+                {siteData.staysIntro.footer}
               </p>
             </div>
           </FadeUp>

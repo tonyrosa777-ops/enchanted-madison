@@ -42,23 +42,44 @@ export default function StaysPage() {
             Madison, Indiana
           </p>
           <h1
-            className="leading-tight mb-4"
+            className="leading-tight mb-4 max-w-4xl mx-auto"
             style={{
               fontFamily: "var(--font-display)",
               fontWeight: 600,
-              fontSize: "clamp(40px, 6vw, 64px)",
+              fontSize: "clamp(32px, 5vw, 52px)",
               color: "var(--text-on-dark)",
             }}
           >
-            <ShimmerText delay={1}>Where You&rsquo;ll Stay</ShimmerText>
+            <ShimmerText delay={1}>{siteData.staysIntro.heading}</ShimmerText>
           </h1>
           <p
-            className="max-w-xl mx-auto text-base leading-relaxed"
+            className="max-w-2xl mx-auto text-base leading-relaxed mt-6"
+            style={{ fontFamily: "var(--font-body)", color: "rgba(254,252,250,0.78)" }}
+          >
+            {siteData.staysIntro.intro}
+          </p>
+          <ul
+            className="mt-4 flex flex-col gap-2 max-w-2xl mx-auto text-left"
+            style={{ fontFamily: "var(--font-body)", color: "rgba(254,252,250,0.78)" }}
+          >
+            {siteData.staysIntro.bullets.map((b) => (
+              <li key={b} className="flex items-start gap-3 leading-relaxed">
+                <span
+                  className="flex-shrink-0 mt-2"
+                  style={{ color: "var(--accent)" }}
+                  aria-hidden="true"
+                >
+                  ◆
+                </span>
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
+          <p
+            className="max-w-2xl mx-auto text-base leading-relaxed mt-6"
             style={{ fontFamily: "var(--font-body)", color: "rgba(254,252,250,0.72)" }}
           >
-            Four distinct accommodations, each thoughtfully curated for couples.
-            Every overnight stay includes a private hot tub, fire pit, and
-            string-lit outdoor space.
+            {siteData.staysIntro.footer}
           </p>
         </FadeUp>
 
