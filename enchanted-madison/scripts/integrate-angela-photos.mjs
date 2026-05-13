@@ -1,17 +1,21 @@
-// Convert Angela's delivered photos (project root) into optimized .webp assets
+// Convert Angela's delivered photos (source-photos/) into optimized .webp assets
 // in public/images/. Keeps existing filenames so no component code changes.
+// Source files now live in source-photos/ at the repo root (moved from the flat
+// project root in Session 14 for the madison-guide subfolder pattern).
 import sharp from "sharp";
-import { mkdir, copyFile, readdir } from "node:fs/promises";
+import { mkdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 
-const ROOT = path.resolve(process.cwd(), "..");
+const REPO_ROOT = path.resolve(process.cwd(), "..");
+const SOURCE_ROOT = path.join(REPO_ROOT, "source-photos");
 const PUBLIC = path.resolve(process.cwd(), "public");
 
 const MAX_WIDTH = 1600;
 const QUALITY = 80;
 
-// [sourceFilename, destination path relative to /public]
+// [sourceFilenameRelativeToSourcePhotos, destination path relative to /public]
+// Sources may include a subfolder prefix (e.g. "madison-guide/Foo.jpg").
 const JOBS = [
   // Accommodations
   ["EC Hot Tub.jpg", "images/accommodations/enchanted-cottage.webp"],
@@ -19,8 +23,9 @@ const JOBS = [
   ["Tent Site Roasting Marshmallows.png", "images/accommodations/campsite.webp"],
   ["Glamping hot tub close up.png", "images/accommodations/velvet-buck.webp"],
 
-  // Experiences
+  // Experiences (hero backgrounds + Hot Tub Escape flow cards)
   ["Sunrise Hot Tub Escape.png", "images/experiences/hot-tub-escape.webp"],
+  ["Sunrise Hot Tub Escape.png", "images/date-night/hot-tub-soak.webp"],
   ["Brighter Hot Tub Pic.png", "images/experiences/date-night.webp"],
   ["Brighter Hot Tub Pic.png", "images/experiences/date-night-card.webp"],
   ["Christmas Proposal .png", "images/experiences/proposal.webp"],
@@ -42,10 +47,15 @@ const JOBS = [
   ["EC Romance Package.jpg", "images/accommodations/cottage/romance-package.webp"],
   ["EC Hot Tub.jpg", "images/accommodations/cottage/hot-tub.webp"],
   ["Entrance.jpg", "images/accommodations/cottage/entrance.webp"],
+
+  // Madison Guide attractions (Session 14)
+  ["madison-guide/Lanier Mansion Jay Westendorf.jpg", "images/madison-guide/lanier-mansion.webp"],
+  ["madison-guide/Downtown Madison Aerial Brent Spry.jpg", "images/madison-guide/downtown-madison.webp"],
+  ["madison-guide/Broadway Fountain Grunt Pics.jpg", "images/madison-guide/broadway-fountain.webp"],
 ];
 
 async function processOne(source, destRel) {
-  const src = path.join(ROOT, source);
+  const src = path.join(SOURCE_ROOT, source);
   const dest = path.join(PUBLIC, destRel);
   if (!existsSync(src)) {
     console.warn(`SKIP (missing source): ${source}`);
