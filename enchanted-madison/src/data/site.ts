@@ -609,7 +609,7 @@ export const siteData = {
         highlight: "130-block historic district",
         description:
           "One of the largest intact 19th-century streetscapes in the United States. Walk Main Street for independent shops, galleries, and restaurants. The riverfront park is a perfect evening stop — the Ohio is wide and slow here, with views across to Kentucky. Madison hosts festivals nearly every weekend from May through October.",
-        tip: "Parking is easy and free. The Chandler Hotel's rooftop terrace has the best view of the historic district.",
+        tip: "Parking is easy and free. The riverfront park at the foot of Broadway has the best Ohio River views at sunset.",
       },
       {
         name: "Ohio River Scenic Byway — Wineries",
