@@ -69,6 +69,11 @@ async function processOne(source, destRel) {
   }
   await mkdir(path.dirname(dest), { recursive: true });
   await sharp(src)
+    // .rotate() with no args applies the EXIF Orientation tag and then strips it.
+    // Phone photos (iOS, Android) frequently store sideways/upside-down sensor data
+    // with an Orientation tag telling viewers to rotate. Sharp drops EXIF by default
+    // when writing webp, so without this the source rotation is silently lost.
+    .rotate()
     .resize({ width: MAX_WIDTH, withoutEnlargement: true })
     .webp({ quality: QUALITY })
     .toFile(dest);
