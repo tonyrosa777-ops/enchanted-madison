@@ -135,7 +135,7 @@ export const siteData = {
     headline: "Why Enchanted Madison?",
     items: [
       { icon: "✦", text: "The only luxury glamping retreat in the Madison–Clifty Falls corridor" },
-      { icon: "✦", text: "Private hot tubs at every accommodation — a rarity in southern Indiana" },
+      { icon: "✦", text: "Private hot tubs at select accommodations — a rarity in southern Indiana" },
       { icon: "✦", text: "5 minutes from Clifty Falls State Park · 5 minutes from historic downtown" },
       { icon: "✦", text: "Curated by a team obsessed with every detail of your escape" },
     ],

@@ -17,11 +17,11 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Our Stays",
   description:
-    "Glamping tents, a private cottage, and wooded campsites near Madison, Indiana. Private hot tubs at every overnight accommodation. From $35/night.",
+    "Luxury glamping tents, a private cottage, and wooded tent sites near Madison, Indiana. Private hot tubs at select accommodations. Tent sites from $45/night.",
 };
 
 const highlights = [
-  { label: "Private hot tub", detail: "At every overnight stay" },
+  { label: "Private hot tub", detail: "At select accommodations" },
   { label: "5 min", detail: "From downtown Madison" },
   { label: "10 min", detail: "From Clifty Falls State Park" },
   { label: "Couples only", detail: "Every unit designed for two" },
