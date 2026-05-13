@@ -47,16 +47,23 @@ export function StayCard({
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
-          // Placeholder until professional photography is available
+          // Graceful fallback if a property is genuinely missing its hero image
+          // (e.g. a brand-new stay whose generated image has not yet landed).
+          // Uses the property type label instead of 'Photo coming soon' so the
+          // card never reads as broken.
           <div
-            className="absolute inset-0 flex items-end p-4"
-            style={{ background: "var(--bg-elevated)" }}
+            className="absolute inset-0 flex items-center justify-center"
+            style={{
+              background:
+                "linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 100%)",
+            }}
+            aria-hidden="true"
           >
             <span
               className="eyebrow text-xs"
-              style={{ color: "var(--text-secondary)" }}
+              style={{ color: "var(--text-secondary)", letterSpacing: "0.12em" }}
             >
-              Photo coming soon
+              {type}
             </span>
           </div>
         )}
