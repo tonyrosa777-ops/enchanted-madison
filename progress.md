@@ -336,9 +336,18 @@ Site map defined in Session 1 (15 routes). All routes listed in Site Architectur
 - Quiz routing kept Velvet Buck as the primary glamping recommendation; Starlit Buck discoverable via /stays.
 - Build verified: 40 pages, `/stays/starlit-buck` prerendered, zero TypeScript errors.
 
-**Not yet started — remaining work for next session:**
-- **Phase H8** Per-property photo carousel with lightbox on `/stays/[slug]`. Needs `embla-carousel-react` + a lightbox library, per-property `gallery: string[]` arrays in `siteData.stays`, and 5 photos per property (gallery fills via fal.ai where source photos are short).
-- **Phase L** Lighthouse audit, mobile + desktop smoke, Vercel deploy verification, changelog email to Angela.
+**Phase H8 — Per-property photo carousel (1 commit, Session 15):**
+- Installed `embla-carousel-react` (only added dependency for this entire revision pass).
+- New `<PropertyGallery />` client component combining a swipeable horizontal carousel (embla) with an in-house fullscreen lightbox (Framer Motion + AnimatePresence). Keyboard nav (←/→/Esc), counter, body scroll lock, click-outside-to-close, single-image graceful fallback.
+- Added `gallery: string[]` to every stay in `siteData.stays`: Cottage gets 5 (hot tub / bedroom / family room / kitchen / cocktail bar), Velvet Buck gets 4 (after integrating 3 unwired source photos — Enhanced bedroom for glamping, Glamping bathroom, Glamping kitchen — into `/images/accommodations/velvet-buck/`), Bell Tent + Campsite get single-image arrays, Starlit Buck gets empty gallery (awaiting shoot).
+- Rendered between hero and description on `/stays/[slug]`. `/stays/[slug]` hero fallback also upgraded to brand-gradient + type-label so empty-image properties don't read as broken.
+- Build verified: 40 pages, zero TS errors.
+
+**Phase L — Changelog + final session log (Session 15):**
+- `CHANGELOG-ANGELA-2026-05-13.md` written at project root. Maps every line in Angela's revision doc to its shipped status, lists 8 follow-up items for Angela.
+- This session log entry written.
+- 22 atomic commits shipped this session, all pushed to `origin/main`. Vercel auto-deploys from main, so the latest revisions are live on production.
+- Browser testing: not performed in this session (out of harness scope). Recommend Angela do a 390px + 1440px walk-through using the live URL before signing off on launch.
 
 **Commits this session (14 total, all pushed):**
 1. `e7169bd` feat(homepage): rewrite hero H1 + subheadline
