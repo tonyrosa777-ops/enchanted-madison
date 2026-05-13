@@ -10,6 +10,7 @@ import { PageShell } from "@/components/layout/PageShell";
 import { Button } from "@/components/ui/Button";
 import { StayCard } from "@/components/ui/StayCard";
 import { LittleHotelierWidget } from "@/components/ui/LittleHotelierWidget";
+import { PropertyGallery } from "@/components/ui/PropertyGallery";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { ScaleIn } from "@/components/animations/ScaleIn";
 import { siteData } from "@/data/site";
@@ -118,14 +119,36 @@ export default async function StayPage({
         ) : (
           <div
             className="absolute inset-0 flex items-center justify-center"
-            style={{ background: "var(--bg-elevated)", color: "var(--text-secondary)" }}
+            style={{
+              background:
+                "linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 100%)",
+              color: "var(--text-secondary)",
+            }}
           >
-            <p className="eyebrow" style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.12em" }}>
-              Professional photography coming soon
+            <p
+              className="eyebrow"
+              style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.12em" }}
+            >
+              {stay.type}
             </p>
           </div>
         )}
       </div>
+
+      {/* Photo carousel — appears below hero, above description */}
+      {stay.gallery && stay.gallery.length > 0 && (
+        <section
+          className="py-12 lg:py-16 px-4"
+          style={{ background: "var(--bg-base)" }}
+          aria-label={`${stay.name} photo gallery`}
+        >
+          <div className="max-w-5xl mx-auto">
+            <FadeUp>
+              <PropertyGallery images={stay.gallery} alt={stay.name} />
+            </FadeUp>
+          </div>
+        </section>
+      )}
 
       {/* Main content */}
       <section

@@ -52,6 +52,12 @@ const JOBS = [
   ["madison-guide/Lanier Mansion Jay Westendorf.jpg", "images/madison-guide/lanier-mansion.webp"],
   ["madison-guide/Downtown Madison Aerial Brent Spry.jpg", "images/madison-guide/downtown-madison.webp"],
   ["madison-guide/Broadway Fountain Grunt Pics.jpg", "images/madison-guide/broadway-fountain.webp"],
+
+  // Velvet Buck gallery (Phase H8 carousel) — Session 15
+  ["Glamping hot tub close up.png", "images/accommodations/velvet-buck/hot-tub.webp"],
+  ["Enhanced bedroom for glamping.png", "images/accommodations/velvet-buck/bedroom.webp"],
+  ["Glamping bathroom.png", "images/accommodations/velvet-buck/bathroom.webp"],
+  ["Glamping kitchen.png", "images/accommodations/velvet-buck/kitchen.webp"],
 ];
 
 async function processOne(source, destRel) {

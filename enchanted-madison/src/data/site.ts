@@ -171,6 +171,13 @@ export const siteData = {
       description:
         "Tucked within a peaceful natural setting in Southern Indiana, The Enchanted Cottage is a private one bedroom, one bath retreat designed for rest, reconnection, and elevated comfort.",
       image: "/images/accommodations/enchanted-cottage.webp",
+      gallery: [
+        "/images/accommodations/cottage/hot-tub.webp",
+        "/images/accommodations/cottage/bedroom.webp",
+        "/images/accommodations/cottage/family-room.webp",
+        "/images/accommodations/cottage/kitchen.webp",
+        "/images/accommodations/cottage/cocktail-bar.webp",
+      ],
     },
     {
       slug: "velvet-buck",
@@ -192,6 +199,12 @@ export const siteData = {
       description:
         "Tucked within a secluded wooded setting, The Velvet Buck is an upcoming luxury glamping retreat designed to blend immersive nature with elevated comfort.",
       image: "/images/accommodations/velvet-buck.webp",
+      gallery: [
+        "/images/accommodations/velvet-buck/hot-tub.webp",
+        "/images/accommodations/velvet-buck/bedroom.webp",
+        "/images/accommodations/velvet-buck/bathroom.webp",
+        "/images/accommodations/velvet-buck/kitchen.webp",
+      ],
     },
     {
       // Source: angela-revisions-2026-05-13.md.docx + owner roleplay spec.
@@ -219,6 +232,7 @@ export const siteData = {
       description:
         "The Starlit Buck is a spacious luxury glamping tent designed for couples who want to sleep under the stars without sacrificing comfort. Featuring a private hot tub, plush bedding, string lights, and a secluded wooded setting, it's the perfect escape for a romantic overnight stay in southern Indiana.",
       image: "",
+      gallery: [], // awaiting Angela's property shoot — see ANGELA-PHOTOS.md
     },
     {
       slug: "bell-tent",
@@ -241,6 +255,7 @@ export const siteData = {
       description:
         "Enjoy a relaxed outdoor stay with a 16-foot bell tent already set up. Bring your own bedding and make it your own.",
       image: "/images/accommodations/bell-tent.webp",
+      gallery: ["/images/accommodations/bell-tent.webp"],
     },
     {
       slug: "campsite",
@@ -262,6 +277,7 @@ export const siteData = {
       description:
         "Private wooded campsites designed for guests who love a traditional outdoor experience with a thoughtfully prepared space.",
       image: "/images/accommodations/campsite.webp",
+      gallery: ["/images/accommodations/campsite.webp"],
     },
   ],
 
