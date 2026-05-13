@@ -160,27 +160,47 @@ export function SiteHeader() {
                       top: "100%",
                     }}
                   >
-                    {siteData.nav.dropdown.items.map((item, i) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="block px-4 py-3 transition-colors duration-150 hover:opacity-70"
-                        style={{
-                          fontFamily: "var(--font-mono)",
-                          fontWeight: 500,
-                          fontSize: "12px",
-                          letterSpacing: "0.08em",
-                          textTransform: "uppercase",
-                          color: "var(--text-primary)",
-                          borderBottom: i < siteData.nav.dropdown.items.length - 1
+                    {siteData.nav.dropdown.items.map((item, i) => {
+                      const sharedStyle = {
+                        fontFamily: "var(--font-mono)",
+                        fontWeight: 500,
+                        fontSize: "12px",
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase" as const,
+                        color: "var(--text-primary)",
+                        borderBottom:
+                          i < siteData.nav.dropdown.items.length - 1
                             ? "1px solid var(--primary-muted)"
                             : "none",
-                        }}
-                        onClick={() => setDropdownOpen(false)}
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
+                      };
+                      const isExternal = "external" in item && item.external === true;
+                      if (isExternal) {
+                        return (
+                          <a
+                            key={item.href}
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block px-4 py-3 transition-colors duration-150 hover:opacity-70"
+                            style={sharedStyle}
+                            onClick={() => setDropdownOpen(false)}
+                          >
+                            {item.label}
+                          </a>
+                        );
+                      }
+                      return (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className="block px-4 py-3 transition-colors duration-150 hover:opacity-70"
+                          style={sharedStyle}
+                          onClick={() => setDropdownOpen(false)}
+                        >
+                          {item.label}
+                        </Link>
+                      );
+                    })}
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -268,30 +288,47 @@ export function SiteHeader() {
               />
 
               {/* Secondary links (dropdown items) — smaller type */}
-              {siteData.nav.dropdown.items.map((link, i) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2 + 0.05 * i, duration: 0.25 }}
-                >
-                  <Link
-                    href={link.href}
-                    className="block transition-opacity hover:opacity-60"
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontWeight: 500,
-                      fontSize: "1rem",
-                      letterSpacing: "0.08em",
-                      textTransform: "uppercase",
-                      color: "var(--text-secondary)",
-                    }}
-                    onClick={closeMenu}
+              {siteData.nav.dropdown.items.map((link, i) => {
+                const linkStyleMobile = {
+                  fontFamily: "var(--font-mono)",
+                  fontWeight: 500,
+                  fontSize: "1rem",
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase" as const,
+                  color: "var(--text-secondary)",
+                };
+                const isExternal = "external" in link && link.external === true;
+                return (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2 + 0.05 * i, duration: 0.25 }}
                   >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
+                    {isExternal ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block transition-opacity hover:opacity-60"
+                        style={linkStyleMobile}
+                        onClick={closeMenu}
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="block transition-opacity hover:opacity-60"
+                        style={linkStyleMobile}
+                        onClick={closeMenu}
+                      >
+                        {link.label}
+                      </Link>
+                    )}
+                  </motion.div>
+                );
+              })}
             </nav>
 
             <div className="mt-auto">

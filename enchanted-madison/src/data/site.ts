@@ -78,6 +78,7 @@ export const siteData = {
       label: "More",
       items: [
         { label: "Find My Escape", href: "/find-your-escape" },
+        { label: "Gift Certificates", href: "https://app.acuityscheduling.com/catalog.php?owner=38559471", external: true },
         { label: "Our Enchanted Guides", href: "/blog" },
         { label: "Madison Guide", href: "/madison-guide" },
         { label: "About", href: "/about" },

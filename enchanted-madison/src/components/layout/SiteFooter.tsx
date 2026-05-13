@@ -6,7 +6,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { siteData } from "@/data/site";
 
-const footerLinks = {
+type FooterLink = { label: string; href: string; external?: boolean };
+
+const footerLinks: Record<string, FooterLink[]> = {
   Stays: [
     { label: "The Enchanted Cottage", href: "/stays/enchanted-cottage" },
     { label: "The Velvet Buck", href: "/stays/velvet-buck" },
@@ -17,6 +19,7 @@ const footerLinks = {
     { label: "Date Night Escapes", href: "/date-night" },
     { label: "Proposal Packages", href: "/proposals" },
     { label: "Add-On Packages", href: "/packages" },
+    { label: "Gift Certificates", href: "https://app.acuityscheduling.com/catalog.php?owner=38559471", external: true },
     { label: "Madison Guide", href: "/madison-guide" },
   ],
   "The Property": [
@@ -105,20 +108,32 @@ export function SiteFooter() {
                 {group}
               </h4>
               <ul className="space-y-2.5">
-                {links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-sm transition-opacity hover:opacity-80"
-                      style={{
-                        fontFamily: "var(--font-body)",
-                        color: "rgba(254,252,250,0.75)",
-                      }}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
+                {links.map((link) => {
+                  const linkClass = "text-sm transition-opacity hover:opacity-80";
+                  const linkStyle = {
+                    fontFamily: "var(--font-body)",
+                    color: "rgba(254,252,250,0.75)",
+                  };
+                  return (
+                    <li key={link.href}>
+                      {link.external ? (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={linkClass}
+                          style={linkStyle}
+                        >
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link href={link.href} className={linkClass} style={linkStyle}>
+                          {link.label}
+                        </Link>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}
