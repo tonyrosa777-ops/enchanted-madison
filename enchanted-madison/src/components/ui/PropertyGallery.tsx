@@ -214,11 +214,15 @@ export function PropertyGallery({ images, alt }: PropertyGalleryProps) {
           {images.map((src, i) => (
             <div
               key={src + i}
-              className="relative flex-shrink-0 cursor-zoom-in transition-opacity hover:opacity-90"
+              className="relative flex-shrink-0 cursor-zoom-in transition-opacity hover:opacity-90 overflow-hidden rounded-2xl"
               style={{
                 flexBasis: "85%",
                 maxWidth: "85%",
                 aspectRatio: "16/10",
+                // Translucent dark backdrop fills the letterbox bars on
+                // portrait photos. Carousel section bg is dark so the
+                // bars blend with the surrounding atmosphere.
+                background: "rgba(254,252,250,0.04)",
               }}
               onClick={() => openLightbox(i)}
               role="button"
@@ -232,7 +236,7 @@ export function PropertyGallery({ images, alt }: PropertyGalleryProps) {
                 src={src}
                 alt={`${alt} — image ${i + 1}`}
                 fill
-                className="object-cover rounded-2xl"
+                className="object-contain"
                 sizes="(max-width: 1024px) 85vw, 60vw"
               />
             </div>
