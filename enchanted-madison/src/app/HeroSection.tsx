@@ -89,37 +89,44 @@ export function HeroSection() {
               {siteData.hero.eyebrow}
             </p>
 
-            {/* H1 — Angela's long-form SEO headline (95+ chars). Scale tuned
-                so headline wraps to 3-4 lines max and CTAs stay above the fold
-                at 1440x900. Old clamp(56,140) was sized for "Where Romance
-                Meets the Wild" (28 chars) — kept it pushed CTAs off-screen. */}
+            {/* H1 — Angela's long-form SEO headline (95+ chars).
+                Scale viewports:
+                  390 mobile  → 30px   (min, 5-line wrap)
+                  768 tablet  → 38px
+                  1366 laptop → 64px   (3-4 line wrap, CTAs above fold)
+                  1920 desktop→ 88px
+                  2560 wide   → 100px  (max — caps before over-scale)
+                Old clamp capped at 60px which felt under-scaled on wide
+                desktops (per 2026-05-13 viewport check). */}
             <h1
-              className="leading-[1.08] mb-6"
+              className="leading-[1.05] mb-6"
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 600,
-                fontSize: "clamp(30px, min(4.2vw, 6.5vh), 60px)",
+                fontSize: "clamp(30px, min(5vw, 9vh), 100px)",
                 color: "var(--text-on-dark)",
               }}
             >
               <ShimmerText delay={2}>{siteData.hero.headline}</ShimmerText>
             </h1>
 
-            {/* Subheadline */}
+            {/* Subheadline — scales with viewport so it doesn't feel
+                stranded on wide desktops. */}
             <p
-              className="text-xl sm:text-2xl leading-relaxed mb-6"
+              className="leading-relaxed mb-6"
               style={{
                 fontFamily: "var(--font-body)",
                 fontWeight: 300,
+                fontSize: "clamp(16px, 1.5vw, 26px)",
                 color: "rgba(254,252,250,0.85)",
-                maxWidth: "640px",
+                maxWidth: "min(720px, 60vw)",
               }}
             >
               {siteData.hero.subheadline}
             </p>
 
-            {/* Typewriter tag line */}
-            <p style={{ fontFamily: "var(--font-mono)", fontSize: "15px", letterSpacing: "0.12em", color: "rgba(184,150,90,0.75)", textTransform: "uppercase", marginBottom: "40px" }}>
+            {/* Typewriter tag line — also scales */}
+            <p style={{ fontFamily: "var(--font-mono)", fontSize: "clamp(13px, 0.95vw, 18px)", letterSpacing: "0.12em", color: "rgba(184,150,90,0.75)", textTransform: "uppercase", marginBottom: "40px" }}>
               <TypewriterText phrases={["Romantic Stays", "Date Night Escapes", "Proposal Experiences", "Hot Tub Under the Stars"]} speed={55} deleteSpeed={28} />
             </p>
 
