@@ -130,13 +130,14 @@ export default function HomePage() {
       </div>
 
       {/* ================================================================
-          HOMEPAGE TAGLINE — secondary intro paragraph
+          HOMEPAGE TAGLINE + METRO DISTANCE STRIP
           Source: Angela's revisions doc (2026-05-13) "Tagline Section"
+                  + Distance/Location Info Box (Louisville/Cincinnati/Indy)
           ================================================================ */}
       <section
         className="py-12 lg:py-16 px-4"
         style={{ background: "var(--bg-elevated)" }}
-        aria-label="Property introduction"
+        aria-label="Property introduction and distance to nearby metros"
       >
         <FadeUp>
           <p
@@ -148,6 +149,49 @@ export default function HomePage() {
           >
             {siteData.homepageTagline}
           </p>
+        </FadeUp>
+
+        <FadeUp delay={0.15}>
+          <ul
+            className="mt-8 lg:mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
+            aria-label="Drive times to nearby metros"
+          >
+            {siteData.driveTimes
+              .filter((d) =>
+                ["Indianapolis, IN", "Louisville, KY", "Cincinnati, OH"].includes(d.from)
+              )
+              .map((d) => (
+                <li
+                  key={d.from}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
+                  style={{
+                    background: "var(--bg-card)",
+                    border: "1px solid var(--primary-muted)",
+                  }}
+                >
+                  <span
+                    className="text-sm font-bold"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      color: "var(--accent)",
+                      letterSpacing: "0.04em",
+                    }}
+                  >
+                    {d.minutes} min
+                  </span>
+                  <span
+                    className="text-xs"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      color: "var(--text-secondary)",
+                      letterSpacing: "0.04em",
+                    }}
+                  >
+                    from {d.from}
+                  </span>
+                </li>
+              ))}
+          </ul>
         </FadeUp>
       </section>
 

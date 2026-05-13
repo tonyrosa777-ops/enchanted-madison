@@ -475,9 +475,10 @@ export const siteData = {
   ],
 
   // Drive times (for location section)
+  // Cincinnati updated 75 → 60 per Angela's revisions doc (2026-05-13).
   driveTimes: [
     { from: "Louisville, KY", minutes: 60 },
-    { from: "Cincinnati, OH", minutes: 75 },
+    { from: "Cincinnati, OH", minutes: 60 },
     { from: "Indianapolis, IN", minutes: 90 },
     { from: "Clifty Falls State Park", minutes: 10 },
     { from: "Downtown Madison", minutes: 5 },
@@ -563,7 +564,7 @@ export const siteData = {
       questions: [
         {
           q: "How far is it from Louisville, Cincinnati, and Indianapolis?",
-          a: "The Enchanted Collective is approximately 60 minutes from Louisville, KY; 75 minutes from Cincinnati, OH; and 90 minutes from Indianapolis, IN. We sit at the geographic center of the Louisville–Cincinnati–Indianapolis triangle — close enough for a spontaneous getaway, far enough to feel completely away.",
+          a: "The Enchanted Collective is approximately 60 minutes from Louisville, KY; 60 minutes from Cincinnati, OH; and 90 minutes from Indianapolis, IN. We sit at the geographic center of the Louisville–Cincinnati–Indianapolis triangle — close enough for a spontaneous getaway, far enough to feel completely away.",
         },
         {
           q: "Is there parking on site?",
