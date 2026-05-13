@@ -25,7 +25,8 @@ const JOBS = [
   // ──────────────────────────────────────────────────────────────
   // Hero (homepage stays grid card)
   ["EC Hot Tub.jpg", "images/accommodations/enchanted-cottage.webp"],
-  // Full cottage gallery (8 photos — all EC sources)
+  // Full cottage gallery — every EC-labeled source photo + Entrance.jpg
+  // (Angela's request: ALL EC photos go in the cottage carousel)
   ["EC Hot Tub.jpg", "images/accommodations/cottage/hot-tub.webp"],
   ["EC Bedroom Summer.jpg", "images/accommodations/cottage/bedroom.webp"],
   ["EC Family Room Aerial.jpg", "images/accommodations/cottage/family-room.webp"],
@@ -34,6 +35,7 @@ const JOBS = [
   ["EC Bathroom.jpg", "images/accommodations/cottage/bathroom.webp"],
   ["EC Front Deck.jpg", "images/accommodations/cottage/front-deck.webp"],
   ["EC Romance Package.jpg", "images/accommodations/cottage/romance-package.webp"],
+  ["EC Swing.png", "images/accommodations/cottage/swing.webp"],
   ["Entrance.jpg", "images/accommodations/cottage/entrance.webp"],
 
   // ──────────────────────────────────────────────────────────────
@@ -66,7 +68,7 @@ const JOBS = [
   ["Brighter Hot Tub Pic.png", "images/experiences/date-night-card.webp"],
   ["Christmas Proposal .png", "images/experiences/proposal.webp"],
   ["Christmas Proposal .png", "images/experiences/proposals-card.webp"],
-  ["Swing  at EC.png", "images/experiences/why-enchanted.webp"],
+  ["EC Swing.png", "images/experiences/why-enchanted.webp"],
 
   // ──────────────────────────────────────────────────────────────
   // ADD-ONS — EC-derived shots for romance, outdoor movie
