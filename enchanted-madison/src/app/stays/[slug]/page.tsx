@@ -12,6 +12,9 @@ import { LittleHotelierWidget } from "@/components/ui/LittleHotelierWidget";
 import { PropertyGallery } from "@/components/ui/PropertyGallery";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { ScaleIn } from "@/components/animations/ScaleIn";
+import { Fireflies } from "@/components/animations/Fireflies";
+import { GodRays } from "@/components/animations/GodRays";
+import { WaveDivider } from "@/components/animations/WaveDivider";
 import { siteData } from "@/data/site";
 
 export async function generateStaticParams() {
@@ -105,15 +108,18 @@ export default async function StayPage({
         </div>
       </section>
 
-      {/* Photo carousel — primary visual, replaces the old static hero image.
-          Falls back to a brand-gradient + property-type label if a property
-          has no gallery yet (e.g. Starlit Buck pre-shoot). */}
+      <WaveDivider fill="var(--bg-dark)" background="var(--bg-base)" flip={true} />
+
+      {/* Photo carousel — dark stage so the photos pop. Provides the c→D
+          flip in the c-D-c-D-c page rhythm. */}
       <section
-        className="py-12 lg:py-16 px-4"
-        style={{ background: "var(--bg-base)" }}
+        className="relative py-14 lg:py-20 px-4 overflow-hidden"
+        style={{ background: "var(--bg-dark)" }}
         aria-label={`${stay.name} photo gallery`}
       >
-        <div className="max-w-5xl mx-auto">
+        <Fireflies count={12} />
+        <GodRays opacity={0.3} />
+        <div className="relative z-10 max-w-5xl mx-auto">
           <FadeUp>
             {stay.gallery && stay.gallery.length > 0 ? (
               <PropertyGallery images={stay.gallery} alt={stay.name} />
@@ -122,8 +128,8 @@ export default async function StayPage({
                 className="relative w-full rounded-2xl flex items-center justify-center"
                 style={{
                   aspectRatio: "16/9",
-                  background:
-                    "linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 100%)",
+                  background: "rgba(254,252,250,0.06)",
+                  border: "1px solid rgba(254,252,250,0.14)",
                 }}
               >
                 <p
@@ -131,7 +137,7 @@ export default async function StayPage({
                   style={{
                     fontFamily: "var(--font-mono)",
                     letterSpacing: "0.12em",
-                    color: "var(--text-secondary)",
+                    color: "rgba(254,252,250,0.7)",
                   }}
                 >
                   {stay.type}
@@ -141,6 +147,8 @@ export default async function StayPage({
           </FadeUp>
         </div>
       </section>
+
+      <WaveDivider fill="var(--bg-base)" background="var(--bg-dark)" />
 
       {/* Main content */}
       <section
@@ -290,12 +298,17 @@ export default async function StayPage({
         </div>
       </section>
 
-      {/* Enhance your stay — add-ons teaser */}
+      <WaveDivider fill="var(--bg-dark)" background="var(--bg-base)" flip={true} />
+
+      {/* Enhance your stay — add-ons teaser (dark stage, second flip in
+          the c-D-c-D-c rhythm) */}
       <section
-        className="py-14 px-4"
-        style={{ background: "var(--bg-elevated)" }}
+        className="relative py-16 lg:py-20 px-4 overflow-hidden"
+        style={{ background: "var(--bg-dark)" }}
       >
-        <div className="max-w-4xl mx-auto">
+        <Fireflies count={10} />
+        <GodRays opacity={0.3} />
+        <div className="relative z-10 max-w-4xl mx-auto">
           <FadeUp>
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>
@@ -304,24 +317,26 @@ export default async function StayPage({
                 </p>
                 <h2
                   className="text-2xl"
-                  style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "var(--text-primary)" }}
+                  style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "var(--text-on-dark)" }}
                 >
                   Add-On Packages
                 </h2>
                 <p
                   className="text-sm mt-1"
-                  style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
+                  style={{ fontFamily: "var(--font-body)", color: "rgba(254,252,250,0.7)" }}
                 >
                   Romance packages, movie nights, picnic rides, and more — bookable at checkout.
                 </p>
               </div>
-              <Button variant="ghost" href="/packages">
+              <Button variant="secondary" href="/packages">
                 View Add-Ons
               </Button>
             </div>
           </FadeUp>
         </div>
       </section>
+
+      <WaveDivider fill="var(--bg-base)" background="var(--bg-dark)" />
 
       {/* Other stays */}
       {otherStays.length > 0 && (
