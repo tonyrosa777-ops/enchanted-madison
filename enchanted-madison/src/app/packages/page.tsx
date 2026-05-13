@@ -71,7 +71,7 @@ export default function PackagesPage() {
 
       {/* ── Dark Hero ── */}
       <section
-        className="relative pt-32 pb-0 px-4 text-center overflow-hidden"
+        className="relative pt-32 sm:pt-36 lg:pt-40 pb-0 px-4 text-center overflow-hidden"
         style={{ background: "var(--bg-dark)" }}
       >
         <Fireflies count={20} />

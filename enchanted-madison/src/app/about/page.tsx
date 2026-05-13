@@ -88,7 +88,7 @@ export default function AboutPage() {
 
       {/* Hero */}
       <section
-        className="relative pt-32 pb-16 px-4"
+        className="relative pt-32 sm:pt-36 lg:pt-40 pb-16 px-4"
         style={{ background: "var(--bg-dark)" }}
       >
         <Fireflies />

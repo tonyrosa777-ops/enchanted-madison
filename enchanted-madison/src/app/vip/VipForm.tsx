@@ -58,7 +58,7 @@ export function VipForm() {
   return (
     <PageShell>
       <section
-        className="min-h-screen pt-32 pb-20 px-4 flex flex-col items-center justify-center"
+        className="min-h-screen pt-32 sm:pt-36 lg:pt-40 pb-20 px-4 flex flex-col items-center justify-center"
         style={{ background: "var(--bg-base)" }}
       >
         <div className="w-full max-w-lg">

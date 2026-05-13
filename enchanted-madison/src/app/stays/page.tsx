@@ -32,7 +32,7 @@ export default function StaysPage() {
     <PageShell>
       {/* Page hero */}
       <section
-        className="relative pt-32 pb-16 px-4 text-center"
+        className="relative pt-32 sm:pt-36 lg:pt-40 pb-16 px-4 text-center"
         style={{ background: "var(--bg-dark)" }}
       >
         <Fireflies />

@@ -53,9 +53,10 @@ export default async function StayPage({
 
   return (
     <PageShell>
-      {/* Hero */}
+      {/* Hero — pt scales with header height (h-20 / h-24 / h-28) plus a
+          consistent ~48px breathing room so the eyebrow never touches the nav. */}
       <section
-        className="pt-28 pb-12 px-4"
+        className="pt-32 sm:pt-36 lg:pt-40 pb-12 px-4"
         style={{ background: "var(--bg-base)" }}
       >
         <div className="max-w-4xl mx-auto">

@@ -52,7 +52,7 @@ export default function DateNightPage() {
   return (
     <PageShell>
       {/* Hero */}
-      <section className="relative pt-32 pb-16 px-4 text-center overflow-hidden" style={{ background: "var(--bg-dark)" }}>
+      <section className="relative pt-32 sm:pt-36 lg:pt-40 pb-16 px-4 text-center overflow-hidden" style={{ background: "var(--bg-dark)" }}>
         <Image
           src="/images/experiences/date-night.webp"
           alt="Private date night escape at The Enchanted Collective"

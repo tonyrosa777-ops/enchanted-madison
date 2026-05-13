@@ -175,7 +175,7 @@ export default async function BlogPostPage({
     <PageShell>
       {/* ── Post Hero ──────────────────────────────────────────── */}
       <section
-        className="pt-32 pb-12 px-4 text-center"
+        className="pt-32 sm:pt-36 lg:pt-40 pb-12 px-4 text-center"
         style={{ background: "var(--bg-dark)" }}
       >
         <div className="max-w-3xl mx-auto relative">
