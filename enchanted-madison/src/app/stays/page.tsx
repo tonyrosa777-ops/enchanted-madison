@@ -108,28 +108,58 @@ export default function StaysPage() {
 
       <WaveDivider fill="var(--bg-base)" background="var(--bg-dark)" />
 
-      {/* Stays grid */}
+      {/* Stays — featured (Enchanted Cottage) + 2x2 grid of the four glamping/
+          tent options. Pattern: never ship an orphan grid row. 5 cards in a
+          3-col grid was 3+2 with a half-empty second row; this layout is
+          1 (full-width featured) + 4 (clean 2x2), every cell filled. */}
       <section
         className="py-16 lg:py-20 px-4"
         style={{ background: "var(--bg-base)" }}
       >
         <ExperienceFinderTrigger triggerText={siteData.experienceFinder.triggerCopy.stays} />
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {siteData.stays.map((stay, i) => (
-            <ScaleIn key={stay.slug} delay={i * 0.08}>
-              <StayCard
-                slug={stay.slug}
-                name={stay.name}
-                type={stay.type}
-                tagline={stay.tagline}
-                priceFrom={stay.priceFrom}
-                capacity={stay.capacity}
-                badge={stay.badge ?? undefined}
-                highlight={stay.features.slice(0, 3).join(" · ")}
-                image={stay.image}
-              />
-            </ScaleIn>
-          ))}
+        <div className="max-w-6xl mx-auto flex flex-col gap-6 lg:gap-8">
+          {/* Featured stay — first in array (Enchanted Cottage, flagship).
+              Width-constrained to max-w-3xl so it reads as 'highlighted'
+              rather than dominating the viewport with a 1152x720 image. */}
+          {siteData.stays.length > 0 && (() => {
+            const featured = siteData.stays[0];
+            return (
+              <div className="w-full max-w-3xl mx-auto">
+                <ScaleIn>
+                  <StayCard
+                    slug={featured.slug}
+                    name={featured.name}
+                    type={featured.type}
+                    tagline={featured.tagline}
+                    priceFrom={featured.priceFrom}
+                    capacity={featured.capacity}
+                    badge={featured.badge ?? undefined}
+                    highlight={featured.features.slice(0, 3).join(" · ")}
+                    image={featured.image}
+                  />
+                </ScaleIn>
+              </div>
+            );
+          })()}
+
+          {/* 2x2 grid of the remaining 4 stays */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {siteData.stays.slice(1).map((stay, i) => (
+              <ScaleIn key={stay.slug} delay={(i + 1) * 0.08}>
+                <StayCard
+                  slug={stay.slug}
+                  name={stay.name}
+                  type={stay.type}
+                  tagline={stay.tagline}
+                  priceFrom={stay.priceFrom}
+                  capacity={stay.capacity}
+                  badge={stay.badge ?? undefined}
+                  highlight={stay.features.slice(0, 3).join(" · ")}
+                  image={stay.image}
+                />
+              </ScaleIn>
+            ))}
+          </div>
         </div>
       </section>
 

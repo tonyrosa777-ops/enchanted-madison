@@ -80,16 +80,19 @@ export function VipForm() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+              {/* Perks — vertical stack (NOT a 2-col grid) because we have 3
+                  items and 3 ÷ 2 = orphan row. Per Optimus rule: grids must
+                  always fill every cell (n must equal cols × rows). Three
+                  items get a stack with horizontal card layout; visually
+                  intentional rather than incomplete. */}
+              <ul className="flex flex-col gap-3 mb-8">
                 {benefits.map((b) => (
-                  <div key={b.label} className="rounded-xl p-4 flex gap-3 items-start" style={{ background: "var(--bg-card)" }}>
-                    <span className="text-xl">{b.icon}</span>
-                    <div>
-                      <p className="text-sm font-medium" style={{ fontFamily: "var(--font-body)", color: "var(--text-primary)" }}>{b.label}</p>
-                    </div>
-                  </div>
+                  <li key={b.label} className="rounded-xl p-4 flex gap-3 items-start" style={{ background: "var(--bg-card)" }}>
+                    <span className="text-xl flex-shrink-0">{b.icon}</span>
+                    <p className="text-sm font-medium leading-relaxed" style={{ fontFamily: "var(--font-body)", color: "var(--text-primary)" }}>{b.label}</p>
+                  </li>
                 ))}
-              </div>
+              </ul>
 
               <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4" noValidate>
                 <div>
