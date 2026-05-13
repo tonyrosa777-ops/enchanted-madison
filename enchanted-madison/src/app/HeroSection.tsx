@@ -89,13 +89,16 @@ export function HeroSection() {
               {siteData.hero.eyebrow}
             </p>
 
-            {/* H1 */}
+            {/* H1 — Angela's long-form SEO headline (95+ chars). Scale tuned
+                so headline wraps to 3-4 lines max and CTAs stay above the fold
+                at 1440x900. Old clamp(56,140) was sized for "Where Romance
+                Meets the Wild" (28 chars) — kept it pushed CTAs off-screen. */}
             <h1
-              className="leading-[1.02] mb-7"
+              className="leading-[1.08] mb-6"
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 600,
-                fontSize: "clamp(56px, min(8.5vw, 13vh), 140px)",
+                fontSize: "clamp(30px, min(4.2vw, 6.5vh), 60px)",
                 color: "var(--text-on-dark)",
               }}
             >

@@ -133,67 +133,77 @@ export default function HomePage() {
           HOMEPAGE TAGLINE + METRO DISTANCE STRIP
           Source: Angela's revisions doc (2026-05-13) "Tagline Section"
                   + Distance/Location Info Box (Louisville/Cincinnati/Indy)
+          Dark section per Pattern #8 (Optimus build-log) — breaks the
+          trust-strip → stays-grid → experiences cream chain.
           ================================================================ */}
       <section
-        className="py-12 lg:py-16 px-4"
-        style={{ background: "var(--bg-elevated)" }}
+        className="relative py-14 lg:py-20 px-4 overflow-hidden"
+        style={{ background: "var(--bg-dark)" }}
         aria-label="Property introduction and distance to nearby metros"
       >
-        <FadeUp>
-          <p
-            className="max-w-3xl mx-auto text-center text-base lg:text-lg leading-relaxed"
-            style={{
-              fontFamily: "var(--font-body)",
-              color: "var(--text-secondary)",
-            }}
-          >
-            {siteData.homepageTagline}
-          </p>
-        </FadeUp>
+        <Fireflies count={14} />
+        <GodRays opacity={0.35} />
+        <div className="relative z-10">
+          <FadeUp>
+            <p
+              className="max-w-3xl mx-auto text-center text-base lg:text-lg leading-relaxed"
+              style={{
+                fontFamily: "var(--font-body)",
+                color: "rgba(254,252,250,0.78)",
+              }}
+            >
+              {siteData.homepageTagline}
+            </p>
+          </FadeUp>
 
-        <FadeUp delay={0.15}>
-          <ul
-            className="mt-8 lg:mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
-            aria-label="Drive times to nearby metros"
-          >
-            {siteData.driveTimes
-              .filter((d) =>
-                ["Indianapolis, IN", "Louisville, KY", "Cincinnati, OH"].includes(d.from)
-              )
-              .map((d) => (
-                <li
-                  key={d.from}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
-                  style={{
-                    background: "var(--bg-card)",
-                    border: "1px solid var(--primary-muted)",
-                  }}
-                >
-                  <span
-                    className="text-sm font-bold"
+          <FadeUp delay={0.15}>
+            <ul
+              className="mt-8 lg:mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
+              aria-label="Drive times to nearby metros"
+            >
+              {siteData.driveTimes
+                .filter((d) =>
+                  ["Indianapolis, IN", "Louisville, KY", "Cincinnati, OH"].includes(d.from)
+                )
+                .map((d) => (
+                  <li
+                    key={d.from}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
                     style={{
-                      fontFamily: "var(--font-mono)",
-                      color: "var(--accent)",
-                      letterSpacing: "0.04em",
+                      background: "rgba(254,252,250,0.06)",
+                      border: "1px solid rgba(254,252,250,0.14)",
+                      backdropFilter: "blur(6px)",
+                      WebkitBackdropFilter: "blur(6px)",
                     }}
                   >
-                    {d.minutes} min
-                  </span>
-                  <span
-                    className="text-xs"
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      color: "var(--text-secondary)",
-                      letterSpacing: "0.04em",
-                    }}
-                  >
-                    from {d.from}
-                  </span>
-                </li>
-              ))}
-          </ul>
-        </FadeUp>
+                    <span
+                      className="text-sm font-bold"
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        color: "var(--accent)",
+                        letterSpacing: "0.04em",
+                      }}
+                    >
+                      {d.minutes} min
+                    </span>
+                    <span
+                      className="text-xs"
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        color: "rgba(254,252,250,0.7)",
+                        letterSpacing: "0.04em",
+                      }}
+                    >
+                      from {d.from}
+                    </span>
+                  </li>
+                ))}
+            </ul>
+          </FadeUp>
+        </div>
       </section>
+
+      <WaveDivider fill="var(--bg-base)" background="var(--bg-dark)" />
 
       {/* ================================================================
           STAYS GRID — 3-col desktop, 1-col mobile
@@ -263,8 +273,11 @@ export default function HomePage() {
             </div>
           </FadeUp>
 
+          {/* Homepage shows 3 featured stays; full 5-card grid lives on /stays.
+              Per Angela's revisions doc (2026-05-13) — keep the homepage
+              section scannable and route discovery through "View All Stays". */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {siteData.stays.map((stay, i) => (
+            {siteData.stays.slice(0, 3).map((stay, i) => (
               <ScaleIn key={stay.slug} delay={i * 0.1}>
                 <StayCard
                   slug={stay.slug}
@@ -283,7 +296,7 @@ export default function HomePage() {
           <FadeUp delay={0.4}>
             <div className="text-center mt-10">
               <Button variant="ghost" href="/stays">
-                View All Stays
+                View All {siteData.stays.length} Stays
               </Button>
             </div>
           </FadeUp>
