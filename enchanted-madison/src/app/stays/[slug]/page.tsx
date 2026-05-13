@@ -334,6 +334,7 @@ export default async function StayPage({
                     priceFrom={s.priceFrom}
                     capacity={s.capacity}
                     badge={s.badge ?? undefined}
+                    image={s.image}
                   />
                 </ScaleIn>
               ))}

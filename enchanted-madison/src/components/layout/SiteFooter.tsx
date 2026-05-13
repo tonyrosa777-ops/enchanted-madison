@@ -12,6 +12,7 @@ const footerLinks: Record<string, FooterLink[]> = {
   Stays: [
     { label: "The Enchanted Cottage", href: "/stays/enchanted-cottage" },
     { label: "The Velvet Buck", href: "/stays/velvet-buck" },
+    { label: "The Starlit Buck", href: "/stays/starlit-buck" },
     { label: "Bell Tent Site", href: "/stays/bell-tent" },
     { label: "BYO Tent Site", href: "/stays/campsite" },
   ],

@@ -114,7 +114,7 @@ export default function StaysPage() {
         style={{ background: "var(--bg-base)" }}
       >
         <ExperienceFinderTrigger triggerText={siteData.experienceFinder.triggerCopy.stays} />
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {siteData.stays.map((stay, i) => (
             <ScaleIn key={stay.slug} delay={i * 0.08}>
               <StayCard

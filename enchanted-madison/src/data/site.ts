@@ -33,6 +33,7 @@ export const siteData = {
     littleHotelierWidgets: {
       "enchanted-cottage": "",
       "velvet-buck": "",
+      "starlit-buck": "",
       "bell-tent": "",
       "campsite": "",
     },
@@ -191,6 +192,33 @@ export const siteData = {
       description:
         "Tucked within a secluded wooded setting, The Velvet Buck is an upcoming luxury glamping retreat designed to blend immersive nature with elevated comfort.",
       image: "/images/accommodations/velvet-buck.webp",
+    },
+    {
+      // Source: angela-revisions-2026-05-13.md.docx + owner roleplay spec.
+      // Angela confirmed 5th property (not a rename of Velvet Buck).
+      // Hero photo + 5-photo gallery: awaiting Angela's shoot — see ANGELA-PHOTOS.md.
+      // Until then, StayCard + /stays/[slug] fallbacks render the property type label
+      // over a brand gradient (no broken-image state).
+      slug: "starlit-buck",
+      name: "The Starlit Buck",
+      type: "Luxury Glamping Tent",
+      tagline:
+        "A luxury glamping tent under an open Indiana sky — where stargazing meets curated comfort.",
+      priceFrom: 175,
+      capacity: 2,
+      sqft: 320,
+      badge: "Opening This Summer",
+      features: [
+        "Private hot tub under the stars",
+        "King bed with luxury bedding",
+        "String lights + fire pit",
+        "Outdoor dining space",
+        "Countryside views",
+        "Secluded woodland setting",
+      ],
+      description:
+        "The Starlit Buck is a spacious luxury glamping tent designed for couples who want to sleep under the stars without sacrificing comfort. Featuring a private hot tub, plush bedding, string lights, and a secluded wooded setting, it's the perfect escape for a romantic overnight stay in southern Indiana.",
+      image: "",
     },
     {
       slug: "bell-tent",
