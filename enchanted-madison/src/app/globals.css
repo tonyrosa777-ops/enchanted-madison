@@ -123,6 +123,177 @@ body {
   50% { opacity: 0; }
 }
 
+/* ============================================================
+   PATTERN #51 — Luxury gradient backgrounds (auto-applied)
+   Source: C:\Projects\Optimus Assets\knowledge\patterns\luxury-gradient-backgrounds.md
+   Rule: every section background is a gradient with subtle motion;
+         never flat solid, ever. Brass-tinted breathing orb per section.
+
+   Implementation strategy: target every `<section style="background: var(--bg-*)">`
+   via CSS attribute selectors. No per-section refactor needed — sections
+   just continue declaring their bg via inline style and the gradient
+   overlay materializes automatically through a ::before pseudo-element.
+
+   Alternating keyframes (cream-orb-drift vs dark-orb-drift) move on
+   different cycles + directions so adjacent same-tone sections feel
+   visually distinct, fixing the cream-cream-cream / dark-dark-dark
+   monotony runs caught during the 2026-05-13 site-wide audit.
+   ============================================================ */
+
+section[style*="var(--bg-base)"],
+section[style*="var(--bg-elevated)"],
+section[style*="var(--bg-card)"],
+section[style*="var(--bg-dark)"] {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Shared gradient overlay scaffold for every section with an inline bg var.
+   Position + animation are then varied below per bg-type AND per nth-of-type
+   so consecutive same-bg sections still feel visually distinct. */
+section[style*="var(--bg-base)"]::before,
+section[style*="var(--bg-elevated)"]::before,
+section[style*="var(--bg-card)"]::before,
+section[style*="var(--bg-dark)"]::before {
+  content: "";
+  position: absolute;
+  inset: -10%;
+  pointer-events: none;
+  z-index: -1;
+  will-change: transform, opacity;
+}
+
+/* ---- Cream-section gradients ---- */
+/* Default: brass-tinted breathing orb, center */
+section[style*="var(--bg-base)"]::before {
+  background: radial-gradient(
+    ellipse 65% 55% at 50% 50%,
+    color-mix(in oklab, var(--accent) 12%, transparent) 0%,
+    color-mix(in oklab, var(--accent) 6%, transparent) 38%,
+    transparent 78%
+  );
+  animation: cream-orb-drift 24s ease-in-out infinite;
+}
+
+/* Every other bg-base section: shift orb to lower-left + rose accent + reversed drift */
+section[style*="var(--bg-base)"]:nth-of-type(even)::before {
+  background: radial-gradient(
+    ellipse 60% 50% at 28% 68%,
+    color-mix(in oklab, var(--accent-rose) 11%, transparent) 0%,
+    color-mix(in oklab, var(--accent-rose) 6%, transparent) 38%,
+    transparent 78%
+  );
+  animation: cream-orb-drift-rev 27s ease-in-out infinite;
+}
+
+/* Every 3rd bg-base section: top-right warm orb */
+section[style*="var(--bg-base)"]:nth-of-type(3n)::before {
+  background: radial-gradient(
+    ellipse 55% 45% at 75% 28%,
+    color-mix(in oklab, var(--accent) 12%, transparent) 0%,
+    color-mix(in oklab, var(--accent) 6%, transparent) 38%,
+    transparent 78%
+  );
+  animation: cream-orb-drift-tr 29s ease-in-out infinite;
+}
+
+/* bg-elevated: cooler rose-tinted orb in lower-left */
+section[style*="var(--bg-elevated)"]::before {
+  background: radial-gradient(
+    ellipse 60% 50% at 30% 60%,
+    color-mix(in oklab, var(--accent-rose) 11%, transparent) 0%,
+    color-mix(in oklab, var(--accent-rose) 6%, transparent) 38%,
+    transparent 78%
+  );
+  animation: cream-orb-drift-rev 28s ease-in-out infinite;
+}
+
+section[style*="var(--bg-elevated)"]:nth-of-type(even)::before {
+  background: radial-gradient(
+    ellipse 55% 45% at 70% 40%,
+    color-mix(in oklab, var(--accent) 11%, transparent) 0%,
+    color-mix(in oklab, var(--accent) 6%, transparent) 38%,
+    transparent 78%
+  );
+  animation: cream-orb-drift-tr 26s ease-in-out infinite;
+}
+
+/* bg-card: brass orb top-right (used in card-tone sections) */
+section[style*="var(--bg-card)"]::before {
+  background: radial-gradient(
+    ellipse 55% 45% at 70% 40%,
+    color-mix(in oklab, var(--accent) 12%, transparent) 0%,
+    color-mix(in oklab, var(--accent) 6%, transparent) 38%,
+    transparent 78%
+  );
+  animation: cream-orb-drift-tr 26s ease-in-out infinite;
+}
+
+/* ---- Dark-section gradients ---- */
+/* Default: brass-tinted orb on forest green, center */
+section[style*="var(--bg-dark)"]::before {
+  background: radial-gradient(
+    ellipse 65% 50% at 50% 50%,
+    color-mix(in oklab, var(--accent) 18%, transparent) 0%,
+    color-mix(in oklab, var(--accent) 9%, transparent) 35%,
+    transparent 78%
+  );
+  animation: dark-orb-drift 22s ease-in-out infinite;
+}
+
+/* Every other dark section: orb shifted upper-right + reversed drift */
+section[style*="var(--bg-dark)"]:nth-of-type(even)::before {
+  background: radial-gradient(
+    ellipse 60% 50% at 72% 30%,
+    color-mix(in oklab, var(--accent) 18%, transparent) 0%,
+    color-mix(in oklab, var(--accent) 9%, transparent) 35%,
+    transparent 78%
+  );
+  animation: dark-orb-drift-rev 25s ease-in-out infinite;
+}
+
+section[style*="var(--bg-dark)"]:nth-of-type(3n)::before {
+  background: radial-gradient(
+    ellipse 60% 50% at 25% 70%,
+    color-mix(in oklab, var(--accent-rose) 14%, transparent) 0%,
+    color-mix(in oklab, var(--accent-rose) 8%, transparent) 35%,
+    transparent 78%
+  );
+  animation: dark-orb-drift-bl 28s ease-in-out infinite;
+}
+
+/* ---- Keyframes ---- */
+@keyframes cream-orb-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.9; }
+  50%      { transform: translate3d(2.5%, -1.5%, 0) scale(1.06); opacity: 1; }
+}
+
+@keyframes cream-orb-drift-rev {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.85; }
+  50%      { transform: translate3d(-2.5%, 2%, 0) scale(1.07); opacity: 1; }
+}
+
+@keyframes cream-orb-drift-tr {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.88; }
+  50%      { transform: translate3d(-3%, -1%, 0) scale(1.05); opacity: 1; }
+}
+
+@keyframes dark-orb-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.92; }
+  50%      { transform: translate3d(-2%, 2%, 0) scale(1.08); opacity: 1; }
+}
+
+@keyframes dark-orb-drift-rev {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.88; }
+  50%      { transform: translate3d(2.5%, -2%, 0) scale(1.06); opacity: 1; }
+}
+
+@keyframes dark-orb-drift-bl {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.9; }
+  50%      { transform: translate3d(2%, 1.5%, 0) scale(1.07); opacity: 1; }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -131,5 +302,13 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+  /* Keep the gradient, lose the motion — never degrade to flat */
+  section[style*="var(--bg-base)"]::before,
+  section[style*="var(--bg-elevated)"]::before,
+  section[style*="var(--bg-card)"]::before,
+  section[style*="var(--bg-dark)"]::before {
+    transform: none !important;
+    opacity: 1 !important;
   }
 }
