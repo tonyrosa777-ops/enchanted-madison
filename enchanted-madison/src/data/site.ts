@@ -78,6 +78,9 @@ export const siteData = {
     dropdown: {
       label: "More",
       items: [
+        // Category landings first — surfaced for SEO + conversion per 2026-05-18 IA pivot
+        { label: "Luxury Glamping", href: "/glamping" },
+        { label: "Tent Camping", href: "/campsites" },
         { label: "Find My Escape", href: "/find-your-escape" },
         { label: "Gift Certificates", href: "https://app.acuityscheduling.com/catalog.php?owner=38559471", external: true },
         { label: "Our Enchanted Guides", href: "/blog" },
