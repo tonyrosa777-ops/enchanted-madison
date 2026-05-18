@@ -208,17 +208,18 @@ export const siteData = {
       description:
         "Tucked within a secluded wooded setting, The Velvet Buck is an upcoming luxury glamping retreat designed to blend immersive nature with elevated comfort.",
       image: "/images/accommodations/velvet-buck.webp",
-      // Velvet Buck gallery — 4 fal.ai shots + 1 real photo (bedroom).
-      // bedroom.webp = Angela's "Enhanced bedroom for glamping.png" source
-      // (moved here from Bell Tent 2026-05-13 because the filename
-      // explicitly says "glamping," fits VB's luxury-glamping identity).
-      // exterior / hot-tub / lounge / firepit are fal.ai flux/dev with
-      // warm-twilight forest aesthetic, distinct from Starlit Buck.
+      // Velvet Buck gallery — real photos integrated Session 17 (2026-05-18 call).
+      // Lead photo is the hot-tub close-up per Angela's explicit pick.
+      // Real: hot-tub, bedroom, kitchen, bathroom, rocking-chairs.
+      // firepit.webp stays fal.ai (warm-twilight forest aesthetic); exterior
+      // and lounge fal.ai placeholders dropped from the carousel — Angela's
+      // real photos now carry the property's visual identity.
       gallery: [
-        "/images/accommodations/velvet-buck/exterior.webp",
-        "/images/accommodations/velvet-buck/bedroom.webp",
         "/images/accommodations/velvet-buck/hot-tub.webp",
-        "/images/accommodations/velvet-buck/lounge.webp",
+        "/images/accommodations/velvet-buck/bedroom.webp",
+        "/images/accommodations/velvet-buck/kitchen.webp",
+        "/images/accommodations/velvet-buck/bathroom.webp",
+        "/images/accommodations/velvet-buck/rocking-chairs.webp",
         "/images/accommodations/velvet-buck/firepit.webp",
       ],
     },
