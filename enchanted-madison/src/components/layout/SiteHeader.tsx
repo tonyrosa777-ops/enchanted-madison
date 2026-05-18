@@ -9,7 +9,6 @@
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteData } from "@/data/site";
 import { Button } from "@/components/ui/Button";
@@ -89,23 +88,30 @@ export function SiteHeader() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 sm:h-24 lg:h-28 flex items-center justify-between">
 
-          {/* Logo */}
+          {/* Wordmark — text logo per Angela's 2026-05-18 ask. SMS-compliance also
+              requires the brand name be clearly stated, not just a glyph. Favicon
+              (app/icon.png) still carries the EC monogram. Cormorant Garamond
+              comes from market-intelligence.md's typography research. */}
           <Link
             href="/"
             className="flex-shrink-0 transition-all duration-400 hover:opacity-80"
             onClick={closeMenu}
+            aria-label="The Enchanted Collective — home"
           >
-            <Image
-              src="/images/logo-final.png"
-              alt="The Enchanted Collective"
-              width={160}
-              height={160}
-              className="h-14 sm:h-16 lg:h-20 w-auto transition-all duration-400"
+            <span
+              className="block transition-colors duration-400 whitespace-nowrap"
               style={{
-                filter: (scrolled || menuOpen) ? "brightness(0.55) saturate(1.1)" : "none",
+                fontFamily: "var(--font-display)",
+                fontWeight: 500,
+                fontStyle: "italic",
+                letterSpacing: "0.015em",
+                fontSize: "clamp(1.15rem, 1.75vw, 1.65rem)",
+                lineHeight: 1,
+                color: (scrolled || menuOpen) ? "var(--text-primary)" : "var(--text-on-dark)",
               }}
-              priority
-            />
+            >
+              The Enchanted Collective
+            </span>
           </Link>
 
           {/* Desktop nav */}
