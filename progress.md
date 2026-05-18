@@ -303,7 +303,40 @@ Site map defined in Session 1 (15 routes). All routes listed in Site Architectur
 
 4. **Nav text wordmark** — `SiteHeader.tsx`: replaced `/images/logo-final.png` Image with `<span>` in `var(--font-display)` (Cormorant Garamond) italic, scaling 1.15rem → 1.65rem via clamp. Color swaps `var(--text-on-dark)` ↔ `var(--text-primary)` on scroll. Favicon (`app/icon.png` EC monogram) unchanged. Angela's secondary ask (SMS-compliance — privacy-policy onboarding flagged the site name wasn't clearly stated) addressed simultaneously. Angela suggested Playfair Display but market-intelligence.md's typography research selected Cormorant Garamond — kept research-backed choice for consistency + perf.
 
-**In progress (Workstreams E-K):** /stays restructure, /campsites page, /glamping page, homepage teasers, nav updates, 2 blog posts, doc updates.
+**IA pivot shipped (Workstreams E-J):**
+
+5. **/stays restructured as 4-category hub** — replaced the flat featured + 2x2 grid with sectioned previews: Cottage / Luxury Glamping / Tent Camping / Hot Tub Escapes. Each section has its own eyebrow + H2 + 1-line description + product cards + "Explore [Category] →" CTA to the dedicated SEO landing. Visual rhythm c-D-c-D-c-D-c per Pattern #8 + #51.
+
+6. **NEW /glamping page** — luxury glamping SEO landing. Dark hero with Fireflies(20) + GodRays + ShimmerText H1 over the new velvet-buck hero photo. "What Luxury Glamping Means Here" SEO intro (3 paragraphs of editorial copy, internal-links to /campsites). Two product cards (Velvet Buck + Starlit Buck) sourced from siteData.stays. "Why Glamping Here" 4-card differentiator grid (private hot tub, king bed, woodland seclusion, Clifty Falls proximity). 6-question FAQ for long-tail SEO. JSON-LD LodgingBusiness schema with both products as containsPlace.
+
+7. **NEW /campsites page** — tent camping SEO landing (the primary gap Angela isn't ranking for). Dark hero with Fireflies(18) + GodRays + Embers(14) for campfire ambiance. "Choose Your Adventure" intro framing Angela's two-option pitch. Two product cards (Bell Tent + BYO) → /stays/[slug]. 6-card shared amenities grid. 8-question FAQ. Dark CTA footer with both product CTAs. JSON-LD Campground schema.
+
+8. **Homepage browse-by-category strip** — small horizontal link row below the existing 3-stay grid's "View All Stays" CTA. Surfaces Cottage / Luxury Glamping / Tent Camping / Hot Tub Escapes for direct routing from homepage to category landings. Compact (one line of mono type), doesn't add a heavy new section.
+
+9. **Site nav update** — /glamping and /campsites added to the "More" dropdown as the top two items. Primary nav stays lean (Stays / Hot Tub Escapes / Proposals + CTA) — adding to primary would overflow at 1280px. A full Stays-mega-dropdown is the cleaner long-term IA but deferred.
+
+10. **Two tent-camping blog posts**:
+    - `/blog/tent-camping-near-madison-indiana` — 8-min guide (why Madison area is underrated, two-site choice, packing list, dog-friendly notes, best time of year, glamping comparison segue)
+    - `/blog/bell-tent-vs-bring-your-own-tent-camping` — 5-min decision guide (when to book each, what's identical, default recommendation)
+    Both cross-link to /campsites, /glamping, /stays/bell-tent, /stays/campsite. Added "Camping" to `blogCategories`.
+
+**Verification:**
+- `npx tsc --noEmit` — clean (no type errors)
+- `next build` — 44 routes generated, all static including /campsites + /glamping. Build warnings only the standard edge-runtime note. No errors.
+- Photo files verified on disk with May 18 15:09 timestamps; ANGELA-PHOTOS.md updated with the 17 new integrations.
+
+**Atomic commits this session:**
+- `cd1343a` chore(photos): integrate session-17 real photos for Velvet Buck + tents + date-night
+- `20a7f80` feat(stays): rewire Velvet Buck gallery to lead with hot-tub close-up
+- `7534d2c` fix(stays): hide pre-Phase-4 placeholder to remove duplicate Check Availability CTA
+- `5ac7dc0` feat(nav): swap image logo for Cormorant Garamond italic wordmark
+- `cffd703` feat(stays): restructure /stays as 4-category SEO hub
+- `31be46e` feat(campsites): new /campsites SEO landing page for tent camping
+- `0eee685` feat(glamping): new /glamping SEO landing page for luxury glamping
+- `a18a961` feat(homepage): add browse-by-category links surfacing /glamping + /campsites
+- `1d6b5c9` feat(nav): surface /glamping and /campsites in the More dropdown
+- `914c9a3` feat(blog): add 2 tent-camping SEO posts + Camping category
+- (this commit) docs: finalize Session 17 progress.md + ANGELA-PHOTOS.md updates
 
 **Open follow-ups (NOT in this session, logged for future):**
 - Gift Certificates 404 — Angela needs to figure out source URL
