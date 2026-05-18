@@ -5,6 +5,7 @@
 // SEO: LodgingBusiness schema per CLAUDE.md SEO Rule + market-intelligence.md §9 local SEO.
 
 import Image from "next/image";
+import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { Button } from "@/components/ui/Button";
 import { StayCard } from "@/components/ui/StayCard";
@@ -294,10 +295,39 @@ export default function HomePage() {
           </div>
 
           <FadeUp delay={0.4}>
-            <div className="text-center mt-10">
+            <div className="text-center mt-10 flex flex-col items-center gap-5">
               <Button variant="ghost" href="/stays">
                 View All {siteData.stays.length} Stays
               </Button>
+              {/* Browse-by-category row — surfaces /glamping + /campsites
+                  SEO landings without adding a whole new homepage section.
+                  Added 2026-05-18 per Angela call IA pivot. */}
+              <div
+                className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs"
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: "var(--text-secondary)",
+                }}
+              >
+                <span aria-hidden="true">Or browse by category:</span>
+                <Link href="/stays/enchanted-cottage" className="hover:opacity-70 transition-opacity" style={{ color: "var(--accent)" }}>
+                  Cottage
+                </Link>
+                <span aria-hidden="true" style={{ color: "var(--primary-muted)" }}>·</span>
+                <Link href="/glamping" className="hover:opacity-70 transition-opacity" style={{ color: "var(--accent)" }}>
+                  Luxury Glamping
+                </Link>
+                <span aria-hidden="true" style={{ color: "var(--primary-muted)" }}>·</span>
+                <Link href="/campsites" className="hover:opacity-70 transition-opacity" style={{ color: "var(--accent)" }}>
+                  Tent Camping
+                </Link>
+                <span aria-hidden="true" style={{ color: "var(--primary-muted)" }}>·</span>
+                <Link href="/date-night" className="hover:opacity-70 transition-opacity" style={{ color: "var(--accent)" }}>
+                  Hot Tub Escapes
+                </Link>
+              </div>
             </div>
           </FadeUp>
         </div>
