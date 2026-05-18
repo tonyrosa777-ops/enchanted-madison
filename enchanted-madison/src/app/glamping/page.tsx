@@ -254,9 +254,16 @@ export default function GlampingPage() {
         </div>
       </section>
 
-      {/* Product cards */}
-      <section id="glamping-tents" className="py-16 lg:py-20 px-4" style={{ background: "var(--bg-elevated)" }}>
-        <div className="max-w-6xl mx-auto">
+      {/* Product cards — DARK section for Pattern #8 alternation.
+          Cards float as cream over dark, framing the under-the-stars feel. */}
+      <section
+        id="glamping-tents"
+        className="relative py-16 lg:py-20 px-4 overflow-hidden"
+        style={{ background: "var(--bg-dark)" }}
+      >
+        <Fireflies count={14} />
+        <GodRays opacity={0.3} />
+        <div className="relative z-10 max-w-6xl mx-auto">
           <FadeUp>
             <div className="text-center mb-12">
               <p className="eyebrow mb-2" style={{ color: "var(--accent)" }}>
@@ -264,7 +271,7 @@ export default function GlampingPage() {
               </p>
               <h2
                 className="text-3xl lg:text-4xl"
-                style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "var(--text-primary)" }}
+                style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "var(--text-on-dark)" }}
               >
                 Two Distinct Tents, One Property
               </h2>

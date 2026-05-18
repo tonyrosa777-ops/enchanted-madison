@@ -40,11 +40,15 @@ function CategoryHeader({
   eyebrow,
   heading,
   description,
+  tone = "light",
 }: {
   eyebrow: string;
   heading: string;
   description: string;
+  tone?: "light" | "dark";
 }) {
+  const headingColor = tone === "dark" ? "var(--text-on-dark)" : "var(--text-primary)";
+  const descriptionColor = tone === "dark" ? "rgba(254,252,250,0.78)" : "var(--text-secondary)";
   return (
     <FadeUp>
       <div className="max-w-3xl mx-auto text-center mb-10 lg:mb-14">
@@ -60,14 +64,14 @@ function CategoryHeader({
             fontFamily: "var(--font-display)",
             fontWeight: 600,
             fontSize: "clamp(28px, 3.6vw, 42px)",
-            color: "var(--text-primary)",
+            color: headingColor,
           }}
         >
           {heading}
         </h2>
         <p
           className="text-base lg:text-lg leading-relaxed"
-          style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
+          style={{ fontFamily: "var(--font-body)", color: descriptionColor }}
         >
           {description}
         </p>
@@ -234,17 +238,23 @@ export default function StaysPage() {
         </section>
       )}
 
-      {/* 2. Luxury Glamping — Velvet Buck + Starlit Buck on elevated bg */}
+      {/* 2. Luxury Glamping — Velvet Buck + Starlit Buck on DARK bg.
+          Dark interlude per Pattern #8: breaks the run of cream sections,
+          and the under-the-stars / luxury-glamping theme reads naturally
+          against ink. Fireflies + GodRays for atmosphere. */}
       {velvetBuck && starlitBuck && (
         <section
-          className="py-16 lg:py-20 px-4"
-          style={{ background: "var(--bg-elevated)" }}
+          className="relative py-16 lg:py-20 px-4 overflow-hidden"
+          style={{ background: "var(--bg-dark)" }}
         >
-          <div className="max-w-6xl mx-auto">
+          <Fireflies count={14} />
+          <GodRays opacity={0.3} />
+          <div className="relative z-10 max-w-6xl mx-auto">
             <CategoryHeader
               eyebrow="Luxury Glamping"
               heading="Sleep Among the Trees"
               description="Two-person luxury glamping tents with private hot tubs, king beds, and woodland seclusion. Designed for couples who want the romance of camping without giving up comfort."
+              tone="dark"
             />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
               {[velvetBuck, starlitBuck].map((stay, i) => (
@@ -302,16 +312,21 @@ export default function StaysPage() {
         </section>
       )}
 
-      {/* 4. Hot Tub Escapes — day experiences (not overnight). Horizontal feature card. */}
+      {/* 4. Hot Tub Escapes — day experiences (not overnight). DARK section.
+          Second dark interlude per Pattern #8 — locks in D-c-D-c-D-c rhythm.
+          Thematic: hot tub escapes are evening / candlelit by nature. */}
       <section
-        className="py-16 lg:py-20 px-4"
-        style={{ background: "var(--bg-elevated)" }}
+        className="relative py-16 lg:py-20 px-4 overflow-hidden"
+        style={{ background: "var(--bg-dark)" }}
       >
-        <div className="max-w-6xl mx-auto">
+        <Fireflies count={12} />
+        <GodRays opacity={0.3} />
+        <div className="relative z-10 max-w-6xl mx-auto">
           <CategoryHeader
             eyebrow="Day Experiences"
             heading="Hot Tub Escapes for Date Night"
             description="Two hours of warm water, candlelight, and the fireside lounge — for just the two of you. Three tiered packages: Tranquility, Luxury, and Ultimate. No overnight required."
+            tone="dark"
           />
           <ScaleIn>
             <Link

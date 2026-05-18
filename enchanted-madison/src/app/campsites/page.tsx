@@ -245,9 +245,16 @@ export default function CampsitesPage() {
         </div>
       </section>
 
-      {/* Product cards */}
-      <section id="tent-sites" className="py-16 lg:py-20 px-4" style={{ background: "var(--bg-elevated)" }}>
-        <div className="max-w-6xl mx-auto">
+      {/* Product cards — DARK section for Pattern #8 alternation.
+          Cards float as cream over dark, which makes the photos pop. */}
+      <section
+        id="tent-sites"
+        className="relative py-16 lg:py-20 px-4 overflow-hidden"
+        style={{ background: "var(--bg-dark)" }}
+      >
+        <Fireflies count={12} />
+        <GodRays opacity={0.3} />
+        <div className="relative z-10 max-w-6xl mx-auto">
           <FadeUp>
             <div className="text-center mb-12">
               <p className="eyebrow mb-2" style={{ color: "var(--accent)" }}>
@@ -258,7 +265,7 @@ export default function CampsitesPage() {
                 style={{
                   fontFamily: "var(--font-display)",
                   fontWeight: 600,
-                  color: "var(--text-primary)",
+                  color: "var(--text-on-dark)",
                 }}
               >
                 Pick Your Style
