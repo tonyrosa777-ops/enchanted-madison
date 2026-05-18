@@ -344,8 +344,67 @@ Site map defined in Session 1 (15 routes). All routes listed in Site Architectur
 - Movie Beds page — Phase 2, paid follow-on
 - Farm-to-Table page — Phase 4
 - GBP review-toggle issue — separate engagement (Google support said they don't know why reviews are off)
-- About page — still blocked on client copy
+- About page — still blocked on client copy + has pre-existing Pattern #8 violation (6 cream sections in a row)
 - `Replaced.png` in `source-photos/` — unclear purpose, skip until Angela confirms
+- **Pattern #8 violations on /proposals (4 cream in a row) and /packages (3 cream)** — pre-existing, not introduced by Session 17. Flipping the package-card / addon-card sections to dark requires careful contrast work on the `isFeatured` tier logic + `AddonCard` component. Worth a dedicated pass.
+
+---
+
+### Session 17 (continued) — same day, post-call follow-ups
+
+**1. Stay card CTA bait-and-switch fix (commit `8e199fc`):**
+Angela flagged: every stay card (homepage + /stays + /glamping) had a
+green "Check Availability" button that routed to the property detail
+page, where users then had to click ANOTHER "Check Availability" (the
+real booking CTA shipped earlier this session) to actually see
+availability. Two identical labels, different destinations — classic
+conversion killer.
+
+- `StayCard.tsx`: "Check Availability" → "View Details" (cascades to homepage 3-stay grid, /stays 4-category hub, /stays/[slug] related-stays carousel)
+- `/glamping` custom card: "Book {name} →" → "See {name} →" (matches /campsites' already-correct pattern)
+- `/stays/[slug]` green button keeps "Check Availability" — it's the legitimate booking CTA.
+
+**2. Stuck Vercel deployment cancellation (operational, no commit):**
+After pushing 11 commits in rapid succession one Vercel build sat in
+`Initializing` for 80+ minutes with zero log output (build never
+started — Vercel queue stall, not a code issue). Used `vercel api
+PATCH /v13/deployments/{id}/cancel` to force-cancel; queue advanced
+immediately and the head-of-main commit (Session 17 final) built in 45s.
+Reference cancel command:
+```bash
+MSYS_NO_PATHCONV=1 npx vercel api /v13/deployments/{id}/cancel -X PATCH
+```
+(The `MSYS_NO_PATHCONV` prefix is required on Windows Git Bash to
+stop the shell from rewriting `/v13/...` to a Windows path.)
+
+**3. Pattern #8 dark/light alternation fix (commit `a792041`):**
+Angela flagged that /stays felt visually broken. Audit revealed the
+Session 17 IA pivot stacked 6 cream-variant sections in a row on
+/stays and 4-in-a-row on /glamping + /campsites, violating Pattern #8
+(no 3+ consecutive sections may share background type — `bg-base` and
+`bg-elevated` both count as "light"). Canonical reference:
+`C:/Projects/Optimus Assets/knowledge/patterns/homepage-dark-light-section-rhythm.md`.
+
+- `/stays` — Luxury Glamping + Hot Tub Escapes sections flipped to
+  `bg-dark` with Fireflies + GodRays. Threaded `tone="dark"` prop
+  through the inline `CategoryHeader` helper so headings switch
+  cleanly. Rhythm: c-c-c-c-c-c → c-c-D-c-D-c.
+- `/glamping` — "Two Distinct Tents" product-cards section to bg-dark.
+  Cream StayCard photos pop over ink. Rhythm c-c-c-c → c-D-c-c.
+- `/campsites` — "Pick Your Style" product-cards section to bg-dark.
+  Same fix as /glamping.
+
+**Site-wide audit findings (separate work logged above):**
+- /proposals — D-c-c-c-c (4 cream in a row violation)
+- /packages — D-c-c-c-D (3 cream violation)
+- /about — D-c-c-c-c-c-c-D (6 cream — confirmed bad, blocked on client copy anyway)
+- /date-night, /madison-guide, /reviews, /faq, /blog, /blog/[slug], /find-your-escape, homepage — all within tolerance (≤2 cream in a row).
+
+Why /proposals + /packages weren't fixed here: their tier-card and
+addon-card components have `isFeatured` styling keyed to cream-section
+context. Flipping a containing section to dark requires re-evaluating
+the tier card logic for contrast on dark — too much rabbit hole for
+this fix.
 
 ---
 
