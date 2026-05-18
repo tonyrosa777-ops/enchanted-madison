@@ -26,7 +26,7 @@ export interface BlogPost {
   metaDescription: string;
 }
 
-export const blogCategories = ["All", "Romance", "Glamping", "Madison", "Planning", "Local Guides"];
+export const blogCategories = ["All", "Romance", "Glamping", "Camping", "Madison", "Planning", "Local Guides"];
 
 export const blogPosts: BlogPost[] = [
   // ─────────────────────────────────────────────────────────────
@@ -913,6 +913,218 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Southern Indiana's best-kept secret isn't underground. It's the 60-mile stretch of the Ohio River that runs from Madison east, the town that grew up beside it, and the fact that you can get here from Louisville in an hour and from Indianapolis in ninety minutes and still feel genuinely away.",
+      },
+    ],
+  },
+
+  // ─────────────────────────────────────────────────────────────
+  // Post: Tent Camping Near Madison Indiana Guide (added Session 17 / 2026-05-18)
+  // Targets primary SEO query: "tent camping near Madison Indiana"
+  // ─────────────────────────────────────────────────────────────
+  {
+    slug: "tent-camping-near-madison-indiana",
+    title: "Tent Camping Near Madison, Indiana: The 2026 Guide",
+    category: "Camping",
+    excerpt:
+      "Where to pitch a tent within five minutes of Clifty Falls, what to pack, what to expect on a cool Ohio River night, and how to know whether bringing your own tent or arriving to a pre-set one is right for you.",
+    publishedAt: "2026-05-18",
+    readTime: 8,
+    featuredImage: "/images/accommodations/campsite.webp",
+    author: { name: "Angela & Marc", role: "Hosts at The Enchanted Collective" },
+    metaTitle: "Tent Camping Near Madison, Indiana | Bell Tent + BYO Sites",
+    metaDescription:
+      "Wooded tent sites five minutes from downtown Madison and ten from Clifty Falls. Bring your own or stay in a pre-set bell tent — $45/night, dog-friendly, with hot showers a short walk away.",
+    body: [
+      {
+        type: "paragraph",
+        text: "Tent camping in southern Indiana has a quiet renaissance underway, and most of it is happening within a fifteen-mile radius of Madison. The reasons are easy to see once you're standing in the right wooded clearing at dusk: Clifty Falls State Park five minutes away, the Ohio River a short drive south, a 19th-century downtown that's small enough to walk in an afternoon, and a kind of rural quiet that's harder to find in central Indiana than people realize. The harder question for most first-time tent campers isn't whether to camp here — it's how, and what to actually expect when you arrive.",
+      },
+      {
+        type: "heading2",
+        text: "Why Madison Is Underrated for Tent Camping",
+      },
+      {
+        type: "paragraph",
+        text: "Indiana has its well-known camping destinations — Brown County State Park, Hoosier National Forest, the lakes up north — and they have their devoted crowds. Madison gets less of that attention, partly because the camping infrastructure here has historically been thinner than the scenery deserves. That's changing. The Ohio River corridor offers something the more popular sites don't: a real town a few minutes from your tent. You can be on a wooded campsite by morning and at a winery by afternoon. You can hike a 70-foot waterfall before lunch and have dinner on Main Street.",
+      },
+      {
+        type: "paragraph",
+        text: "The other thing Madison-area tent camping gets right is the noise floor. The property where we operate The Enchanted Collective's tent sites runs alongside a quiet country road in Jefferson County. After sundown the loudest sound is whichever of you is poking the fire. The only artificial light is what you brought or what's strung over your own campsite. For couples who live in a city or a suburb, that's the part that lands hardest — the realization, around 10pm on the first night, that nothing is asking anything of you.",
+      },
+      {
+        type: "heading2",
+        text: "Two Ways to Pitch a Tent: Curated or Bring Your Own",
+      },
+      {
+        type: "paragraph",
+        text: "Our tent camping setup splits into two paths, both on the same property and both at the same nightly rate of $45. The choice between them is mostly about how much of the work you want to do yourself.",
+      },
+      {
+        type: "heading3",
+        text: "The Curated Bell Tent Site",
+      },
+      {
+        type: "paragraph",
+        text: "If you've never set up a tent in your life — or if your idea of camping prep is throwing a bag of clothes in the trunk on a Friday afternoon — the curated bell tent site is the path. A 16-foot canvas bell tent is already pitched on a leveled site, with a fire pit, Adirondack chairs, an outdoor dining table, and overhead string lights. You bring bedding (sleeping bag or comforter, pillow), personal gear, and food. We've already done the pitching, the leveling, the staking, and the figuring-out-where-the-string-lights-go.",
+      },
+      {
+        type: "heading3",
+        text: "Bring Your Own Tent Site",
+      },
+      {
+        type: "paragraph",
+        text: "If you already own a tent you like and you'd rather pitch it yourself, the BYO tent site is the same wooded campsite with the same amenities — fire pit, Adirondacks, dining table, string lights — minus the canvas bell tent. You bring and pitch your own. This is the path for repeat campers, for couples who like the ritual of setting up, and for anyone whose tent is already part of how they camp.",
+      },
+      {
+        type: "heading2",
+        text: "What to Pack for Tent Camping in Southern Indiana",
+      },
+      {
+        type: "list",
+        items: [
+          "Bedding — sleeping bag or comforter rated for the season, plus a real pillow. Indiana spring nights drop into the 40s; summer nights into the 60s.",
+          "A flashlight or headlamp — the string lights are ambient, not functional",
+          "Layers — a fleece for evenings, even in July; the fire helps, but only so much",
+          "Toiletries + a small towel — the bathhouse has hot showers but you'll need your own kit",
+          "Food + drinks — the fire pit has a cooking grate; pack accordingly",
+          "Your tent + stakes (BYO site only)",
+          "Bug spray + sunscreen — Indiana summer doesn't kid around",
+          "A book or two — the kind of thing you'd never finish at home",
+        ],
+      },
+      {
+        type: "heading2",
+        text: "What the Camping Experience Actually Feels Like",
+      },
+      {
+        type: "paragraph",
+        text: "You arrive in the afternoon, drop your gear at the campsite, and figure out where things go. If you're at the curated bell tent site, the tent is already standing and you just need to roll out bedding. If you're at the BYO site, you spend twenty minutes pitching and then take five minutes to sit and look at what you just built. The first hour at a tent site is always the most discovery-heavy hour: figuring out where to put the cooler, where to hang the lantern, where the fire pit's sweet spot is for sitting once you light it.",
+      },
+      {
+        type: "paragraph",
+        text: "By evening you've cooked something over the fire or driven five minutes into Madison for an actual meal and come back. The string lights come on at dusk. Conversation slows down — there's no screen pulling either of you out of it. You don't go to bed early; you just go to bed when the fire is done. That's the tent-camping clock.",
+      },
+      {
+        type: "heading2",
+        text: "Dog-Friendly Camping in Madison",
+      },
+      {
+        type: "paragraph",
+        text: "Both of our tent sites are dog-friendly — leashed in shared areas, free to roam your own campsite, and welcome at the fire. The trails at Clifty Falls State Park five minutes away are dog-friendly on leash, which makes Madison-area tent camping one of the more practical setups for couples who travel with their dog. The bathhouse is shared, so pups stay outside while you shower; everywhere else, they're with you.",
+      },
+      {
+        type: "heading2",
+        text: "Best Time of Year for Tent Camping Here",
+      },
+      {
+        type: "paragraph",
+        text: "Late April through early November covers most reasonable tent-camping weather in this part of Indiana. Spring is green and loud with new growth; summer is hot during the day and cool at night with frequent thunderstorms; fall is the consensus sweet spot — color is dramatic along the river bluffs, days are temperate, nights cool enough that the fire actually does work. Avoid the deep heat of late July and early August unless you specifically like sleeping in canvas at 80 degrees. November is workable for cold-weather campers with appropriate bags.",
+      },
+      {
+        type: "heading2",
+        text: "Glamping vs. Tent Camping: When to Upgrade",
+      },
+      {
+        type: "paragraph",
+        text: "If you've read this far and any part of you is thinking \"a real bed would be nice though,\" that's a sign to consider our luxury glamping tents instead. The Velvet Buck and Starlit Buck are the upgrade path — same wooded property, same dark sky, but with king beds, private hot tubs, and finished interiors. They run $175 a night instead of $45. The difference is exactly what it sounds like: tent camping is for the couples who want the woods uncomplicated; glamping is for the couples who want the woods with the comforts of a hotel room.",
+      },
+      {
+        type: "paragraph",
+        text: "Tent sites open June 2026. Weekend nights book up first — we recommend reserving at least two weeks ahead for Friday or Saturday during peak months. Both the curated bell tent site and the BYO tent site are bookable directly on the property page.",
+      },
+    ],
+  },
+
+  // ─────────────────────────────────────────────────────────────
+  // Post: Bell Tent vs Bring Your Own Tent (added Session 17 / 2026-05-18)
+  // Targets long-tail: "bell tent camping Indiana", "bring your own tent"
+  // ─────────────────────────────────────────────────────────────
+  {
+    slug: "bell-tent-vs-bring-your-own-tent-camping",
+    title: "Bell Tent Glamping vs. Bringing Your Own Tent: Which Wooded Indiana Escape Is Right for You?",
+    category: "Camping",
+    excerpt:
+      "Same campsite, same amenities, same nightly rate. The difference is just whether you want to arrive to a tent already standing — or pitch one of your own.",
+    publishedAt: "2026-05-18",
+    readTime: 5,
+    featuredImage: "/images/blog/glamping-vs-camping.webp",
+    author: { name: "Angela & Marc", role: "Hosts at The Enchanted Collective" },
+    metaTitle: "Bell Tent vs. BYO Tent Camping | Madison, Indiana",
+    metaDescription:
+      "Bell tent or bring your own? Both options at The Enchanted Collective are $45/night with the same amenities — here's how to decide which fits your trip.",
+    body: [
+      {
+        type: "paragraph",
+        text: "We get this question more than any other: should we book the bell tent site or bring our own tent? The two are priced identically. They're on the same wooded property. They come with the same amenities — private fire pit, Adirondack chairs, outdoor dining table, overhead string lights, hot-shower bathhouse access, dog-friendly. The only real difference is the canvas overhead. So why pick one over the other? A few honest patterns emerge from talking to guests after they've stayed in each.",
+      },
+      {
+        type: "heading2",
+        text: "Book the Curated Bell Tent Site If...",
+      },
+      {
+        type: "list",
+        items: [
+          "You don't own a tent (and don't want to buy one for one weekend)",
+          "You've never pitched a tent or it's been long enough that you'd rather skip the learning curve",
+          "You're traveling light — flying in, or driving from a long way out",
+          "You'd rather spend Friday afternoon lighting the fire than reading stake instructions",
+          "You want the 'glamping-adjacent' experience without the glamping price point",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "The curated bell tent site shows up ready. A 16-foot canvas bell tent is already pitched on a level pad, weatherproofed, staked, and waiting. You arrive, drop bedding inside, and start your weekend. For first-time campers especially, this is the most-recommended path — it removes the part of camping that goes wrong most often (the setup) without removing any of the experience that makes camping worth doing.",
+      },
+      {
+        type: "heading2",
+        text: "Book the Bring Your Own Tent Site If...",
+      },
+      {
+        type: "list",
+        items: [
+          "You already own a tent you like — even better, one you've used before",
+          "Pitching the tent is part of the ritual you actually enjoy",
+          "You camp a few times a year and have your kit dialed in",
+          "You're traveling with a specific tent setup (oversized family tent, rooftop tent, hammock-tent rig) that wouldn't fit a bell tent footprint anyway",
+          "You like the autonomy of owning every piece of gear at your campsite",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "The BYO tent site is the same campsite, minus the canvas. You get the same fire pit, the same chairs, the same string lights, and the same bathhouse — and you set up the part of camping you want to set up yourself. For repeat campers this is often the preferred path because it lets the rituals stay intact.",
+      },
+      {
+        type: "heading2",
+        text: "What's Identical Between the Two",
+      },
+      {
+        type: "list",
+        items: [
+          "$45/night — same price, both directions",
+          "Private fire pit with cooking grate and Adirondack chairs",
+          "Outdoor dining table",
+          "Overhead string lights",
+          "Hot-shower bathhouse access on-property",
+          "Dog-friendly",
+          "Wooded seclusion — each site set apart from the others",
+          "Five-minute drive to downtown Madison; ten to Clifty Falls State Park",
+        ],
+      },
+      {
+        type: "heading2",
+        text: "What If You're Still Deciding?",
+      },
+      {
+        type: "paragraph",
+        text: "Default to the curated bell tent site if you have any uncertainty. It's the lower-effort path, the lower-risk path, and the path most first-time guests are happiest with by Sunday morning. The BYO site rewards camping experience; the bell tent site rewards anyone who just wants to be at the fire by sunset. If you're somewhere in the middle — own a tent, but haven't used it lately, want the option not to think about it — book the bell tent.",
+      },
+      {
+        type: "paragraph",
+        text: "If you'd rather a king bed and a private hot tub than either tent, our luxury glamping tents (the Velvet Buck and Starlit Buck) live on the same property at $175 a night. That's a real choice to weigh, but it's a different one — that's choosing between camping and glamping, not between the two tent setups.",
+      },
+      {
+        type: "paragraph",
+        text: "Both tent sites open June 2026. Pick the one that matches the trip you actually want — not the one that sounds the most adventurous on paper. The campfire doesn't know which tent you used to get there.",
       },
     ],
   },
