@@ -338,7 +338,7 @@ export default function GlampingPage() {
                         className="inline-flex items-center justify-center rounded-full w-full px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-200 group-hover:brightness-110"
                         style={{ background: "var(--accent)", color: "var(--text-on-dark)", fontFamily: "var(--font-body)" }}
                       >
-                        Book {stay.name.replace("The ", "")} →
+                        See {stay.name.replace("The ", "")} →
                       </span>
                     </div>
                   </Link>
