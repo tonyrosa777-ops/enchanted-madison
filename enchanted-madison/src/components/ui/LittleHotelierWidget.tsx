@@ -11,32 +11,11 @@ interface LittleHotelierWidgetProps {
   fallbackHref: string;    // External Little Hotelier URL (direct-book.com) — used as CTA fallback
 }
 
-export function LittleHotelierWidget({ src, fallbackHref }: LittleHotelierWidgetProps) {
-  if (!src) {
-    // Pre-Phase 4: placeholder with external CTA (current behavior preserved)
-    return (
-      <div
-        className="rounded-xl p-4 text-center text-sm"
-        style={{ background: "var(--bg-elevated)", color: "var(--text-secondary)", fontFamily: "var(--font-body)" }}
-      >
-        <p className="eyebrow text-[10px] mb-2" style={{ color: "var(--text-secondary)" }}>
-          Booking calendar
-        </p>
-        <p className="text-xs leading-relaxed mb-3">
-          Real-time availability launching June 2026.
-        </p>
-        <a
-          href={fallbackHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs font-semibold underline"
-          style={{ color: "var(--primary)", fontFamily: "var(--font-mono)", letterSpacing: "0.06em" }}
-        >
-          Check current availability →
-        </a>
-      </div>
-    );
-  }
+export function LittleHotelierWidget({ src }: LittleHotelierWidgetProps) {
+  // Pre-Phase 4: render nothing — the green "Check Availability" button on
+  // /stays/[slug] handles the single CTA. The previous placeholder card
+  // duplicated that button and Angela flagged it on the 2026-05-18 call.
+  if (!src) return null;
 
   // Phase 4 active: render Little Hotelier widget iframe
   return (
