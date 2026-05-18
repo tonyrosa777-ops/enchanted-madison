@@ -278,6 +278,44 @@ Site map defined in Session 1 (15 routes). All routes listed in Site Architectur
 
 ## Session Log
 
+### Session 17 — 2026-05-18 — Angela call: tactical revisions + IA pivot to category SEO landing pages
+**Context:** Live call with Angela 2026-05-18 produced both tactical revisions (photo reassignments across Velvet Buck + date-night, duplicate CTA bug on /stays/[slug], text wordmark in nav) AND a strategic information-architecture pivot: rank for "tent camping near Madison Indiana" by giving each lodging category its own SEO landing page. Angela ranks for "glamping" and "hot tubs" via Google Analytics but NOT camping/tents. She's also actively pushing referrals (her bankers, a massage therapist who reached out) so the quality bar is high.
+
+**Senior-engineer architecture decision:**
+- `/stays` becomes a sectioned hub previewing 4 categories (Cottage / Glamping / Tent Camping / Hot Tub Escapes)
+- NEW `/glamping` — luxury glamping SEO landing (Velvet Buck + Starlit Buck), routes into `/stays/[slug]` for booking
+- NEW `/campsites` — tent camping SEO landing (Bell Tent + BYO), routes into `/stays/[slug]` for booking
+- `/stays/[slug]` pages keep their role as booking-conversion endpoints
+- `/date-night` unchanged (already covers "Hot Tub Escapes" content; rename would break SEO it's already earning)
+- 2 NEW tent-camping blog posts for internal-link juice + long-tail SEO surface
+
+**Tactical revisions in this session (Workstreams A-D):**
+
+1. **Real photos override fal.ai placeholders** — 17 new mappings in `scripts/integrate-angela-photos.mjs`:
+   - Velvet Buck: hot-tub (hero+gallery), kitchen, bathroom, rocking-chairs, bedroom — drops exterior + lounge fal.ai placeholders. Hot-tub close-up is the lead photo per Angela's explicit pick.
+   - Bell Tent + BYO Campsite: real hero + tent photos override placeholders
+   - Shared entrance photo (Glamping + Camping + Hot Tubs, NOT Enchanted Cottage)
+   - Date Night: real photos for hot-tub-soak (fire-table close-up), fireside-lounge, pkg-tranquility (yoga woman), pkg-luxury (couple in hot tub), pkg-ultimate (champagne + strawberries)
+
+2. **Velvet Buck gallery rewire** — `src/data/site.ts`: 6-photo array led by hot-tub close-up. Dropped exterior + lounge fal.ai placeholders; kept firepit fal.ai (still works).
+
+3. **`/stays/[slug]` duplicate CTA fix** — `LittleHotelierWidget` now returns `null` when src is empty. The green "Check Availability" button on the slug page becomes the single CTA until Phase 4 widgets arrive. Angela flagged the duplicate during the call ("from $175/night" had both a "Check current availability →" placeholder link AND a green button below). Fixed via the component, propagates to all 5 stay slugs.
+
+4. **Nav text wordmark** — `SiteHeader.tsx`: replaced `/images/logo-final.png` Image with `<span>` in `var(--font-display)` (Cormorant Garamond) italic, scaling 1.15rem → 1.65rem via clamp. Color swaps `var(--text-on-dark)` ↔ `var(--text-primary)` on scroll. Favicon (`app/icon.png` EC monogram) unchanged. Angela's secondary ask (SMS-compliance — privacy-policy onboarding flagged the site name wasn't clearly stated) addressed simultaneously. Angela suggested Playfair Display but market-intelligence.md's typography research selected Cormorant Garamond — kept research-backed choice for consistency + perf.
+
+**In progress (Workstreams E-K):** /stays restructure, /campsites page, /glamping page, homepage teasers, nav updates, 2 blog posts, doc updates.
+
+**Open follow-ups (NOT in this session, logged for future):**
+- Gift Certificates 404 — Angela needs to figure out source URL
+- Starlit Buck real photos — Angela generating AI mockups, will email separately
+- Movie Beds page — Phase 2, paid follow-on
+- Farm-to-Table page — Phase 4
+- GBP review-toggle issue — separate engagement (Google support said they don't know why reviews are off)
+- About page — still blocked on client copy
+- `Replaced.png` in `source-photos/` — unclear purpose, skip until Angela confirms
+
+---
+
 ### Session 16 — 2026-05-13 — Playwright verification pass + Pattern #51 systemic fix + stay-page polish
 **Context:** Live Playwright walkthrough of Session 15's revisions surfaced several bugs that the static typecheck didn't catch. This session addresses all of them, plus a wave of polish requests from Angela.
 

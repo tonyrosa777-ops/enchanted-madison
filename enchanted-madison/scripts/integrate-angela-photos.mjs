@@ -87,13 +87,38 @@ const JOBS = [
   ["madison-guide/Broadway Fountain Grunt Pics.jpg", "images/madison-guide/broadway-fountain.webp"],
 
   // ──────────────────────────────────────────────────────────────
-  // VELVET BUCK — fal.ai hero + 4 fal.ai gallery + 1 real bedroom photo
-  // Hero + exterior/hot-tub/lounge/firepit generated via
-  // scripts/generate-velvet-starlit-images.ts (fal.ai flux/dev).
-  // bedroom.webp comes from Angela's real "Enhanced bedroom for glamping"
-  // photo per her 2026-05-13 reassignment (overrides the fal.ai version).
+  // VELVET BUCK — real photos override fal.ai placeholders (Session 17 / 2026-05-18 call)
+  // Hot-tub close-up becomes the hero (Angela's lead-picture pick).
+  // Six real photos: hot-tub, bedroom, kitchen, bathroom, rocking chairs, + fal.ai firepit kept.
   // ──────────────────────────────────────────────────────────────
-  ["Enhanced bedroom for glamping.png", "images/accommodations/velvet-buck/bedroom.webp"],
+  ["Velvet-Buck-Glamping-Hotub.png", "images/accommodations/velvet-buck.webp"],
+  ["Velvet-Buck-Glamping-Hotub.png", "images/accommodations/velvet-buck/hot-tub.webp"],
+  ["Velvet-Buck-Glamping-Kitchen.png", "images/accommodations/velvet-buck/kitchen.webp"],
+  ["Velvet-Buck-Glamping-Bathroom.png", "images/accommodations/velvet-buck/bathroom.webp"],
+  ["Velvet-Buck-Rocking-Chairs.jpg", "images/accommodations/velvet-buck/rocking-chairs.webp"],
+  ["Velvet-Buck-Bedroom.png", "images/accommodations/velvet-buck/bedroom.webp"],
+
+  // ──────────────────────────────────────────────────────────────
+  // BELL TENT + BYO TENT SITE — real photos override placeholders (Session 17)
+  // ──────────────────────────────────────────────────────────────
+  ["Bell-Tent-Curated-Campsite.png", "images/accommodations/bell-tent.webp"],
+  ["Bell-Tent-Curated-Campsite.png", "images/accommodations/bell-tent/tent.webp"],
+  ["Bring-Your-Own-Tent-Site.png", "images/accommodations/campsite.webp"],
+  ["Bring-Your-Own-Tent-Site.png", "images/accommodations/campsite/tent.webp"],
+
+  // ──────────────────────────────────────────────────────────────
+  // SHARED ENTRANCE — used on /campsites + /glamping ambient sections
+  // ──────────────────────────────────────────────────────────────
+  ["Entrance-Glamping-Campsite-Hotub.png", "images/accommodations/entrance.webp"],
+
+  // ──────────────────────────────────────────────────────────────
+  // DATE NIGHT — real photos for hot-tub escape experience + 3 package tiers
+  // ──────────────────────────────────────────────────────────────
+  ["Private-Hot-Tub-Soak.png", "images/date-night/hot-tub-soak.webp"],
+  ["Fireside-Lounge-Hot-Tub-Escapes-Page .png", "images/date-night/fireside-lounge.webp"],
+  ["Tranquility-Escape-Package.png", "images/date-night/pkg-tranquility.webp"],
+  ["Luxury-Hot-Tub-Escape.png", "images/date-night/pkg-luxury.webp"],
+  ["Ultimate-Hot-Tub-Escape-Package.png", "images/date-night/pkg-ultimate.webp"],
 
   // ──────────────────────────────────────────────────────────────
   // STARLIT BUCK — entirely fal.ai (no real source photos yet)
