@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { siteData } from "@/data/site";
 import { Providers } from "@/components/layout/Providers";
+import { GOOGLE_ADS_ID } from "@/lib/gtag";
 
 // Google Analytics 4 measurement ID — supplied by Angela in the revisions doc.
 // Configurable via NEXT_PUBLIC_GA_ID env var for staging vs prod overrides.
@@ -100,6 +101,7 @@ export default function RootLayout({
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', '${GA_MEASUREMENT_ID}');
+            gtag('config', '${GOOGLE_ADS_ID}');
           `}
         </Script>
       </body>

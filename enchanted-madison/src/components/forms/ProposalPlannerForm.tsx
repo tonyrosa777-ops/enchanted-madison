@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useForm, type Resolver } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -11,6 +11,7 @@ import { BrandRadioGroup } from "./BrandRadioGroup";
 import { BrandCheckboxGroup } from "./BrandCheckboxGroup";
 import { Button } from "@/components/ui/Button";
 import { siteData } from "@/data/site";
+import { reportConversion } from "@/lib/gtag";
 
 // ── Zod schema — covers all 3 steps ──────────────────────────────────────────
 const schema = z.object({
@@ -71,6 +72,7 @@ export function ProposalPlannerForm() {
   const [direction, setDirection] = useState<"forward" | "backward">("forward");
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
   const [serverError, setServerError] = useState<string | null>(null);
+  const hasFiredConversion = useRef(false);
 
   const {
     register,
@@ -109,6 +111,12 @@ export function ProposalPlannerForm() {
       if (!res.ok) {
         const json = await res.json().catch(() => ({}));
         throw new Error((json as { error?: string }).error ?? "Submission failed");
+      }
+      // Fire the Google Ads proposal conversion on genuine success. No-ops until Angela
+      // creates the "Proposal" conversion action and we set NEXT_PUBLIC_GADS_LABEL_PROPOSAL.
+      if (!hasFiredConversion.current) {
+        hasFiredConversion.current = true;
+        reportConversion("proposal");
       }
       setStep("success");
     } catch (err) {

@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteData } from "@/data/site";
 import { Button } from "@/components/ui/Button";
+import { reportConversion } from "@/lib/gtag";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 type Answers = Record<string, string>;
@@ -92,6 +93,7 @@ export function FindYourEscapeWizard() {
   const [note, setNote] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [emailError, setEmailError] = useState("");
+  const hasFiredConversion = useRef(false);
 
   const resultKey = getResult(answers);
   const result = results[resultKey];
@@ -122,6 +124,13 @@ export function FindYourEscapeWizard() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, phone, note, answers, recommendation: resultKey }),
       });
+      // Lead captured (email submitted) — fire the Google Ads quiz conversion. Inside the
+      // try so a network failure (caught below) doesn't count. No-ops until
+      // NEXT_PUBLIC_GADS_LABEL_QUIZ is set.
+      if (!hasFiredConversion.current) {
+        hasFiredConversion.current = true;
+        reportConversion("quiz");
+      }
     } catch {
       // Graceful degradation — show result regardless
     }

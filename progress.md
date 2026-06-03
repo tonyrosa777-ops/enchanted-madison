@@ -287,6 +287,30 @@ Site map defined in Session 1 (15 routes). All routes listed in Site Architectur
 
 **Note:** Static still, not video — link unfurls can't play video, so a poster image is the correct format. Cached unfurls (Facebook/LinkedIn/iMessage) won't refresh until re-crawled; use Facebook Sharing Debugger to force after deploy.
 
+### Session 18 (continued) — 2026-06-02 — Google Ads conversion tracking (AW-17977052951)
+**Context:** Angela's Google Ads account emailed a conversion tag — site-wide Google tag + one "Contact" conversion (`AW-17977052951/HbWyCOjO4LccEJeekPxC`, value 1.0 USD). Email assumed a thank-you-page architecture; **this site has none** (all 4 lead forms use inline success states), so conversions must fire programmatically on submit-success. gtag.js is already loaded by GA4 → per Google docs, added a second `config` call, did NOT double-load the library.
+
+**Senior-engineer decisions (backed by Google docs + value-based-bidding best practice):**
+1. One config call, reuse GA4's gtag.js — no duplicate library. *(support.google.com/google-ads/answer/7548399)*
+2. Fire on inline form success, not thank-you pages — programmatic firing removes the only reason to build them; inline success is better UX. Kept inline.
+3. **Per-funnel conversions, NOT one shared label.** Lumping a $1k–5k proposal inquiry with a newsletter signup as one $1 "Contact" would train Smart Bidding to chase the cheapest action and starve the proposal funnel. Contact is the only label we have, so: Contact LIVE now; Proposals/Quiz/VIP pre-wired but dark (no-op) until Angela creates their actions + we set one env var each.
+4. **Conversion VALUES live in Angela's Google Ads UI, not source.** A hardcoded value is a live bidding instruction = owner's money decision. Helper omits value/currency by default. Decided the relative *framework* (Contact = lowest catch-all, Proposal = highest) but not the dollar figures — those are hers. Hard gate: she sets a value before activating any 2nd action.
+
+**Built:**
+- NEW `src/lib/gtag.ts` — typed `window.gtag` global (none existed), `GOOGLE_ADS_ID`, per-funnel label map (env-driven, contact defaulted live), module-level fired-`Set` dedup, `reportConversion(key)` that safely no-ops (server / no gtag / unset label / already-fired).
+- `layout.tsx` — added `gtag('config', GOOGLE_ADS_ID)` to the existing GA4 init; imports the ID as single source of truth.
+- 4 forms wired with a `useRef` fired-guard + `reportConversion(...)` inside the `try`, only on real success: ContactForm (live), ProposalPlannerForm, VipForm (try-only — its catch also shows success as graceful degrade), FindYourEscapeWizard.
+- Root `CLAUDE.md` — new "Engineering Authority & Decision Standard" section (per owner) WITH a carve-out: money/PII/pricing are surfaced to Angela, never decided autonomously.
+- NEW `GOOGLE-ADS-SETUP.md` — plain-English owner checklist (confirm/activate other funnels, value hard-gate, Enhanced Conversions recommendation, cookie/consent due-diligence note).
+
+**Verified (Playwright on dev w/ test labels, `npm run build` clean):**
+- Contact success → exactly 1 conversion in dataLayer, `send_to` correct, **no** value/currency (UI-governed) ✓
+- Contact API forced 500 → **0** conversions, no success card, error shown ✓
+- VIP success (TEST label) → 1 conversion (proves env switch-on) ✓
+- **VIP API forced 500 → 0 conversions BUT success message still shows** — proves conversion is in `try` not `catch` ✓
+
+**Next (owner-gated, Phase 2):** Angela creates Proposal/Quiz/VIP conversion actions w/ real values → set env vars; enable Enhanced Conversions (needs her opt-in + privacy line).
+
 ### Session 17 — 2026-05-18 — Angela call: tactical revisions + IA pivot to category SEO landing pages
 **Context:** Live call with Angela 2026-05-18 produced both tactical revisions (photo reassignments across Velvet Buck + date-night, duplicate CTA bug on /stays/[slug], text wordmark in nav) AND a strategic information-architecture pivot: rank for "tent camping near Madison Indiana" by giving each lodging category its own SEO landing page. Angela ranks for "glamping" and "hot tubs" via Google Analytics but NOT camping/tents. She's also actively pushing referrals (her bankers, a massage therapist who reached out) so the quality bar is high.
 

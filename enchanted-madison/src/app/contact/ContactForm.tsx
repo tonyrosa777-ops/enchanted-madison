@@ -4,8 +4,9 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { PageShell } from "@/components/layout/PageShell";
+import { reportConversion } from "@/lib/gtag";
 import { Button } from "@/components/ui/Button";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { ShimmerText } from "@/components/animations/ShimmerText";
@@ -58,6 +59,7 @@ const directions = "From 421, take old SR 62, then right on K Road. Watch for Th
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState(false);
+  const hasFiredConversion = useRef(false);
 
   const {
     register,
@@ -76,6 +78,12 @@ export function ContactForm() {
         body: JSON.stringify(data),
       });
       if (!res.ok) throw new Error("Server error");
+      // Fire the Google Ads "Contact" conversion only on a genuine success (ref guards
+      // against double-counting; helper also dedups per page load).
+      if (!hasFiredConversion.current) {
+        hasFiredConversion.current = true;
+        reportConversion("contact");
+      }
       setSubmitted(true);
     } catch {
       setServerError(true);

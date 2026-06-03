@@ -3,10 +3,11 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { PageShell } from "@/components/layout/PageShell";
 import { Button } from "@/components/ui/Button";
+import { reportConversion } from "@/lib/gtag";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { ScaleIn } from "@/components/animations/ScaleIn";
 import { Fireflies } from "@/components/animations/Fireflies";
@@ -27,6 +28,7 @@ const benefits = siteData.vip.perks;
 
 export function VipForm() {
   const [submitted, setSubmitted] = useState(false);
+  const hasFiredConversion = useRef(false);
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
@@ -39,6 +41,13 @@ export function VipForm() {
         body: JSON.stringify(data),
       });
       if (!res.ok) throw new Error("Server error");
+      // Fire the Google Ads VIP conversion ONLY on a real success — never from the catch
+      // below (which shows the success state even on failure as graceful degradation).
+      // No-ops until NEXT_PUBLIC_GADS_LABEL_VIP is set.
+      if (!hasFiredConversion.current) {
+        hasFiredConversion.current = true;
+        reportConversion("vip");
+      }
       setSubmitted(true);
     } catch {
       setSubmitted(true);
