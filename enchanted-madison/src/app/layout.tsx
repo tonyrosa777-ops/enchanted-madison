@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     url: "https://enchantedcollectivemadison.com",
     images: [
       {
-        url: "/opengraph-image",
+        url: "/og-hero.jpg",
         width: 1200,
         height: 630,
         alt: `${siteData.name} — Luxury Glamping near Madison, Indiana`,
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
       default: siteData.seo.defaultTitle,
     },
     description: siteData.seo.defaultDescription,
-    images: ["/opengraph-image"],
+    images: ["/og-hero.jpg"],
   },
   robots: {
     index: true,

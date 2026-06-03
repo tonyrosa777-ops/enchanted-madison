@@ -4,8 +4,8 @@
 **Client:** The Enchanted Collective | Madison, Indiana
 **Business Type:** Luxury glamping and romantic experience property
 **Launch Target:** June 2026
-**Last Updated:** 2026-05-04 (Session 14)
-**Current Phase:** Session 14 — Madison Guide real photos + Hanover→Broadway Fountain swap
+**Last Updated:** 2026-06-02 (Session 18)
+**Current Phase:** Session 18 — OG/share image = hero video first frame
 **Package Selected:** Pro ($3,000)
 
 ---
@@ -277,6 +277,15 @@ Site map defined in Session 1 (15 routes). All routes listed in Site Architectur
 ---
 
 ## Session Log
+
+### Session 18 — 2026-06-02 — OG/share image = hero video first frame
+**What was completed:** Replaced the link-unfurl image (Open Graph + Twitter card) with the literal first frame of the hero video. Previously `src/app/opengraph-image.tsx` rendered a text-on-forest-green card via `next/og` ImageResponse. Now the share preview shows the actual opening still of `public/hero-forest.mp4` — sun through the trees, string lights, fire pit, steaming hot tub — so the unfurl matches what visitors see on landing.
+
+**How:** Extracted frame 1 of `hero-forest.mp4` (1756×1180) with ffmpeg and center-cropped to a standard 1200×630 card → `public/og-hero.jpg`. Pointed both `openGraph.images` and `twitter.images` in `src/app/layout.tsx` at `/og-hero.jpg` (resolves absolute via existing `metadataBase`). Deleted `src/app/opengraph-image.tsx` — it was the only thing referencing the `/opengraph-image` route, nothing imported it, and all sub-pages inherit the layout image.
+
+**Regen command** (if hero video is ever swapped): `ffmpeg -y -i public/hero-forest.mp4 -frames:v 1 -vf "scale=1200:630:force_original_aspect_ratio=increase,crop=1200:630" -q:v 2 public/og-hero.jpg`
+
+**Note:** Static still, not video — link unfurls can't play video, so a poster image is the correct format. Cached unfurls (Facebook/LinkedIn/iMessage) won't refresh until re-crawled; use Facebook Sharing Debugger to force after deploy.
 
 ### Session 17 — 2026-05-18 — Angela call: tactical revisions + IA pivot to category SEO landing pages
 **Context:** Live call with Angela 2026-05-18 produced both tactical revisions (photo reassignments across Velvet Buck + date-night, duplicate CTA bug on /stays/[slug], text wordmark in nav) AND a strategic information-architecture pivot: rank for "tent camping near Madison Indiana" by giving each lodging category its own SEO landing page. Angela ranks for "glamping" and "hot tubs" via Google Analytics but NOT camping/tents. She's also actively pushing referrals (her bankers, a massage therapist who reached out) so the quality bar is high.
